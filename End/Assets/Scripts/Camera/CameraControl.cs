@@ -6,7 +6,8 @@ using UnityEngine.Rendering.PostProcessing;
 public class CameraControl : MonoBehaviour
 {
     public float shakeDuration = 0.25f;
-    public float shakeIntensity = 1f;
+    public float ShotShakeIntensity = 1f;
+    public float InjureShakeIntensity = 1f;
     private float shakeTime = 0.25f;
     private bool shaking = false;
     public GameObject player;
@@ -64,16 +65,16 @@ public class CameraControl : MonoBehaviour
     public void CameraShake(Vector2 dir)
     {
         shaking = true;
-        StartCoroutine(Shake(dir));
+        StartCoroutine(Shake(dir*ShotShakeIntensity));
     }
     public void CameraInjure(Vector2 dir)
     {
         shaking = true;
-        StartCoroutine(Shake(dir));
+        StartCoroutine(Shake(dir*InjureShakeIntensity));
         OpenInjureVolume();
         Invoke(nameof(CloseInjureVolume), shakeDuration);
     }
-    IEnumerator Shake(Vector2 dir)
+    IEnumerator Shake(Vector2 dirMforce)
     {
         Vector3 oriPos = transform.position;
         float m_shakeIntensity = 1;
@@ -86,7 +87,7 @@ public class CameraControl : MonoBehaviour
 
             m_shakeIntensity = Mathf.Sin(p * 28.5f) * Mathf.Exp(-2f * p);
 
-            Vector3 v3 = dir * m_shakeIntensity * shakeIntensity;
+            Vector3 v3 = dirMforce * m_shakeIntensity ;
 
             transform.position = oriPos + v3;
 

@@ -116,11 +116,13 @@ public class Enemy : Role
         isDead = true;
         GetComponent<Rigidbody2D>().AddForce(deadDir * 10000);
     }
+    private bool tanFirst = true;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isDead)
+        if (isDead && tanFirst)
         {
             GetComponent<Rigidbody2D>().AddForce(collision.relativeVelocity*100);
+            tanFirst = false;
         }
     }
     public void ShowHurt()
@@ -176,6 +178,6 @@ public class Enemy : Role
     private void OnDestroy()
     {
         Game.instance.CheckIfPass();
+        machine = null;
     }
-
 }

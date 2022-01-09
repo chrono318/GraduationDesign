@@ -42,20 +42,7 @@ public class Default_AttackState:StateTemplate<Enemy>
                 x = x > 0 ? -1 : 1;
                 owner.animator.transform.localScale = new Vector3(x, 1, 1);
 
-                int check = owner.fSMcreator.timing.AttackCheck();
-                switch (check)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        Attack();
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        //开始换弹动画
-                        break;
-                }
+                CallAttack();
             }
         }
         else
@@ -70,6 +57,25 @@ public class Default_AttackState:StateTemplate<Enemy>
     public virtual void Attack()
     {
 
+    }
+    public bool CallAttack()
+    {
+        int check = owner.fSMcreator.timing.AttackCheck();
+        switch (check)
+        {
+            case 0:
+                break;
+            case 1:
+                Attack();
+                return true;
+                break;
+            case 2:
+                break;
+            case 3:
+                //开始换弹动画
+                break;
+        }
+        return false;
     }
 }
 

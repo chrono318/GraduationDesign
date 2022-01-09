@@ -19,10 +19,10 @@ public class Default_Vigilance : StateTemplate<Enemy>
 
     public override void OnExit()
     {
-        if (machine.isplayer)
-        {
-            machine.player.canMove = true;
-        }
+        //if (machine.isplayer)
+        //{
+        //    machine.player.canMove = true;
+        //}
     }
 
     public override void OnStay()

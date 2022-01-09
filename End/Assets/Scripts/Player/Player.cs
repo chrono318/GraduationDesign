@@ -56,12 +56,12 @@ public class Player : Role
 
         transform.GetChild(0).GetComponent<Animator>().SetFloat("speed", Mathf.Clamp01(Mathf.Abs(v * v + h * h) * 2));
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            fsmCreator.attackState.Attack();
-            canMove = true;
-
-            Camera.main.GetComponent<CameraControl>().CameraShake(dir*0.005f);
+            if (fsmCreator.attackState.CallAttack())
+            {
+                Camera.main.GetComponent<CameraControl>().CameraShake(dir * 0.005f);//射击震动
+            }
         }
         if(Input.GetKeyDown(KeyCode.I))
         {
@@ -89,9 +89,15 @@ public class Player : Role
         base.GetHurt(value, attackType,force);
         CameraControl control = Camera.main.GetComponent<CameraControl>();
         //control.CameraShake(force);
-        control.CameraInjure(force);
+        control.CameraInjure(force);//受击震动，F12 CameraInjure函数
         StartCoroutine(nameof(PlayerInjured));
-        Invoke(nameof(NotUnmatched), 2f);
+        Invoke(nameof(NotUnmatched), 2f);//无敌
+        canMove = false;
+        Invoke(nameof(CanMove), 1f);
+    }
+    void CanMove()
+    {
+        canMove = true;
     }
     void NotUnmatched()
     {

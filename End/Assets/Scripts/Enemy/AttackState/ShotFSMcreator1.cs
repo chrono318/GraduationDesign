@@ -48,23 +48,25 @@ public class ShotAttackState1 : Default_AttackState
         {
             tar = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
-            quaternion = Quaternion.FromToRotation(Vector3.right + Vector3.up * 1.1f, tar - creator.bulletOriPos.position);
+            float a = Vector2.SignedAngle(Vector2.right, tar - creator.bulletOriPos.position);
+            
+            quaternion = Quaternion.Euler(0, 0, 30 + a);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.FromToRotation(Vector3.right + Vector3.up *0.9f, tar - creator.bulletOriPos.position);
+            quaternion = Quaternion.Euler(0, 0, -30 + a);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.FromToRotation(Vector3.right + Vector3.up *1.3f, tar - creator.bulletOriPos.position);
+            quaternion = Quaternion.Euler(0, 0, 10 + a);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.FromToRotation(Vector3.right + Vector3.up * 0.7f, tar - creator.bulletOriPos.position);
+            quaternion = Quaternion.Euler(0, 0, -10 + a);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
         }
         else
         {
             tar = owner.target.transform.position;
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
-            float a = Vector2.SignedAngle(Vector3.right, tar - owner.transform.position);
+            float a = Vector2.SignedAngle(Vector3.right, tar - creator.bulletOriPos.position);
             quaternion = Quaternion.Euler(0,0,30+a);
             GameObject.Instantiate(creator.bulletForEnemy, creator.bulletOriPos.position, quaternion);
 
