@@ -67,16 +67,16 @@ public class ShotAttackState1 : Default_AttackState
             tar = owner.target.transform.position;
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
             float a = Vector2.SignedAngle(Vector3.right, tar - creator.bulletOriPos.position);
-            quaternion = Quaternion.Euler(0,0,30+a);
+            quaternion = Quaternion.Euler(0,0,45+a);
             GameObject.Instantiate(creator.bulletForEnemy, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.Euler(0, 0, -30+a);
+            quaternion = Quaternion.Euler(0, 0, -45+a);
             GameObject.Instantiate(creator.bulletForEnemy, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.Euler(0, 0, 10+a);
+            quaternion = Quaternion.Euler(0, 0, 15+a);
             GameObject.Instantiate(creator.bulletForEnemy, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.Euler(0, 0, -10+a);
+            quaternion = Quaternion.Euler(0, 0, -15+a);
             GameObject.Instantiate(creator.bulletForEnemy, creator.bulletOriPos.position, quaternion);
         }
         
