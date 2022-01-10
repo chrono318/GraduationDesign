@@ -23,7 +23,11 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rigid;
 
     public float speed_anim = 0.5f;
-
+    [HideInInspector]
+    public Transform shadow;
+    [HideInInspector]
+    public Vector3 shadowOriPos;
+    public Transform foot;
     //
     private float scale = 1f;
     private float dirForAnim = 0f;
@@ -50,6 +54,8 @@ public class EnemyAI : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         //InvokeRepeating("UpdatePath", 0f, .5f);
         scale = transform.localScale.x;
+
+        shadowOriPos = shadow.transform.localPosition;
     }
     public void StartMove()
     {
@@ -63,7 +69,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (seeker.IsDone())
         {
-            seeker.StartPath(rigid.position, Target.position, OnPathComplete);
+            //seeker.StartPath(rigid.position, Target.position, OnPathComplete);
+            seeker.StartPath(foot.position, Target.position, OnPathComplete);
         }
     }
     
@@ -95,7 +102,8 @@ public class EnemyAI : MonoBehaviour
         }
         
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigid.position).normalized;
+        //Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigid.position).normalized;
+        Vector2 direction = (path.vectorPath[currentWaypoint] - foot.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime * speed_anim;
 
         //rigid.AddForce(force);
@@ -108,7 +116,8 @@ public class EnemyAI : MonoBehaviour
         GFX.GetComponent<Animator>().SetFloat("speed", speed_anim);
         //transform.localScale = new Vector3(force.x > 0 ? -1 : 1, 1, 1);
 
-        float distance = Vector2.Distance(rigid.position, path.vectorPath[currentWaypoint]);
+        //float distance = Vector2.Distance(rigid.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector2.Distance(foot.position, path.vectorPath[currentWaypoint]);
 
         if (distance < nextWaypointDistance)
         {
@@ -119,10 +128,12 @@ public class EnemyAI : MonoBehaviour
         if (dirForAnim >= 0.01)
         {
             GFX.localScale = new Vector3(-1, 1, 1) * scale;
+            shadow.localPosition = new Vector3(-1 * shadowOriPos.x, shadowOriPos.y, 0);
         }
         else if (dirForAnim <= -0.01)
         {
             GFX.localScale = new Vector3(1, 1, 1) * scale;
+            shadow.localPosition = new Vector3( shadowOriPos.x, shadowOriPos.y, 0);
         }
     }
 }

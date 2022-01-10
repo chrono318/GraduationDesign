@@ -9,7 +9,7 @@ public class CameraControl : MonoBehaviour
     public float ShotShakeIntensity = 1f;
     public float InjureShakeIntensity = 1f;
     private float shakeTime = 0.25f;
-    private bool shaking = false;
+    //private bool shaking = false;
     public GameObject player;
     private Transform playerTrans;
     public float CameraOffsetCoe = 1;
@@ -21,6 +21,8 @@ public class CameraControl : MonoBehaviour
 
     //淡入淡出
     public Animator DeliveryFade;
+
+    private Vector2 PosOffset = Vector2.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,6 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shaking) return;
         Vector2 rota = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
         rota /= new Vector2(Screen.width / 2, Screen.height / 2);
         rota = new Vector2(rota.x * Mathf.Abs(rota.x), rota.y * Mathf.Abs(rota.y));
@@ -45,14 +46,11 @@ public class CameraControl : MonoBehaviour
         rota *= CameraOffsetCoe;
 
         Vector2 pos = playerTrans.position;
+        pos += PosOffset;
         //transform.position = new Vector3(pos.x + rota.x , pos.y + rota.y , -10);
         //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(pos.x + rota.x, pos.y + rota.y, -10),ref currenV, 0.2f);
-        transform.position = new Vector3(playerTrans.position.x, playerTrans.position.y, transform.position.z);
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            StartCoroutine(Shake(Vector2.down));
-        }
+        Vector3 p = new Vector3(pos.x, pos.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, p, 0.5f);
     }
     //计算阻尼(系数)
     float Damping(float dep)
@@ -64,19 +62,17 @@ public class CameraControl : MonoBehaviour
     }
     public void CameraShake(Vector2 dir)
     {
-        shaking = true;
-        StartCoroutine(Shake(dir*ShotShakeIntensity));
+        StartCoroutine(ShotShake(dir*ShotShakeIntensity,0.05f));
     }
     public void CameraInjure(Vector2 dir)
     {
-        shaking = true;
         StartCoroutine(Shake(dir*InjureShakeIntensity));
         OpenInjureVolume();
         Invoke(nameof(CloseInjureVolume), shakeDuration);
     }
     IEnumerator Shake(Vector2 dirMforce)
     {
-        Vector3 oriPos = transform.position;
+        //Vector3 oriPos = transform.position;
         float m_shakeIntensity = 1;
         shakeTime = shakeDuration;
 
@@ -87,16 +83,24 @@ public class CameraControl : MonoBehaviour
 
             m_shakeIntensity = Mathf.Sin(p * 28.5f) * Mathf.Exp(-2f * p);
 
-            Vector3 v3 = dirMforce * m_shakeIntensity ;
+            //Vector3 v3 = dirMforce * m_shakeIntensity ;
 
-            transform.position = oriPos + v3;
+            //transform.position = oriPos + v3;
+            PosOffset = dirMforce * m_shakeIntensity;
 
             shakeTime -= Time.deltaTime;
             yield return 0;
         }
+        PosOffset = Vector2.zero;
+        //transform.position = oriPos;
+    }
+    IEnumerator ShotShake(Vector2 dirMforce, float duration)
+    {
+        PosOffset = dirMforce;
+        yield return new WaitForSeconds(duration);
+        PosOffset = Vector2.zero;
 
         //transform.position = oriPos;
-        shaking = false;
     }
 
     public void OpenProcessVolume()
