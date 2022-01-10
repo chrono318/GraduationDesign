@@ -99,8 +99,6 @@ public class Player : Role
         control.CameraInjure(force);//受击震动，F12 CameraInjure函数
         StartCoroutine(nameof(PlayerInjured));
         Invoke(nameof(NotUnmatched), 2f);//无敌
-        canMove = false;
-        Invoke(nameof(CanMove), 1f);
     }
     void CanMove()
     {
