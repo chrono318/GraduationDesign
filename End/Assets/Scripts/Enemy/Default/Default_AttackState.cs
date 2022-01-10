@@ -152,5 +152,14 @@ public class AttackTiming
             return 1;
         }
     }
+
+    /// <summary>
+    /// 针对那个连续发射的枪
+    /// </summary>
+    /// <param name="time"></param>
+    public void SetAttackSpace(float time)
+    {
+        this.attackSpace = time;
+    }
 }
 

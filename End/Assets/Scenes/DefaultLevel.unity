@@ -2831,7 +2831,8 @@ MonoBehaviour:
   attack_radius: 60
   bulletNum: 8
   shotReload: 3
-  attackSpace: 0.6
+  attackSpace: 0.2
+  ShotOffset: 0
   bulletForEnemy: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
     type: 3}
   bulletForPlayer: {fileID: 6284929919724681300, guid: ca01146234954674e879ff368b754f51,
@@ -10061,6 +10062,7 @@ MonoBehaviour:
   bulletNum: 2
   shotReload: 3
   attackSpace: 3
+  ShotOffset: 30
   bulletForEnemy: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
     type: 3}
   bulletForPlayer: {fileID: 6284929919724681300, guid: ca01146234954674e879ff368b754f51,
@@ -11091,7 +11093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2146085731, guid: e17be79f18ec49a40a9d4db1e086f366, type: 3}
       propertyPath: attackSpace
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2146085731, guid: e17be79f18ec49a40a9d4db1e086f366, type: 3}
       propertyPath: attack_radius

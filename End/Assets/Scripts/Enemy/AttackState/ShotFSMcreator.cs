@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShotFSMcreator : FSMcreator
 {
+    [Tooltip("尿分叉程度（角度）")]
+    public float ShotOffset = 30f;
     public GameObject bulletForEnemy;
     public GameObject bulletForPlayer;
     public Transform bulletOriPos;
@@ -47,9 +49,16 @@ public class ShotAttackState : Default_AttackState
         Vector3 tar;
         if (machine.isplayer)
         {
+            
             tar = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
-            quaternion = Quaternion.FromToRotation(Vector3.right, tar - creator.bulletOriPos.position);
+
+            //尿分叉
+            float a = Vector2.SignedAngle(Vector2.right, tar - creator.bulletOriPos.position);
+            float offset = creator.ShotOffset;
+            float r = Random.Range(-offset, offset);
+            //
+            quaternion = Quaternion.Euler(0, 0, a+r);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
         }
         else
