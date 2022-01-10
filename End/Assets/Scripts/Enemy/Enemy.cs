@@ -110,6 +110,7 @@ public class Enemy : Role
     {
         base.Dead();
         //
+        machine.TranslateToState(1);
         machine.KillStateMachine();
         Destroy(enemyAI);
         //击退效果

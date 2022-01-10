@@ -17,6 +17,9 @@ public class Player : Role
     public FSMcreator fsmCreator;
     //
     private Collider2D collider;
+
+    Transform shadow;
+    Vector3 shadowOriPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,8 @@ public class Player : Role
         Game.instance.InformEnemie(this);
 
         Init();
+        shadow = GetComponent<EnemyAI>().shadow;
+        shadowOriPos = GetComponent<EnemyAI>().shadowOriPos;
         Destroy(GetComponent<Enemy>());
         Destroy(GetComponent<EnemyAI>());
         transform.GetChild(0).GetComponent<Animator>().SetFloat("speed", 1f);
@@ -52,7 +57,9 @@ public class Player : Role
         //朝向
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 dir = mousePos - transform.position;
-        transform.GetChild(0).localScale = new Vector3((dir.x < 0 ? 1 : -1), 1, 1) ;
+        float dir1 = dir.x < 0 ? 1 : -1;
+        transform.GetChild(0).localScale = new Vector3(dir1, 1, 1) ;
+        shadow.localPosition = new Vector3(dir1*shadowOriPos.x, shadowOriPos.y, 0);
 
         transform.GetChild(0).GetComponent<Animator>().SetFloat("speed", Mathf.Clamp01(Mathf.Abs(v * v + h * h) * 2));
 
@@ -60,7 +67,7 @@ public class Player : Role
         {
             if (fsmCreator.attackState.CallAttack())
             {
-                Camera.main.GetComponent<CameraControl>().CameraShake(dir * 0.005f);//射击震动
+                Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
             }
         }
         if(Input.GetKeyDown(KeyCode.I))
