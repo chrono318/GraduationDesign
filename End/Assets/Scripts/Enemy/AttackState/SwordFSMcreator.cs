@@ -45,6 +45,13 @@ public class SwordFSMcreator : FSMcreator
         yield return new WaitForSeconds(Start_Duration.y);
         Right.GetComponent<Collider2D>().enabled = false;
     }
+    void OnFinishAttack()
+    {
+        if (machine.isplayer)
+        {
+            machine.player.OnAttackFinish();
+        }
+    }
 }
 
 public class SwordAttackState : Default_AttackState

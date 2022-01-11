@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShotFSMcreator1 : FSMcreator
 {
+    [Tooltip("尿分叉程度（角度）")]
+    public float ShotOffset = 30f;
     public GameObject bulletForEnemy;
     public GameObject bulletForPlayer;
     public Transform bulletOriPos;
@@ -49,17 +51,25 @@ public class ShotAttackState1 : Default_AttackState
             tar = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
             float a = Vector2.SignedAngle(Vector2.right, tar - creator.bulletOriPos.position);
-            
-            quaternion = Quaternion.Euler(0, 0, 30 + a);
+
+            //尿分叉
+            float offset = creator.ShotOffset;
+            float r = Random.Range(-offset, offset);
+            //
+
+            quaternion = Quaternion.Euler(0, 0, 30 + a + r);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.Euler(0, 0, -30 + a);
+            r = Random.Range(-offset, offset);
+            quaternion = Quaternion.Euler(0, 0, -30 + a + r);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.Euler(0, 0, 10 + a);
+            r = Random.Range(-offset, offset);
+            quaternion = Quaternion.Euler(0, 0, 10 + a + r);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
 
-            quaternion = Quaternion.Euler(0, 0, -10 + a);
+            r = Random.Range(-offset, offset);
+            quaternion = Quaternion.Euler(0, 0, -10 + a + r);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
         }
         else
