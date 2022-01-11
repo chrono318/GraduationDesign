@@ -6,6 +6,21 @@ public class InteractionObject : MonoBehaviour
 {
     GameObject player;
 
+    public GameObject UIInfo;
+
+    public Vector3 uiOffset;//UI提示框的偏移
+
+    public enum InfoState
+    {
+        暂未开放 = 0,
+        搜刮,
+        供奉,
+        购买,
+        查看
+    }
+
+    public InfoState State;
+
     /// <summary>
     /// 是否可以进行交互
     /// </summary>
@@ -108,6 +123,7 @@ public class InteractionObject : MonoBehaviour
     void Update()
     {
         CheckCanInteraction();
+        ChangeInfo();
     }
 
     /// <summary>
@@ -133,7 +149,7 @@ public class InteractionObject : MonoBehaviour
     /// </summary>
     public void CheckCanInteraction()
     {
-        if(isCollsion && canInteractionNum > 0)
+        if (isCollsion && canInteractionNum > 0)
         {
             canInetraction = true;
             canSetActiveUI = true;
@@ -147,11 +163,27 @@ public class InteractionObject : MonoBehaviour
     }
 
     /// <summary>
+    /// 开放UI
+    /// </summary>
+    public void ActiveUI()
+    {
+        if (canSetActiveUI)
+        {
+            UIInfo.transform.position = new Vector3(this.transform.position.x + uiOffset.x, this.transform.position.y + uiOffset.y, this.transform.position.z + uiOffset.z);
+            UIInfo.SetActive(true);
+        }
+        else
+        {
+            UIInfo.SetActive(false);
+        }
+    }
+
+    /// <summary>
     /// 生成搜查奖励
     /// </summary>
     public void Search()
     {
-        int probability = GetRandPersonalityType(weight,100);
+        int probability = GetRandPersonalityType(weight, 100);
         int getAward;
         switch (probability)
         {
@@ -192,6 +224,34 @@ public class InteractionObject : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    /// <summary>
+    /// 改变提示框中信息
+    /// </summary>
+    public void ChangeInfo()
+    {
+        switch (State)
+        {
+            case InfoState.暂未开放:
+                UIInfo.transform.GetChild(0).GetComponent<TextMesh>().text = "暂未开放";
+                break;
+            case InfoState.搜刮:
+                UIInfo.transform.GetChild(0).GetComponent<TextMesh>().text = "搜刮";
+                break;
+            case InfoState.供奉:
+                UIInfo.transform.GetChild(0).GetComponent<TextMesh>().text = "供奉";
+                break;
+            case InfoState.查看:
+                UIInfo.transform.GetChild(0).GetComponent<TextMesh>().text = "查看";
+                break;
+            case InfoState.购买:
+                UIInfo.transform.GetChild(0).GetComponent<TextMesh>().text = "购买";
+                break;
+            default:
+                return;
+        }
+        ActiveUI();
     }
 
     //视情况若需更大的交互范围与提示范围，则挂载在控制交互范围的物体上
