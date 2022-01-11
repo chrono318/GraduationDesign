@@ -10,6 +10,8 @@ public class InteractionObject : MonoBehaviour
 
     public Vector3 uiOffset;//UI提示框的偏移
 
+    public bool isCanRecoverInteractionNum = false;//是否可以恢复交互次数,给商人那些可以无限使用的交互物体
+
     public enum InfoState
     {
         暂未开放 = 0,
@@ -257,7 +259,7 @@ public class InteractionObject : MonoBehaviour
     //视情况若需更大的交互范围与提示范围，则挂载在控制交互范围的物体上
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))//整合时，换个判定方式。此判定不生效
         {
             isCollsion = true;
         }
@@ -265,7 +267,12 @@ public class InteractionObject : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && isCanRecoverInteractionNum)
+        {
+            isCollsion = false;
+            canInteractionNum = 1;
+        }
+        else if (collision.gameObject.CompareTag("Player"))
         {
             isCollsion = false;
         }
