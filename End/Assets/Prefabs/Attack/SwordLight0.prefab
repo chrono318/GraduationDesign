@@ -4731,7 +4731,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1998153769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
@@ -4801,6 +4801,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1
   attackType: 0
   value: 10
+  force: 1
+  animator: {fileID: 0}
+  AnimaPauseDuration: 0.1

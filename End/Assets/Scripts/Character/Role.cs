@@ -114,6 +114,6 @@ public class Role : MonoBehaviour
     public void Anima_deadFinished()
     {
         //GetComponent<Collider2D>().enabled = false;
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

@@ -47,4 +47,13 @@ public class FSMcreator : MonoBehaviour
     {
 
     }
+
+    public void OnFinishAttack()
+    {
+        if (machine.isplayer)
+        {
+            machine.player.OnAttackFinish();
+        }
+    }
+    
 }

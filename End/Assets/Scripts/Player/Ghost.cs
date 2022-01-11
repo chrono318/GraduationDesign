@@ -119,7 +119,7 @@ public class Ghost : Role
     }
     public void OnFinishPossess()
     {
-        transform.SetParent(enemy.transform.GetChild(0));
+        transform.SetParent(enemy.transform);
         transform.localPosition = Vector3.zero;
         //enemy.canMove = true;
 
