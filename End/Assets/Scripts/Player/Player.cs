@@ -85,7 +85,6 @@ public class Player : Role
             if (fsmCreator.attackState.CallAttack())
             {
                 Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
-                state = State.attack;
             }
         }
         if (Input.GetMouseButtonDown(1) && state == State.run)
@@ -129,6 +128,10 @@ public class Player : Role
         state = State.run;
         collider.enabled = true;
     }
+    public void SetStateAttack()
+    {
+        state = State.attack;
+    }
     public void OnAttackFinish()
     {
         state = State.run;
@@ -166,5 +169,20 @@ public class Player : Role
     {
         unmatched = false;
         collider.enabled = true;
+    }
+    public void SetXinwu(bool bo)
+    {
+        if(TryGetComponent<ShotFSMcreator>(out ShotFSMcreator s)){
+            if (bo) s.ShotOffset = 0f;
+            else s.ShotOffset = 30f;
+        }
+        if (TryGetComponent<ShotFSMcreator1>(out ShotFSMcreator1 s1)){
+            if (bo) s1.ShotOffset = 0f;
+            else s1.ShotOffset = 30f;
+        }
+        if (TryGetComponent<ShotFSMcreator2>(out ShotFSMcreator2 s2)){
+            if (bo) s2.ShotOffset = 0f;
+            else s2.ShotOffset = 30f;
+        }
     }
 }

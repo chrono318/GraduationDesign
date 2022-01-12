@@ -59,6 +59,7 @@ public class ShotAttackState2 : Default_AttackState
             //
             quaternion = Quaternion.Euler(0, 0, a + r);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
+
         }
         else
         {

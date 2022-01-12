@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    public Slider slider;
     public static Game instance;
     public GameObject defaltBullet;
     public GameObject playerBullet;
@@ -78,6 +80,8 @@ public class Game : MonoBehaviour
     public void CheckIfPass()
     {
         CurEnemyCount--;
+        float s = (3 - CurEnemyCount) / 3f;
+        slider.value = s;
         if (CurEnemyCount <= 0)
         {
             //通关

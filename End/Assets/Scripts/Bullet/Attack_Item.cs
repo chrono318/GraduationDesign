@@ -16,6 +16,27 @@ public class Attack_Item : MonoBehaviour
     public float force = 1f;
     public Animator animator;
     public float AnimaPauseDuration = 0.1f;
+    private Collider2D collider;
+    private ContactFilter2D filter2D;
+    private void Awake()
+    {
+        collider = GetComponent<Collider2D>();
+        filter2D = new ContactFilter2D();
+        filter2D.SetLayerMask(layerMask);
+        filter2D.useTriggers = true;
+        filter2D.useLayerMask = true;
+    }
+    public void CheckAttack()
+    {
+        List<Collider2D> collist = new List<Collider2D>();
+        print(collider.OverlapCollider(filter2D, collist));
+        foreach(Collider2D item in collist)
+        {
+            OnHit(item.transform.parent.gameObject);
+            print(item.transform.parent.gameObject.name);
+            StartCoroutine(nameof(AnimaPause));
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int layer = collision.gameObject.layer;

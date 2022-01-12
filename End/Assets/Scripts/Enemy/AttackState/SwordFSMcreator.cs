@@ -34,24 +34,22 @@ public class SwordFSMcreator : FSMcreator
     IEnumerator LeftColli()
     {
         yield return new WaitForSeconds(Start_Duration.x);
-        Left.GetComponent<Collider2D>().enabled = true;
+        //Left.GetComponent<Collider2D>().enabled = true;
+        Left.GetComponent<Attack_Item>().CheckAttack();
         yield return new WaitForSeconds(Start_Duration.y);
-        Left.GetComponent<Collider2D>().enabled = false;
+        //Left.GetComponent<Collider2D>().enabled = false;
+        OnFinishAttack();
     }
     IEnumerator RightColli()
     {
         yield return new WaitForSeconds(Start_Duration.x);
-        Right.GetComponent<Collider2D>().enabled = true;
+        //Right.GetComponent<Collider2D>().enabled = true;
+        Right.GetComponent<Attack_Item>().CheckAttack();
         yield return new WaitForSeconds(Start_Duration.y);
-        Right.GetComponent<Collider2D>().enabled = false;
+        //Right.GetComponent<Collider2D>().enabled = false;
+        OnFinishAttack();
     }
-    void OnFinishAttack()
-    {
-        if (machine.isplayer)
-        {
-            machine.player.OnAttackFinish();
-        }
-    }
+    
 }
 
 public class SwordAttackState : Default_AttackState
@@ -63,6 +61,7 @@ public class SwordAttackState : Default_AttackState
     }
     public override void Attack()
     {
+        machine.player.SetStateAttack();
         owner.animator.SetTrigger("attack1");
 
         machine.TranslateToState(1);

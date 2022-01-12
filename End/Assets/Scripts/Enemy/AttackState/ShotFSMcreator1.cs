@@ -71,6 +71,7 @@ public class ShotAttackState1 : Default_AttackState
             r = Random.Range(-offset, offset);
             quaternion = Quaternion.Euler(0, 0, -10 + a + r);
             GameObject.Instantiate(creator.bulletForPlayer, creator.bulletOriPos.position, quaternion);
+
         }
         else
         {

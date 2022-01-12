@@ -13,7 +13,7 @@ public class MiniMapController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             miniMapSwitch = !miniMapSwitch;
+            miniMap.SetActive(miniMapSwitch);
         }
-        miniMap.SetActive(miniMapSwitch);
     }
 }
