@@ -14,7 +14,8 @@ public class Default_Vigilance : StateTemplate<Enemy>
     {
         m_time = 0;
         owner.enemyAI.speed_anim = 0f;
-        owner.animator.SetFloat("speed", 0);
+        //owner.animator.SetFloat("speed", 0);
+        owner.SetAnimaSpeed(0);
     }
 
     public override void OnExit()

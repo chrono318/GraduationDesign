@@ -41,9 +41,11 @@ public class EnemyRevolt : MonoBehaviour
             gameObject.tag = "Player";
             Player p = gameObject.AddComponent<Player>();
             p.animator = enemy.animator;
+            p.animators = enemy.animators;
             p.ghost = ghost;
             Game.instance.player = p;
             Destroy(this);
+            return;
         }
 
         float h = Input.GetAxisRaw("Horizontal");
@@ -54,7 +56,7 @@ public class EnemyRevolt : MonoBehaviour
         Vector2 v2 = control * control_force + dir * speed;
         rigidbody.velocity = v2;
 
-        transform.localScale = new Vector3(v2.x > 0 ? -1 : 1, 1, 1);
+        enemy.GFX.localScale = new Vector3(v2.x > 0 ? -1 : 1, 1, 1);
 
         Debug.DrawLine(transform.position, transform.position + new Vector3(v2.x, v2.y, 0).normalized * ray_len, Color.red);
         RaycastHit2D hit;
@@ -90,7 +92,7 @@ public class EnemyRevolt : MonoBehaviour
             if (touch_enemy_time >= 2)
             {
                 Ghost.instance.LeaveBody();
-                UI_DamageManager.instance.DamageNum(20, DamageType.Magic, transform);
+                //UI_DamageManager.instance.DamageNum(20, DamageType.Magic, transform);
             }
         }
         else if (collision.gameObject.CompareTag("Soul Frag"))
@@ -100,14 +102,15 @@ public class EnemyRevolt : MonoBehaviour
         else if (collision.gameObject.layer == 0)
         {
             Ghost.instance.LeaveBody();
-            UI_DamageManager.instance.DamageNum(20, DamageType.Magic, transform);
+            //UI_DamageManager.instance.DamageNum(20, DamageType.Magic, transform);
             Destroy(this);
         }
     }
 
     private void FixedUpdate()
     {
-        GetComponent<Enemy>().animator.speed = Mathf.Clamp01(rigidbody.velocity.magnitude / 10);
+        //enemy.animator.speed = Mathf.Clamp01(rigidbody.velocity.magnitude / 10);
+        
     }
     private void GetSoulFrag(GameObject frag)
     {

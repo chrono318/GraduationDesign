@@ -44,7 +44,8 @@ public class ShotAttackState : Default_AttackState
     {
         base.Attack();
 
-        owner.animator.SetTrigger("attack");
+        //owner.animator.SetTrigger("attack");
+        owner.PlayAnima("attack");
         Quaternion quaternion;
         Vector3 tar;
         if (machine.isplayer)
@@ -67,7 +68,7 @@ public class ShotAttackState : Default_AttackState
             tar = owner.target.transform.position;
             //修改面朝方向
             float m_dir = tar.x - owner.transform.position.x > 0 ? -1 : 1;
-            owner.animator.transform.localScale = new Vector3(m_dir, 1, 1);
+            owner.GFX.localScale = new Vector3(m_dir, 1, 1);
 
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
             quaternion = Quaternion.FromToRotation(Vector3.right, tar - creator.bulletOriPos.position);

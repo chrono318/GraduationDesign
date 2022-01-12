@@ -40,7 +40,7 @@ public class Default_AttackState:StateTemplate<Enemy>
                 owner.CloseAI();
                 float x = player.position.x - owner.transform.position.x;
                 x = x > 0 ? -1 : 1;
-                owner.animator.transform.localScale = new Vector3(x, 1, 1);
+                owner.GFX.localScale = new Vector3(x, 1, 1);
 
                 CallAttack();
             }

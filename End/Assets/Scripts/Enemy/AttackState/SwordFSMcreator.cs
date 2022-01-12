@@ -61,11 +61,15 @@ public class SwordAttackState : Default_AttackState
     }
     public override void Attack()
     {
-        machine.player.SetStateAttack();
-        owner.animator.SetTrigger("attack1");
+        if (machine.isplayer)
+        {
+            machine.player.SetStateAttack();
+        }
+        //owner.animator.SetTrigger("attack1");
+        owner.PlayAnima("attack");
 
         machine.TranslateToState(1);
-        bool isleft = owner.animator.transform.localScale.x == 1 ? false : true;
+        bool isleft = owner.GFX.localScale.x == 1 ? false : true;
         creator.Attack(isleft);
     }
 }

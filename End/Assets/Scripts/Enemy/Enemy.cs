@@ -18,6 +18,7 @@ public class Enemy : Role
     [HideInInspector]
     public float curHP;
 
+    [HideInInspector]
     public GameObject ghost;
     //[Header("巡逻点")]
     //public List<Transform> PatrolPoints;
@@ -42,7 +43,7 @@ public class Enemy : Role
         }
         else
         {
-            enemyAI.GFX = animator.transform;
+            enemyAI.GFX = GFX;
             enemyAI.speed = this.speed;
         }
 
@@ -58,10 +59,6 @@ public class Enemy : Role
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            animator.SetTrigger("hurt");
-        }
         fSMcreator.timing.Update();
     }
     private void FixedUpdate()
@@ -128,7 +125,8 @@ public class Enemy : Role
     }
     public void ShowHurt()
     {
-        animator.SetTrigger("injure");
+        //animator.SetTrigger("injure");
+        PlayAnima("injure");
         enemyAI.GetHurt = true;
         StartCoroutine(nameof(goon));
     }

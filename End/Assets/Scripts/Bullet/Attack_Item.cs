@@ -32,8 +32,8 @@ public class Attack_Item : MonoBehaviour
         print(collider.OverlapCollider(filter2D, collist));
         foreach(Collider2D item in collist)
         {
-            OnHit(item.transform.parent.gameObject);
-            print(item.transform.parent.gameObject.name);
+            print(item.gameObject.name);
+            OnHit(item.gameObject);
             StartCoroutine(nameof(AnimaPause));
         }
     }

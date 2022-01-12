@@ -44,7 +44,8 @@ public class ShotAttackState2 : Default_AttackState
     public override void Attack()
     {
         base.Attack();
-        owner.animator.SetTrigger("attack");
+        //owner.animator.SetTrigger("attack");
+        owner.PlayAnima("attack");
         Quaternion quaternion;
         Vector3 tar;
         if (machine.isplayer)

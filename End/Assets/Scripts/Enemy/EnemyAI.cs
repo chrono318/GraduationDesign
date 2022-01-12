@@ -93,7 +93,8 @@ public class EnemyAI : MonoBehaviour
         {
             OnReach.Invoke();
             Reached = true;
-            GFX.GetComponent<Animator>().SetFloat("speed",0f);
+            //GFX.GetComponent<Animator>().SetFloat("speed",0f);
+            GetComponent<Enemy>().SetAnimaSpeed(0f);
             return;
         }
         else
@@ -113,7 +114,8 @@ public class EnemyAI : MonoBehaviour
         //float speed1 = direction.magnitude > 0.0001f ? 1f : 0f;
         //speed_anim *= speed1;
 
-        GFX.GetComponent<Animator>().SetFloat("speed", speed_anim);
+        //GFX.GetComponent<Animator>().SetFloat("speed", speed_anim);
+        GetComponent<Enemy>().SetAnimaSpeed(speed_anim);
         //transform.localScale = new Vector3(force.x > 0 ? -1 : 1, 1, 1);
 
         //float distance = Vector2.Distance(rigid.position, path.vectorPath[currentWaypoint]);
@@ -122,6 +124,7 @@ public class EnemyAI : MonoBehaviour
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
+            if (path.vectorPath.Count == 1) return;
             dirForAnim = path.vectorPath[currentWaypoint].x - path.vectorPath[currentWaypoint - 1].x;
         }
         //图片转向

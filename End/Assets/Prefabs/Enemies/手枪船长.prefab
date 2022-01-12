@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5495200917777800024}
   - component: {fileID: 6913388678856988221}
   - component: {fileID: 8422982074327328871}
-  - component: {fileID: 2146085731}
+  - component: {fileID: 554248791}
   m_Layer: 10
   m_Name: "\u624B\u67AA\u8239\u957F"
   m_TagString: Enemy
@@ -82,7 +82,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.48706055, y: -0.094638824}
+  m_Offset: {x: -0.46131897, y: -0.094638824}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -93,7 +93,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.109802, y: 13.681099}
+  m_Size: {x: 3.522766, y: 13.681099}
   m_EdgeRadius: 0
 --- !u!114 &2578798580999958050
 MonoBehaviour:
@@ -108,11 +108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roleType: 0
-  speed: 20
+  speed: 12
   hpUI: {fileID: 0}
   deadAnimaDur: 2
   animator: {fileID: 8758189116248597614}
-  speed4Player: 10
+  speed4Player: 20
   HP_Max: 100
   ArmorValue: 5
   HP_Slider: {fileID: 3857249539656198053}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1047761cb38a114998c115e239c9d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  speed: 300
   nextWaypointDistance: 3
   GFX: {fileID: 0}
   OnReach:
@@ -193,9 +193,9 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2146085731
+--- !u!114 &554248791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,16 +204,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2501167463006985343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d5daf086694d34782d79ef127a5f17, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e2df48828e13db4998476030cc38a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PatrolPoints:
   - {fileID: 2313046299939738810}
-  attack_radius: 0
-  bulletNum: 0
-  shotReload: 0
-  attackSpace: 2
-  bulletForEnemy: {fileID: 5570354312193352119, guid: cecc240676696f940beceef91bb43fb0,
+  attack_radius: 60
+  bulletNum: 8
+  shotReload: 3
+  attackSpace: 0.2
+  ShotOffset: 30
+  bulletForEnemy: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
     type: 3}
   bulletForPlayer: {fileID: 6284929919724681300, guid: ca01146234954674e879ff368b754f51,
     type: 3}
@@ -325,12 +326,22 @@ PrefabInstance:
     - target: {fileID: 1033193892915537306, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 1.5653613
+      value: 1.5653703
       objectReference: {fileID: 0}
     - target: {fileID: 1033193892915537306, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.56113
+      value: 1.5611382
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472152765104871704, guid: ca438f9a298e7d14ca2bbb00212648cf,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: 7.137638
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472152765104871704, guid: ca438f9a298e7d14ca2bbb00212648cf,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 7.137638
       objectReference: {fileID: 0}
     - target: {fileID: 3953207093234757575, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
@@ -345,52 +356,52 @@ PrefabInstance:
     - target: {fileID: 4677173304142637971, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 1.5655147
+      value: 1.5655252
       objectReference: {fileID: 0}
     - target: {fileID: 4677173304142637971, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.5632854
+      value: 1.5632777
       objectReference: {fileID: 0}
     - target: {fileID: 7238512370416096360, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 5.677915
+      value: 5.6779084
       objectReference: {fileID: 0}
     - target: {fileID: 7238512370416096360, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.5499153
+      value: 1.5499144
       objectReference: {fileID: 0}
     - target: {fileID: 7877850159692291996, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 5.3950005
+      value: 5.3950043
       objectReference: {fileID: 0}
     - target: {fileID: 7877850159692291996, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 2.635
+      value: 2.6350002
       objectReference: {fileID: 0}
     - target: {fileID: 8779980761506243461, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.0036754608
+      value: -0.003660202
       objectReference: {fileID: 0}
     - target: {fileID: 8779980761506243461, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 5.735926
+      value: 5.7359257
       objectReference: {fileID: 0}
     - target: {fileID: 8779980761506243461, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.83132493
+      value: 0.8313402
       objectReference: {fileID: 0}
     - target: {fileID: 8779980761506243461, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.5563655
+      value: 1.556365
       objectReference: {fileID: 0}
     - target: {fileID: 9065879836588693882, guid: ca438f9a298e7d14ca2bbb00212648cf,
         type: 3}

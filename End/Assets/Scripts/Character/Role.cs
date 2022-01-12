@@ -15,6 +15,7 @@ public class Role : MonoBehaviour
     [HideInInspector]
     public StateMachine machine;
 
+    [HideInInspector]
     public Animator animator;
 
     //用于受伤变白的spriteRender
@@ -22,15 +23,20 @@ public class Role : MonoBehaviour
     protected Material material;
     //public Shader shader;
 
+    //控制图片整体，控制朝向
+    [HideInInspector]
+    public Transform GFX;
+    public Animator[] animators;
     // Start is called before the first frame update
     public void Init()
     {
+        GFX = transform.GetChild(0);
         material = new Material(Game.instance.RoleShader);
 
         //存颜色
         if (spriteRenderers == null)
         {
-            spriteRenderers = transform.GetChild(0).GetComponentsInChildren<SpriteRenderer>();
+            spriteRenderers = GFX.GetComponentsInChildren<SpriteRenderer>();
             for (int i = 0; i < spriteRenderers.Length; i++)
             {
                 spriteRenderers[i].sharedMaterial = material;
@@ -44,7 +50,17 @@ public class Role : MonoBehaviour
             item.animator = animator;
         }
     }
-
+    //动画批量
+    public void PlayAnima(string str)
+    {
+        animators[0].SetTrigger(str);
+        animators[1].SetTrigger(str);
+    }
+    public void SetAnimaSpeed(float speed)
+    {
+        animators[0].SetFloat("speed", speed);
+        animators[1].SetFloat("speed", speed);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -61,15 +77,16 @@ public class Role : MonoBehaviour
         {
             AddSan(value * -1);
         }
-        animator.SetTrigger("injure");
+        //animator.SetTrigger("injure");
+        PlayAnima("injure");
     }
     //dead
     protected Vector2 deadDir;
     public virtual void Dead()
     {
 
-        animator.SetTrigger("dead");
-        
+        //animator.SetTrigger("dead");
+        PlayAnima("dead");
 
         Invoke(nameof(Anima_deadFinished), deadAnimaDur);
     }
