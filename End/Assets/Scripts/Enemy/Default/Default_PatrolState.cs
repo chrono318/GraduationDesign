@@ -15,11 +15,14 @@ public class Default_PatrolState : StateTemplate<Enemy>
     public override void OnEnter()
     {
         base.OnEnter();
-        owner.SetAITarget(PatrolPoints[index]);
         owner.enemyAI.speed_anim = 0.5f;
+
+        if (PatrolPoints.Count == 0) return;
+        owner.SetAITarget(PatrolPoints[index]);
     }
     public override void OnStay()
     {
+        if (PatrolPoints.Count == 0) return;
         if (LookingAround)
         {
             m_time += Time.deltaTime;

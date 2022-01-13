@@ -19,6 +19,8 @@ public class Game : MonoBehaviour
     //
     public List<DeliveryDoor> deliveryDoors;
     //
+    public GameObject MinMap;
+
     [Header("Room1")]
     public List<Enemy> enemies1;
     [Header("Room2")]
@@ -86,13 +88,14 @@ public class Game : MonoBehaviour
         {
             //通关
             print("通关");
+            MinMap.SetActive(true);
             return;
             if (RoomId >= 4) return;
             deliveryDoors[RoomId-1].gameObject.SetActive(true);
         }
     }
     /// <summary>
-    /// 通知当前场景所有敌人进入攻击状态，目标为player
+    /// 通知当前房间所有敌人进入攻击状态，目标为player
     /// </summary>
     /// <param name="player"></param>
     public void InformEnemie(Player player)
@@ -114,5 +117,6 @@ public class Game : MonoBehaviour
         {
             InformEnemie(player);
         }
+        Game.instance.MinMap.SetActive(true);
     } 
 }

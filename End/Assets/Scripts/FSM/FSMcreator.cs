@@ -29,10 +29,19 @@ public class FSMcreator : MonoBehaviour
     }
     public StateMachine CreateSFM()
     {
+
         enemy = GetComponent<Enemy>();
 
         Default_PatrolState default_PatrolState = new Default_PatrolState(0, enemy);
-        default_PatrolState.PatrolPoints = PatrolPoints;
+
+        if (PatrolPoints != null)
+        {
+            default_PatrolState.PatrolPoints = PatrolPoints;
+        }
+        else
+        {
+            default_PatrolState.PatrolPoints = new List<Transform>(0);
+        }
         enemy.enemyAI.OnReach.AddListener(default_PatrolState.OnReach);
 
         machine = new StateMachine(default_PatrolState);
@@ -41,7 +50,6 @@ public class FSMcreator : MonoBehaviour
         AddOtherStates();
 
         timing = new AttackTiming(bulletNum, shotReload, attackSpace);
-
         return machine;
     }
     public virtual void AddOtherStates()

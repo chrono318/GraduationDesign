@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: DefaultBullet
+    m_ConditionEvent: destroy
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1387996459300052031}
@@ -36,7 +36,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -1387996459300052031}
-    m_Position: {x: 420, y: 80, z: 0}
+    m_Position: {x: 440, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1815290195036760687}
     m_Position: {x: 210, y: 180, z: 0}
@@ -112,7 +112,7 @@ AnimatorController:
   m_Name: BulletPrefab
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: DefaultBullet
+  - m_Name: destroy
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0

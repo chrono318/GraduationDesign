@@ -133,14 +133,14 @@ public class InteractionObject : MonoBehaviour
     /// </summary>
     public void CheckPressInteraction()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             isPressInterationButton = true;
             canInteractionNum -= 1;
             canInetraction = false;
             Search();
         }
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             isPressInterationButton = false;
         }
@@ -262,10 +262,29 @@ public class InteractionObject : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))//整合时，换个判定方式。此判定不生效
         {
             isCollsion = true;
+       }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))//整合时，换个判定方式。此判定不生效
+        {
+            isCollsion = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && isCanRecoverInteractionNum)
+        {
+            isCollsion = false;
+            canInteractionNum = 1;
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            isCollsion = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && isCanRecoverInteractionNum)
         {

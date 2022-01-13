@@ -72,6 +72,14 @@ public class Default_AttackState:StateTemplate<Enemy>
             case 2:
                 break;
             case 3:
+                if (machine.isplayer)
+                {
+                    machine.player.PlayAnima("reload");
+                }
+                else
+                {
+                    owner.PlayAnima("reload");
+                }
                 //开始换弹动画
                 break;
         }

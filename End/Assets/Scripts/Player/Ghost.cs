@@ -142,6 +142,7 @@ public class Ghost : Role
         enemy.GetComponent<Enemy>().enabled = true;
         enemy.OpenAI();
 
+        enemy.Dead();
         Destroy(enemy.GetComponent<EnemyRevolt>());
         transform.SetParent(enemy.transform.parent);
         GetComponent<Collider2D>().enabled = true;

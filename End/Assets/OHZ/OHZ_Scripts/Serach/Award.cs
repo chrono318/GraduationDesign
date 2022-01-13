@@ -320,11 +320,11 @@ public class Award : MonoBehaviour
     /// </summary>
     public void CheckPressInteraction()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             isPressInterationButton = true;
         }
-        else if(Input.GetKeyUp(KeyCode.F))
+        else if(Input.GetKeyUp(KeyCode.E))
         {
             isPressInterationButton = false;
         }
@@ -338,6 +338,7 @@ public class Award : MonoBehaviour
         if(isPressInterationButton && canSetActiveUI)
         {
             print("已拾取");
+            //
             Destroy(this.gameObject);
         }
     }

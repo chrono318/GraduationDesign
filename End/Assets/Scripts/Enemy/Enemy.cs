@@ -37,7 +37,6 @@ public class Enemy : Role
     void Start()
     {
         Init();
-
         seeker = GetComponent<Seeker>();
         if(!TryGetComponent<EnemyAI>(out enemyAI))
         {
@@ -54,7 +53,6 @@ public class Enemy : Role
 
         fSMcreator = GetComponent<FSMcreator>();
         machine = fSMcreator.CreateSFM();
-
     }
 
     // Update is called once per frame

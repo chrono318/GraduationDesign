@@ -29,10 +29,9 @@ public class Attack_Item : MonoBehaviour
     public void CheckAttack()
     {
         List<Collider2D> collist = new List<Collider2D>();
-        print(collider.OverlapCollider(filter2D, collist));
+        collider.OverlapCollider(filter2D, collist);
         foreach(Collider2D item in collist)
         {
-            print(item.gameObject.name);
             OnHit(item.gameObject);
             StartCoroutine(nameof(AnimaPause));
         }
@@ -67,7 +66,7 @@ public class Attack_Item : MonoBehaviour
     {
         if(col.TryGetComponent<Role>(out Role role))
         {
-            Vector3 dir = (col.transform.position - transform.position).normalized;
+            Vector3 dir = (-col.transform.position + transform.position).normalized;
             dir.z = 0;
             role.GetHurt(value, attackType,dir*force);
         }

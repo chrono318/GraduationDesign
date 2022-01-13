@@ -58,14 +58,14 @@ public class DefaultBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player" && targetIsPlayer)
         {
             col = true;
-            GetComponent<Animator>().SetTrigger("DefaultBullet");
+            GetComponent<Animator>().SetTrigger("destroy");
             
             collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics,dir);
         }
         if (collision.gameObject.tag == "Enemy" && !targetIsPlayer)
         {
             col = true;
-            GetComponent<Animator>().SetTrigger("DefaultBullet");
+            GetComponent<Animator>().SetTrigger("destroy");
             collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics,dir);
         }
     }
@@ -88,14 +88,14 @@ public class DefaultBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player" && targetIsPlayer)
         {
             col = true;
-            GetComponent<Animator>().SetTrigger("DefaultBullet");
+            GetComponent<Animator>().SetTrigger("destroy");
 
             collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics, dir);
         }
         if (collision.gameObject.tag == "Enemy" && !targetIsPlayer)
         {
             col = true;
-            GetComponent<Animator>().SetTrigger("DefaultBullet");
+            GetComponent<Animator>().SetTrigger("destroy");
             collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics, dir);
         }
     }
