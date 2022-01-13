@@ -13049,6 +13049,7 @@ MonoBehaviour:
   deliveryDoors:
   - {fileID: 2029124916}
   - {fileID: 1610789458}
+  - {fileID: 7284147378683990799}
   MinMap: {fileID: 1173117257}
   enemies1:
   - {fileID: 261112758}
@@ -22401,12 +22402,12 @@ PrefabInstance:
     - target: {fileID: 7284147379939529048, guid: 902254b07c7818d4c807dcdea964cb71,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -72.3
+      value: 251.7
       objectReference: {fileID: 0}
     - target: {fileID: 7284147379939529048, guid: 902254b07c7818d4c807dcdea964cb71,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0193515
+      value: 110.5
       objectReference: {fileID: 0}
     - target: {fileID: 7284147379939529048, guid: 902254b07c7818d4c807dcdea964cb71,
         type: 3}
@@ -22453,6 +22454,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7284147379939529049, guid: 902254b07c7818d4c807dcdea964cb71,
+        type: 3}
+      propertyPath: teshu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7284147379939529050, guid: 902254b07c7818d4c807dcdea964cb71,
         type: 3}
       propertyPath: m_Name
@@ -22465,6 +22471,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 902254b07c7818d4c807dcdea964cb71, type: 3}
+--- !u!114 &7284147378683990799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7284147379939529049, guid: 902254b07c7818d4c807dcdea964cb71,
+    type: 3}
+  m_PrefabInstance: {fileID: 7284147378683990798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143220999d3669b4ebec278558489a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7284432193337222583
 GameObject:
   m_ObjectHideFlags: 0

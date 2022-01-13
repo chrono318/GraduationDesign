@@ -2662,6 +2662,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.4583836, y: 3.0942714}
   m_EdgeRadius: 0
+--- !u!114 &1769494975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769494956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078d0e1743e53734099720648769b3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tips: {fileID: 4307780324683970754, guid: 1f78dfbd82c5e4c4bbcb29f071ec077c, type: 3}
+  treemat: {fileID: 2100000, guid: 32dc641df7bef8943a07a214214924fa, type: 2}
 --- !u!114 &1769494980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2720,10 +2734,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIInfo: {fileID: 964707584}
   uiOffset: {x: 0, y: 0, z: 0}
-  isCanRecoverInteractionNum: 1
+  isCanRecoverInteractionNum: 0
   State: 2
   m_canInteraction: 0
-  m_canInteractionNum: 1
+  m_canInteractionNum: 5
   noAwardPro: 10
   thirdAwardPro: 0
   secondAwardPro: 0

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeliveryDoor : MonoBehaviour
 {
     public Transform targetPos;
     public Vector2 CameraPosition;
 
-    
+    public bool teshu = false;
     
     IEnumerator Delivery(Role role)
     {
@@ -29,8 +30,15 @@ public class DeliveryDoor : MonoBehaviour
         if (!isFirst) return;
         if (collision.gameObject.TryGetComponent<Role>(out Role player))
         {
-            StartCoroutine(Delivery(player));
-            isFirst = false;
+            if (!teshu)
+            {
+                StartCoroutine(Delivery(player));
+                isFirst = false;
+            }
+            else
+            {
+                SceneManager.LoadScene("OnSea");
+            }
         }
     }
     //ghost

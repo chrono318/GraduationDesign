@@ -40,7 +40,7 @@
     {
         fixed4 col = tex2D(_MainTex, i.uv)*_Color;
 
-        float amount = i.uv.y<_Height?1:0.7f;
+        float amount = i.uv.y<_Height?1:0.5f;
         col.rgb = col.rgb*amount;
         col.rgb*=col.a;
         return col;
