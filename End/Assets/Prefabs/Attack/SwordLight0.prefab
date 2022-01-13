@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6968000023733924104}
   - component: {fileID: 7905607546389036640}
   - component: {fileID: 1540296926}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SwordLight0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

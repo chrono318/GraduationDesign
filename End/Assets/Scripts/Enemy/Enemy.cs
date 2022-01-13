@@ -18,7 +18,7 @@ public class Enemy : Role
     [HideInInspector]
     public float curHP;
 
-    [HideInInspector]
+    [Tooltip("鬼头图片")]
     public GameObject ghost;
     //[Header("巡逻点")]
     //public List<Transform> PatrolPoints;
@@ -36,6 +36,8 @@ public class Enemy : Role
     // Start is called before the first frame update
     void Start()
     {
+        Init();
+
         seeker = GetComponent<Seeker>();
         if(!TryGetComponent<EnemyAI>(out enemyAI))
         {
@@ -53,7 +55,6 @@ public class Enemy : Role
         fSMcreator = GetComponent<FSMcreator>();
         machine = fSMcreator.CreateSFM();
 
-        Init();
     }
 
     // Update is called once per frame

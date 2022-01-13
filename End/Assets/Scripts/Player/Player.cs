@@ -8,6 +8,7 @@ public class Player : Role
     public Transform leftHand;
     public Transform rightHand;
     public bool canMove = true;
+    public bool canTurn = true;
 
     private Player changeTarget;
     public Gun gun;
@@ -41,7 +42,8 @@ public class Player : Role
         shadowOriPos = GetComponent<EnemyAI>().shadowOriPos;
         Destroy(GetComponent<Enemy>());
         Destroy(GetComponent<EnemyAI>());
-        transform.GetChild(0).GetComponent<Animator>().SetFloat("speed", 1f);
+        //transform.GetChild(0).GetComponent<Animator>().SetFloat("speed", 1f);
+        SetAnimaSpeed(1f);
 
         fsmCreator = GetComponent<FSMcreator>();
         fsmCreator.SetPlayer(this);
@@ -56,8 +58,8 @@ public class Player : Role
     //speed固定不变，m_speed参加位移计算
     private float m_speed;
     [Header("翻滚速度（正常速度的倍数）")]
-    public float rollSpeed = 1.5f;
-    public float rollDuration = 0.5f;
+    public float rollSpeed = 2f;
+    public float rollDuration = 0.75f;
 
     Vector2 roll_dir = Vector2.zero;
     // Update is called once per frame
@@ -74,10 +76,14 @@ public class Player : Role
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 dir = mousePos - transform.position;
         float dir1 = dir.x < 0 ? 1 : -1;
-        transform.GetChild(0).localScale = new Vector3(dir1, 1, 1);
-        shadow.localPosition = new Vector3(dir1 * shadowOriPos.x, shadowOriPos.y, 0);
+        if (canTurn)
+        {
+            GFX.localScale = new Vector3(dir1, 1, 1);
+            shadow.localPosition = new Vector3(dir1 * shadowOriPos.x, shadowOriPos.y, 0);
+        }
 
-        transform.GetChild(0).GetComponent<Animator>().SetFloat("speed", Mathf.Clamp01(Mathf.Abs(v * v + h * h) * 2));
+        //transform.GetChild(0).GetComponent<Animator>().SetFloat("speed", );
+        SetAnimaSpeed(Mathf.Clamp01(Mathf.Abs(v * v + h * h) * 2));
 
 
         if (Input.GetMouseButtonDown(0) && state == State.run)
@@ -93,6 +99,9 @@ public class Player : Role
             unmatched = true;
             roll_dir = dir.normalized;
             collider.enabled = false;
+            PlayAnima("roll");
+            canTurn = false;
+
             Invoke(nameof(OnRollFinish), rollDuration);
         }
 
@@ -127,14 +136,17 @@ public class Player : Role
         roll_dir = Vector2.zero;
         state = State.run;
         collider.enabled = true;
+        canTurn = true;
     }
     public void SetStateAttack()
     {
         state = State.attack;
+        canMove = false;
     }
     public void OnAttackFinish()
     {
         state = State.run;
+        canMove = true;
     }
 
     private void OnDestroy()

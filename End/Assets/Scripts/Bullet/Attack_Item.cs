@@ -37,32 +37,32 @@ public class Attack_Item : MonoBehaviour
             StartCoroutine(nameof(AnimaPause));
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        int layer = collision.gameObject.layer;
-        if ((layerMask.value & (int)Mathf.Pow(2,layer)) == (int)Mathf.Pow(2, layer))
-        {
-            OnHit(collision.gameObject);
-            StartCoroutine(nameof(AnimaPause));
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        int layer = collision.gameObject.layer;
-        if ((layerMask.value & (int)Mathf.Pow(2, layer)) == (int)Mathf.Pow(2, layer))
-        {
-            OnHit(collision.gameObject);
-            if (animator)
-            {
-                //帧冻结不行
-                //StartCoroutine(nameof(AnimaPause));
-            }
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    int layer = collision.gameObject.layer;
+    //    if ((layerMask.value & (int)Mathf.Pow(2,layer)) == (int)Mathf.Pow(2, layer))
+    //    {
+    //        OnHit(collision.gameObject);
+    //        StartCoroutine(nameof(AnimaPause));
+    //    }
+    //}
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    int layer = collision.gameObject.layer;
+    //    if ((layerMask.value & (int)Mathf.Pow(2, layer)) == (int)Mathf.Pow(2, layer))
+    //    {
+    //        OnHit(collision.gameObject);
+    //        if (animator)
+    //        {
+    //            //帧冻结不行
+    //            //StartCoroutine(nameof(AnimaPause));
+    //        }
+    //    }
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
 
-    }
+    //}
     public virtual void OnHit(GameObject col)
     {
         if(col.TryGetComponent<Role>(out Role role))
