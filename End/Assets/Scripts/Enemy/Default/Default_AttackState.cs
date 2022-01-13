@@ -169,5 +169,9 @@ public class AttackTiming
     {
         this.attackSpace = time;
     }
+    public void SetReloadTime(float t)
+    {
+        this.shotReload = t;
+    }
 }
 

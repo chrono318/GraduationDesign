@@ -117,6 +117,6 @@ public class Game : MonoBehaviour
         {
             InformEnemie(player);
         }
-        Game.instance.MinMap.SetActive(true);
+        Game.instance.MinMap.SetActive(false);
     } 
 }

@@ -9,6 +9,8 @@ public class ShotFSMcreator1 : FSMcreator
     public GameObject bulletForEnemy;
     public GameObject bulletForPlayer;
     public Transform bulletOriPos;
+
+    public float playerAttackSpace = 1f;
     public override void AddOtherStates()
     {
         Default_Vigilance default_Vigilance = new Default_Vigilance(1, enemy);
@@ -24,6 +26,7 @@ public class ShotFSMcreator1 : FSMcreator
     {
         base.SetPlayer(player);
         gameObject.tag = "Player";
+        timing.SetReloadTime(playerAttackSpace);
     }
     private void Update()
     {

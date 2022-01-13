@@ -98,7 +98,7 @@ public class Enemy : Role
         machine.TranslateToState(1);
         StartCoroutine(nameof(goon));
         //击退
-        GetComponent<Rigidbody2D>().AddForce(force*500);
+        GetComponent<Rigidbody2D>().AddForce(force*2000);
 
     }
     bool isDead = false;
