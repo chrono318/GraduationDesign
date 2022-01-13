@@ -18,7 +18,8 @@ public class FSMcreator : MonoBehaviour
     [Tooltip("换弹匣时间（近战为0，默认为0）")]
     public float shotReload = 0f;
     public float attackSpace = 2f;
-
+    [Header("抖动时机")]
+    public float shakeTime = 0f;
     //
     public AttackTiming timing;
     public virtual void SetPlayer(Player player)

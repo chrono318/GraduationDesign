@@ -223,6 +223,7 @@ MonoBehaviour:
   bulletNum: 0
   shotReload: 0
   attackSpace: 2
+  shakeTime: 0.35
   Left: {fileID: 5116321918243443461}
   Right: {fileID: 2860802501732197500}
   Start_Duration: {x: 0.4, y: 0.5}

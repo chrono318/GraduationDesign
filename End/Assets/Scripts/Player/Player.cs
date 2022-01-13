@@ -90,7 +90,14 @@ public class Player : Role
         {
             if (fsmCreator.attackState.CallAttack())
             {
-                Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
+                if (fsmCreator.shakeTime > 0)
+                {
+                    StartCoroutine(IECameraShake(dir));
+                }
+                else
+                {
+                    Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
+                }
             }
         }
         if (Input.GetMouseButtonDown(1) && state == State.run)
@@ -129,6 +136,11 @@ public class Player : Role
            Dead();
         }
         
+    }
+    IEnumerator IECameraShake(Vector2 dir)
+    {
+        yield return new WaitForSeconds(fsmCreator.shakeTime);
+        Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
     }
     void OnRollFinish()
     {

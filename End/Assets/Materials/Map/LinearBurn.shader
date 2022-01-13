@@ -65,6 +65,7 @@
 
         Pass
         {
+            ZWrite Off
             Blend DstColor One
             BlendOp RevSub
             CGPROGRAM
