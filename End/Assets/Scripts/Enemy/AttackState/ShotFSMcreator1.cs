@@ -47,7 +47,6 @@ public class ShotAttackState1 : Default_AttackState
     {
         base.Attack();
         //owner.animator.SetTrigger("attack");
-        owner.PlayAnima("attack");
         Quaternion quaternion;
         Vector3 tar;
         if (machine.isplayer)
@@ -55,7 +54,20 @@ public class ShotAttackState1 : Default_AttackState
             tar = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
             float a = Vector2.SignedAngle(Vector2.right, tar - creator.bulletOriPos.position);
+            float b = Vector2.Angle(Vector2.right, tar - creator.bulletOriPos.position);
 
+            if (a > 30)
+            {
+                owner.PlayAnima("upAttack");
+            }
+            else if (a < -30)
+            {
+                owner.PlayAnima("downAttack");
+            }
+            else
+            {
+                owner.PlayAnima("attack");
+            }
             //尿分叉
             float offset = creator.ShotOffset;
             float r = Random.Range(-offset, offset);
@@ -79,6 +91,7 @@ public class ShotAttackState1 : Default_AttackState
         }
         else
         {
+            owner.PlayAnima("attack");
             tar = owner.target.transform.position;
             tar = new Vector3(tar.x, tar.y, creator.bulletOriPos.position.z);
             float a = Vector2.SignedAngle(Vector3.right, tar - creator.bulletOriPos.position);

@@ -16,9 +16,23 @@ public class m_table : MonoBehaviour
             canPush = true;
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            canPush = true;
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
+        {
+            canPush = false;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
             canPush = false;
         }
@@ -32,7 +46,8 @@ public class m_table : MonoBehaviour
                 //
                 GetComponent<SpriteRenderer>().sprite = sprite;
 
-                wall.SetActive(true);
+                //wall.SetActive(true);
+                gameObject.layer = LayerMask.NameToLayer("Table");
             }
         }
     }

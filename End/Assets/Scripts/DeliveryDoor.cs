@@ -23,12 +23,14 @@ public class DeliveryDoor : MonoBehaviour
         //
         Game.instance.TranslateToNewRoom(role);
     }
-
+    private bool isFirst = true;
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isFirst) return;
         if (collision.gameObject.TryGetComponent<Role>(out Role player))
         {
             StartCoroutine(Delivery(player));
+            isFirst = false;
         }
     }
     //ghost

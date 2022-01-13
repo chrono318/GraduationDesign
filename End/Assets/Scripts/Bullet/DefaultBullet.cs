@@ -22,7 +22,7 @@ public class DefaultBullet : MonoBehaviour
     private IEnumerator Bullet()
     {
         yield return new WaitForSeconds(LifeTime);
-        GetComponent<Animator>().Play("DefaultBullet");
+        GetComponent<Animator>().SetTrigger("destroy");
     }
     public void AnimEnd()
     {
@@ -82,6 +82,10 @@ public class DefaultBullet : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Table"))
+        {
+            GetComponent<Animator>().SetTrigger("destroy");
         }
         Vector3 dir = (collision.transform.position - transform.position).normalized;
         dir.z = 0;

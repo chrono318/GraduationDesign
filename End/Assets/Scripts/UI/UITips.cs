@@ -12,7 +12,6 @@ public class UITips : MonoBehaviour
     }
     public void AAADestroy()
     {
-        print("?????");
         Destroy(gameObject);
     }
 }

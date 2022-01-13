@@ -252,8 +252,8 @@ public class Award : MonoBehaviour
             isCreat = false;
         }
 
-        top = transform.GetChild(0).gameObject.transform;
-        down = transform.GetChild(1).gameObject.transform;
+        top = transform.GetChild(0);
+        down = transform.GetChild(1);
         transform.DetachChildren();
 
         currCountDownTime = countDownTime;
@@ -338,7 +338,7 @@ public class Award : MonoBehaviour
         if(isPressInterationButton && canSetActiveUI)
         {
             print("已拾取");
-            //
+            Game.instance.XinwuPlu();
             Destroy(this.gameObject);
         }
     }

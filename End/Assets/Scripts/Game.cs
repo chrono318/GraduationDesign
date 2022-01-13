@@ -82,13 +82,13 @@ public class Game : MonoBehaviour
     public void CheckIfPass()
     {
         CurEnemyCount--;
-        float s = (3 - CurEnemyCount) / 3f;
-        slider.value = s;
+        KillEnemy();
         if (CurEnemyCount <= 0)
         {
             //通关
             print("通关");
             MinMap.SetActive(true);
+            deliveryDoors[RoomId - 1].gameObject.SetActive(true);
             return;
             if (RoomId >= 4) return;
             deliveryDoors[RoomId-1].gameObject.SetActive(true);
@@ -118,5 +118,36 @@ public class Game : MonoBehaviour
             InformEnemie(player);
         }
         Game.instance.MinMap.SetActive(false);
-    } 
+    }
+
+    private int killNum = 0;
+    public GameObject UITips;
+    public void KillEnemy()
+    {
+        killNum++;
+        float s = killNum / 3f;
+        slider.value = s;
+        if (killNum == 3)
+        {
+            XinwuPlu();
+        }
+    }
+    private int xinwunum = 10;
+    public Text text;
+    public XinWuTips XinWuTips;
+    public void XinwuPlu()
+    {
+        GameObject tips = GameObject.Instantiate(UITips);
+        tips.GetComponent<UITips>().ShowTips("信物 + 1");
+        print(tips.name);
+        //to do
+        xinwunum++;
+        text.text = xinwunum.ToString();
+        XinWuTips.level = xinwunum / 3;
+        if (xinwunum == 12)
+        {
+            player.SetXinwu(true);
+        }
+        XinWuTips.UpdateText();
+    }
 }
