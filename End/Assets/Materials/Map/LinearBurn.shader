@@ -2,7 +2,6 @@
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
         _Color("Color",Color) = (1,1,1,1)
     }
 
@@ -22,31 +21,24 @@
         float4 vertex : SV_POSITION;
     };
 
+    uniform sampler2D _MainTex;
+    uniform float4 _MainTex_ST;
+    fixed4 _Color;
 
     v2f vert (appdata v)
     {
         v2f o;
         o.vertex = UnityObjectToClipPos(v.vertex);
-        o.uv = v.uv;
+        o.uv = TRANSFORM_TEX(v.uv,_MainTex);
         return o;
-    }
-
-    sampler2D _MainTex;
-    fixed4 _Color;
+    }   
 
     fixed4 frag (v2f i) : SV_Target
     {
         fixed4 col = tex2D(_MainTex, i.uv)*_Color;
-        col.rgb*=col.a;
-        //col.rgb = lerp(fixed3(1,1,1),col.rgb,p)*col.a;
-        return col;
-    }
-    fixed4 frag1 (v2f i) : SV_Target
-    {
-        fixed4 col = tex2D(_MainTex, i.uv)*_Color;
-        col.rgb = fixed3(1,1,1);
-        col.rgb*=col.a;
-        //col.rgb = lerp(fixed3(1,1,1),col.rgb,p)*col.a;
+        //col=col.a*(col-1.0)+colDst;
+        //col.rgb = col.rgb + colDst.rgb -1;
+        col.rgb *= col.a;
         return col;
     }
     ENDCG
@@ -56,31 +48,18 @@
         {
             "Queue" = "Transparent"
             "RenderType" = "Transparent"
-            "PreviewType" = "Plane"
-            "CanUseSpriteAtlas" = "True"
         }
-        Cull Off
-        //Blend One OneMinusSrcAlpha
-        //BlendOp Add
+        Blend Zero OneMinusSrcAlpha
 
         Pass
         {
-            ZWrite Off
-            Blend DstColor One
-            BlendOp RevSub
+            //ZWrite Off
+            //Blend DstColor One
+            //BlendOp RevSub
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag       
             ENDCG
         }
-        //Pass
-        //{
-        //    Blend One One
-        //    BlendOp RevSub
-        //    CGPROGRAM
-        //    #pragma vertex vert
-        //    #pragma fragment frag1       
-        //    ENDCG
-        //}
     }
 }
