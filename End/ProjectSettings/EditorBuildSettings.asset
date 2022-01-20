@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadScene.unity
     guid: 44187a9504f8650438d6d16d6f56b853
   - enabled: 1
-    path: Assets/Scenes/OnSea.unity
-    guid: f76dc3934fe2eb34d9e0bcf68b387b73
-  - enabled: 1
     path: Assets/Scenes/OriRoom.unity
     guid: 1516be9da58f0bc419e192b5f4d43cc6
   - enabled: 1
     path: Assets/Scenes/DefaultLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/OnSea.unity
+    guid: f76dc3934fe2eb34d9e0bcf68b387b73
   m_configObjects: {}
