@@ -42,7 +42,7 @@ ScriptedImporter:
     textureType: 8
     textureShape: 1
     singleChannelComponent: 0
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -729,7 +729,7 @@ ScriptedImporter:
   - name: Default
     overridden: 1
     maxTextureSize: 8192
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
