@@ -32,7 +32,6 @@ public class Player : Role
     // Start is called before the first frame update
     void Start()
     {
-        transform.localScale = Vector3.one;
         speed = GetComponent<Enemy>().speed4Player;
         //
         Game.instance.InformEnemie(this);
