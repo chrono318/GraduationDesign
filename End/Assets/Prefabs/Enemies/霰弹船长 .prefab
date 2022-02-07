@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roleType: 0
-  speed: 12
+  speed: 1.579
   hpUI: {fileID: 0}
   deadAnimaDur: 2
   animator: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   animators:
   - {fileID: 5792425793308337805}
   - {fileID: 5792425792333771775}
-  speed4Player: 20
+  speed4Player: 2.6316
   HP_Max: 100
   ArmorValue: 5
   HP_Slider: {fileID: 3857249539656198053}
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatrolPoints:
   - {fileID: 0}
-  attack_radius: 40
+  attack_radius: 5.263
   bulletNum: 2
   shotReload: 3
   attackSpace: 3
@@ -194,6 +194,7 @@ MonoBehaviour:
   bulletForPlayer: {fileID: 5570354312193352119, guid: 79f5da0329593f548bc40fe4a347840b,
     type: 3}
   bulletOriPos: {fileID: 6340488987076726063}
+  playerAttackSpace: 1
 --- !u!1 &2601568195873794396
 GameObject:
   m_ObjectHideFlags: 0

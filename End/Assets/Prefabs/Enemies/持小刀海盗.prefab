@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roleType: 0
-  speed: 12
+  speed: 2
   hpUI: {fileID: 1782654219717980399}
   deadAnimaDur: 1.5
   animator: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   animators:
   - {fileID: 6658694639532717437}
   - {fileID: 6658694638354195711}
-  speed4Player: 20
+  speed4Player: 2.6316
   HP_Max: 100
   ArmorValue: 5
   HP_Slider: {fileID: 6315446236470811666}
@@ -219,7 +219,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  attack_radius: 12
+  attack_radius: 1.3
   bulletNum: 0
   shotReload: 0
   attackSpace: 2

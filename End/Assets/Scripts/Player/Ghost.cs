@@ -17,6 +17,8 @@ public class Ghost : Role
     public bool possessed = false;
     public bool hiding = true;
 
+    //暂时
+    private float oriScale = 1f;
     private void Awake()
     {
         instance = this;
@@ -24,6 +26,8 @@ public class Ghost : Role
     // Start is called before the first frame update
     void Start()
     {
+        oriScale = transform.localScale.x;
+
         spiritPower = max_spiritPower;
 
         offsets.Add(transform.position);
@@ -104,7 +108,7 @@ public class Ghost : Role
         transform.position += move;
 
         float dir = h == 0 ? (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).x : h;
-        transform.localScale = new Vector3((dir >= 0 ? -1 : 1), 1, 1);
+        transform.localScale = new Vector3((dir >= 0 ? -1 : 1)*oriScale, 1*oriScale, 1);
         animator.SetBool("move", Vector3.Magnitude(move) > 0.01 ? true:false);
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyRevolt : MonoBehaviour
 {
-    public float speed = 40f;
+    public float speed = 4f;
     public float control_force = 20f;
     public float ray_len = 20f;
     private float San_Max = 5f;
