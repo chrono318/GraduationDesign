@@ -58,7 +58,7 @@ public class Player : Role
     private float m_speed;
     [Header("翻滚速度（正常速度的倍数）")]
     public float rollSpeed = 2f;
-    public float rollDuration = 0.75f;
+    public float rollDuration = 0.5f;
 
     Vector2 roll_dir = Vector2.zero;
     // Update is called once per frame
