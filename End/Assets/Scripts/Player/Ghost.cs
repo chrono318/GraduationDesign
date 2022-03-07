@@ -164,15 +164,6 @@ public class Ghost : Role
         rush = false;
     }
 
-    public chuizi chuizi;
-    
-    private void Attack_chuizi()
-    {
-        chuizi.gameObject.SetActive(true);
-        canMove = false;
-        chuizi.Finish += () => { this.canMove = true; };
-    }
-
     private void Attack_rush()
     {
         canMove = false;
