@@ -176,9 +176,13 @@ public class Seagulls : MonoBehaviour
     /// </summary>
     public void PlayerReadyBoom()
     {
+
         if (attackPressNum == 1)
         {
             playerReady = true;
+            //#对接#
+            //在此处调用下Tips
+            //#对接#
         }
         else if (attackPressNum > 1)
         {
