@@ -18,6 +18,8 @@ public class Seagulls : MonoBehaviour
     //加速拖尾？我去看看以前的项目
     //#对接#
 
+    Rigidbody2D rb;
+
     /// <summary>
     /// 是否是玩家操控（如果你不需要这个参数，删了就好）
     /// </summary>
@@ -53,9 +55,20 @@ public class Seagulls : MonoBehaviour
     /// </summary>
     float currReadyBoom;
     public float readyBoom = 2f;
+    bool switchBoomOpen;
+    public float boomForce = 10f;
+    public float boomDistance = 5f;//直接引爆爆炸距离（当海鸥准备爆炸且玩家位于这个距离内是直接引爆）
 
     public float radius = 5f;
     public LayerMask targetLayer;
+
+    /// <summary>
+    /// 眩晕有关参数
+    /// </summary>
+    float currVertigoTime;
+    public float vertigoTime = 3f;
+    public float impulseForce = 20f;//撞击被弹开力度(配合rb的阻尼一起使用)
+    Vector3 vertigoMoveNor;//记录海鸥与墙体之间的向量
     #endregion
 
     /// <summary>
@@ -69,6 +82,7 @@ public class Seagulls : MonoBehaviour
         冲刺,
         爆炸,
         休息,
+        眩晕
     }
 
     public SeagullState state;
@@ -94,6 +108,10 @@ public class Seagulls : MonoBehaviour
                         break;
                     case SeagullState.休息:
                         break;
+                    case SeagullState.眩晕:
+                        rb.velocity = Vector3.zero;
+                        rb.AddForce(vertigoMoveNor.normalized * impulseForce, ForceMode2D.Impulse);
+                        break;
                     default:
                         return;
                 }
@@ -114,6 +132,7 @@ public class Seagulls : MonoBehaviour
         currRestCD = restCD;
         currReadyBoom = readyBoom;
         currAttackBoomCD = attackBoomCD;
+        currVertigoTime = vertigoTime;
     }
 
     /// <summary>
@@ -122,11 +141,13 @@ public class Seagulls : MonoBehaviour
     public void Boom()
     {
         Collider2D[] arround = Physics2D.OverlapCircleAll(transform.position, radius, targetLayer);
-        foreach (var item in arround)
+        foreach (var hit in arround)
         {
             //#对接#
-            //获取范围内所有人身上脚本，执行扣血（直接"item.GetComponent<扣血>()"这种即可）
+            //看看击退效果合不合适
             //#对接#
+            Vector3 pos = transform.position - hit.transform.position;
+            hit.GetComponent<Rigidbody2D>().AddForce(-pos.normalized * boomForce, ForceMode2D.Impulse);
         }
         //死亡
         Destroy(gameObject);
@@ -136,6 +157,7 @@ public class Seagulls : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        rb = this.GetComponent<Rigidbody2D>();
         InitTime();
     }
 
@@ -153,6 +175,7 @@ public class Seagulls : MonoBehaviour
             Rush();
             Rest();
             ReadyBoom();
+            Vertigo();
         }
     }
 
@@ -235,6 +258,14 @@ public class Seagulls : MonoBehaviour
             if (Mathf.Abs(transform.position.x - targetPoint.x) + Mathf.Abs(transform.position.y - targetPoint.y) < 0.01)
             {
                 isReach = true;
+                if (isReach && switchBoomOpen)//如果海鸥到达指定位置且已经准备好爆炸
+                {
+                    State = SeagullState.爆炸;
+                }
+            }
+            if (Mathf.Abs(transform.position.x - player.transform.position.x) + Mathf.Abs(transform.position.y - player.transform.position.y) < boomDistance && switchBoomOpen) //如果海鸥与玩家距离过近且已经准备好爆炸
+            {
+                State = SeagullState.爆炸;
             }
         }
     }
@@ -261,13 +292,34 @@ public class Seagulls : MonoBehaviour
     /// </summary>
     public void ReadyBoom()
     {
-        if (transform.GetChild(1).GetComponent<BoomWaring>().isReadyBoom)
+        if (transform.GetChild(1).GetComponent<BoomWaring>().isReadyBoom && State == SeagullState.冲刺)
+        {
+            switchBoomOpen = true;
+        }
+        if (switchBoomOpen)
         {
             currReadyBoom -= Time.deltaTime;
             if (currReadyBoom <= 0)
             {
                 currReadyBoom = readyBoom;
                 State = SeagullState.爆炸;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 撞晕了
+    /// </summary>
+    public void Vertigo()
+    {
+        if (State == SeagullState.眩晕)
+        {
+            currVertigoTime -= Time.deltaTime;
+            if (currVertigoTime <= 0)
+            {
+                State = SeagullState.默认;
+                isReach = false;
+                currVertigoTime = vertigoTime;
             }
         }
     }
@@ -279,7 +331,17 @@ public class Seagulls : MonoBehaviour
         //#对接#
         if (collision.gameObject.CompareTag("Wall") && State == SeagullState.冲刺)
         {
-            State = SeagullState.爆炸;
+            //State = SeagullState.爆炸;
+            if (switchBoomOpen)
+            {
+                State = SeagullState.爆炸;
+            }
+            else
+            {
+                Vector2 Pos = transform.position - collision.gameObject.transform.position;
+                vertigoMoveNor = new Vector3(Pos.x, Pos.y, 0);
+                State = SeagullState.眩晕;
+            }
         }
     }
     #endregion
