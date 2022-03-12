@@ -22479,6 +22479,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &7052593740092730102
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1218.6853
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 49.40547
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -35.11722
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597193, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052593739983597195, guid: 48118547690333245a977c0213fa6ea5,
+        type: 3}
+      propertyPath: m_Name
+      value: ShadowPool
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48118547690333245a977c0213fa6ea5, type: 3}
 --- !u!1 &7063861108640310862
 GameObject:
   m_ObjectHideFlags: 0
