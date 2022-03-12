@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    public PlayerController playerController;
     public Slider slider;
     public static Game instance;
     public GameObject defaltBullet;
