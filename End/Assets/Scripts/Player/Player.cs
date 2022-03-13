@@ -34,7 +34,7 @@ public class Player : Role
     {
         speed = GetComponent<Enemy>().speed4Player;
         //
-        Game.instance.InformEnemie(this);
+        //Game.instance.InformEnemie(this);
 
         Init();
         shadow = GetComponent<EnemyAI>().shadow;

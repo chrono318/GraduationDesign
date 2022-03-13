@@ -24,6 +24,8 @@ public class MoveObject : MonoBehaviour
     public Animator[] animators;
     public Transform foot;
     public Transform attackPoint;
+    public GameObject fearTex;
+    public float injureAnimDur = 2f;
 
     [Header("其他")]
     public float MaxHp = 100f;
@@ -35,8 +37,9 @@ public class MoveObject : MonoBehaviour
     public bool isPlayer;
     protected Rigidbody2D rigidbody;
     protected Collider2D collider;
-    protected Controller controller;
-    protected Material material;
+    public Controller controller;
+    protected Material material_Body;
+    protected Material material_Edge;
     protected float OriScale;
 
     //状态机
@@ -46,7 +49,7 @@ public class MoveObject : MonoBehaviour
         Injure,
         Dead
     }
-    protected State _State;
+    public State _State;
     private void Reset()
     {
         //rigidbody = gameObject.AddComponent<Rigidbody2D>();
@@ -64,11 +67,18 @@ public class MoveObject : MonoBehaviour
         Hp = MaxHp;
         isPlayer = false;
 
-        material = new Material(Game.instance.RoleShader);
-        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        if (type == MoveObjectType.Dead) return;
+        material_Body = new Material(Game.instance.RoleShader);
+        material_Edge = new Material(Game.instance.RoleShader);
+        SpriteRenderer[] sprites = GFX.GetChild(0).GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer renderer in sprites)
         {
-            renderer.material = material;
+            renderer.material = material_Body;
+        }
+        SpriteRenderer[] sprites1 = GFX.GetChild(1).GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer renderer in sprites1)
+        {
+            renderer.material = material_Edge;
         }
     }
 
@@ -76,10 +86,11 @@ public class MoveObject : MonoBehaviour
     void Update()
     {
         CheckPossess();//附身检测代码
+        attackTiming.Update();
     }
     protected void CheckPossess()
     {
-        if (type == MoveObjectType.Dead || Hp < 0)
+        if (type == MoveObjectType.Dead || _State==State.Dead)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -87,17 +98,27 @@ public class MoveObject : MonoBehaviour
                 if (Vector2.Distance(transform.position, mousePos) < 2f)
                 {
                     Game.instance.playerController.Possess(this);
+                    _State = State.Injure;
                 }
             }
         }
     }
     public virtual bool MouseBtnLeft(Vector2 targetPos)
     {
-        return false;
+        return CallAttack(targetPos);
+    }
+    public virtual void Attack(Vector2 target)
+    {
+
     }
     public virtual bool MouseBtnRight(Vector2 targetPos)
     {
+        Skill(targetPos);
         return false;
+    }
+    public virtual void Skill(Vector2 target)
+    {
+
     }
     public void MoveUpdate(Vector2 dir , float speedScale)
     {
@@ -107,12 +128,18 @@ public class MoveObject : MonoBehaviour
             transform.position += detal;
         }
     }
+    /// <summary>
+    /// 移动
+    /// </summary>
+    /// <param name="dirXscale"></param>
+    /// <param name="animSpeed"></param>
     public void MoveVelocity(Vector2 dirXscale , float animSpeed)
     {
         if(_State == State.Normal)
         {
             rigidbody.velocity = speed * dirXscale;
             SetAnimSpeed(animSpeed);
+            SetAnimLayerWeight(Mathf.Floor(animSpeed));
         }
     }
     public virtual void TurnTowards(bool isleft)
@@ -122,7 +149,11 @@ public class MoveObject : MonoBehaviour
             GFX.localScale = new Vector3(isleft ? 1 : -1, 1, 1);
         }
     }
-
+    /// <summary>
+    /// 受伤
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="force"></param>
     public void GetHurt(float value,Vector2 force)
     {
 
@@ -132,13 +163,14 @@ public class MoveObject : MonoBehaviour
             PlayAnim("Injure");
             if (isPlayer)
             {
-                _State = State.Injure;
                 collider.enabled = false;
                 StartCoroutine(nameof(PlayerInjured));
+                Invoke(nameof(AnimaInjureFinish), injureAnimDur);
                 ((PlayerController)controller).GetHurtEffect(force);
             }
             else
             {
+                SetAnimLayerWeight(0f);
                 StartCoroutine(nameof(EnemyInjured));
                 rigidbody.velocity = Vector2.zero;
                 rigidbody.AddForce(force*10);
@@ -146,7 +178,10 @@ public class MoveObject : MonoBehaviour
         }
         else
         {
-            PlayAnim("Dead");
+            PlayAnim("dead");
+            SetAnimLayerWeight(0f);
+
+            _State = State.Dead;
             if (isPlayer)
             {
                 //Player dead;
@@ -158,12 +193,18 @@ public class MoveObject : MonoBehaviour
                 _State = State.Dead;
                 //
                 Game.instance.CheckIfPass();
+                collider.enabled = false;
+                rigidbody.velocity = Vector2.zero;
+                fearTex.SetActive(false);
+
+                controller.enabled = false;
+                material_Body.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
+                material_Edge.SetVector("_Color1", new Vector4(0, 0.9441266f, 1,1));
             }
         }
     }
     public void AnimaInjureFinish()
     {
-        _State = State.Normal;
         collider.enabled = true;
     }
     public void AnimaDeadFinish()
@@ -175,32 +216,56 @@ public class MoveObject : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
     }
+    public void PlayerLeaveThisBody()
+    {
+        PlayAnim("dead");
+        MoveVelocity(Vector2.zero, 0f);
+        Invoke(nameof(DestroySelf), 3f);
+    }
+    protected void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
     public IEnumerator PlayerInjured()
     {
         float amount = 1f;
         for (int i = 0; i < 12; i++)
         {
             amount = i % 2 == 1 ? 0f : 1f;
-            material.SetVector("_Color", amount * Vector4.one);
+            material_Body.SetVector("_Color", amount * Vector4.one);
             yield return new WaitForSeconds(0.1f);
         }
-        material.SetVector("_Color", Vector4.one);
+        material_Body.SetVector("_Color", Vector4.one);
     }
     public IEnumerator EnemyInjured()
     {
-        material.SetFloat("_Shine", 0.5f);
+        material_Body.SetFloat("_Shine", 0.5f);
         yield return new WaitForSeconds(0.1f);
-        material.SetFloat("_Shine", 0f);
+        material_Body.SetFloat("_Shine", 0f);
     }
+    /// <summary>
+    /// 附身设置
+    /// </summary>
+    /// <param name="controller"></param>
+    /// <param name="isPlayer"></param>
     public void SetController(Controller controller , bool isPlayer)
     {
         this.controller = controller;
-        _State = State.Normal;
         this.isPlayer = isPlayer;
         if (isPlayer)
         {
             Game.instance.InformEnemie(this);
+            Hp = 100;
+            gameObject.tag = "Player";
+            Destroy(GetComponent<EnemyController>());
+            if (_State == State.Injure)
+            {
+                PlayAnim("dead2idle");
+            }
+            collider.enabled = true;
         }
+        _State = State.Normal;
+
     }
     public Rigidbody2D GetRigidBody()
     {
@@ -226,6 +291,33 @@ public class MoveObject : MonoBehaviour
         {
             animator.SetFloat("speed", speed);
         }
+    }
+    public void SetAnimLayerWeight(float weight)
+    {
+        foreach (Animator animator in animators)
+        {
+            animator.SetLayerWeight(1, weight);
+        }
+    }
+    public bool CallAttack(Vector2 target)
+    {
+        int check = attackTiming.AttackCheck();
+
+        switch (check)
+        {
+            case 0:
+                break;
+            case 1:
+                Attack(target);
+                return true;
+            case 2:
+                break;
+            case 3:
+                PlayAnim("reload");
+                //开始换弹动画
+                break;
+        }
+        return false;
     }
 }
 

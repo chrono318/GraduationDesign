@@ -8,7 +8,10 @@ public class SwordMO : MoveObject
     {
         if(collision.transform.TryGetComponent(out MoveObject mo))
         {
-            mo.GetHurt(50f, Vector2.down);
+            if (!mo.isPlayer)
+            {
+                mo.GetHurt(51f, Vector2.down);
+            }
         }
     }
 }

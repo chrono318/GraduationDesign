@@ -46,7 +46,7 @@ public class CameraControl : MonoBehaviour
         //rota *= CameraOffsetCoe;
 
         Vector2 pos = playerTrans.position;
-        //pos += PosOffset;
+        pos += PosOffset;
         //transform.position = new Vector3(pos.x + rota.x , pos.y + rota.y , -10);
         //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(pos.x + rota.x, pos.y + rota.y, -10),ref currenV, 0.2f);
         Vector3 p = new Vector3(pos.x, pos.y, -10);

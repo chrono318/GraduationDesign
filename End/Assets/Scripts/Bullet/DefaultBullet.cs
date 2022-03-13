@@ -94,13 +94,13 @@ public class DefaultBullet : MonoBehaviour
             col = true;
             GetComponent<Animator>().SetTrigger("destroy");
 
-            collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics, dir);
+            collision.gameObject.GetComponent<MoveObject>().GetHurt(10, dir);
         }
         if (collision.gameObject.tag == "Enemy" && !targetIsPlayer)
         {
             col = true;
             GetComponent<Animator>().SetTrigger("destroy");
-            collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics, dir);
+            collision.gameObject.GetComponent<MoveObject>().GetHurt(10, dir);
         }
     }
 }

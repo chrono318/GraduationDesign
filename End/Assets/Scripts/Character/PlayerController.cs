@@ -112,7 +112,7 @@ public class PlayerController : Controller
 
         moveObject = null;
         GetComponent<Collider2D>().enabled = true;
-
+        Game.instance.InformEnemie(null);
     }
     /// <summary>
     /// 附身协程
@@ -121,6 +121,15 @@ public class PlayerController : Controller
     /// <returns></returns>
     private IEnumerator IEPossess(MoveObject moveObject)
     {
+        if (isPossess)
+        {
+            moveObject.controller = null;
+            if (this.moveObject.type == MoveObjectType.Living)
+            {
+                this.moveObject.gameObject.tag = "Enemy";
+                this.moveObject.PlayerLeaveThisBody();
+            }
+        }
         yield return new WaitForSeconds(2f);
         isPossess = true;
         GFX.SetActive(false);

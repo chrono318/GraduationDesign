@@ -13,7 +13,7 @@ public class EnemyController : Controller
     }
     private EnemyState state;
 
-    public float nextWaypointDistance = 3f;
+    public float nextWaypointDistance = 0.5f;
     Path path;
     int currentWaypoint = 0;
     Seeker seeker;
@@ -46,19 +46,29 @@ public class EnemyController : Controller
     // Update is called once per frame
     void Update()
     {
+
         if (state == EnemyState.Run)
         {
             if (Vector2.Distance(Player.transform.position, moveObject.foot.position) < moveObject.FearRadius)
             {
-                Target = moveObject.foot.position + (Player.transform.position - moveObject.foot.position).normalized * -5;
+                //Target = moveObject.foot.position + (Player.transform.position - moveObject.foot.position).normalized * -5;
+                moveObject.fearTex.SetActive(true);
                 //恐惧表情
-                Vector2 dir = Player.transform.position - moveObject.foot.position.normalized;
-                MoveVelocity(dir, 1);
+                Vector2 dir = -Player.transform.position + moveObject.foot.position;
+                MoveVelocity(dir.normalized, 0.5f);
+                TurnTowards(dir.x < 0);
+            }
+            else
+            {
+                moveObject.fearTex.SetActive(false);
+                MoveVelocity(Vector2.zero, 0f);
             }
         }
         else if (state == EnemyState.Attack)
         {
-            if(Vector2.Distance(Player.transform.position, transform.position) < moveObject.attackRadius)
+            moveObject.fearTex.SetActive(false);
+
+            if (Vector2.Distance(Player.transform.position, transform.position) < moveObject.attackRadius)
             {
                 moveObject.MouseBtnLeft(Player.transform.position);
                 Reach = true;
@@ -66,7 +76,12 @@ public class EnemyController : Controller
             else
             {
                 Reach = false;
+                Target = Player.transform.position;
             }
+        }
+        else
+        {
+            moveObject.fearTex.SetActive(false);
         }
     }
     float _t1 = 0f;
@@ -75,7 +90,7 @@ public class EnemyController : Controller
 
         if (path == null || Reach)
         {
-            MoveVelocity(Vector2.zero, 0f);
+            //MoveVelocity(Vector2.zero, 0f);
             return;
         }
         Vector2 direction = (path.vectorPath[currentWaypoint] - moveObject.foot.position).normalized;
@@ -95,6 +110,13 @@ public class EnemyController : Controller
     }
     public void SetPlayer(MoveObject moveObject)
     {
+        if (moveObject == null)
+        {
+            state = EnemyState.Ori;
+            CancelInvoke(nameof(UpdatePath));
+            MoveVelocity(Vector2.zero, 0f);
+            return;
+        }
         Player = moveObject;
         if (Player.type == MoveObjectType.Dead)
         {

@@ -99,16 +99,6 @@ public class Game : MonoBehaviour
     /// 通知当前房间所有敌人进入攻击状态，目标为player
     /// </summary>
     /// <param name="player"></param>
-    public void InformEnemie(Player player)
-    {
-        //foreach(Enemy enemy in curEnemies)
-        //{
-        //    if (enemy != null)
-        //    {
-        //        enemy.FindPlayer(player);
-        //    }
-        //}
-    }
     public void InformEnemie(MoveObject playerMO)
     {
         foreach (MoveObject enemy in curEnemies)
@@ -129,7 +119,7 @@ public class Game : MonoBehaviour
         UpdateRoomEnemyList();
         if (role.TryGetComponent<Player>(out player))
         {
-            InformEnemie(player);
+            //InformEnemie(player);
         }
         Game.instance.MinMap.SetActive(false);
     }
