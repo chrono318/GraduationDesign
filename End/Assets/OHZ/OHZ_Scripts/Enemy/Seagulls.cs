@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Seagulls : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class Seagulls : MonoBehaviour
     //#对接#
 
     Rigidbody2D rb;
+    Animator anim;
+
+    //#对接#被玩家附身一瞬间播放reback动画#对接#
+    //#对接#敌人、玩家受伤播放受伤动画，有受伤函数，在哪里写受伤和动画#对接#
+    //#对接#敌人、玩家死亡播放死亡动画#对接#
+    //#对接#敌人死亡播放完死亡动画后，播放stock动画#对接#
 
     /// <summary>
     /// 是否是玩家操控（如果你不需要这个参数，删了就好）
@@ -30,8 +37,19 @@ public class Seagulls : MonoBehaviour
     #region
     int attackPressNum = 0;
     bool playerReady;
+    bool haveBoom;//是否爆炸过
     float currAttackBoomCD;
     public float attackBoomCD = 5f;
+
+    /// <summary>
+    /// 玩家状态下，爆炸时间提示
+    /// </summary>
+    public GameObject clock;
+
+    /// <summary>
+    /// 眩晕标记
+    /// </summary>
+    public GameObject dizzy;
     #endregion
 
     /// <summary>
@@ -57,10 +75,10 @@ public class Seagulls : MonoBehaviour
     public float readyBoom = 2f;
     bool switchBoomOpen;
     public float boomForce = 10f;
-    public float boomDistance = 5f;//直接引爆爆炸距离（当海鸥准备爆炸且玩家位于这个距离内是直接引爆）
+    public float boomDistance = 3f;//直接引爆爆炸距离（当海鸥准备爆炸且玩家位于这个距离内是直接引爆）
 
     public float radius = 5f;
-    public LayerMask targetLayer;
+    public LayerMask targetLayer;//#对接#谁能被炸吧谁的layer加上#对接#
 
     /// <summary>
     /// 眩晕有关参数
@@ -97,19 +115,28 @@ public class Seagulls : MonoBehaviour
                 switch (value)
                 {
                     case SeagullState.默认:
+                        anim.SetInteger("animState", 0);
                         break;
                     case SeagullState.移动:
+                        anim.SetInteger("animState", 0);
                         break;
                     case SeagullState.冲刺:
+                        anim.SetInteger("animState", 1);
                         targetPoint = player.transform.position;
                         break;
                     case SeagullState.爆炸:
-                        Boom();
+                        anim.SetInteger("animState", 2);
+                        haveBoom = true;
+                        clock.SetActive(false);
+                        currAttackBoomCD = attackBoomCD;
                         break;
                     case SeagullState.休息:
+                        anim.SetInteger("animState", 0);
                         break;
                     case SeagullState.眩晕:
+                        Injure();
                         rb.velocity = Vector3.zero;
+                        dizzy.SetActive(true);
                         rb.AddForce(vertigoMoveNor.normalized * impulseForce, ForceMode2D.Impulse);
                         break;
                     default:
@@ -149,16 +176,16 @@ public class Seagulls : MonoBehaviour
             Vector3 pos = transform.position - hit.transform.position;
             hit.GetComponent<Rigidbody2D>().AddForce(-pos.normalized * boomForce, ForceMode2D.Impulse);
         }
-        //死亡
-        Destroy(gameObject);
     }
     #endregion
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = transform.parent.GetComponent<Rigidbody2D>();
         InitTime();
+        State = SeagullState.默认;
+        anim = GetComponent<Animator>();
     }
 
 
@@ -200,26 +227,42 @@ public class Seagulls : MonoBehaviour
     public void PlayerReadyBoom()
     {
 
-        if (attackPressNum == 1)
+        if (attackPressNum == 1 && !haveBoom)
         {
             playerReady = true;
             //#对接#
-            //在此处调用下Tips
+            //在此处调用下Tips，tips内容再次点击立即爆炸
             //#对接#
+            clock.SetActive(true);
+            Clock();
         }
-        else if (attackPressNum > 1)
+        else if (attackPressNum > 1 && !haveBoom)
         {
-            Boom();
+            State = SeagullState.爆炸;
         }
         if (playerReady)
         {
             currAttackBoomCD -= Time.deltaTime;
             if (currAttackBoomCD <= 0)
             {
-                currAttackBoomCD = attackBoomCD;
-                Boom();
+                State = SeagullState.爆炸;
+
             }
         }
+    }
+
+    /// <summary>
+    /// 爆炸时间显示
+    /// </summary>
+    public void Clock()
+    {
+        //#对接#
+        //把钟表移动至海鸥头顶，并跟着海鸥一起动（俺不会UI移动）
+        //#对接#
+        //蓝色填充移动
+        clock.transform.Find("CD").GetComponent<Image>().fillAmount -= -1.0f / attackBoomCD * Time.deltaTime;
+        //指针旋转
+        clock.transform.Find("Pointer").gameObject.transform.rotation = Quaternion.Euler(0, 0, 90 + clock.transform.Find("CD").GetComponent<Image>().fillAmount * -360);
     }
     #endregion
 
@@ -237,7 +280,7 @@ public class Seagulls : MonoBehaviour
         //则海鸥向玩家方向移动 
         //#对接#
 
-        if (transform.GetChild(0).GetComponent<CheckArea>().findPlayer && State == SeagullState.默认)
+        if (transform.Find("CheckArea").GetComponent<CheckArea>().findPlayer && State == SeagullState.默认)
         {
             State = SeagullState.冲刺;
         }
@@ -252,10 +295,11 @@ public class Seagulls : MonoBehaviour
     /// </summary>
     public void Rush()//冲刺不用进行A*寻路
     {
+        //#冲刺状态下加残影或特效#对接#
         if (State == SeagullState.冲刺)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);//移动
-            if (Mathf.Abs(transform.position.x - targetPoint.x) + Mathf.Abs(transform.position.y - targetPoint.y) < 0.01)
+            transform.parent.gameObject.transform.position = Vector2.MoveTowards(transform.parent.gameObject.transform.position, targetPoint, speed * Time.deltaTime);//移动
+            if (Mathf.Abs(transform.parent.gameObject.transform.position.x - targetPoint.x) + Mathf.Abs(transform.parent.gameObject.transform.position.y - targetPoint.y) < 0.01)
             {
                 isReach = true;
                 if (isReach && switchBoomOpen)//如果海鸥到达指定位置且已经准备好爆炸
@@ -263,7 +307,7 @@ public class Seagulls : MonoBehaviour
                     State = SeagullState.爆炸;
                 }
             }
-            if (Mathf.Abs(transform.position.x - player.transform.position.x) + Mathf.Abs(transform.position.y - player.transform.position.y) < boomDistance && switchBoomOpen) //如果海鸥与玩家距离过近且已经准备好爆炸
+            if (Mathf.Abs(transform.parent.gameObject.transform.position.x - player.transform.position.x) + Mathf.Abs(transform.parent.gameObject.transform.position.y - player.transform.position.y) < boomDistance && switchBoomOpen) //如果海鸥与玩家距离过近且已经准备好爆炸
             {
                 State = SeagullState.爆炸;
             }
@@ -292,9 +336,10 @@ public class Seagulls : MonoBehaviour
     /// </summary>
     public void ReadyBoom()
     {
-        if (transform.GetChild(1).GetComponent<BoomWaring>().isReadyBoom && State == SeagullState.冲刺)
+        if (transform.Find("Waring").GetComponent<BoomWaring>().isReadyBoom && State == SeagullState.冲刺)
         {
             switchBoomOpen = true;
+            anim.SetInteger("animState", 4);
         }
         if (switchBoomOpen)
         {
@@ -320,8 +365,33 @@ public class Seagulls : MonoBehaviour
                 State = SeagullState.默认;
                 isReach = false;
                 currVertigoTime = vertigoTime;
+                dizzy.SetActive(false);
             }
         }
+    }
+
+    /// <summary>
+    /// 敌人状态爆炸死亡
+    /// </summary>
+    public void EnemyDeadBoom()
+    {
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// 受伤
+    /// </summary>
+    public void Injure()
+    {
+        anim.SetInteger("animState", 3);
+    }
+
+    /// <summary>
+    /// 从受伤状态恢复
+    /// </summary>
+    public void Restore()
+    {
+        anim.SetInteger("animState", 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
