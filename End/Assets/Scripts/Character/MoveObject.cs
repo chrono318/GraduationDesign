@@ -196,9 +196,10 @@ public class MoveObject : MonoBehaviour
     {
         this.controller = controller;
         _State = State.Normal;
+        this.isPlayer = isPlayer;
         if (isPlayer)
         {
-
+            Game.instance.InformEnemie(this);
         }
     }
     public Rigidbody2D GetRigidBody()

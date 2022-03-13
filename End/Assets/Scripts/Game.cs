@@ -23,21 +23,21 @@ public class Game : MonoBehaviour
     public GameObject MinMap;
 
     [Header("Room1")]
-    public List<Enemy> enemies1;
+    public List<MoveObject> enemies1;
     [Header("Room2")]
-    public List<Enemy> enemies2;
+    public List<MoveObject> enemies2;
     [Header("Room3")]
-    public List<Enemy> enemies3;
+    public List<MoveObject> enemies3;
     [Header("Room4")]
-    public List<Enemy> enemies4;
+    public List<MoveObject> enemies4;
     [Header("Room5")]
-    public List<Enemy> enemies5;
+    public List<MoveObject> enemies5;
 
     //
     [Header("Current Room")]
     public int RoomId = 1;
     private int CurEnemyCount;
-    private List<Enemy> curEnemies;
+    private List<MoveObject> curEnemies;
 
     private void Awake()
     {
@@ -101,11 +101,24 @@ public class Game : MonoBehaviour
     /// <param name="player"></param>
     public void InformEnemie(Player player)
     {
-        foreach(Enemy enemy in curEnemies)
+        //foreach(Enemy enemy in curEnemies)
+        //{
+        //    if (enemy != null)
+        //    {
+        //        enemy.FindPlayer(player);
+        //    }
+        //}
+    }
+    public void InformEnemie(MoveObject playerMO)
+    {
+        foreach (MoveObject enemy in curEnemies)
         {
             if (enemy != null)
             {
-                enemy.FindPlayer(player);
+                if(enemy.TryGetComponent<EnemyController>(out EnemyController enemyController))
+                {
+                    enemyController.SetPlayer(playerMO);
+                }
             }
         }
     }

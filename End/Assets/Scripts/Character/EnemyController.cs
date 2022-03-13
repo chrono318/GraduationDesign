@@ -52,6 +52,8 @@ public class EnemyController : Controller
             {
                 Target = moveObject.foot.position + (Player.transform.position - moveObject.foot.position).normalized * -5;
                 //恐惧表情
+                Vector2 dir = Player.transform.position - moveObject.foot.position.normalized;
+                MoveVelocity(dir, 1);
             }
         }
         else if (state == EnemyState.Attack)
@@ -101,9 +103,9 @@ public class EnemyController : Controller
         else
         {
             state = EnemyState.Attack;
+            Target = Player.transform.position;
+            InvokeRepeating(nameof(UpdatePath), 0, 0.5f);
         }
-        Target = Player.transform.position;
-        InvokeRepeating(nameof(UpdatePath), 0, 0.5f);
     }
     public void NoFindPlayer()
     {
