@@ -7,11 +7,11 @@ public class Controller : MonoBehaviour
     protected MoveObject moveObject;
     protected MoveObjectType curType;
     protected Rigidbody2D rigidbody;
-    protected void SetMoveObject(MoveObject moveObject)
+    protected void SetMoveObject(MoveObject moveObject,bool isPlayer = false)
     {
         this.moveObject = moveObject;
         this.curType = moveObject.type;
-        moveObject.SetController(this);
+        moveObject.SetController(this,isPlayer);
         rigidbody = moveObject.GetRigidBody();
     }
 
@@ -28,9 +28,9 @@ public class Controller : MonoBehaviour
     /// rigidbody移动
     /// </summary>
     /// <param name="speed"></param>
-    public void MoveVelocity(Vector2 speed)
+    public void MoveVelocity(Vector2 speed,float animSpeed)
     {
-        moveObject.MoveVelocity(speed);
+        moveObject.MoveVelocity(speed,animSpeed);
     }
     /// <summary>
     /// 控制图片转向，虚函数，可override

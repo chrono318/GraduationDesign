@@ -13,6 +13,7 @@ public class MoveObject : MonoBehaviour
     public int bulletNum = 0;
     [Tooltip("换弹时间,默认为0（近战）")]
     public float shotReload = 0f;
+    public float playerAttackSpace = 1f;
     [Tooltip("单次攻击间隔")]
     public float attackSpace = 2f;
 
@@ -21,6 +22,8 @@ public class MoveObject : MonoBehaviour
     [Header("图片")]
     public Transform GFX;
     public Animator[] animators;
+    public Transform foot;
+    public Transform attackPoint;
 
     [Header("其他")]
     public float MaxHp = 100f;
@@ -34,6 +37,7 @@ public class MoveObject : MonoBehaviour
     protected Collider2D collider;
     protected Controller controller;
     protected Material material;
+    protected float OriScale;
 
     //状态机
     public enum State
@@ -53,6 +57,7 @@ public class MoveObject : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        OriScale = transform.localScale.x;
 
         attackTiming = new AttackTiming(bulletNum, shotReload, attackSpace);
         _State = State.Normal;
@@ -70,13 +75,27 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckPossess();//附身检测代码
     }
-    public virtual bool MouseBtnLeft()
+    protected void CheckPossess()
+    {
+        if (type == MoveObjectType.Dead || Hp < 0)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (Vector2.Distance(transform.position, mousePos) < 2f)
+                {
+                    Game.instance.playerController.Possess(this);
+                }
+            }
+        }
+    }
+    public virtual bool MouseBtnLeft(Vector2 targetPos)
     {
         return false;
     }
-    public virtual bool MouseBtnRight()
+    public virtual bool MouseBtnRight(Vector2 targetPos)
     {
         return false;
     }
@@ -88,12 +107,12 @@ public class MoveObject : MonoBehaviour
             transform.position += detal;
         }
     }
-    public void MoveVelocity(Vector2 dirXscale)
+    public void MoveVelocity(Vector2 dirXscale , float animSpeed)
     {
         if(_State == State.Normal)
         {
             rigidbody.velocity = speed * dirXscale;
-            PlayAnim("move", true);
+            SetAnimSpeed(animSpeed);
         }
     }
     public virtual void TurnTowards(bool isleft)
@@ -104,7 +123,6 @@ public class MoveObject : MonoBehaviour
         }
     }
 
-    bool isUnmatched = false;
     public void GetHurt(float value,Vector2 force)
     {
 
@@ -139,7 +157,6 @@ public class MoveObject : MonoBehaviour
             {
                 _State = State.Dead;
                 //
-                Game.instance.playerController.AddDeadObject(this);
                 Game.instance.CheckIfPass();
             }
         }
@@ -156,7 +173,6 @@ public class MoveObject : MonoBehaviour
     protected IEnumerator DeadNoPossess()
     {
         yield return new WaitForSeconds(3f);
-        Game.instance.playerController.RemoveDeadObject(this);
         Destroy(this.gameObject);
     }
     public IEnumerator PlayerInjured()
@@ -176,9 +192,14 @@ public class MoveObject : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         material.SetFloat("_Shine", 0f);
     }
-    public void SetController(Controller controller)
+    public void SetController(Controller controller , bool isPlayer)
     {
         this.controller = controller;
+        _State = State.Normal;
+        if (isPlayer)
+        {
+
+        }
     }
     public Rigidbody2D GetRigidBody()
     {
@@ -196,6 +217,13 @@ public class MoveObject : MonoBehaviour
         foreach (Animator animator in animators)
         {
             animator.SetBool(anim,bo);
+        }
+    }
+    public void SetAnimSpeed(float speed)
+    {
+        foreach (Animator animator in animators)
+        {
+            animator.SetFloat("speed", speed);
         }
     }
 }

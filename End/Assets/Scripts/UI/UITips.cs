@@ -12,7 +12,7 @@ public class UITips : MonoBehaviour
     }
     public void AAADestroy()
     {
-        if(!runInEditMode)
-            Destroy(gameObject);
+        if (!runInEditMode)
+            gameObject.SetActive(false);
     }
 }

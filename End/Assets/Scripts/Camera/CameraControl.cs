@@ -39,18 +39,18 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 rota = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
-        rota /= new Vector2(Screen.width / 2, Screen.height / 2);
-        rota = new Vector2(rota.x * Mathf.Abs(rota.x), rota.y * Mathf.Abs(rota.y));
+        //Vector2 rota = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
+        //rota /= new Vector2(Screen.width / 2, Screen.height / 2);
+        //rota = new Vector2(rota.x * Mathf.Abs(rota.x), rota.y * Mathf.Abs(rota.y));
 
-        rota *= CameraOffsetCoe;
+        //rota *= CameraOffsetCoe;
 
         Vector2 pos = playerTrans.position;
-        pos += PosOffset;
+        //pos += PosOffset;
         //transform.position = new Vector3(pos.x + rota.x , pos.y + rota.y , -10);
         //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(pos.x + rota.x, pos.y + rota.y, -10),ref currenV, 0.2f);
-        Vector3 p = new Vector3(pos.x, pos.y, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, p, 0.5f);
+        Vector3 p = new Vector3(pos.x, pos.y, -10);
+        transform.position = p;// Vector3.Lerp(transform.position, p, 0.5f);
     }
     //计算阻尼(系数)
     float Damping(float dep)

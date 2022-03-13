@@ -91,8 +91,8 @@ public class Game : MonoBehaviour
             MinMap.SetActive(true);
             deliveryDoors[RoomId - 1].gameObject.SetActive(true);
             return;
-            if (RoomId >= 4) return;
-            deliveryDoors[RoomId-1].gameObject.SetActive(true);
+            //if (RoomId >= 4) return;
+            //deliveryDoors[RoomId-1].gameObject.SetActive(true);
         }
     }
     /// <summary>

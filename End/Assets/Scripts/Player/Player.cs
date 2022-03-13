@@ -125,6 +125,7 @@ public class Player : Role
             case State.roll:
                 m_speed = speed * rollSpeed;
                 trans = new Vector3(roll_dir.x * m_speed * 1.5f * t, roll_dir.y * m_speed * 1.5f * t, 0);
+                ShadowPool.instance.GetFormPool();
                 break;
         }
 

@@ -17,7 +17,6 @@ public class EnemyController : Controller
     Path path;
     int currentWaypoint = 0;
     Seeker seeker;
-    public Transform foot;
     private Vector2 Target;
     private MoveObject Player;
 
@@ -27,12 +26,13 @@ public class EnemyController : Controller
     {
         seeker = GetComponent<Seeker>();
         state = EnemyState.Ori;
+        SetMoveObject(GetComponent<MoveObject>());
     }
     void UpdatePath()
     {
         if (seeker.IsDone())
         {
-            seeker.StartPath(foot.position, Target, OnPathComplete);
+            seeker.StartPath(moveObject.foot.position, Target, OnPathComplete);
         }
     }
     void OnPathComplete(Path p)
@@ -48,9 +48,9 @@ public class EnemyController : Controller
     {
         if (state == EnemyState.Run)
         {
-            if (Vector2.Distance(Player.transform.position, foot.position) < moveObject.FearRadius)
+            if (Vector2.Distance(Player.transform.position, moveObject.foot.position) < moveObject.FearRadius)
             {
-                Target = foot.position + (Player.transform.position - foot.position).normalized * -5;
+                Target = moveObject.foot.position + (Player.transform.position - moveObject.foot.position).normalized * -5;
                 //恐惧表情
             }
         }
@@ -58,7 +58,7 @@ public class EnemyController : Controller
         {
             if(Vector2.Distance(Player.transform.position, transform.position) < moveObject.attackRadius)
             {
-                moveObject.MouseBtnLeft();
+                moveObject.MouseBtnLeft(Player.transform.position);
                 Reach = true;
             }
             else
@@ -71,11 +71,15 @@ public class EnemyController : Controller
     private void FixedUpdate()
     {
 
-        if (path == null || Reach) return;
-        Vector2 direction = (path.vectorPath[currentWaypoint] - foot.position).normalized;
-        MoveVelocity(direction);
+        if (path == null || Reach)
+        {
+            MoveVelocity(Vector2.zero, 0f);
+            return;
+        }
+        Vector2 direction = (path.vectorPath[currentWaypoint] - moveObject.foot.position).normalized;
+        MoveVelocity(direction,1f);
 
-        float distance = Vector2.Distance(foot.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector2.Distance(moveObject.foot.position, path.vectorPath[currentWaypoint]);
 
         if (distance < nextWaypointDistance)
         {
