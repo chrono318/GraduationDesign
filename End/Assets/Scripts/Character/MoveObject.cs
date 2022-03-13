@@ -30,6 +30,7 @@ public class MoveObject : MonoBehaviour
     public GameObject fearTex;
     public Slider HP_Slider;
     public Slider HP_Slider_Bg;
+    public LineRenderer lineRenderer;
     public float injureAnimDur = 2f;
 
     [Header("其他")]
@@ -95,17 +96,48 @@ public class MoveObject : MonoBehaviour
     }
     protected void CheckPossess()
     {
-        if (type == MoveObjectType.Dead || _State==State.Dead)
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Transform player = Game.instance.playerController.transform;
+        if (type == MoveObjectType.Dead)
         {
+            if(Vector2 .Distance(transform.position, player.position) < 5)
+            {
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, player.position);
+                lineRenderer.gameObject.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (Vector2.Distance(transform.position, mousePos) < 1f)
+                    {
+                        Game.instance.playerController.Possess(this);
+                        lineRenderer.gameObject.SetActive(false);
+                    }
+                }
+            }
+            else
+            {
+                lineRenderer.gameObject.SetActive(false);
+            }
+        }
+        else if(_State == State.Dead)
+        {
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, player.position);
+            lineRenderer.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (Vector2.Distance(transform.position, mousePos) < 2f)
+                if (Vector2.Distance(transform.position, mousePos) < 1f)
                 {
                     Game.instance.playerController.Possess(this);
                     _State = State.Injure;
+                    lineRenderer.gameObject.SetActive(false);
                 }
             }
+        }
+        else
+        {
+            lineRenderer.gameObject.SetActive(false);
         }
     }
     public virtual bool MouseBtnLeft(Vector2 targetPos)
