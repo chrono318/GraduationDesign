@@ -68,7 +68,7 @@ public class EnemyController : Controller
         {
             moveObject.fearTex.SetActive(false);
 
-            if (Vector2.Distance(Player.transform.position, transform.position) < moveObject.attackRadius)
+            if (Vector2.Distance(Player.foot.position, transform.position) < moveObject.attackRadius)
             {
                 moveObject.MouseBtnLeft(Player.transform.position);
                 Reach = true;
@@ -76,7 +76,7 @@ public class EnemyController : Controller
             else
             {
                 Reach = false;
-                Target = Player.transform.position;
+                Target = Player.foot.position;
             }
         }
         else
@@ -93,6 +93,7 @@ public class EnemyController : Controller
             //MoveVelocity(Vector2.zero, 0f);
             return;
         }
+        if (currentWaypoint >= path.vectorPath.Count) return;
         Vector2 direction = (path.vectorPath[currentWaypoint] - moveObject.foot.position).normalized;
         MoveVelocity(direction,1f);
 

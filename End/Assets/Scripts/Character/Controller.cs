@@ -40,4 +40,8 @@ public class Controller : MonoBehaviour
     {
         moveObject.TurnTowards(isleft);
     }
+    public MoveObject GetMoveObject()
+    {
+        return moveObject;
+    }
 }
