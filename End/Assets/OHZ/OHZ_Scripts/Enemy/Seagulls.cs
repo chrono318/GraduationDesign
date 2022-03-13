@@ -38,7 +38,7 @@ public class Seagulls : MonoBehaviour
     int attackPressNum = 0;
     bool playerReady;
     bool haveBoom;//是否爆炸过
-    float currAttackBoomCD;
+    public float currAttackBoomCD;
     public float attackBoomCD = 5f;
 
     /// <summary>
@@ -50,6 +50,11 @@ public class Seagulls : MonoBehaviour
     /// 眩晕标记
     /// </summary>
     public GameObject dizzy;
+
+    /// <summary>
+    /// 敌人状态下，爆炸预警提示
+    /// </summary>
+    public GameObject beScare;
     #endregion
 
     /// <summary>
@@ -75,10 +80,10 @@ public class Seagulls : MonoBehaviour
     public float readyBoom = 2f;
     bool switchBoomOpen;
     public float boomForce = 10f;
-    public float boomDistance = 3f;//直接引爆爆炸距离（当海鸥准备爆炸且玩家位于这个距离内是直接引爆）
+    public float boomDistance = 5f;//直接引爆爆炸距离（当海鸥准备爆炸且玩家位于这个距离内是直接引爆）
 
     public float radius = 5f;
-    public LayerMask targetLayer;//#对接#谁能被炸吧谁的layer加上#对接#
+    public LayerMask targetLayer;
 
     /// <summary>
     /// 眩晕有关参数
@@ -129,6 +134,7 @@ public class Seagulls : MonoBehaviour
                         haveBoom = true;
                         clock.SetActive(false);
                         currAttackBoomCD = attackBoomCD;
+                        beScare.SetActive(false);
                         break;
                     case SeagullState.休息:
                         anim.SetInteger("animState", 0);
@@ -340,6 +346,7 @@ public class Seagulls : MonoBehaviour
         {
             switchBoomOpen = true;
             anim.SetInteger("animState", 4);
+            beScare.SetActive(true);
         }
         if (switchBoomOpen)
         {
