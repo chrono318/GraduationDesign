@@ -14235,6 +14235,16 @@ PrefabInstance:
       propertyPath: shotReload
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8620900383718657846, guid: 993f08f28928eb4479973ce5f595d89b,
+        type: 3}
+      propertyPath: playerAttackSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620900383718657846, guid: 993f08f28928eb4479973ce5f595d89b,
+        type: 3}
+      propertyPath: attackSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8626738223311227384, guid: 993f08f28928eb4479973ce5f595d89b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14262,6 +14272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5495200917777800024, guid: 993f08f28928eb4479973ce5f595d89b, type: 3}
+    - {fileID: 2578798580999958050, guid: 993f08f28928eb4479973ce5f595d89b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 993f08f28928eb4479973ce5f595d89b, type: 3}
 --- !u!61 &1914000098
 BoxCollider2D:
@@ -16766,6 +16777,9 @@ MonoBehaviour:
   foot: {fileID: 2115810879}
   attackPoint: {fileID: 2115810879}
   fearTex: {fileID: 0}
+  HP_Slider: {fileID: 0}
+  HP_Slider_Bg: {fileID: 0}
+  injureAnimDur: 2
   MaxHp: 100
   speed: 10
   isPlayer: 0

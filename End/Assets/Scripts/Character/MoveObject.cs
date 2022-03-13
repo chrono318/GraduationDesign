@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+
 
 public class MoveObject : MonoBehaviour
 {
@@ -25,6 +28,8 @@ public class MoveObject : MonoBehaviour
     public Transform foot;
     public Transform attackPoint;
     public GameObject fearTex;
+    public Slider HP_Slider;
+    public Slider HP_Slider_Bg;
     public float injureAnimDur = 2f;
 
     [Header("其他")]
@@ -175,6 +180,11 @@ public class MoveObject : MonoBehaviour
                 rigidbody.velocity = Vector2.zero;
                 rigidbody.AddForce(force*10);
             }
+            CancelInvoke(nameof(CloseHP));
+            Invoke(nameof(CloseHP), 2f);
+            ShowHP();
+            HP_Slider.value = Hp / MaxHp;
+            HP_Slider_Bg.DOValue(Hp / MaxHp, 0.7f);
         }
         else
         {
@@ -202,6 +212,16 @@ public class MoveObject : MonoBehaviour
                 material_Edge.SetVector("_Color1", new Vector4(0, 0.9441266f, 1,1));
             }
         }
+    }
+    protected void ShowHP()
+    {
+        HP_Slider.gameObject.SetActive(true);
+        HP_Slider_Bg.gameObject.SetActive(true);
+    }
+    protected void CloseHP()
+    {
+        HP_Slider.gameObject.SetActive(false);
+        HP_Slider_Bg.gameObject.SetActive(false);
     }
     public void AnimaInjureFinish()
     {
