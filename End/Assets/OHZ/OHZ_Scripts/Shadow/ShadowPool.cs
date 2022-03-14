@@ -47,15 +47,21 @@ public class ShadowPool : MonoBehaviour
     /// 取出对象
     /// </summary>
     /// <returns></returns>
-    public GameObject GetFormPool()//#对接#给谁用就调用这个函数就行#对接#
+    public GameObject GetFormPool(SpriteRenderer[] spriteRenderers)//#对接#给谁用就调用这个函数就行#对接#
     {
         if (availableObjects.Count == 0)
         {
             FillPool();
         }
         var outShadow = availableObjects.Dequeue();
+        outShadow.GetComponent<ShadowSprite>().UpdateRendererSprites(spriteRenderers);
         outShadow.SetActive(true);
 
         return outShadow;
+    }
+
+    public void SetSprites(SpriteRenderer[] spriteRenderers)
+    {
+
     }
 }

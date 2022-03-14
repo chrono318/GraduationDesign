@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ShotgunMO : MoveObject
 {
+    public bool lianfa = false;
     public GameObject PlayerBullet;
     public GameObject EnemyBullet;
     public override void Attack(Vector2 target)
     {
-        PlayAnim("attack");
+        
         float gunAngle = Vector2.SignedAngle(Vector2.right, target - (Vector2)attackPoint.position);
-        if (gunAngle > 30)
+        if (lianfa)
+        {
+            PlayAnim("attack");
+        }
+        else if (gunAngle > 30)
         {
             PlayAnim("upAttack");
         }

@@ -54,6 +54,7 @@
 
         Pass
         {
+            Cull Off
             //ZWrite Off
             //Blend DstColor One
             //BlendOp RevSub

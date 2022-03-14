@@ -8,6 +8,8 @@ public class ShadowSprite : MonoBehaviour
     SpriteRenderer thisSprite;
     SpriteRenderer playerSprite;
 
+    SpriteRenderer[] renderers;
+
     Color color;
 
     [Header("时间控制参数")]
@@ -21,25 +23,29 @@ public class ShadowSprite : MonoBehaviour
 
     private void OnEnable()
     {
-        player = Game.instance.player.transform;
-        thisSprite = GetComponent<SpriteRenderer>();
-        playerSprite = player.gameObject.GetComponent<SpriteRenderer>();
         alpha = alphaSet;
-
-        //用在想要残影效果的对象上
-        thisSprite.sprite = playerSprite.sprite;
-        transform.position = player.position;
-        transform.localScale = player.localScale;
-        transform.rotation = player.rotation;
-
         startTime = Time.time;
     }
 
+    public void UpdateRendererSprites(SpriteRenderer[] spriteRenderers) 
+    {
+        for(int i = 0; i < spriteRenderers.Length; i++)
+        {
+            transform.GetChild(i).position = spriteRenderers[i].transform.position;
+            transform.GetChild(i).localScale = spriteRenderers[i].transform.localScale;
+            transform.GetChild(i).rotation = spriteRenderers[i].transform.rotation;
+            transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = spriteRenderers[i].sprite;
+        }
+    }
     void Update()
     {
         alpha *= alphaMul;
         color = new Color(0.5f, 0.5f, 1, alpha);
-        thisSprite.color = color;
+        //thisSprite.color = color;
+        for(int i = 0; i < transform.GetChildCount(); i++)
+        {
+            transform.GetChild(i).GetComponent<SpriteRenderer>().color = color;
+        }
         if (Time.time >= activeTime + startTime)
         {
             //返回对象池

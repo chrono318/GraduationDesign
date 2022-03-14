@@ -33,6 +33,7 @@ public class MoveObject : MonoBehaviour
     public Slider HP_Slider_Bg;
     public LineRenderer lineRenderer;
     public GameObject PossessTex;
+    public GameObject PossessCircle;
     public float injureAnimDur = 2f;
 
     [Header("其他")]
@@ -56,7 +57,7 @@ public class MoveObject : MonoBehaviour
         Normal,
         Injure,
         Dead,
-        rush,
+        Roll,
         DeadDead
     }
     public State _State;
@@ -95,11 +96,17 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckPossess();//附身检测代码
-        attackTiming.Update();
+        DefaultUpdate();
     }
-    protected void CheckPossess()
+    protected void DefaultUpdate()
     {
+        attackTiming.Update();
+        if (_State == State.Roll && DefaultSkill)
+        {
+            Canying();
+        }
+
+        //附身检测代码
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Transform player = Game.instance.playerController.transform;
         if (type == MoveObjectType.Dead)
@@ -166,14 +173,24 @@ public class MoveObject : MonoBehaviour
         Skill(targetPos);
         return true;
     }
+    protected bool DefaultSkill = true;
     public virtual void Skill(Vector2 target)
     {
-        _State = State.rush;
+        _State = State.Roll;
+        DefaultSkill = true;
         collider.enabled = false;
-        rigidbody.DOMove((target-rigidbody.position).normalized*5f+rigidbody.position, 0.5f);
+        rigidbody.DOMove((target-rigidbody.position).normalized*10f+rigidbody.position, 1f);
         PlayAnim("roll");
         SetAnimLayerWeight(0f);
-        Invoke(nameof(AnimaInjureFinish), 0.5f);
+        Invoke(nameof(AnimaInjureFinish), 1f);
+    }
+    /// <summary>
+    /// 残影
+    /// </summary>
+    protected void Canying()
+    {
+        SpriteRenderer[] spriteRenderers = GFX.GetChild(1).GetComponentsInChildren<SpriteRenderer>();
+        ShadowPool.instance.GetFormPool(spriteRenderers);
     }
     public void MoveUpdate(Vector2 dir , float speedScale)
     {
@@ -254,9 +271,10 @@ public class MoveObject : MonoBehaviour
                 rigidbody.velocity = Vector2.zero;
                 fearTex.SetActive(false);
 
-                controller.enabled = false;
+                //controller.enabled = false;
                 material_Body.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
                 material_Edge.SetVector("_Color1", new Vector4(0, 0.9441266f, 1,1));
+                material_Body.SetFloat("_Shine", 0f);
             }
         }
         CancelInvoke(nameof(CloseHP));
@@ -297,6 +315,7 @@ public class MoveObject : MonoBehaviour
     }
     public void PlayerLeaveThisBody()
     {
+        PossessCircle.SetActive(false);
         PlayAnim("dead");
         MoveVelocity(Vector2.zero, 0f);
         Invoke(nameof(DeadDead), 3f);
@@ -332,8 +351,11 @@ public class MoveObject : MonoBehaviour
         material_Body.SetFloat("_Shine", 0.5f);
         yield return new WaitForSeconds(0.1f);
         material_Body.SetFloat("_Shine", 0f);
-        yield return new WaitForSeconds(Mathf.Max(injureAnimDur - 0.1f, 0f));
-        _State = State.Normal;
+        yield return new WaitForSeconds(0.1f);
+        if (_State==State.Injure || _State==State.Roll)
+        {
+            _State = State.Normal;
+        }
     }
     /// <summary>
     /// 附身设置
@@ -353,8 +375,10 @@ public class MoveObject : MonoBehaviour
             if (_State == State.Injure)
             {
                 PlayAnim("dead2idle");
+                PossessCircle.SetActive(true);
             }
             collider.enabled = true;
+            attackTiming.SetAttackSpace(playerAttackSpace);
         }
         _State = State.Normal;
 
@@ -370,11 +394,11 @@ public class MoveObject : MonoBehaviour
             animator.SetTrigger(trigger);
         }
     }
-    public void PlayAnim(string anim,bool bo)
+    public void PlayAnim(string anim,int i)
     {
         foreach (Animator animator in animators)
         {
-            animator.SetBool(anim,bo);
+            animator.SetInteger(anim,i);
         }
     }
     public void SetAnimSpeed(float speed)

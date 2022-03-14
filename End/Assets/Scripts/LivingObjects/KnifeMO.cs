@@ -42,7 +42,7 @@ public class KnifeMO : MoveObject
         else
         {
             MoveObject player = Game.instance.playerController.GetMoveObject();
-            if (AttackDis(player.foot.position, foot.position,left))
+            if (AttackDis(player.foot.position, foot.position,left) && player._State!=State.Roll)
             {
                 player.GetHurt(value, (player.foot.position - foot.position).normalized);
             }
