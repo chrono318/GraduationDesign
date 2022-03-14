@@ -45,6 +45,7 @@ public class Game : MonoBehaviour
     public Vector4 curRoomCameraArea;
     public List<MoveObject> curEnemies;
     public Weiqi weiqi;
+    public Transform FuShenVXF;
     private void Awake()
     {
         if (instance)
@@ -75,6 +76,7 @@ public class Game : MonoBehaviour
                 curEnemies = enemies3;
                 break;
             case 4:
+                Camera.main.backgroundColor = Color.black;
                 curRoomCameraArea = roomCameraArea4;
                 curEnemies = enemies4;
                 break;

@@ -150,7 +150,7 @@ public class PlayerController : Controller
                 this.moveObject.PlayerLeaveThisBody();
             }
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         isPossess = true;
         GFX.SetActive(false);
         SetMoveObject(moveObject,true);
@@ -159,6 +159,9 @@ public class PlayerController : Controller
         GetComponent<Collider2D>().enabled = false;
         transform.SetParent(moveObject.transform);
         transform.localPosition = Vector3.zero;
+        Game.instance.FuShenVXF.position = moveObject.foot.position;
+        Game.instance.FuShenVXF.GetChild(0).GetComponent<ParticleSystem>().Play();
+        Game.instance.FuShenVXF.GetChild(1).GetComponent<ParticleSystem>().Play();
 
         isPossessing = false;
     }

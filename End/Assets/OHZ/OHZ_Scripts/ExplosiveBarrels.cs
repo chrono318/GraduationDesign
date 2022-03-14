@@ -8,9 +8,11 @@ public class ExplosiveBarrels : MonoBehaviour
     public LayerMask targetLayer;
     public float boomForce = 10f;
 
+    public ParticleSystem particleSystem;
     public void CloseShadow()
     {
         transform.GetChild(0).gameObject.SetActive(false);
+        particleSystem.Play();
     }
 
     /// <summary>

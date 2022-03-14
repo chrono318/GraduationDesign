@@ -46,7 +46,8 @@ public class CameraControl : MonoBehaviour
         //rota *= CameraOffsetCoe;
 
         Vector2 pos = playerTrans.position;
-        pos = new Vector2(Mathf.Clamp(pos.x, Game.instance.curRoomCameraArea.x, Game.instance.curRoomCameraArea.y), Mathf.Clamp(pos.y, Game.instance.curRoomCameraArea.z, Game.instance.curRoomCameraArea.w));
+        //锁镜头
+        //pos = new Vector2(Mathf.Clamp(pos.x, Game.instance.curRoomCameraArea.x, Game.instance.curRoomCameraArea.y), Mathf.Clamp(pos.y, Game.instance.curRoomCameraArea.z, Game.instance.curRoomCameraArea.w));
         pos += PosOffset;
         //transform.position = new Vector3(pos.x + rota.x , pos.y + rota.y , -10);
         //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(pos.x + rota.x, pos.y + rota.y, -10),ref currenV, 0.2f);

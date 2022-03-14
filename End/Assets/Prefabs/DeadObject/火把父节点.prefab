@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2039481735528434212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3693718544866301034}
+  m_Layer: 0
+  m_Name: foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3693718544866301034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039481735528434212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: -1.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8645366766527813192}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2890171333662225763
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7949073092678213157}
+  - {fileID: 3693718544866301034}
   m_Father: {fileID: 7448248615021721380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -341,11 +372,12 @@ MonoBehaviour:
   GFX: {fileID: 8645366766527813192}
   animators:
   - {fileID: 4780872604676210261}
-  foot: {fileID: 7949073092678213157}
+  foot: {fileID: 3693718544866301034}
   attackPoint: {fileID: 0}
   fearTex: {fileID: 0}
   HP_Slider: {fileID: 0}
   HP_Slider_Bg: {fileID: 0}
+  Slider_Reload: {fileID: 0}
   lineRenderer: {fileID: 2418178327413054506}
   PossessTex: {fileID: 6023625520808623809}
   PossessCircle: {fileID: 4976886403772060597}
