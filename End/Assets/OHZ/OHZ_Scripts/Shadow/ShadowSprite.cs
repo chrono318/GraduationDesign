@@ -29,6 +29,7 @@ public class ShadowSprite : MonoBehaviour
 
     public void UpdateRendererSprites(SpriteRenderer[] spriteRenderers) 
     {
+        print(spriteRenderers.Length);
         for(int i = 0; i < spriteRenderers.Length; i++)
         {
             transform.GetChild(i).position = spriteRenderers[i].transform.position;
