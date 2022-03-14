@@ -38,7 +38,7 @@ public class Game : MonoBehaviour
     public int RoomId = 1;
     private int CurEnemyCount;
     public List<MoveObject> curEnemies;
-
+    public Weiqi weiqi;
     private void Awake()
     {
         if (instance)
@@ -93,6 +93,19 @@ public class Game : MonoBehaviour
             return;
             //if (RoomId >= 4) return;
             //deliveryDoors[RoomId-1].gameObject.SetActive(true);
+        }
+    }
+    public void DeleteEnemyMO(MoveObject moveObject)
+    {
+        foreach(MoveObject mo in curEnemies)
+        {
+            if (mo != null)
+            {
+                if (mo == moveObject)
+                {
+                    curEnemies.Remove(mo);
+                }
+            }
         }
     }
     /// <summary>

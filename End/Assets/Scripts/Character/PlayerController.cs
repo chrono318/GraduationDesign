@@ -142,7 +142,8 @@ public class PlayerController : Controller
     {
         if (isPossess)
         {
-            moveObject.controller = null;
+            this.moveObject.controller = null;
+            this.moveObject.isPlayer = false;
             if (this.moveObject.type == MoveObjectType.Living)
             {
                 this.moveObject.gameObject.tag = "Enemy";

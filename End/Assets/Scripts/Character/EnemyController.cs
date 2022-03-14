@@ -47,7 +47,7 @@ public class EnemyController : Controller
     void Update()
     {
 
-        if (state == EnemyState.Run)
+        if (state == EnemyState.Run && moveObject._State == MoveObject.State.Normal)
         {
             if (Vector2.Distance(Player.transform.position, moveObject.foot.position) < moveObject.FearRadius)
             {
@@ -136,5 +136,13 @@ public class EnemyController : Controller
         Player = null;
         state = EnemyState.Ori;
         CancelInvoke(nameof(UpdatePath));
+    }
+    private void OnDisable()
+    {
+        moveObject.fearTex.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        moveObject.fearTex.SetActive(false);
     }
 }

@@ -39,6 +39,7 @@ public class MoveObject : MonoBehaviour
     [Header("其他")]
     public float MaxHp = 100f;
     public float speed = 10f;
+    public float ReloadTime = 2f;
 
     protected float Hp;
 
@@ -113,11 +114,14 @@ public class MoveObject : MonoBehaviour
         {
             if(Vector2 .Distance(transform.position, player.position) < 5)
             {
-                lineRenderer.SetPosition(0, transform.position);
-                lineRenderer.SetPosition(1, player.position);
-                lineRenderer.gameObject.SetActive(true);
-                PossessTex.SetActive(true);
-
+                if (!isPlayer)
+                {
+                    lineRenderer.SetPosition(0, transform.position);
+                    lineRenderer.SetPosition(1, player.position);
+                    lineRenderer.gameObject.SetActive(true);
+                    PossessTex.SetActive(true);
+                }
+                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (Vector2.Distance(transform.position, mousePos) < 1f)
@@ -125,12 +129,14 @@ public class MoveObject : MonoBehaviour
                         Game.instance.playerController.Possess(this);
                         lineRenderer.gameObject.SetActive(false);
                         PossessTex.SetActive(false);
+                        isPlayer = true;
                     }
                 }
             }
             else
             {
                 lineRenderer.gameObject.SetActive(false);
+                PossessTex.SetActive(false);
             }
         }
         else if(_State == State.Dead)
@@ -212,6 +218,10 @@ public class MoveObject : MonoBehaviour
             rigidbody.velocity = speed * dirXscale;
             SetAnimSpeed(animSpeed);
             SetAnimLayerWeight(Mathf.Floor(animSpeed));
+            if(isPlayer && animSpeed > 0 && type ==MoveObjectType.Living)
+            {
+                Game.instance.weiqi.SetWeiqiPosition(foot.position, dirXscale.x < 0);
+            }
         }
     }
     public virtual void TurnTowards(bool isleft)
@@ -266,6 +276,7 @@ public class MoveObject : MonoBehaviour
                 StartCoroutine(nameof(DeadNoPossess));
                 StopCoroutine(nameof(EnemyInjured));
                 //
+                Game.instance.DeleteEnemyMO(this);
                 Game.instance.CheckIfPass();
                 collider.enabled = false;
                 rigidbody.velocity = Vector2.zero;
@@ -431,6 +442,7 @@ public class MoveObject : MonoBehaviour
             case 3:
                 PlayAnim("reload");
                 //开始换弹动画
+
                 break;
         }
         return false;

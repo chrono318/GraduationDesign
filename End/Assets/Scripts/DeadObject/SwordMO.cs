@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class SwordMO : MoveObject
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+   
+    public override void Attack(Vector2 target)
     {
-        if(collision.transform.TryGetComponent(out MoveObject mo))
+        PlayAnim("attack");
+        Invoke(nameof(CheckAttack), 0.4f);
+    }
+    void CheckAttack()
+    {
+        foreach (MoveObject mo in Game.instance.curEnemies)
         {
-            if (!mo.isPlayer)
+            if (mo != null)
             {
-                mo.GetHurt(51f, Vector2.down);
+                if (Vector2.Distance(mo.transform.position, transform.position)<attackRadius)
+                {
+                    print(mo.gameObject.name);
+                    mo.GetHurt(51, (mo.transform.position - transform.position).normalized);
+                }
             }
         }
     }
