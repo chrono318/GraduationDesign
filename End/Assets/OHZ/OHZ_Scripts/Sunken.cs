@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sunken : MonoBehaviour
 {
     public bool isUp = false;
+    public GameObject[] hole;
     GameObject player;
     Collider2D coll;
     /// <summary>
@@ -44,6 +45,7 @@ public class Sunken : MonoBehaviour
             {
                 isUp = false;
                 currKeepUpTime = keepUpTime;
+                TurnIn();
             }
         }
     }
@@ -61,16 +63,31 @@ public class Sunken : MonoBehaviour
             {
                 isUp = true;
                 currkeepDownTime = keepDownTime;
+                TurnOut();
             }
         }
     }
 
+    public void TurnIn()
+    {
+        for (int i = 0; i < hole.Length; i++)
+        {
+            hole[i].GetComponent<Animator>().Play("turn-in");
+        }
+    }
+
+    public void TurnOut()
+    {
+        for (int i = 0; i < hole.Length; i++)
+        {
+            hole[i].GetComponent<Animator>().Play("turn-out");
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.TryGetComponent<MoveObject>(out MoveObject mo))
         {
-                print("受伤");
-                //#对接#受伤#对接#
+            mo.GetHurt(20f, new Vector2(0,0));
         }
     }
 }

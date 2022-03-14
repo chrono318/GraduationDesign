@@ -94,18 +94,19 @@ public class InteractionObject : MonoBehaviour
     /// <summary>
     /// 是否与玩家发生交互
     /// </summary>
-    private bool m_isCollsion;
-    public bool isCollsion
-    {
-        get
-        {
-            return m_isCollsion;
-        }
-        private set
-        {
-            m_isCollsion = value;
-        }
-    }
+    bool isCollsion = false;
+    //private bool m_isCollsion;
+    //public bool isCollsion
+    //{
+    //    get
+    //    {
+    //        return m_isCollsion;
+    //    }
+    //    private set
+    //    {
+    //        m_isCollsion = value;
+    //    }
+    //}
 
     private int[] weight = new int[4];
 
@@ -126,6 +127,7 @@ public class InteractionObject : MonoBehaviour
 
     void Update()
     {
+        //print(haveCollsion);
         CheckCanInteraction();
         ChangeInfo();
         //PlayerDistance();
@@ -188,6 +190,7 @@ public class InteractionObject : MonoBehaviour
     /// </summary>
     public void Search()
     {
+        GetComponent<Animator>().Play("xiangzi");
         int probability = GetRandPersonalityType(weight, 100);
         int getAward;
         switch (probability)
@@ -259,28 +262,28 @@ public class InteractionObject : MonoBehaviour
         ActiveUI();
     }
 
-    ///// <summary>
-    ///// 与玩家之间的距离
-    ///// </summary>
+    /// <summary>
+    /// 与玩家之间的距离
+    /// </summary>
     //public void PlayerDistance()
     //{
-    //    print(isCollsion);
-    //    if(Mathf.Abs(transform.position.x - player.transform.position.x) + Mathf.Abs(transform.position.y - player.transform.position.y) < 3)
+    //    //print(isCollsion);
+    //    if (Mathf.Abs(transform.position.x - player.transform.position.x) + Mathf.Abs(transform.position.y - player.transform.position.y) < 3)
     //    {
-    //        isCollsion = true;
+    //        haveCollsion = true;
     //    }
-    //    else
-    //    {
-    //        if (isCanRecoverInteractionNum)
-    //        {
-    //            isCollsion = false;
-    //            canInteractionNum = 1;
-    //        }
-    //        else
-    //        {
-    //            isCollsion = false;
-    //        }
-    //    }
+    //    //else
+    //    //{
+    //    //    //if (isCanRecoverInteractionNum)
+    //    //    //{
+    //    //    //    isCollsion = false;
+    //    //    //    canInteractionNum = 1;
+    //    //    //}
+    //    //    //else
+    //    //    //{
+    //    //    //    isCollsion = false;
+    //    //    //}
+    //    //}
     //}
 
     //视情况若需更大的交互范围与提示范围，则挂载在控制交互范围的物体上

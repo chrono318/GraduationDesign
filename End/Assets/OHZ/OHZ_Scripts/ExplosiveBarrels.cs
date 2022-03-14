@@ -10,12 +10,14 @@ public class ExplosiveBarrels : MonoBehaviour
     void Update()
     {
         //#对接#
-        //替换成只要受到伤害s
+        //替换成只要受到伤害，播放爆炸动画（下方函数均在爆炸动画中引用）
         //#对接#
-        if (Input.GetMouseButtonDown(0))
-        {
-            Boom();
-        }
+        GetComponent<Animator>().Play("bomb");
+    }
+
+    public void CloseShadow()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -27,12 +29,15 @@ public class ExplosiveBarrels : MonoBehaviour
         foreach (var hit in arround)
         {
             //#对接#
-            //看看击退效果合不合适
+            //看看击退效果合不合适，加入受伤判定
             //#对接#
             Vector3 pos = transform.position - hit.transform.position;
             hit.GetComponent<Rigidbody2D>().AddForce(-pos.normalized * boomForce, ForceMode2D.Impulse);
         }
-        //死亡
-        Destroy(gameObject);
+    }
+
+    public void DestoryBarren()
+    {
+        Destroy(transform.parent.gameObject);
     }
 }
