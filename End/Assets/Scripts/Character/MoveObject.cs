@@ -137,6 +137,7 @@ public class MoveObject : MonoBehaviour
                 if (Vector2.Distance(transform.position, mousePos) < 1f)
                 {
                     StopCoroutine(nameof(DeadNoPossess));
+                    StartCoroutine(nameof(Possess));
                     Game.instance.playerController.Possess(this);
                     _State = State.Injure;
                     lineRenderer.gameObject.SetActive(false);
@@ -280,6 +281,12 @@ public class MoveObject : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         DeadDead();
+    }
+    protected IEnumerator Possess()
+    {
+        yield return new WaitForSeconds(2f);
+        material_Body.SetVector("_Color1", Vector4.one);
+        material_Edge.SetVector("_Color1", Vector4.one);
     }
     public void PlayerLeaveThisBody()
     {
