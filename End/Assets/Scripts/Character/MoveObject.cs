@@ -19,6 +19,7 @@ public class MoveObject : MonoBehaviour
     public float playerAttackSpace = 1f;
     [Tooltip("单次攻击间隔")]
     public float attackSpace = 2f;
+    public float shakeTime = 0f;
 
     public float FearRadius = 5f;
     //控制图片整体，控制朝向
@@ -30,6 +31,8 @@ public class MoveObject : MonoBehaviour
     public GameObject fearTex;
     public Slider HP_Slider;
     public Slider HP_Slider_Bg;
+    public LineRenderer lineRenderer;
+    public GameObject PossessTex;
     public float injureAnimDur = 2f;
 
     [Header("其他")]
@@ -52,7 +55,8 @@ public class MoveObject : MonoBehaviour
     {
         Normal,
         Injure,
-        Dead
+        Dead,
+        DeadDead
     }
     public State _State;
     private void Reset()
@@ -95,21 +99,60 @@ public class MoveObject : MonoBehaviour
     }
     protected void CheckPossess()
     {
-        if (type == MoveObjectType.Dead || _State==State.Dead)
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Transform player = Game.instance.playerController.transform;
+        if (type == MoveObjectType.Dead)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if(Vector2 .Distance(transform.position, player.position) < 5)
             {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (Vector2.Distance(transform.position, mousePos) < 2f)
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, player.position);
+                lineRenderer.gameObject.SetActive(true);
+                PossessTex.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Game.instance.playerController.Possess(this);
-                    _State = State.Injure;
+                    if (Vector2.Distance(transform.position, mousePos) < 1f)
+                    {
+                        Game.instance.playerController.Possess(this);
+                        lineRenderer.gameObject.SetActive(false);
+                        PossessTex.SetActive(false);
+                    }
                 }
             }
+            else
+            {
+                lineRenderer.gameObject.SetActive(false);
+            }
+        }
+        else if(_State == State.Dead)
+        {
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, player.position);
+            lineRenderer.gameObject.SetActive(true);
+            PossessTex.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (Vector2.Distance(transform.position, mousePos) < 1f)
+                {
+                    StopCoroutine(nameof(DeadNoPossess));
+                    Game.instance.playerController.Possess(this);
+                    _State = State.Injure;
+                    lineRenderer.gameObject.SetActive(false);
+                    PossessTex.SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            lineRenderer.gameObject.SetActive(false);
+            PossessTex.SetActive(false);
         }
     }
     public virtual bool MouseBtnLeft(Vector2 targetPos)
     {
+        TurnTowards(targetPos.x < foot.position.x);
         return CallAttack(targetPos);
     }
     public virtual void Attack(Vector2 target)
@@ -161,7 +204,7 @@ public class MoveObject : MonoBehaviour
     /// <param name="force"></param>
     public void GetHurt(float value,Vector2 force)
     {
-
+        if (_State == State.Dead || _State==State.DeadDead) return;
         Hp -= value;
         if (Hp > 0)
         {
@@ -180,11 +223,7 @@ public class MoveObject : MonoBehaviour
                 rigidbody.velocity = Vector2.zero;
                 rigidbody.AddForce(force*10);
             }
-            CancelInvoke(nameof(CloseHP));
-            Invoke(nameof(CloseHP), 2f);
-            ShowHP();
-            HP_Slider.value = Hp / MaxHp;
-            HP_Slider_Bg.DOValue(Hp / MaxHp, 0.7f);
+            
         }
         else
         {
@@ -201,6 +240,7 @@ public class MoveObject : MonoBehaviour
             else
             {
                 _State = State.Dead;
+                StartCoroutine(nameof(DeadNoPossess));
                 //
                 Game.instance.CheckIfPass();
                 collider.enabled = false;
@@ -212,6 +252,11 @@ public class MoveObject : MonoBehaviour
                 material_Edge.SetVector("_Color1", new Vector4(0, 0.9441266f, 1,1));
             }
         }
+        CancelInvoke(nameof(CloseHP));
+        Invoke(nameof(CloseHP), 2f);
+        ShowHP();
+        HP_Slider.value = Hp / MaxHp;
+        HP_Slider_Bg.DOValue(Hp / MaxHp, 0.7f);
     }
     protected void ShowHP()
     {
@@ -233,18 +278,22 @@ public class MoveObject : MonoBehaviour
     }
     protected IEnumerator DeadNoPossess()
     {
-        yield return new WaitForSeconds(3f);
-        Destroy(this.gameObject);
+        yield return new WaitForSeconds(5f);
+        DeadDead();
     }
     public void PlayerLeaveThisBody()
     {
         PlayAnim("dead");
         MoveVelocity(Vector2.zero, 0f);
-        Invoke(nameof(DestroySelf), 3f);
+        Invoke(nameof(DeadDead), 3f);
     }
-    protected void DestroySelf()
+    protected void DeadDead()
     {
-        Destroy(gameObject);
+        _State = State.DeadDead;
+        collider.enabled = false;
+        material_Body.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
+        material_Edge.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
+        //Destroy(gameObject);
     }
     public IEnumerator PlayerInjured()
     {

@@ -85,6 +85,7 @@ public class PlayerController : Controller
         {
             if (moveObject.MouseBtnLeft(mousePos))
             {
+                //StartCoroutine(CamereaShake(dir, moveObject.shakeTime));
                 Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
             }
         }
@@ -95,6 +96,11 @@ public class PlayerController : Controller
                 //翻滚后效？
             }
         }
+    }
+    public IEnumerator CamereaShake(Vector2 dir,float time)
+    {
+        yield return new WaitForSeconds(time);
+        Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
     }
     public void GetHurtEffect(Vector2 force)
     {
@@ -139,9 +145,13 @@ public class PlayerController : Controller
         GetComponent<Collider2D>().enabled = false;
         transform.SetParent(moveObject.transform);
         transform.localPosition = Vector3.zero;
+
+        isPossessing = false;
     }
+    bool isPossessing = false;
     public void Possess(MoveObject moveObject)
-    {
+    {   if (isPossessing) return;
+        isPossessing = true;
         StartCoroutine(IEPossess(moveObject));
     }
 }

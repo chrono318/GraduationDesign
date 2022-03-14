@@ -37,7 +37,7 @@ public class Game : MonoBehaviour
     [Header("Current Room")]
     public int RoomId = 1;
     private int CurEnemyCount;
-    private List<MoveObject> curEnemies;
+    public List<MoveObject> curEnemies;
 
     private void Awake()
     {
