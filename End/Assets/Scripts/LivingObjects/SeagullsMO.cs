@@ -18,6 +18,7 @@ public class SeagullsMO : MoveObject
     bool isRush = false;
     public override bool MouseBtnLeft(Vector2 targetPos)
     {
+        if (!CallAttack(targetPos)) return false;
         if (isPlayer)
         {
             if (isWaitForBtn)//第二次
@@ -42,22 +43,33 @@ public class SeagullsMO : MoveObject
         }
         return false;
     }
+    public override void Attack(Vector2 target)
+    {
+        
+    }
     private void Update()
     {
         DefaultUpdate();
 
+        if (clock.activeSelf)
+        {
+            Clock();
+        }
+        if (isPlayer) return;
         MoveObject player = Game.instance.playerController.GetMoveObject();
         if (player == null) return;
+        if (player.type==MoveObjectType.Dead) return;
         if (Vector2.Distance(player.transform.position, rigidbody.position) < preBoomRadius)
         {
             if (!preBoom) {
-                preBoom = false;
+                preBoom = true;
                 PlayAnim("animState", 4);
                 return;
             }
             //Boom
             Boom();
         }
+        
     }
     void Boom()
     {
@@ -69,17 +81,19 @@ public class SeagullsMO : MoveObject
             {
                 if (mo != null)
                 {
+                    if (mo.type == MoveObjectType.Dead) continue;
                     if (Vector2.Distance(mo.transform.position, rigidbody.position)<hurtRadius)
                     {
                         mo.GetHurt(hurtValue, ((Vector2)mo.transform.position - rigidbody.position).normalized*100);
                     }
                 }
             }
+            ((PlayerController)controller).MoveObjectDead();
         }
         else
         {
             MoveObject player = Game.instance.playerController.GetMoveObject();
-            if (Vector2.Distance(player.transform.position, rigidbody.position)<hurtRadius && player._State != State.Roll)
+            if (Vector2.Distance(player.transform.position, rigidbody.position) < hurtRadius && player._State != State.Roll && player.type==MoveObjectType.Living)
             {
                 player.GetHurt(hurtValue, ((Vector2)player.transform.position - rigidbody.position).normalized*100);
             }

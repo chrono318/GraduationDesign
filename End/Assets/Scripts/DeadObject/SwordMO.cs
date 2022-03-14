@@ -37,7 +37,8 @@ public class SwordMO : MoveObject
     }
     bool AttackDis(Vector2 tar, Vector2 own, bool isLeft)
     {
-        if (tar.x - own.x <= attackRadius)
+        float detalX = (tar.x - own.x) * (isLeft ? -1 : 1);
+        if (detalX <= attackRadius && detalX>0)
         {
             if (Mathf.Abs(tar.y - own.y) < attackRadius / 2)
             {

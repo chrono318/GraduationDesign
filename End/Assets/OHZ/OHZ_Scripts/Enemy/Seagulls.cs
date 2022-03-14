@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Seagulls : MonoBehaviour
 {
+    public ParticleSystem particleSystem;
     //#对接#
     //添加敌人状态下，受伤闪白表现及受伤函数（含参数）
     //添加玩家状态下，受伤效果
@@ -422,4 +423,8 @@ public class Seagulls : MonoBehaviour
         }
     }
     #endregion
+    public void ShowParticle()
+    {
+        particleSystem.Play();
+    }
 }
