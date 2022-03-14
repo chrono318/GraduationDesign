@@ -1,0 +1,2408 @@
+fileFormatVersion: 2
+guid: b5eb53ee98a0abc4f8302f4217114f41
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: TownInteriorColor2@128x128_0
+  - first:
+      213: 21300002
+    second: TownInteriorColor2@128x128_1
+  - first:
+      213: 21300004
+    second: TownInteriorColor2@128x128_2
+  - first:
+      213: 21300006
+    second: TownInteriorColor2@128x128_3
+  - first:
+      213: 21300008
+    second: TownInteriorColor2@128x128_4
+  - first:
+      213: 21300010
+    second: TownInteriorColor2@128x128_5
+  - first:
+      213: 21300012
+    second: TownInteriorColor2@128x128_6
+  - first:
+      213: 21300014
+    second: TownInteriorColor2@128x128_7
+  - first:
+      213: 21300016
+    second: TownInteriorColor2@128x128_8
+  - first:
+      213: 21300018
+    second: TownInteriorColor2@128x128_9
+  - first:
+      213: 21300020
+    second: TownInteriorColor2@128x128_10
+  - first:
+      213: 21300022
+    second: TownInteriorColor2@128x128_11
+  - first:
+      213: 21300024
+    second: TownInteriorColor2@128x128_12
+  - first:
+      213: 21300026
+    second: TownInteriorColor2@128x128_13
+  - first:
+      213: 21300028
+    second: TownInteriorColor2@128x128_14
+  - first:
+      213: 21300030
+    second: TownInteriorColor2@128x128_15
+  - first:
+      213: 21300032
+    second: TownInteriorColor2@128x128_16
+  - first:
+      213: 21300034
+    second: TownInteriorColor2@128x128_17
+  - first:
+      213: 21300036
+    second: TownInteriorColor2@128x128_18
+  - first:
+      213: 21300038
+    second: TownInteriorColor2@128x128_19
+  - first:
+      213: 21300040
+    second: TownInteriorColor2@128x128_20
+  - first:
+      213: 21300042
+    second: TownInteriorColor2@128x128_21
+  - first:
+      213: 21300044
+    second: TownInteriorColor2@128x128_22
+  - first:
+      213: 21300046
+    second: TownInteriorColor2@128x128_23
+  - first:
+      213: 21300048
+    second: TownInteriorColor2@128x128_24
+  - first:
+      213: 21300050
+    second: TownInteriorColor2@128x128_25
+  - first:
+      213: 21300052
+    second: TownInteriorColor2@128x128_26
+  - first:
+      213: 21300054
+    second: TownInteriorColor2@128x128_27
+  - first:
+      213: 21300056
+    second: TownInteriorColor2@128x128_28
+  - first:
+      213: 21300058
+    second: TownInteriorColor2@128x128_29
+  - first:
+      213: 21300060
+    second: TownInteriorColor2@128x128_30
+  - first:
+      213: 21300062
+    second: TownInteriorColor2@128x128_31
+  - first:
+      213: 21300064
+    second: TownInteriorColor2@128x128_32
+  - first:
+      213: 21300066
+    second: TownInteriorColor2@128x128_33
+  - first:
+      213: 21300068
+    second: TownInteriorColor2@128x128_34
+  - first:
+      213: 21300070
+    second: TownInteriorColor2@128x128_35
+  - first:
+      213: 21300072
+    second: TownInteriorColor2@128x128_36
+  - first:
+      213: 21300074
+    second: TownInteriorColor2@128x128_37
+  - first:
+      213: 21300076
+    second: TownInteriorColor2@128x128_38
+  - first:
+      213: 21300078
+    second: TownInteriorColor2@128x128_39
+  - first:
+      213: 21300080
+    second: TownInteriorColor2@128x128_40
+  - first:
+      213: 21300082
+    second: TownInteriorColor2@128x128_41
+  - first:
+      213: 21300084
+    second: TownInteriorColor2@128x128_42
+  - first:
+      213: 21300086
+    second: TownInteriorColor2@128x128_43
+  - first:
+      213: 21300088
+    second: TownInteriorColor2@128x128_44
+  - first:
+      213: 21300090
+    second: TownInteriorColor2@128x128_45
+  - first:
+      213: 21300092
+    second: TownInteriorColor2@128x128_46
+  - first:
+      213: 21300094
+    second: TownInteriorColor2@128x128_47
+  - first:
+      213: 21300096
+    second: TownInteriorColor2@128x128_48
+  - first:
+      213: 21300098
+    second: TownInteriorColor2@128x128_49
+  - first:
+      213: 21300100
+    second: TownInteriorColor2@128x128_50
+  - first:
+      213: 21300102
+    second: TownInteriorColor2@128x128_51
+  - first:
+      213: 21300104
+    second: TownInteriorColor2@128x128_52
+  - first:
+      213: 21300106
+    second: TownInteriorColor2@128x128_53
+  - first:
+      213: 21300108
+    second: TownInteriorColor2@128x128_54
+  - first:
+      213: 21300110
+    second: TownInteriorColor2@128x128_55
+  - first:
+      213: 21300112
+    second: TownInteriorColor2@128x128_56
+  - first:
+      213: 21300114
+    second: TownInteriorColor2@128x128_57
+  - first:
+      213: 21300116
+    second: TownInteriorColor2@128x128_58
+  - first:
+      213: 21300118
+    second: TownInteriorColor2@128x128_59
+  - first:
+      213: 21300120
+    second: TownInteriorColor2@128x128_60
+  - first:
+      213: 21300122
+    second: TownInteriorColor2@128x128_61
+  - first:
+      213: 21300124
+    second: TownInteriorColor2@128x128_62
+  - first:
+      213: 21300126
+    second: TownInteriorColor2@128x128_63
+  - first:
+      213: 21300128
+    second: TownInteriorColor2@128x128_64
+  - first:
+      213: 21300130
+    second: TownInteriorColor2@128x128_65
+  - first:
+      213: 21300132
+    second: TownInteriorColor2@128x128_66
+  - first:
+      213: 21300134
+    second: TownInteriorColor2@128x128_67
+  - first:
+      213: 21300136
+    second: TownInteriorColor2@128x128_68
+  - first:
+      213: 21300138
+    second: TownInteriorColor2@128x128_69
+  - first:
+      213: 21300140
+    second: TownInteriorColor2@128x128_70
+  - first:
+      213: 21300142
+    second: TownInteriorColor2@128x128_71
+  - first:
+      213: 21300144
+    second: TownInteriorColor2@128x128_72
+  - first:
+      213: 21300146
+    second: TownInteriorColor2@128x128_73
+  - first:
+      213: 21300148
+    second: TownInteriorColor2@128x128_74
+  - first:
+      213: 21300150
+    second: TownInteriorColor2@128x128_75
+  - first:
+      213: 21300152
+    second: TownInteriorColor2@128x128_76
+  - first:
+      213: 21300154
+    second: TownInteriorColor2@128x128_77
+  - first:
+      213: 21300156
+    second: TownInteriorColor2@128x128_78
+  - first:
+      213: 21300158
+    second: TownInteriorColor2@128x128_79
+  - first:
+      213: 21300160
+    second: TownInteriorColor2@128x128_80
+  - first:
+      213: 21300162
+    second: TownInteriorColor2@128x128_81
+  - first:
+      213: 21300164
+    second: TownInteriorColor2@128x128_82
+  - first:
+      213: 21300166
+    second: TownInteriorColor2@128x128_83
+  - first:
+      213: 21300168
+    second: TownInteriorColor2@128x128_84
+  - first:
+      213: 21300170
+    second: TownInteriorColor2@128x128_85
+  - first:
+      213: 21300172
+    second: TownInteriorColor2@128x128_86
+  - first:
+      213: 21300174
+    second: TownInteriorColor2@128x128_87
+  - first:
+      213: 21300176
+    second: TownInteriorColor2@128x128_88
+  - first:
+      213: 21300178
+    second: TownInteriorColor2@128x128_89
+  - first:
+      213: 21300180
+    second: TownInteriorColor2@128x128_90
+  - first:
+      213: 21300182
+    second: TownInteriorColor2@128x128_91
+  - first:
+      213: 21300184
+    second: TownInteriorColor2@128x128_92
+  - first:
+      213: 21300186
+    second: TownInteriorColor2@128x128_93
+  - first:
+      213: 21300188
+    second: TownInteriorColor2@128x128_94
+  - first:
+      213: 21300190
+    second: TownInteriorColor2@128x128_95
+  - first:
+      213: 21300192
+    second: TownInteriorColor2@128x128_96
+  - first:
+      213: 21300194
+    second: TownInteriorColor2@128x128_97
+  - first:
+      213: 21300196
+    second: TownInteriorColor2@128x128_98
+  - first:
+      213: 21300198
+    second: TownInteriorColor2@128x128_99
+  - first:
+      213: 21300200
+    second: TownInteriorColor2@128x128_100
+  - first:
+      213: 21300202
+    second: TownInteriorColor2@128x128_101
+  - first:
+      213: 21300204
+    second: TownInteriorColor2@128x128_102
+  - first:
+      213: 21300206
+    second: TownInteriorColor2@128x128_103
+  - first:
+      213: 21300208
+    second: TownInteriorColor2@128x128_104
+  - first:
+      213: 21300210
+    second: TownInteriorColor2@128x128_105
+  - first:
+      213: 21300212
+    second: TownInteriorColor2@128x128_106
+  - first:
+      213: 21300214
+    second: TownInteriorColor2@128x128_107
+  - first:
+      213: 21300216
+    second: TownInteriorColor2@128x128_108
+  - first:
+      213: 21300218
+    second: TownInteriorColor2@128x128_109
+  - first:
+      213: 21300220
+    second: TownInteriorColor2@128x128_110
+  - first:
+      213: 21300222
+    second: TownInteriorColor2@128x128_111
+  - first:
+      213: 21300224
+    second: TownInteriorColor2@128x128_112
+  - first:
+      213: 21300226
+    second: TownInteriorColor2@128x128_113
+  - first:
+      213: 21300228
+    second: TownInteriorColor2@128x128_114
+  - first:
+      213: 21300230
+    second: TownInteriorColor2@128x128_115
+  - first:
+      213: 21300232
+    second: TownInteriorColor2@128x128_116
+  - first:
+      213: 21300234
+    second: TownInteriorColor2@128x128_117
+  - first:
+      213: 21300236
+    second: TownInteriorColor2@128x128_118
+  - first:
+      213: 21300238
+    second: TownInteriorColor2@128x128_119
+  - first:
+      213: 21300240
+    second: TownInteriorColor2@128x128_120
+  - first:
+      213: 21300242
+    second: TownInteriorColor2@128x128_121
+  - first:
+      213: 21300244
+    second: TownInteriorColor2@128x128_122
+  - first:
+      213: 21300246
+    second: TownInteriorColor2@128x128_123
+  - first:
+      213: 21300248
+    second: TownInteriorColor2@128x128_124
+  - first:
+      213: 21300250
+    second: TownInteriorColor2@128x128_125
+  - first:
+      213: 21300252
+    second: TownInteriorColor2@128x128_126
+  - first:
+      213: 21300254
+    second: TownInteriorColor2@128x128_127
+  - first:
+      213: 21300256
+    second: TownInteriorColor2@128x128_128
+  - first:
+      213: 21300258
+    second: TownInteriorColor2@128x128_129
+  - first:
+      213: 21300260
+    second: TownInteriorColor2@128x128_130
+  - first:
+      213: 21300262
+    second: TownInteriorColor2@128x128_131
+  - first:
+      213: 21300264
+    second: TownInteriorColor2@128x128_132
+  - first:
+      213: 21300266
+    second: TownInteriorColor2@128x128_133
+  - first:
+      213: 21300268
+    second: TownInteriorColor2@128x128_134
+  - first:
+      213: 21300270
+    second: TownInteriorColor2@128x128_135
+  - first:
+      213: 21300272
+    second: TownInteriorColor2@128x128_136
+  - first:
+      213: 21300274
+    second: TownInteriorColor2@128x128_137
+  - first:
+      213: 21300276
+    second: TownInteriorColor2@128x128_138
+  - first:
+      213: 21300278
+    second: TownInteriorColor2@128x128_139
+  - first:
+      213: 21300280
+    second: TownInteriorColor2@128x128_140
+  - first:
+      213: 21300282
+    second: TownInteriorColor2@128x128_141
+  - first:
+      213: 21300284
+    second: TownInteriorColor2@128x128_142
+  - first:
+      213: 21300286
+    second: TownInteriorColor2@128x128_143
+  - first:
+      213: 21300288
+    second: TownInteriorColor2@128x128_144
+  - first:
+      213: 21300290
+    second: TownInteriorColor2@128x128_145
+  - first:
+      213: 21300292
+    second: TownInteriorColor2@128x128_146
+  - first:
+      213: 21300294
+    second: TownInteriorColor2@128x128_147
+  - first:
+      213: 21300296
+    second: TownInteriorColor2@128x128_148
+  - first:
+      213: 21300298
+    second: TownInteriorColor2@128x128_149
+  - first:
+      213: 21300300
+    second: TownInteriorColor2@128x128_150
+  - first:
+      213: 21300302
+    second: TownInteriorColor2@128x128_151
+  - first:
+      213: 21300304
+    second: TownInteriorColor2@128x128_152
+  - first:
+      213: 21300306
+    second: TownInteriorColor2@128x128_153
+  - first:
+      213: 21300308
+    second: TownInteriorColor2@128x128_154
+  - first:
+      213: 21300310
+    second: TownInteriorColor2@128x128_155
+  - first:
+      213: 21300312
+    second: TownInteriorColor2@128x128_156
+  - first:
+      213: 21300314
+    second: TownInteriorColor2@128x128_157
+  - first:
+      213: 21300316
+    second: TownInteriorColor2@128x128_158
+  - first:
+      213: 21300318
+    second: TownInteriorColor2@128x128_159
+  - first:
+      213: 21300320
+    second: TownInteriorColor2@128x128_160
+  - first:
+      213: 21300322
+    second: TownInteriorColor2@128x128_161
+  - first:
+      213: 21300324
+    second: TownInteriorColor2@128x128_162
+  - first:
+      213: 21300326
+    second: TownInteriorColor2@128x128_163
+  - first:
+      213: 21300328
+    second: TownInteriorColor2@128x128_164
+  - first:
+      213: 21300330
+    second: TownInteriorColor2@128x128_165
+  - first:
+      213: 21300332
+    second: TownInteriorColor2@128x128_166
+  - first:
+      213: 21300334
+    second: TownInteriorColor2@128x128_167
+  - first:
+      213: 21300336
+    second: TownInteriorColor2@128x128_168
+  - first:
+      213: 21300338
+    second: TownInteriorColor2@128x128_169
+  - first:
+      213: 21300340
+    second: TownInteriorColor2@128x128_170
+  - first:
+      213: 21300342
+    second: TownInteriorColor2@128x128_171
+  - first:
+      213: 21300344
+    second: TownInteriorColor2@128x128_172
+  - first:
+      213: 21300346
+    second: TownInteriorColor2@128x128_173
+  - first:
+      213: 21300348
+    second: TownInteriorColor2@128x128_174
+  - first:
+      213: 21300350
+    second: TownInteriorColor2@128x128_175
+  - first:
+      213: 21300352
+    second: TownInteriorColor2@128x128_176
+  - first:
+      213: 21300354
+    second: TownInteriorColor2@128x128_177
+  - first:
+      213: 21300356
+    second: TownInteriorColor2@128x128_178
+  - first:
+      213: 21300358
+    second: TownInteriorColor2@128x128_179
+  - first:
+      213: 21300360
+    second: TownInteriorColor2@128x128_180
+  - first:
+      213: 21300362
+    second: TownInteriorColor2@128x128_181
+  - first:
+      213: 21300364
+    second: TownInteriorColor2@128x128_182
+  - first:
+      213: 21300366
+    second: TownInteriorColor2@128x128_183
+  - first:
+      213: 21300368
+    second: TownInteriorColor2@128x128_184
+  - first:
+      213: 21300370
+    second: TownInteriorColor2@128x128_185
+  - first:
+      213: 21300372
+    second: TownInteriorColor2@128x128_186
+  - first:
+      213: 21300374
+    second: TownInteriorColor2@128x128_187
+  - first:
+      213: 21300376
+    second: TownInteriorColor2@128x128_188
+  - first:
+      213: 21300378
+    second: TownInteriorColor2@128x128_189
+  - first:
+      213: 21300380
+    second: TownInteriorColor2@128x128_190
+  - first:
+      213: 21300382
+    second: TownInteriorColor2@128x128_191
+  - first:
+      213: 21300384
+    second: TownInteriorColor2@128x128_192
+  - first:
+      213: 21300386
+    second: TownInteriorColor2@128x128_193
+  - first:
+      213: 21300388
+    second: TownInteriorColor2@128x128_194
+  - first:
+      213: 21300390
+    second: TownInteriorColor2@128x128_195
+  - first:
+      213: 21300392
+    second: TownInteriorColor2@128x128_196
+  - first:
+      213: 21300394
+    second: TownInteriorColor2@128x128_197
+  - first:
+      213: 21300396
+    second: TownInteriorColor2@128x128_198
+  - first:
+      213: 21300398
+    second: TownInteriorColor2@128x128_199
+  - first:
+      213: 21300400
+    second: TownInteriorColor2@128x128_200
+  - first:
+      213: 21300402
+    second: TownInteriorColor2@128x128_201
+  - first:
+      213: 21300404
+    second: TownInteriorColor2@128x128_202
+  - first:
+      213: 21300406
+    second: TownInteriorColor2@128x128_203
+  - first:
+      213: 21300408
+    second: TownInteriorColor2@128x128_204
+  - first:
+      213: 21300410
+    second: TownInteriorColor2@128x128_205
+  - first:
+      213: 21300412
+    second: TownInteriorColor2@128x128_206
+  - first:
+      213: 21300414
+    second: TownInteriorColor2@128x128_207
+  - first:
+      213: 21300416
+    second: TownInteriorColor2@128x128_208
+  - first:
+      213: 21300418
+    second: TownInteriorColor2@128x128_209
+  - first:
+      213: 21300420
+    second: TownInteriorColor2@128x128_210
+  - first:
+      213: 21300422
+    second: TownInteriorColor2@128x128_211
+  - first:
+      213: 21300424
+    second: TownInteriorColor2@128x128_212
+  - first:
+      213: 21300426
+    second: TownInteriorColor2@128x128_213
+  - first:
+      213: 21300428
+    second: TownInteriorColor2@128x128_214
+  - first:
+      213: 21300430
+    second: TownInteriorColor2@128x128_215
+  - first:
+      213: 21300432
+    second: TownInteriorColor2@128x128_216
+  - first:
+      213: 21300434
+    second: TownInteriorColor2@128x128_217
+  - first:
+      213: 21300436
+    second: TownInteriorColor2@128x128_218
+  - first:
+      213: 21300438
+    second: TownInteriorColor2@128x128_219
+  - first:
+      213: 21300440
+    second: TownInteriorColor2@128x128_220
+  - first:
+      213: 21300442
+    second: TownInteriorColor2@128x128_221
+  - first:
+      213: 21300444
+    second: TownInteriorColor2@128x128_222
+  - first:
+      213: 21300446
+    second: TownInteriorColor2@128x128_223
+  - first:
+      213: 21300448
+    second: TownInteriorColor2@128x128_224
+  - first:
+      213: 21300450
+    second: TownInteriorColor2@128x128_225
+  - first:
+      213: 21300452
+    second: TownInteriorColor2@128x128_226
+  - first:
+      213: 21300454
+    second: TownInteriorColor2@128x128_227
+  - first:
+      213: 21300456
+    second: TownInteriorColor2@128x128_228
+  - first:
+      213: 21300458
+    second: TownInteriorColor2@128x128_229
+  - first:
+      213: 21300460
+    second: TownInteriorColor2@128x128_230
+  - first:
+      213: 21300462
+    second: TownInteriorColor2@128x128_231
+  - first:
+      213: 21300464
+    second: TownInteriorColor2@128x128_232
+  - first:
+      213: 21300466
+    second: TownInteriorColor2@128x128_233
+  - first:
+      213: 21300468
+    second: TownInteriorColor2@128x128_234
+  - first:
+      213: 21300470
+    second: TownInteriorColor2@128x128_235
+  - first:
+      213: 21300472
+    second: TownInteriorColor2@128x128_236
+  - first:
+      213: 21300474
+    second: TownInteriorColor2@128x128_237
+  - first:
+      213: 21300476
+    second: TownInteriorColor2@128x128_238
+  - first:
+      213: 21300478
+    second: TownInteriorColor2@128x128_239
+  - first:
+      213: 21300480
+    second: TownInteriorColor2@128x128_240
+  - first:
+      213: 21300482
+    second: TownInteriorColor2@128x128_241
+  - first:
+      213: 21300484
+    second: TownInteriorColor2@128x128_242
+  - first:
+      213: 21300486
+    second: TownInteriorColor2@128x128_243
+  - first:
+      213: 21300488
+    second: TownInteriorColor2@128x128_244
+  - first:
+      213: 21300490
+    second: TownInteriorColor2@128x128_245
+  - first:
+      213: 21300492
+    second: TownInteriorColor2@128x128_246
+  - first:
+      213: 21300494
+    second: TownInteriorColor2@128x128_247
+  - first:
+      213: 21300496
+    second: TownInteriorColor2@128x128_248
+  - first:
+      213: 21300498
+    second: TownInteriorColor2@128x128_249
+  - first:
+      213: 21300500
+    second: TownInteriorColor2@128x128_250
+  - first:
+      213: 21300502
+    second: TownInteriorColor2@128x128_251
+  - first:
+      213: 21300504
+    second: TownInteriorColor2@128x128_252
+  - first:
+      213: 21300506
+    second: TownInteriorColor2@128x128_253
+  - first:
+      213: 21300508
+    second: TownInteriorColor2@128x128_254
+  - first:
+      213: 21300510
+    second: TownInteriorColor2@128x128_255
+  - first:
+      213: 5058539963912451798
+    second: Interior Color 2@128x128_0
+  - first:
+      213: 1211528110109932499
+    second: Interior Color 2@128x128_1
+  - first:
+      213: -3040910913677309442
+    second: Interior Color 2@128x128_2
+  - first:
+      213: -3340783300009112481
+    second: Interior Color 2@128x128_3
+  - first:
+      213: 344096002476290692
+    second: Interior Color 2@128x128_4
+  - first:
+      213: 1702133908156180338
+    second: Interior Color 2@128x128_5
+  - first:
+      213: 4167275343240819028
+    second: Interior Color 2@128x128_6
+  - first:
+      213: 506873163627535729
+    second: Interior Color 2@128x128_7
+  - first:
+      213: -3419935918774668105
+    second: Interior Color 2@128x128_8
+  - first:
+      213: -8378774942957267779
+    second: Interior Color 2@128x128_9
+  - first:
+      213: -2482462443913509087
+    second: Interior Color 2@128x128_10
+  - first:
+      213: 6582627687493017982
+    second: Interior Color 2@128x128_11
+  - first:
+      213: -3022580428448372172
+    second: Interior Color 2@128x128_12
+  - first:
+      213: -4425617615254873410
+    second: Interior Color 2@128x128_13
+  - first:
+      213: -2162291766949349716
+    second: Interior Color 2@128x128_14
+  - first:
+      213: 4506081993310177846
+    second: Interior Color 2@128x128_15
+  - first:
+      213: 1359272099671939313
+    second: Interior Color 2@128x128_16
+  - first:
+      213: -2088958282923846075
+    second: Interior Color 2@128x128_17
+  - first:
+      213: 3162779669384115916
+    second: Interior Color 2@128x128_18
+  - first:
+      213: 3940199947518322815
+    second: Interior Color 2@128x128_19
+  - first:
+      213: 4644172654678476786
+    second: Interior Color 2@128x128_20
+  - first:
+      213: -4786170218131510308
+    second: Interior Color 2@128x128_21
+  - first:
+      213: 4442597978324853915
+    second: Interior Color 2@128x128_22
+  - first:
+      213: -454521681904388764
+    second: Interior Color 2@128x128_23
+  - first:
+      213: 2154102914925658204
+    second: Interior Color 2@128x128_24
+  - first:
+      213: 2647632071867186153
+    second: Interior Color 2@128x128_25
+  - first:
+      213: 2551071280045848070
+    second: Interior Color 2@128x128_26
+  - first:
+      213: 1077558103354396093
+    second: Interior Color 2@128x128_27
+  - first:
+      213: -987004322572176211
+    second: Interior Color 2@128x128_28
+  - first:
+      213: 2240136394948657550
+    second: Interior Color 2@128x128_29
+  - first:
+      213: 8198727478273226815
+    second: Interior Color 2@128x128_30
+  - first:
+      213: 7539167099665402135
+    second: Interior Color 2@128x128_31
+  - first:
+      213: -3895126854760551586
+    second: Interior Color 2@128x128_32
+  - first:
+      213: -9019139205757545459
+    second: Interior Color 2@128x128_33
+  - first:
+      213: 4908376302773540292
+    second: Interior Color 2@128x128_34
+  - first:
+      213: -565921221652642316
+    second: Interior Color 2@128x128_35
+  - first:
+      213: 5889507666517126245
+    second: Interior Color 2@128x128_36
+  - first:
+      213: -3545067375535441274
+    second: Interior Color 2@128x128_37
+  - first:
+      213: 7987509779859961340
+    second: Interior Color 2@128x128_38
+  - first:
+      213: 478359908739450452
+    second: Interior Color 2@128x128_39
+  - first:
+      213: -2120915769906801579
+    second: Interior Color 2@128x128_40
+  - first:
+      213: 4240908700622749341
+    second: Interior Color 2@128x128_41
+  - first:
+      213: -2216825723326664618
+    second: Interior Color 2@128x128_42
+  - first:
+      213: -3399984356833600097
+    second: Interior Color 2@128x128_43
+  - first:
+      213: 2109336335511149325
+    second: Interior Color 2@128x128_44
+  - first:
+      213: -3370878628835959041
+    second: Interior Color 2@128x128_45
+  - first:
+      213: 1338341022761514422
+    second: Interior Color 2@128x128_46
+  - first:
+      213: 6208250641960592654
+    second: Interior Color 2@128x128_47
+  - first:
+      213: 8244240929259164254
+    second: Interior Color 2@128x128_48
+  - first:
+      213: -6379508775429821045
+    second: Interior Color 2@128x128_49
+  - first:
+      213: 4798614934751300539
+    second: Interior Color 2@128x128_50
+  - first:
+      213: -1582662515122268405
+    second: Interior Color 2@128x128_51
+  - first:
+      213: -1571862685328406356
+    second: Interior Color 2@128x128_52
+  - first:
+      213: -1736786439807184324
+    second: Interior Color 2@128x128_53
+  - first:
+      213: -8425026567057447759
+    second: Interior Color 2@128x128_54
+  - first:
+      213: 2737365236688311744
+    second: Interior Color 2@128x128_55
+  - first:
+      213: 8672367811309474860
+    second: Interior Color 2@128x128_56
+  - first:
+      213: 9148274817593238860
+    second: Interior Color 2@128x128_57
+  - first:
+      213: -1032478182585067138
+    second: Interior Color 2@128x128_58
+  - first:
+      213: 4665201428926621208
+    second: Interior Color 2@128x128_59
+  - first:
+      213: -4388082678213044184
+    second: Interior Color 2@128x128_60
+  - first:
+      213: -8855184837785499096
+    second: Interior Color 2@128x128_61
+  - first:
+      213: 5473013139022659338
+    second: Interior Color 2@128x128_62
+  - first:
+      213: -6818572888872106785
+    second: Interior Color 2@128x128_63
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 16
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d67e1fbb4b833640800000000000000
+      internalID: 5058539963912451798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dbb08ea56630d010800000000000000
+      internalID: 1211528110109932499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9c7aca2a38cc5d0800000000000000
+      internalID: -3040910913677309442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c4663f94723a1d0800000000000000
+      internalID: -3340783300009112481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4823b3cbd7976c400800000000000000
+      internalID: 344096002476290692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277ebcb65c13f9710800000000000000
+      internalID: 1702133908156180338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 451fc1378d225d930800000000000000
+      internalID: 4167275343240819028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17d9230f476c80700800000000000000
+      internalID: 506873163627535729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b436d6c662f980d0800000000000000
+      internalID: -3419935918774668105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db49610059c98bb80800000000000000
+      internalID: -8378774942957267779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12789465f858c8dd0800000000000000
+      internalID: -2482462443913509087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e712ca961013a5b50800000000000000
+      internalID: 6582627687493017982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a69495d13ad06d0800000000000000
+      internalID: -3022580428448372172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba95031a3c0592c0800000000000000
+      internalID: -4425617615254873410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca67b32281ffdf1e0800000000000000
+      internalID: -2162291766949349716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_15
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63a890cd2b1d88e30800000000000000
+      internalID: 4506081993310177846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f89b0ed5ca1dd210800000000000000
+      internalID: 1359272099671939313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 546d6bb62878203e0800000000000000
+      internalID: -2088958282923846075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6b7782a5374eb20800000000000000
+      internalID: 3162779669384115916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78a7d7e9f66ea630800000000000000
+      internalID: 3940199947518322815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_20
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f781bd6c6a637040800000000000000
+      internalID: 4644172654678476786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_21
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdba7b97b8b149db0800000000000000
+      internalID: -4786170218131510308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_22
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b94ebe9c25747ad30800000000000000
+      internalID: 4442597978324853915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_23
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 465306f30f631b9f0800000000000000
+      internalID: -454521681904388764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5007cd2039e4ed10800000000000000
+      internalID: 2154102914925658204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb339377574eb420800000000000000
+      internalID: 2647632071867186153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60675d320d9376320800000000000000
+      internalID: 2551071280045848070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd4847c26144fe00800000000000000
+      internalID: 1077558103354396093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da47f494cc47d42f0800000000000000
+      internalID: -987004322572176211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81c655be20961f10800000000000000
+      internalID: 2240136394948657550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_30
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f38b5b8e33bb7c170800000000000000
+      internalID: 8198727478273226815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_31
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7194edd688080a860800000000000000
+      internalID: 7539167099665402135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5ba9ea43cab1f9c0800000000000000
+      internalID: -3895126854760551586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_33
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d04d5058da495d280800000000000000
+      internalID: -9019139205757545459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_34
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c513cedd3e0e1440800000000000000
+      internalID: 4908376302773540292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_35
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f50a84b5a17528f0800000000000000
+      internalID: -565921221652642316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_36
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56c61bcc40cbbb150800000000000000
+      internalID: 5889507666517126245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_37
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a326821046dcec0800000000000000
+      internalID: -3545067375535441274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_38
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5f28c33d559de60800000000000000
+      internalID: 7987509779859961340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_39
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45604337dc973a600800000000000000
+      internalID: 478359908739450452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5545e28285ef092e0800000000000000
+      internalID: -2120915769906801579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_41
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e7b717efbbada30800000000000000
+      internalID: 4240908700622749341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_42
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6507a28ffb04c31e0800000000000000
+      internalID: -2216825723326664618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d5c09cd34d0d0d0800000000000000
+      internalID: -3399984356833600097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_44
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b57fda83ed54d10800000000000000
+      internalID: 2109336335511149325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_45
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffed64b2fbb3831d0800000000000000
+      internalID: -3370878628835959041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b57802c11eb29210800000000000000
+      internalID: 1338341022761514422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_47
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e05e6aee013282650800000000000000
+      internalID: 6208250641960592654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e529a3ff17d696270800000000000000
+      internalID: 8244240929259164254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_49
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8da40f919e6777a0800000000000000
+      internalID: -6379508775429821045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_50
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb4cb7ebda189240800000000000000
+      internalID: 4798614934751300539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_51
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b079fcae3d0490ae0800000000000000
+      internalID: -1582662515122268405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_52
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca80f4d373f9f2ae0800000000000000
+      internalID: -1571862685328406356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_53
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c32d3945fe1b5e7e0800000000000000
+      internalID: -1736786439807184324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_54
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b4ef4799fa441b80800000000000000
+      internalID: -8425026567057447759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_55
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c55f49fd231df520800000000000000
+      internalID: 2737365236688311744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2412a283907a5870800000000000000
+      internalID: 8672367811309474860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_57
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c45eb4a1a7335fe70800000000000000
+      internalID: 9148274817593238860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_58
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e791da03096eba1f0800000000000000
+      internalID: -1032478182585067138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_59
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816e0d87bff1eb040800000000000000
+      internalID: 4665201428926621208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_60
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8281110ad066a13c0800000000000000
+      internalID: -4388082678213044184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_61
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ace5b8e401c1580800000000000000
+      internalID: -8855184837785499096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0fbd72e37c04fb40800000000000000
+      internalID: 5473013139022659338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interior Color 2@128x128_63
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd44bab75109f51a0800000000000000
+      internalID: -6818572888872106785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: da0813bcc50b59c4a9fda4f671475af1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
