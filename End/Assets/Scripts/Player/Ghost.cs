@@ -196,10 +196,10 @@ public class Ghost : Role
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //传送
-        if(collision.TryGetComponent<DeliveryDoor>(out DeliveryDoor door))
-        {
-            door.GhostDelivery(this);
-        }
+        //if(collision.TryGetComponent<DeliveryDoor>(out DeliveryDoor door))
+        //{
+        //    door.GhostDelivery(this);
+        //}
         //
         if (rush)
         {

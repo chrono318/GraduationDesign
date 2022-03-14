@@ -290,6 +290,7 @@ MonoBehaviour:
   fearTex: {fileID: 7693640464747203021}
   HP_Slider: {fileID: 6315446236470811666}
   HP_Slider_Bg: {fileID: 6315446236955025912}
+  Slider_Reload: {fileID: 5031237626199240358}
   lineRenderer: {fileID: 4234177061847617523}
   PossessTex: {fileID: 428388854604699665}
   PossessCircle: {fileID: 3000554393141360965}
@@ -772,6 +773,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef, type: 3}
+--- !u!114 &5031237626199240358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7088972857106381739, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 2860802501460448525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6315446237209333700 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8077034766889245385, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,

@@ -143,15 +143,18 @@ MonoBehaviour:
   fearTex: {fileID: 5137439823806708877}
   HP_Slider: {fileID: 3857249539656198053}
   HP_Slider_Bg: {fileID: 3857249541314878031}
+  Slider_Reload: {fileID: 2878300542188901649}
   lineRenderer: {fileID: 3059247385327259673}
   PossessTex: {fileID: 4236490267970264477}
   PossessCircle: {fileID: 3485340219602081917}
   injureAnimDur: 2
   MaxHp: 100
   speed: 10
+  ReloadTime: 2
   isPlayer: 0
   controller: {fileID: 0}
   _State: 0
+  lianfa: 0
   PlayerBullet: {fileID: 5570354312193352119, guid: 79f5da0329593f548bc40fe4a347840b,
     type: 3}
   EnemyBullet: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
@@ -924,15 +927,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94e1dd4d029b9e341b3ef385695a027c, type: 3}
---- !u!4 &8044115434134830321 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3079614912701820289, guid: 94e1dd4d029b9e341b3ef385695a027c,
-    type: 3}
-  m_PrefabInstance: {fileID: 4980573459970101616}
-  m_PrefabAsset: {fileID: 0}
 --- !u!120 &3059247385327259673 stripped
 LineRenderer:
   m_CorrespondingSourceObject: {fileID: 8028278100749500777, guid: 94e1dd4d029b9e341b3ef385695a027c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4980573459970101616}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8044115434134830321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3079614912701820289, guid: 94e1dd4d029b9e341b3ef385695a027c,
     type: 3}
   m_PrefabInstance: {fileID: 4980573459970101616}
   m_PrefabAsset: {fileID: 0}
@@ -1120,6 +1123,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef, type: 3}
+--- !u!114 &2878300542188901649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7088972857106381739, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 5012735457206595258}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3857249541063718003 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8077034766889245385, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,

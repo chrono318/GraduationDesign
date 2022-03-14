@@ -9,8 +9,8 @@ public class DeliveryDoor : MonoBehaviour
     public Vector2 CameraPosition;
 
     public bool teshu = false;
-    
-    IEnumerator Delivery(Role role)
+    bool CanThrough = false; 
+    IEnumerator Delivery(MoveObject role)
     {
         //
         Camera.main.GetComponent<CameraControl>().Fade();
@@ -27,8 +27,9 @@ public class DeliveryDoor : MonoBehaviour
     private bool isFirst = true;
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!CanThrough) return;
         if (!isFirst) return;
-        if (collision.gameObject.TryGetComponent<Role>(out Role player))
+        if (collision.transform.parent.TryGetComponent<MoveObject>(out MoveObject player))
         {
             if (!teshu)
             {
@@ -42,8 +43,12 @@ public class DeliveryDoor : MonoBehaviour
         }
     }
     //ghost
-    public void GhostDelivery(Ghost ghost)
+    //public void GhostDelivery(PlayerController ghost)
+    //{
+    //    StartCoroutine(Delivery(ghost));
+    //}
+    public void Pass()
     {
-        StartCoroutine(Delivery(ghost));
+        CanThrough = true;
     }
 }

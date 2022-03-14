@@ -82,7 +82,7 @@ public class PlayerController : Controller
         {
             float animSpeed = dirSpeed.magnitude > 0.01 ? 1 : 0;
             //MoveUpdate(dirSpeed, runSpeedScale);
-            MoveVelocity(dirSpeed * runSpeedScale, animSpeed);
+            moveObject.MoveVelocity(dirSpeed * runSpeedScale, animSpeed, dir.x < 0);
             TurnTowards(dir.x < 0);
         }
         else

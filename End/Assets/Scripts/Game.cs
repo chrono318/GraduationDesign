@@ -23,20 +23,26 @@ public class Game : MonoBehaviour
     public GameObject MinMap;
 
     [Header("Room1")]
+    public Vector4 roomCameraArea1; //x1,x2,y1,y2
     public List<MoveObject> enemies1;
     [Header("Room2")]
+    public Vector4 roomCameraArea2;
     public List<MoveObject> enemies2;
     [Header("Room3")]
+    public Vector4 roomCameraArea3;
     public List<MoveObject> enemies3;
     [Header("Room4")]
+    public Vector4 roomCameraArea4;
     public List<MoveObject> enemies4;
     [Header("Room5")]
+    public Vector4 roomCameraArea5;
     public List<MoveObject> enemies5;
 
     //
     [Header("Current Room")]
     public int RoomId = 1;
     private int CurEnemyCount;
+    public Vector4 curRoomCameraArea;
     public List<MoveObject> curEnemies;
     public Weiqi weiqi;
     private void Awake()
@@ -57,18 +63,23 @@ public class Game : MonoBehaviour
         switch (RoomId)
         {
             case 1:
+                curRoomCameraArea = roomCameraArea1;
                 curEnemies = enemies1;
                 break;
             case 2:
+                curRoomCameraArea = roomCameraArea2;
                 curEnemies = enemies2;
                 break;
             case 3:
+                curRoomCameraArea = roomCameraArea3;
                 curEnemies = enemies3;
                 break;
             case 4:
+                curRoomCameraArea = roomCameraArea4;
                 curEnemies = enemies4;
                 break;
             case 5:
+                curRoomCameraArea = roomCameraArea5;
                 curEnemies = enemies5;
                 break;
 
@@ -89,7 +100,8 @@ public class Game : MonoBehaviour
             //通关
             print("通关");
             MinMap.SetActive(true);
-            deliveryDoors[RoomId - 1].gameObject.SetActive(true);
+            //deliveryDoors[RoomId - 1].gameObject.SetActive(true);
+            deliveryDoors[RoomId - 1].Pass();
             return;
             //if (RoomId >= 4) return;
             //deliveryDoors[RoomId-1].gameObject.SetActive(true);
@@ -126,13 +138,13 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void TranslateToNewRoom(Role role)
+    public void TranslateToNewRoom(MoveObject role)
     {
         RoomId++;
         UpdateRoomEnemyList();
-        if (role.TryGetComponent<Player>(out player))
+        if (role.TryGetComponent<MoveObject>(out MoveObject p))
         {
-            //InformEnemie(player);
+            InformEnemie(p);
         }
         Game.instance.MinMap.SetActive(false);
     }

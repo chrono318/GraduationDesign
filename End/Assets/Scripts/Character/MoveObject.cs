@@ -31,6 +31,7 @@ public class MoveObject : MonoBehaviour
     public GameObject fearTex;
     public Slider HP_Slider;
     public Slider HP_Slider_Bg;
+    public Slider Slider_Reload;
     public LineRenderer lineRenderer;
     public GameObject PossessTex;
     public GameObject PossessCircle;
@@ -92,6 +93,7 @@ public class MoveObject : MonoBehaviour
         {
             renderer.material = material_Edge;
         }
+        Slider_Reload.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -218,7 +220,16 @@ public class MoveObject : MonoBehaviour
             rigidbody.velocity = speed * dirXscale;
             SetAnimSpeed(animSpeed);
             SetAnimLayerWeight(Mathf.Floor(animSpeed));
-            if(isPlayer && animSpeed > 0 && type ==MoveObjectType.Living)
+        }
+    }
+    public void MoveVelocity(Vector2 dirXscale, float animSpeed,bool isLeft)
+    {
+        if (_State == State.Normal)
+        {
+            rigidbody.velocity = speed * dirXscale;
+            SetAnimSpeed(animSpeed);
+            SetAnimLayerWeight(Mathf.Floor(animSpeed));
+            if (isPlayer && animSpeed > 0 && type == MoveObjectType.Living && (dirXscale.x < 0)==isLeft)
             {
                 Game.instance.weiqi.SetWeiqiPosition(foot.position, dirXscale.x < 0);
             }
@@ -442,10 +453,18 @@ public class MoveObject : MonoBehaviour
             case 3:
                 PlayAnim("reload");
                 //开始换弹动画
-
+                StartCoroutine(nameof(Reload));
                 break;
         }
         return false;
+    }
+    protected IEnumerator Reload()
+    {
+        Slider_Reload.gameObject.SetActive(true);
+        Slider_Reload.DOValue(1, ReloadTime);
+        yield return new WaitForSeconds(ReloadTime);
+        Slider_Reload.value = 0;
+        Slider_Reload.gameObject.SetActive(false);
     }
 }
 
