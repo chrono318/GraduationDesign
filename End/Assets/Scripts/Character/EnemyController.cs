@@ -116,6 +116,7 @@ public class EnemyController : Controller
             state = EnemyState.Ori;
             CancelInvoke(nameof(UpdatePath));
             MoveVelocity(Vector2.zero, 0f);
+            path = null;
             return;
         }
         Player = moveObject;

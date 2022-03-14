@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerController : Controller
 {
@@ -9,6 +11,11 @@ public class PlayerController : Controller
     [Tooltip("跑动时玩家速度/原物体速度")]
     public float runSpeedScale = 1.5f;
     public GameObject GFX;
+    public Slider HPSlider;
+    [Tooltip("每隔几秒扣除/增加一次San值")]
+    public float SanTime = 2f;
+    [Tooltip("每次扣除/增加多少San值")]
+    public Vector2 SanPerTime = new Vector2(10, 5);
 
     private CameraControl cameraControl;
     private float OriScale = 1f;
@@ -19,6 +26,7 @@ public class PlayerController : Controller
     {
         cameraControl = Camera.main.GetComponent<CameraControl>();
         OriScale = transform.localScale.x;
+        InvokeRepeating(nameof(SanUpdate), 0, SanTime);
     }
     
     // Update is called once per frame
@@ -27,19 +35,21 @@ public class PlayerController : Controller
 
         
     }
-    private void FixedUpdate()
+    /// <summary>
+    /// 扣血/加血
+    /// </summary>
+    void SanUpdate()
     {
-        //扣血/加血
         if (isPossess)
         {
-            if(curType == MoveObjectType.Living)
+            if (curType == MoveObjectType.Living)
             {
-                San += 0.05f;
+                San += SanPerTime.y;
                 San = Mathf.Min(San, 100f);
             }
             else
             {
-                San -= 0.1f;
+                San -= SanPerTime.x;
                 if (San <= 0)
                 {
                     // lose
@@ -48,14 +58,17 @@ public class PlayerController : Controller
         }
         else
         {
-            San -= 0.1f;
+            San -= SanPerTime.x;
             if (San <= 0)
             {
                 // lose
             }
         }
-   
-
+        HPSlider.DOValue(San / 100f, 0.5f);
+    }
+    private void FixedUpdate()
+    {
+        
         //移动
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -104,7 +117,7 @@ public class PlayerController : Controller
     }
     public void GetHurtEffect(Vector2 force)
     {
-        cameraControl.CameraShake(force.normalized);
+        cameraControl.CameraInjure(force.normalized);
     }
     /// <summary>
     /// 附身对象被击杀
