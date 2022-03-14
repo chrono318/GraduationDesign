@@ -187,7 +187,7 @@ public class MoveObject : MonoBehaviour
         _State = State.Roll;
         DefaultSkill = true;
         collider.enabled = false;
-        rigidbody.DOMove((target-rigidbody.position).normalized*10f+rigidbody.position, 1f);
+        rigidbody.DOMove((target-rigidbody.position).normalized*5f+rigidbody.position, 1f);
         PlayAnim("roll");
         SetAnimLayerWeight(0f);
         Invoke(nameof(AnimaInjureFinish), 1f);
