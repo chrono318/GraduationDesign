@@ -61,6 +61,7 @@ public class InteractionObject : MonoBehaviour
     /// <summary>
     /// 是否可以显示提示UI,用这个控制UI是否显示
     /// </summary>
+    [SerializeField]
     private bool m_canSetActiveUI;
     public bool canSetActiveUI
     {
@@ -127,6 +128,7 @@ public class InteractionObject : MonoBehaviour
     {
         CheckCanInteraction();
         ChangeInfo();
+        //PlayerDistance();
     }
 
     /// <summary>
@@ -158,7 +160,7 @@ public class InteractionObject : MonoBehaviour
             canSetActiveUI = true;
             CheckPressInteraction();
         }
-        else
+        else if(!isCollsion || canInteractionNum <= 0)
         {
             canInetraction = false;
             canSetActiveUI = false;
@@ -173,11 +175,11 @@ public class InteractionObject : MonoBehaviour
         if (canSetActiveUI)
         {
             UIInfo.transform.position = new Vector3(this.transform.position.x + uiOffset.x, this.transform.position.y + uiOffset.y, this.transform.position.z + uiOffset.z);
-            UIInfo.SetActive(true);
+            UIInfo.SetActive(canSetActiveUI);
         }
         else
         {
-            UIInfo.SetActive(false);
+            UIInfo.SetActive(canSetActiveUI);
         }
     }
 
@@ -257,13 +259,37 @@ public class InteractionObject : MonoBehaviour
         ActiveUI();
     }
 
+    ///// <summary>
+    ///// 与玩家之间的距离
+    ///// </summary>
+    //public void PlayerDistance()
+    //{
+    //    print(isCollsion);
+    //    if(Mathf.Abs(transform.position.x - player.transform.position.x) + Mathf.Abs(transform.position.y - player.transform.position.y) < 3)
+    //    {
+    //        isCollsion = true;
+    //    }
+    //    else
+    //    {
+    //        if (isCanRecoverInteractionNum)
+    //        {
+    //            isCollsion = false;
+    //            canInteractionNum = 1;
+    //        }
+    //        else
+    //        {
+    //            isCollsion = false;
+    //        }
+    //    }
+    //}
+
     //视情况若需更大的交互范围与提示范围，则挂载在控制交互范围的物体上
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))//整合时，换个判定方式。此判定不生效
         {
             isCollsion = true;
-       }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
