@@ -8,10 +8,11 @@ public class KnifeMO : MoveObject
     public ParticleSystem Right;
     public float value = 30f;
     public Vector2 Start_Duration;
+    bool isLeft = true;
     public override void Attack(Vector2 target)
     {
         PlayAnim("attack");
-        bool isLeft = (target.x - foot.position.x) < 0;
+        isLeft = (target.x - foot.position.x) < 0;
         if (isLeft)
         {
             Left.Play();
@@ -22,9 +23,9 @@ public class KnifeMO : MoveObject
             Right.Play();
             //Right.GetComponent<Attack_Item>().CheckAttack();
         }
-        checkAttack(isLeft);
+        Invoke(nameof(checkAttack), shakeTime);
     }
-    void checkAttack(bool left)
+    void checkAttack()
     {
         if (isPlayer)
         {
@@ -32,7 +33,7 @@ public class KnifeMO : MoveObject
             {
                 if (mo != null)
                 {
-                    if (AttackDis(mo.foot.position, foot.position,left))
+                    if (AttackDis(mo.foot.position, foot.position,isLeft))
                     {
                         mo.GetHurt(value, (mo.foot.position - foot.position).normalized);
                     }
@@ -42,7 +43,7 @@ public class KnifeMO : MoveObject
         else
         {
             MoveObject player = Game.instance.playerController.GetMoveObject();
-            if (AttackDis(player.foot.position, foot.position,left) && player._State!=State.Roll)
+            if (AttackDis(player.foot.position, foot.position,isLeft) && player._State!=State.Roll)
             {
                 player.GetHurt(value, (player.foot.position - foot.position).normalized);
             }

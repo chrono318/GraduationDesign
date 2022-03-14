@@ -102,5 +102,9 @@ public class DefaultBullet : MonoBehaviour
             GetComponent<Animator>().SetTrigger("destroy");
             collision.gameObject.GetComponent<MoveObject>().GetHurt(10, dir);
         }
+        if (collision.gameObject.tag == "Boom")
+        {
+            collision.gameObject.GetComponent<ExplosiveBarrels>().CallBoomAnim();
+        }
     }
 }

@@ -279,7 +279,7 @@ MonoBehaviour:
   shotReload: 0
   playerAttackSpace: 1
   attackSpace: 2
-  shakeTime: 0.35
+  shakeTime: 0.2
   FearRadius: 5
   GFX: {fileID: 6658694639532717434}
   animators:
@@ -296,6 +296,7 @@ MonoBehaviour:
   injureAnimDur: 2
   MaxHp: 100
   speed: 5
+  ReloadTime: 2
   isPlayer: 0
   controller: {fileID: 0}
   _State: 0

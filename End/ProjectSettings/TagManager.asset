@@ -8,6 +8,7 @@ TagManager:
   - Soul Frag
   - Wall
   - Level
+  - Boom
   layers:
   - Default
   - TransparentFX

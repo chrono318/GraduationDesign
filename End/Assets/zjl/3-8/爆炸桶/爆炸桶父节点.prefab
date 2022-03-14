@@ -125,9 +125,10 @@ GameObject:
   - component: {fileID: 4133983984167151544}
   - component: {fileID: 2139953399030738831}
   - component: {fileID: 461822161450360221}
+  - component: {fileID: 3577891925579362082}
   m_Layer: 0
   m_Name: Barren
-  m_TagString: Untagged
+  m_TagString: Boom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,7 +213,7 @@ MonoBehaviour:
   radius: 5
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   boomForce: 10
 --- !u!61 &2139953399030738831
 BoxCollider2D:
@@ -259,3 +260,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &3577891925579362082
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470142842902813154}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7

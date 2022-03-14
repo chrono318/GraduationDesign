@@ -85,7 +85,7 @@ public class Sunken : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<MoveObject>(out MoveObject mo))
+        if (collision.transform.parent.TryGetComponent<MoveObject>(out MoveObject mo))
         {
             mo.GetHurt(20f, new Vector2(0,0));
         }
