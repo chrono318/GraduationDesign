@@ -221,7 +221,7 @@ public class MoveObject : MonoBehaviour
                 SetAnimLayerWeight(0f);
                 StartCoroutine(nameof(EnemyInjured));
                 rigidbody.velocity = Vector2.zero;
-                rigidbody.AddForce(force*10);
+                rigidbody.AddForce(force*100);
             }
             
         }
@@ -291,9 +291,15 @@ public class MoveObject : MonoBehaviour
     {
         _State = State.DeadDead;
         collider.enabled = false;
+        if(TryGetComponent(out EnemyController enemyController))
+        {
+            Destroy(enemyController);
+        }
         material_Body.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
         material_Edge.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
         //Destroy(gameObject);
+        Destroy(collider);
+        Destroy(rigidbody);
     }
     public IEnumerator PlayerInjured()
     {
