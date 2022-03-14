@@ -265,7 +265,7 @@ public class MoveObject : MonoBehaviour
             {
                 SetAnimLayerWeight(0f);
                 StartCoroutine(nameof(EnemyInjured));
-                rigidbody.AddForce(force*100);
+                rigidbody.AddForce(force*1000);
             }
             
         }
@@ -275,6 +275,7 @@ public class MoveObject : MonoBehaviour
             SetAnimLayerWeight(0f);
 
             _State = State.Dead;
+            rigidbody.AddForce(force * 5000);
             if (isPlayer)
             {
                 //Player dead;

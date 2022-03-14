@@ -87,7 +87,7 @@ public class DefaultBullet : MonoBehaviour
         {
             GetComponent<Animator>().SetTrigger("destroy");
         }
-        Vector3 dir = (collision.transform.position - transform.position).normalized;
+        Vector3 dir = transform.TransformVector(Vector3.right);
         dir.z = 0;
         if (collision.gameObject.tag == "Player" && targetIsPlayer)
         {
