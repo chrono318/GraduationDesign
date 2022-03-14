@@ -10,9 +10,9 @@ public class UITips : MonoBehaviour
     {
         text.text = str;
     }
-    public void AAADestroy()
-    {
-        if (!runInEditMode)
-            gameObject.SetActive(false);
-    }
+    //public void AAADestroy()
+    //{
+    //    if (!runInEditMode)
+    //        gameObject.SetActive(false);
+    //}
 }
