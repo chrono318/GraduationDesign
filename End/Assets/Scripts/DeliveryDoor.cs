@@ -9,7 +9,7 @@ public class DeliveryDoor : MonoBehaviour
     public Vector2 CameraPosition;
 
     public bool teshu = false;
-    bool CanThrough = false; 
+    public bool CanThrough = false; 
     IEnumerator Delivery(MoveObject role)
     {
         //
@@ -17,7 +17,7 @@ public class DeliveryDoor : MonoBehaviour
 
         yield return new WaitForSeconds(0.9f);
 
-        Camera.main.transform.position = new Vector3(CameraPosition.x, CameraPosition.y, -20);
+        //Camera.main.transform.position = new Vector3(CameraPosition.x, CameraPosition.y, -20);
         role.transform.position = targetPos.position;
 
         yield return new WaitForSeconds(1f);
@@ -29,8 +29,10 @@ public class DeliveryDoor : MonoBehaviour
     {
         if (!CanThrough) return;
         if (!isFirst) return;
-        if (collision.transform.parent.TryGetComponent<MoveObject>(out MoveObject player))
+        print(collision.gameObject.name);
+        if (collision.transform.TryGetComponent<MoveObject>(out MoveObject player))
         {
+            if (!player.isPlayer) return;
             if (!teshu)
             {
                 StartCoroutine(Delivery(player));

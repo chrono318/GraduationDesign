@@ -41,7 +41,7 @@ public class Game : MonoBehaviour
     //
     [Header("Current Room")]
     public int RoomId = 1;
-    private int CurEnemyCount;
+    public int CurEnemyCount;
     public Vector4 curRoomCameraArea;
     public List<MoveObject> curEnemies;
     public Weiqi weiqi;
@@ -95,6 +95,7 @@ public class Game : MonoBehaviour
     /// </summary>
     public void CheckIfPass()
     {
+        print("64865468");
         CurEnemyCount--;
         KillEnemy();
         if (CurEnemyCount <= 0)

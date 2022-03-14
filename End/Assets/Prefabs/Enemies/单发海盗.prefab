@@ -252,13 +252,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  attackRadius: 10
+  attackRadius: 7
   bulletNum: 6
   shotReload: 2
   playerAttackSpace: 0.3
   attackSpace: 0.3
   shakeTime: 0
-  FearRadius: 5
+  FearRadius: 3
   GFX: {fileID: 3689475351387074116}
   animators:
   - {fileID: 3689475351387074115}
@@ -274,7 +274,7 @@ MonoBehaviour:
   PossessCircle: {fileID: 3456839748208379468}
   injureAnimDur: 2
   MaxHp: 100
-  speed: 3
+  speed: 1
   ReloadTime: 2
   isPlayer: 0
   controller: {fileID: 0}

@@ -287,7 +287,6 @@ public class MoveObject : MonoBehaviour
                 StartCoroutine(nameof(DeadNoPossess));
                 StopCoroutine(nameof(EnemyInjured));
                 //
-                Game.instance.DeleteEnemyMO(this);
                 Game.instance.CheckIfPass();
                 collider.enabled = false;
                 rigidbody.velocity = Vector2.zero;
@@ -297,6 +296,8 @@ public class MoveObject : MonoBehaviour
                 material_Body.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
                 material_Edge.SetVector("_Color1", new Vector4(0, 0.9441266f, 1,1));
                 material_Body.SetFloat("_Shine", 0f);
+                Game.instance.DeleteEnemyMO(this);
+
             }
         }
         CancelInvoke(nameof(CloseHP));

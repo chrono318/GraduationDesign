@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  attackRadius: 4
+  attackRadius: 2
   bulletNum: 0
   shotReload: 0
   playerAttackSpace: 1
@@ -383,7 +383,7 @@ MonoBehaviour:
   PossessCircle: {fileID: 4976886403772060597}
   injureAnimDur: 2
   MaxHp: 100
-  speed: 10
+  speed: 2
   ReloadTime: 2
   isPlayer: 0
   controller: {fileID: 0}

@@ -789,7 +789,7 @@ MonoBehaviour:
   playerAttackSpace: 10
   attackSpace: 10
   shakeTime: 0
-  FearRadius: 5
+  FearRadius: 3
   GFX: {fileID: 7783430853829223138}
   animators:
   - {fileID: 7783430853829223141}
@@ -804,7 +804,7 @@ MonoBehaviour:
   PossessCircle: {fileID: 269260963662730758}
   injureAnimDur: 2
   MaxHp: 100
-  speed: 2
+  speed: 1
   ReloadTime: 2
   isPlayer: 0
   controller: {fileID: 0}

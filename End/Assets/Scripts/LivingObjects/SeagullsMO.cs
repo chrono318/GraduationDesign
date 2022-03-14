@@ -97,6 +97,8 @@ public class SeagullsMO : MoveObject
             {
                 player.GetHurt(hurtValue, ((Vector2)player.transform.position - rigidbody.position).normalized*100);
             }
+            Game.instance.CheckIfPass();
+            Game.instance.DeleteEnemyMO(this);
         }
         Invoke(nameof(DestroySelf), 1f);
     }
