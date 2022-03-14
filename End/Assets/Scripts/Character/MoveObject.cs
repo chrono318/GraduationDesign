@@ -56,6 +56,7 @@ public class MoveObject : MonoBehaviour
         Normal,
         Injure,
         Dead,
+        rush,
         DeadDead
     }
     public State _State;
@@ -158,16 +159,21 @@ public class MoveObject : MonoBehaviour
     }
     public virtual void Attack(Vector2 target)
     {
-
+        
     }
     public virtual bool MouseBtnRight(Vector2 targetPos)
     {
         Skill(targetPos);
-        return false;
+        return true;
     }
     public virtual void Skill(Vector2 target)
     {
-
+        _State = State.rush;
+        collider.enabled = false;
+        rigidbody.DOMove((target-rigidbody.position).normalized*5f+rigidbody.position, 0.5f);
+        PlayAnim("roll");
+        SetAnimLayerWeight(0f);
+        Invoke(nameof(AnimaInjureFinish), 0.5f);
     }
     public void MoveUpdate(Vector2 dir , float speedScale)
     {
@@ -209,7 +215,7 @@ public class MoveObject : MonoBehaviour
         Hp -= value;
         if (Hp > 0)
         {
-            PlayAnim("Injure");
+            PlayAnim("injure");
             if (isPlayer)
             {
                 collider.enabled = false;
@@ -221,7 +227,6 @@ public class MoveObject : MonoBehaviour
             {
                 SetAnimLayerWeight(0f);
                 StartCoroutine(nameof(EnemyInjured));
-                rigidbody.velocity = Vector2.zero;
                 rigidbody.AddForce(force*100);
             }
             
@@ -242,6 +247,7 @@ public class MoveObject : MonoBehaviour
             {
                 _State = State.Dead;
                 StartCoroutine(nameof(DeadNoPossess));
+                StopCoroutine(nameof(EnemyInjured));
                 //
                 Game.instance.CheckIfPass();
                 collider.enabled = false;
@@ -272,6 +278,7 @@ public class MoveObject : MonoBehaviour
     public void AnimaInjureFinish()
     {
         collider.enabled = true;
+        _State = State.Normal;
     }
     public void AnimaDeadFinish()
     {
@@ -321,9 +328,12 @@ public class MoveObject : MonoBehaviour
     }
     public IEnumerator EnemyInjured()
     {
+        _State = State.Injure;
         material_Body.SetFloat("_Shine", 0.5f);
         yield return new WaitForSeconds(0.1f);
         material_Body.SetFloat("_Shine", 0f);
+        yield return new WaitForSeconds(Mathf.Max(injureAnimDur - 0.1f, 0f));
+        _State = State.Normal;
     }
     /// <summary>
     /// 附身设置
