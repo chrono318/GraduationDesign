@@ -13,7 +13,7 @@ public class PlayerController : Controller
     public GameObject GFX;
     public Slider HPSlider;
     [Tooltip("每隔几秒扣除/增加一次San值")]
-    public float SanTime = 2f;
+    public float SanTime = 0f;
     [Tooltip("每次扣除/增加多少San值")]
     public Vector2 SanPerTime = new Vector2(10, 5);
 
@@ -21,19 +21,21 @@ public class PlayerController : Controller
     private float OriScale = 1f;
     [HideInInspector]
     public float San = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
         cameraControl = Camera.main.GetComponent<CameraControl>();
         OriScale = transform.localScale.x;
-        InvokeRepeating(nameof(SanUpdate), 0, SanTime);
+        //InvokeRepeating(nameof(SanUpdate), 0, SanTime);
     }
     
     // Update is called once per frame
     void Update()
     {
+        SanUpdate();
+        print(Time.time);
 
-        
     }
     /// <summary>
     /// 扣血/加血

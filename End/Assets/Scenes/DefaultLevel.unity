@@ -2233,8 +2233,8 @@ MonoBehaviour:
   runSpeedScale: 1.5
   GFX: {fileID: 1388281119}
   HPSlider: {fileID: 772053896}
-  SanTime: 2
-  SanPerTime: {x: 10, y: 5}
+  SanTime: 0
+  SanPerTime: {x: 0.5, y: 0.1}
   San: 100
 --- !u!114 &204397224
 MonoBehaviour:
@@ -18950,6 +18950,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2139953399030738831, guid: 91f20b2b962f2e14a972bf5df091013c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.096876144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139953399030738831, guid: 91f20b2b962f2e14a972bf5df091013c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.2814369
+      objectReference: {fileID: 0}
     - target: {fileID: 8174546514621682054, guid: 91f20b2b962f2e14a972bf5df091013c,
         type: 3}
       propertyPath: m_Name
