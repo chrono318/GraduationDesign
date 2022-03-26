@@ -94,6 +94,8 @@ public class MoveObject : MonoBehaviour
             renderer.material = material_Edge;
         }
         Slider_Reload.gameObject.SetActive(false);
+        CloseHP();
+
     }
 
     // Update is called once per frame
@@ -455,7 +457,9 @@ public class MoveObject : MonoBehaviour
             case 3:
                 PlayAnim("reload");
                 //开始换弹动画
-                StartCoroutine(nameof(Reload));
+                if(isPlayer)
+                    StartCoroutine(nameof(Reload));
+
                 break;
         }
         return false;

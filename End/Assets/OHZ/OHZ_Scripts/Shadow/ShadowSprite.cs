@@ -42,7 +42,7 @@ public class ShadowSprite : MonoBehaviour
         alpha *= alphaMul;
         color = new Color(0.5f, 0.5f, 1, alpha);
         //thisSprite.color = color;
-        for(int i = 0; i < transform.GetChildCount(); i++)
+        for(int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).GetComponent<SpriteRenderer>().color = color;
         }

@@ -34,7 +34,6 @@ public class PlayerController : Controller
     void Update()
     {
         SanUpdate();
-        print(Time.time);
 
     }
     /// <summary>
