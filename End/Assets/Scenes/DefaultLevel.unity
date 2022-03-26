@@ -1323,6 +1323,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1644914527498585811, guid: e17be79f18ec49a40a9d4db1e086f366,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2313046299939738810, guid: e17be79f18ec49a40a9d4db1e086f366,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2228,8 +2233,8 @@ MonoBehaviour:
   runSpeedScale: 1.5
   GFX: {fileID: 1388281119}
   HPSlider: {fileID: 772053896}
-  SanTime: 2
-  SanPerTime: {x: 10, y: 5}
+  SanTime: 0
+  SanPerTime: {x: 0.5, y: 0.1}
   San: 100
 --- !u!114 &204397224
 MonoBehaviour:
@@ -5420,6 +5425,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 381306070697369950}
     m_Modifications:
+    - target: {fileID: 1644914527498585811, guid: e17be79f18ec49a40a9d4db1e086f366,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2313046299939738810, guid: e17be79f18ec49a40a9d4db1e086f366,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5941,6 +5951,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285418149932562398, guid: 9c255187d7aeb744fac7d7081a0272aa,
+        type: 3}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 554248791, guid: 9c255187d7aeb744fac7d7081a0272aa, type: 3}
@@ -7218,7 +7233,7 @@ PrefabInstance:
     - target: {fileID: 8620900383718657846, guid: 993f08f28928eb4479973ce5f595d89b,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8620900383718657846, guid: 993f08f28928eb4479973ce5f595d89b,
         type: 3}
@@ -9753,6 +9768,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3785845560731845382}
     m_Modifications:
+    - target: {fileID: 1644914527498585811, guid: e17be79f18ec49a40a9d4db1e086f366,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2313046299939738810, guid: e17be79f18ec49a40a9d4db1e086f366,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13599,6 +13619,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285418149932562398, guid: 9c255187d7aeb744fac7d7081a0272aa,
+        type: 3}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 554248791, guid: 9c255187d7aeb744fac7d7081a0272aa, type: 3}
@@ -18925,6 +18950,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2139953399030738831, guid: 91f20b2b962f2e14a972bf5df091013c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.096876144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139953399030738831, guid: 91f20b2b962f2e14a972bf5df091013c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.2814369
+      objectReference: {fileID: 0}
     - target: {fileID: 8174546514621682054, guid: 91f20b2b962f2e14a972bf5df091013c,
         type: 3}
       propertyPath: m_Name
@@ -20126,6 +20161,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 381306070697369950}
     m_Modifications:
+    - target: {fileID: 1644914527498585811, guid: e17be79f18ec49a40a9d4db1e086f366,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2313046299939738810, guid: e17be79f18ec49a40a9d4db1e086f366,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26015,7 +26055,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.070432186, y: -0.44036913}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -26026,7 +26066,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.61, y: 2.25}
+  m_Size: {x: 1.3987036, y: 1.3692617}
   m_EdgeRadius: 0
 --- !u!212 &1827125783061688189
 SpriteRenderer:
@@ -28004,6 +28044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8834703545749425590, guid: d6a5581c134dd1745ab09e93d7b972a4,
+        type: 3}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a5581c134dd1745ab09e93d7b972a4, type: 3}
