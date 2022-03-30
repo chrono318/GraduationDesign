@@ -31,7 +31,7 @@ public class ExplosiveBarrels : MonoBehaviour
             if (hit.gameObject.TryGetComponent<MoveObject>(out MoveObject moveObject))
             {
                 if (moveObject.type == MoveObjectType.Dead) continue;
-                moveObject.GetHurt(70f, -pos.normalized * boomForce);
+                moveObject.GetHurt(70f, -pos.normalized * boomForce,false);
             }
         }
 

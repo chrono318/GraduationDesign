@@ -102,7 +102,7 @@ public class EnemyController : Controller
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
-            if (path.vectorPath.Count != 1)
+            if (path.vectorPath.Count > currentWaypoint)
             {
                 float dirForAnim = path.vectorPath[currentWaypoint].x - path.vectorPath[currentWaypoint - 1].x;
                 TurnTowards(dirForAnim < 0);

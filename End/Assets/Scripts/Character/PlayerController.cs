@@ -7,6 +7,7 @@ using DG.Tweening;
 public class PlayerController : Controller
 {
     private bool isPossess = false;
+    private bool isRolling = false;
     public float ghostSpeed = 10f;
     [Tooltip("跑动时玩家速度/原物体速度")]
     public float runSpeedScale = 1.5f;
@@ -93,7 +94,7 @@ public class PlayerController : Controller
             transform.localScale = new Vector3((dir.x < 0 ? 1 : -1)*OriScale, OriScale, 1);
         }
 
-        if (!isPossess) return;
+        if (!isPossess || isRolling) return;
         //攻击（左键）/技能（右键）
         if (Input.GetMouseButton(0))
         {
@@ -108,6 +109,8 @@ public class PlayerController : Controller
             if (moveObject.MouseBtnRight(mousePos))
             {
                 //翻滚后效？
+                isRolling = true;
+                Invoke(nameof(RollFinish), 1f);
             }
         }
     }
@@ -171,5 +174,9 @@ public class PlayerController : Controller
     {   if (isPossessing) return;
         isPossessing = true;
         StartCoroutine(IEPossess(moveObject));
+    }
+    private void RollFinish()
+    {
+        isRolling = false;
     }
 }

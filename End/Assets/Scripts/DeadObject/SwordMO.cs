@@ -9,19 +9,20 @@ public class SwordMO : MoveObject
     {
         isLeft = target.x < transform.position.x;
         PlayAnim("attack");
-        Invoke(nameof(checkAttack), 0.4f);
+        Invoke(nameof(checkAttack), 0.66f);
     }
     void checkAttack()
     {
         if (isPlayer)
         {
-            foreach (MoveObject mo in Game.instance.curEnemies)
+            List<MoveObject> enemies = Game.instance.curEnemies;
+            for(int i = 0; i < enemies.Count; i++)
             {
-                if (mo != null)
+                if (enemies[i] != null)
                 {
-                    if (AttackDis(mo.foot.position, foot.position, isLeft))
+                    if (AttackDis(enemies[i].foot.position, foot.position, isLeft))
                     {
-                        mo.GetHurt(51, (mo.foot.position - foot.position).normalized);
+                        enemies[i].GetHurt(51, (enemies[i].foot.position - foot.position).normalized);
                     }
                 }
             }
@@ -46,5 +47,9 @@ public class SwordMO : MoveObject
             }
         }
         return false;
+    }
+    public override void Skill(Vector2 target)
+    {
+        
     }
 }

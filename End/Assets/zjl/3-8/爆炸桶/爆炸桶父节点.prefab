@@ -215,7 +215,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 1024
-  boomForce: 10
+  boomForce: 3
   particleSystem: {fileID: 4321161588868738803}
 --- !u!61 &2139953399030738831
 BoxCollider2D:

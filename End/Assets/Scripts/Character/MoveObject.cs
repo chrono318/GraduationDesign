@@ -249,8 +249,10 @@ public class MoveObject : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <param name="force"></param>
-    public void GetHurt(float value,Vector2 force)
+    public void GetHurt(float value,Vector2 force,bool forceAutoNormalize = true)
     {
+        if (forceAutoNormalize)
+            force = force.normalized;
         if (_State == State.Dead || _State==State.DeadDead) return;
         Hp -= value;
         if (Hp > 0)
@@ -267,7 +269,7 @@ public class MoveObject : MonoBehaviour
             {
                 SetAnimLayerWeight(0f);
                 StartCoroutine(nameof(EnemyInjured));
-                rigidbody.AddForce(force*1000);
+                rigidbody.AddForce(force*300);
             }
             
         }
@@ -277,7 +279,7 @@ public class MoveObject : MonoBehaviour
             SetAnimLayerWeight(0f);
 
             _State = State.Dead;
-            rigidbody.AddForce(force * 5000);
+            rigidbody.AddForce(force * 1000);
             if (isPlayer)
             {
                 //Player dead;
@@ -289,6 +291,7 @@ public class MoveObject : MonoBehaviour
                 _State = State.Dead;
                 StartCoroutine(nameof(DeadNoPossess));
                 StopCoroutine(nameof(EnemyInjured));
+                Destroy(controller);
                 //
                 Game.instance.CheckIfPass();
                 collider.enabled = false;

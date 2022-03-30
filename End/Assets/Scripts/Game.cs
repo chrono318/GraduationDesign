@@ -95,7 +95,6 @@ public class Game : MonoBehaviour
     /// </summary>
     public void CheckIfPass()
     {
-        print("64865468");
         CurEnemyCount--;
         KillEnemy();
         if (CurEnemyCount <= 0)
@@ -112,16 +111,18 @@ public class Game : MonoBehaviour
     }
     public void DeleteEnemyMO(MoveObject moveObject)
     {
+        MoveObject _mo = new MoveObject();
         foreach(MoveObject mo in curEnemies)
         {
             if (mo != null)
             {
                 if (mo == moveObject)
                 {
-                    curEnemies.Remove(mo);
+                    _mo = mo;
                 }
             }
         }
+        curEnemies.Remove(_mo);
     }
     /// <summary>
     /// 通知当前房间所有敌人进入攻击状态，目标为player

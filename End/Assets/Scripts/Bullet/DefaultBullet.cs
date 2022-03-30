@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DefaultBullet : Bullet
 {
-    public float speed = 10f;
     public float LifeTime = 10f;
     private bool col = false;
     [Header("子弹属性")]

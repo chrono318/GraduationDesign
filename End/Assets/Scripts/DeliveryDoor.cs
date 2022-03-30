@@ -29,7 +29,7 @@ public class DeliveryDoor : MonoBehaviour
     {
         if (!CanThrough) return;
         if (!isFirst) return;
-        print(collision.gameObject.name);
+
         if (collision.transform.TryGetComponent<MoveObject>(out MoveObject player))
         {
             if (!player.isPlayer) return;
