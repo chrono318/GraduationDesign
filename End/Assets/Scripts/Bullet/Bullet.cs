@@ -16,4 +16,8 @@ public class Bullet : MonoBehaviour
     {
         
     }
+    public void DestroyBulletSelf()
+    {
+        print("Destory bullet");
+    }
 }

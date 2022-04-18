@@ -94,30 +94,30 @@ public class PlayerController : Controller
             transform.localScale = new Vector3((dir.x < 0 ? 1 : -1)*OriScale, OriScale, 1);
         }
 
-        if (!isPossess || isRolling) return;
+        if (!isPossess) return;
         //攻击（左键）/技能（右键）
         if (Input.GetMouseButton(0))
         {
-            if (moveObject.MouseBtnLeft(mousePos))
-            {
-                //StartCoroutine(CamereaShake(dir, moveObject.shakeTime));
-                Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
-            }
+            moveObject.MouseBtnLeftDown(mousePos);
         }
         else if (Input.GetMouseButton(1))
         {
-            if (moveObject.MouseBtnRight(mousePos))
-            {
-                //翻滚后效？
-                isRolling = true;
-                Invoke(nameof(RollFinish), 1f);
-            }
+            moveObject.MouseBtnRightDown(mousePos);
         }
     }
-    public IEnumerator CamereaShake(Vector2 dir,float time)
+    private IEnumerator CamereaShake(Vector2 dirXForce,float time)
     {
         yield return new WaitForSeconds(time);
-        Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
+        cameraControl.CameraShakeShot(dirXForce.normalized);//射击震动
+    }
+    /// <summary>
+    /// 几秒后开始震动屏幕(单次震动)
+    /// </summary>
+    /// <param name="dirXForce">震动方向*强度,默认强度用normalized</param>
+    /// <param name="waitTime">几秒后开始震动</param>
+    public void CameraShakeShot(Vector2 dirXForce ,float waitTime=0f)
+    {
+        StartCoroutine(CamereaShake(dirXForce,waitTime));
     }
     public void GetHurtEffect(Vector2 force)
     {
@@ -174,9 +174,5 @@ public class PlayerController : Controller
     {   if (isPossessing) return;
         isPossessing = true;
         StartCoroutine(IEPossess(moveObject));
-    }
-    private void RollFinish()
-    {
-        isRolling = false;
     }
 }

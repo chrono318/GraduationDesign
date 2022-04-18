@@ -20,6 +20,7 @@ public class MoveObject : MonoBehaviour
     [Tooltip("单次攻击间隔")]
     public float attackSpace = 2f;
     public float shakeTime = 0f;
+    public float cameraShakeIntensity = 1f;
 
     public float FearRadius = 5f;
     //控制图片整体，控制朝向
@@ -169,23 +170,34 @@ public class MoveObject : MonoBehaviour
             PossessTex.SetActive(false);
         }
     }
-    public virtual bool MouseBtnLeft(Vector2 targetPos)
+    public virtual void MouseBtnLeftDown(Vector2 targetPos)
     {
         TurnTowards(targetPos.x < foot.position.x);
-        return CallAttack(targetPos);
+        CallAttack(targetPos);
     }
-    public virtual void Attack(Vector2 target)
+    public virtual void MouseBtnLeftUp(Vector2 targetPos)
     {
         
     }
-    public virtual bool MouseBtnRight(Vector2 targetPos)
+    public virtual void Attack(Vector2 target)
+    {
+        if (isPlayer)
+        {
+            ((PlayerController)controller).CameraShakeShot(((Vector2)transform.position - target).normalized * cameraShakeIntensity);
+        }
+    }
+    public virtual void MouseBtnRightDown(Vector2 targetPos)
     {
         Skill(targetPos);
-        return true;
+    }
+    public virtual void MouseBtnRightUp(Vector2 targetPos)
+    {
+
     }
     protected bool DefaultSkill = true;
     public virtual void Skill(Vector2 target)
     {
+        if (_State == State.Roll) return;
         _State = State.Roll;
         DefaultSkill = true;
         collider.enabled = false;
@@ -341,6 +353,23 @@ public class MoveObject : MonoBehaviour
         yield return new WaitForSeconds(2f);
         material_Body.SetVector("_Color1", Vector4.one);
         material_Edge.SetVector("_Color1", Vector4.one);
+        //冲击波
+        List<Collider2D> colliders = new List<Collider2D>();
+        ContactFilter2D filter2D = new ContactFilter2D();
+        filter2D.useLayerMask = true;
+        filter2D.SetLayerMask(LayerMask.GetMask("AttackPhysics"));
+        filter2D.useTriggers = true;
+        if (Physics2D.OverlapCircle(transform.position, 3f, filter2D, colliders) > 0)
+        {
+            foreach(var bulletCol in colliders)
+            {
+                Bullet bullet;
+                if(bulletCol.TryGetComponent<Bullet>(out bullet))
+                {
+                    bullet.DestroyBulletSelf();
+                }
+            }
+        }
     }
     public void PlayerLeaveThisBody()
     {
@@ -453,7 +482,7 @@ public class MoveObject : MonoBehaviour
             case 0:
                 break;
             case 1:
-                Attack(target);
+                Attack(target);               
                 return true;
             case 2:
                 break;

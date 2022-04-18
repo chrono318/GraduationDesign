@@ -95,7 +95,7 @@ public class Player : Role
                 }
                 else
                 {
-                    Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
+                    Camera.main.GetComponent<CameraControl>().CameraShakeShot(dir.normalized);//射击震动
                 }
             }
         }
@@ -139,7 +139,7 @@ public class Player : Role
     IEnumerator IECameraShake(Vector2 dir)
     {
         yield return new WaitForSeconds(fsmCreator.shakeTime);
-        Camera.main.GetComponent<CameraControl>().CameraShake(dir.normalized);//射击震动
+        Camera.main.GetComponent<CameraControl>().CameraShakeShot(dir.normalized);//射击震动
     }
     void OnRollFinish()
     {

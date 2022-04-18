@@ -70,7 +70,7 @@ public class EnemyController : Controller
 
             if (Vector2.Distance(Player.foot.position, transform.position) < moveObject.attackRadius)
             {
-                moveObject.MouseBtnLeft(Player.transform.position);
+                moveObject.MouseBtnLeftDown(Player.transform.position);
                 Reach = true;
             }
             else

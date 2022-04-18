@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class ShadowSprite : MonoBehaviour
 {
@@ -21,20 +22,31 @@ public class ShadowSprite : MonoBehaviour
     public float alphaSet = 0.9f;//初始Alpha值
     public float alphaMul = 0.8f;
 
+    private void Awake()
+    {
+        color = new Color(0.5f, 0.5f, 1, 0.8f);
+    }
     private void OnEnable()
     {
         alpha = alphaSet;
         startTime = Time.time;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<SpriteRenderer>().color = color;
+        }
     }
 
     public void UpdateRendererSprites(SpriteRenderer[] spriteRenderers) 
     {
         for(int i = 0; i < spriteRenderers.Length; i++)
         {
-            transform.GetChild(i).position = spriteRenderers[i].transform.position;
-            transform.GetChild(i).localScale = spriteRenderers[i].transform.localScale;
-            transform.GetChild(i).rotation = spriteRenderers[i].transform.rotation;
-            transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = spriteRenderers[i].sprite;
+            Transform trans = transform.GetChild(i);
+            SpriteRenderer render = trans.GetComponent<SpriteRenderer>();
+            trans.position = spriteRenderers[i].transform.position;
+            trans.localScale = spriteRenderers[i].transform.localScale;
+            trans.rotation = spriteRenderers[i].transform.rotation;
+            render.sprite = spriteRenderers[i].sprite;
+            SpriteSkin skin = trans.GetComponent<SpriteSkin>();
         }
     }
     void Update()

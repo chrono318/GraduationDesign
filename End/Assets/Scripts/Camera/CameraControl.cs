@@ -62,7 +62,7 @@ public class CameraControl : MonoBehaviour
         float force = 1 * detalX;
         return dep;
     }
-    public void CameraShake(Vector2 dir)
+    public void CameraShakeShot(Vector2 dir)
     {
         StartCoroutine(ShotShake(dir*ShotShakeIntensity,0.05f));
     }

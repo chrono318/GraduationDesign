@@ -23,6 +23,7 @@ public class DeliveryDoor : MonoBehaviour
         yield return new WaitForSeconds(1f);
         //
         Game.instance.TranslateToNewRoom(role);
+        gameObject.SetActive(false);
     }
     private bool isFirst = true;
     private void OnCollisionEnter2D(Collision2D collision)

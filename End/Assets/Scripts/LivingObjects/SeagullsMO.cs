@@ -16,16 +16,16 @@ public class SeagullsMO : MoveObject
     public float rushSpeed = 20f;
     bool isWaitForBtn = false;
     bool isRush = false;
-    public override bool MouseBtnLeft(Vector2 targetPos)
+    public override void MouseBtnLeftDown(Vector2 targetPos)
     {
-        if (!CallAttack(targetPos)) return false;
+        if (!CallAttack(targetPos)) return ;
         if (isPlayer)
         {
             if (isWaitForBtn)//第二次
             {
                 CancelInvoke(nameof(Boom));
                 Boom();
-                return true;
+                return ;
             }
             else                       //第一次
             {
@@ -36,12 +36,12 @@ public class SeagullsMO : MoveObject
         }
         else
         {
-            if (isRush) return false;
+            if (isRush) return ;
             isRush = true;
             PlayAnim("animState", 1);
             StartCoroutine(Rush((targetPos - rigidbody.position).normalized));
         }
-        return false;
+        return ;
     }
     public override void Attack(Vector2 target)
     {

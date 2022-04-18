@@ -49,6 +49,8 @@ public class ShadowPool : MonoBehaviour
     /// <returns></returns>
     public GameObject GetFormPool(SpriteRenderer[] spriteRenderers)//#对接#给谁用就调用这个函数就行#对接#
     {
+        if (!canLeaveCanyin) return null;
+        canLeaveCanyin = false;
         if (availableObjects.Count == 0)
         {
             FillPool();
@@ -63,5 +65,20 @@ public class ShadowPool : MonoBehaviour
     public void SetSprites(SpriteRenderer[] spriteRenderers)
     {
 
+    }
+
+    float t = 0f;
+    bool canLeaveCanyin = true;
+    private void Update()
+    {
+        if (!canLeaveCanyin)
+        {
+            t += Time.deltaTime;
+            if (t > 0.1f)
+            {
+                canLeaveCanyin = true;
+                t = 0f;
+            }
+        }
     }
 }
