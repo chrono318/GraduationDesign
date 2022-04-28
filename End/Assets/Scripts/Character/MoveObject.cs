@@ -42,6 +42,7 @@ public class MoveObject : MonoBehaviour
     public float MaxHp = 100f;
     public float speed = 10f;
     public float ReloadTime = 2f;
+    public GameObject bulletPrefab;
 
     protected float Hp;
 
@@ -49,10 +50,13 @@ public class MoveObject : MonoBehaviour
     public bool isPlayer;
     protected Rigidbody2D rigidbody;
     protected Collider2D collider;
+    [HideInInspector]
     public Controller controller;
     protected Material material_Body;
     protected Material material_Edge;
     protected float OriScale;
+    //子弹池
+    protected Pool bulletPool;
 
     //状态机
     public enum State
@@ -82,6 +86,7 @@ public class MoveObject : MonoBehaviour
         isPlayer = false;
 
         if (type == MoveObjectType.Dead) return;
+
         material_Body = new Material(Game.instance.RoleShader);
         material_Edge = new Material(Game.instance.RoleShader);
         SpriteRenderer[] sprites = GFX.GetChild(0).GetComponentsInChildren<SpriteRenderer>();
@@ -97,6 +102,10 @@ public class MoveObject : MonoBehaviour
         Slider_Reload.gameObject.SetActive(false);
         CloseHP();
 
+        if (bulletPrefab)
+        {
+            bulletPool = PoolManager.instance.RegisterPool(bulletPrefab);
+        }
     }
 
     // Update is called once per frame
@@ -127,7 +136,7 @@ public class MoveObject : MonoBehaviour
                     PossessTex.SetActive(true);
                 }
                 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && !isPlayer)
                 {
                     if (Vector2.Distance(transform.position, mousePos) < 1f)
                     {
@@ -151,7 +160,7 @@ public class MoveObject : MonoBehaviour
             lineRenderer.gameObject.SetActive(true);
             PossessTex.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !isPlayer)
             {
                 if (Vector2.Distance(transform.position, mousePos) < 1f)
                 {
@@ -503,6 +512,38 @@ public class MoveObject : MonoBehaviour
         yield return new WaitForSeconds(ReloadTime);
         Slider_Reload.value = 0;
         Slider_Reload.gameObject.SetActive(false);
+    }
+    /// <summary>
+    /// 发射一颗子弹
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="dir"></param>
+    /// <param name="speed"></param>
+    /// <returns></returns>
+    public Bullet CreateBullet(Vector2 position,Vector2 dir)
+    {
+        GameObject go = bulletPool.GetGameObject();
+        go.transform.position = position;
+        go.transform.rotation = Quaternion.identity;
+        Bullet bullet = go.GetComponent<Bullet>();
+        bullet.Init(dir, speed, isPlayer, bulletPool);
+        return bullet;
+    }
+    public Bullet CreateBullet(Vector2 position, Quaternion dir)
+    {
+        GameObject go = bulletPool.GetGameObject();
+        go.transform.position = position;
+        go.transform.rotation = dir;
+        Bullet bullet = go.GetComponent<Bullet>();
+        bullet.Init(Vector2.zero, speed, isPlayer, bulletPool);
+        return bullet;
+    }
+    private void OnDestroy()
+    {
+        if (bulletPool)
+        {
+            PoolManager.instance.LogOutPool(bulletPool);
+        }
     }
 }
 

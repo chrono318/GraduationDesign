@@ -7,6 +7,7 @@ public class Controller : MonoBehaviour
     protected MoveObject moveObject;
     protected MoveObjectType curType;
     protected Rigidbody2D rigidbody;
+    public weaponDir weaponDir;
     protected void SetMoveObject(MoveObject moveObject,bool isPlayer = false)
     {
         this.moveObject = moveObject;

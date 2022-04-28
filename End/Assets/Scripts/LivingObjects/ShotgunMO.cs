@@ -5,8 +5,6 @@ using UnityEngine;
 public class ShotgunMO : MoveObject
 {
     public bool lianfa = false;
-    public GameObject PlayerBullet;
-    public GameObject EnemyBullet;
     public override void Attack(Vector2 target)
     {
         
@@ -29,39 +27,19 @@ public class ShotgunMO : MoveObject
         }
 
         Quaternion quaternion;
-        if (isPlayer)
-        {
-            quaternion = Quaternion.Euler(0, 0, 30 + gunAngle);
-            GameObject.Instantiate(PlayerBullet, attackPoint.position, quaternion);
+        quaternion = Quaternion.Euler(0, 0, 30 + gunAngle);
+        CreateBullet(attackPoint.position, quaternion);
 
-            //r = Random.Range(-offset, offset);
-            quaternion = Quaternion.Euler(0, 0, -30 + gunAngle );
-            GameObject.Instantiate(PlayerBullet, attackPoint.position, quaternion);
+        //r = Random.Range(-offset, offset);
+        quaternion = Quaternion.Euler(0, 0, -30 + gunAngle);
+        CreateBullet(attackPoint.position, quaternion);
 
-            //r = Random.Range(-offset, offset);
-            quaternion = Quaternion.Euler(0, 0, 10 + gunAngle );
-            GameObject.Instantiate(PlayerBullet, attackPoint.position, quaternion);
+        //r = Random.Range(-offset, offset);
+        quaternion = Quaternion.Euler(0, 0, 10 + gunAngle);
+        CreateBullet(attackPoint.position, quaternion);
 
-            //r = Random.Range(-offset, offset);
-            quaternion = Quaternion.Euler(0, 0, -10 + gunAngle );
-            GameObject.Instantiate(PlayerBullet, attackPoint.position, quaternion);
-        }
-        else
-        {
-            quaternion = Quaternion.Euler(0, 0, 30 + gunAngle);
-            GameObject.Instantiate(EnemyBullet, attackPoint.position, quaternion);
-
-            //r = Random.Range(-offset, offset);
-            quaternion = Quaternion.Euler(0, 0, -30 + gunAngle);
-            GameObject.Instantiate(EnemyBullet, attackPoint.position, quaternion);
-
-            //r = Random.Range(-offset, offset);
-            quaternion = Quaternion.Euler(0, 0, 10 + gunAngle);
-            GameObject.Instantiate(EnemyBullet, attackPoint.position, quaternion);
-
-            //r = Random.Range(-offset, offset);
-            quaternion = Quaternion.Euler(0, 0, -10 + gunAngle);
-            GameObject.Instantiate(EnemyBullet, attackPoint.position, quaternion);
-        }
+        //r = Random.Range(-offset, offset);
+        quaternion = Quaternion.Euler(0, 0, -10 + gunAngle);
+        CreateBullet(attackPoint.position, quaternion);
     }
 }

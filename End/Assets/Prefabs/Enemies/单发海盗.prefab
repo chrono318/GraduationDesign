@@ -258,6 +258,7 @@ MonoBehaviour:
   playerAttackSpace: 0.3
   attackSpace: 0.3
   shakeTime: 0
+  cameraShakeIntensity: 1
   FearRadius: 3
   GFX: {fileID: 3689475351387074116}
   animators:
@@ -276,13 +277,11 @@ MonoBehaviour:
   MaxHp: 100
   speed: 2
   ReloadTime: 2
+  bulletPrefab: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
+    type: 3}
   isPlayer: 0
   controller: {fileID: 0}
   _State: 0
-  bulletForEnemy: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
-    type: 3}
-  bulletForPlayer: {fileID: 5570354312193352119, guid: 79f5da0329593f548bc40fe4a347840b,
-    type: 3}
 --- !u!1 &2601568195873794396
 GameObject:
   m_ObjectHideFlags: 0

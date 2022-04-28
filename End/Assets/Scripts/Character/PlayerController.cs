@@ -99,10 +99,19 @@ public class PlayerController : Controller
         if (Input.GetMouseButton(0))
         {
             moveObject.MouseBtnLeftDown(mousePos);
+            if (weaponDir)
+            {
+                weaponDir.AttackShake(0.2f, 0.05f, mousePos);
+            }
         }
         else if (Input.GetMouseButton(1))
         {
             moveObject.MouseBtnRightDown(mousePos);
+        }
+
+        if (weaponDir)
+        {
+            weaponDir.target = mousePos;
         }
     }
     private IEnumerator CamereaShake(Vector2 dirXForce,float time)
@@ -153,6 +162,12 @@ public class PlayerController : Controller
                 this.moveObject.gameObject.tag = "Enemy";
                 this.moveObject.PlayerLeaveThisBody();
             }
+        }
+        if(moveObject.type == MoveObjectType.Living)
+        {
+            weaponDir = moveObject.controller.weaponDir ?? null;
+            weaponDir.enabled = true;
+            weaponDir.controller = this;
         }
         yield return new WaitForSeconds(1f);
         isPossess = true;

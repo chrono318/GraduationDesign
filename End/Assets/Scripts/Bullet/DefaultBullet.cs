@@ -9,7 +9,6 @@ public class DefaultBullet : Bullet
     [Header("子弹属性")]
     public float damage;
 
-    public bool targetIsPlayer = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +25,7 @@ public class DefaultBullet : Bullet
     public void AnimEnd()
     {
         //gameObject.SetActive(false);
-        Destroy(this.gameObject);
+        DestroyBulletSelf();
     }
     private void Update()
     {
@@ -47,21 +46,21 @@ public class DefaultBullet : Bullet
     {
         if (collision.gameObject.tag == "Wall")
         {
-            if (gameObject.tag == "Enemy")
+            if (!isPlayer)
             {
-                Destroy(this.gameObject);
+                DestroyBulletSelf();
             }
         }
         Vector3 dir = (collision.transform.position - transform.position).normalized;
         dir.z = 0;
-        if (collision.gameObject.tag == "Player" && targetIsPlayer)
+        if (collision.gameObject.tag == "Player" && !isPlayer)
         {
             col = true;
             GetComponent<Animator>().SetTrigger("destroy");
             
             collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics,dir);
         }
-        if (collision.gameObject.tag == "Enemy" && !targetIsPlayer)
+        if (collision.gameObject.tag == "Enemy" && isPlayer)
         {
             col = true;
             GetComponent<Animator>().SetTrigger("destroy");
@@ -79,7 +78,7 @@ public class DefaultBullet : Bullet
         {
             if (gameObject.tag == "Enemy")
             {
-                Destroy(this.gameObject);
+                DestroyBulletSelf();
             }
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Table"))
@@ -88,14 +87,14 @@ public class DefaultBullet : Bullet
         }
         Vector3 dir = transform.TransformVector(Vector3.right);
         dir.z = 0;
-        if (collision.gameObject.tag == "Player" && targetIsPlayer)
+        if (collision.gameObject.tag == "Player" && !isPlayer)
         {
             col = true;
             GetComponent<Animator>().SetTrigger("destroy");
 
             collision.gameObject.GetComponent<MoveObject>().GetHurt(10, dir);
         }
-        if (collision.gameObject.tag == "Enemy" && !targetIsPlayer)
+        if (collision.gameObject.tag == "Enemy" && isPlayer)
         {
             col = true;
             GetComponent<Animator>().SetTrigger("destroy");
