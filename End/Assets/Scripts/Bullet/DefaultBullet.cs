@@ -5,7 +5,6 @@ using UnityEngine;
 public class DefaultBullet : Bullet
 {
     public float LifeTime = 10f;
-    private bool col = false;
     [Header("子弹属性")]
     public float damage;
 
@@ -27,20 +26,11 @@ public class DefaultBullet : Bullet
         //gameObject.SetActive(false);
         DestroyBulletSelf();
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (col) return;
         transform.Translate(Vector3.right * speed * Time.deltaTime, Space.Self);
-
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformPoint(Vector3.right), speed * Time.deltaTime,LayerMask.NameToLayer("Physics"));
-        //if (hit)
-        //{
-        //    Destroy(this.gameObject);
-        //}
-        //else
-        //{
-        //    transform.Translate(Vector3.right * speed, Space.Self);
-        //}
+        //transform.position += (Vector3)dir * speed * Time.deltaTime;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

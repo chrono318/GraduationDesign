@@ -105,6 +105,7 @@ public class MoveObject : MonoBehaviour
         if (bulletPrefab)
         {
             bulletPool = PoolManager.instance.RegisterPool(bulletPrefab);
+            bulletPool.registor.Add(gameObject);
         }
     }
 
@@ -312,7 +313,7 @@ public class MoveObject : MonoBehaviour
                 _State = State.Dead;
                 StartCoroutine(nameof(DeadNoPossess));
                 StopCoroutine(nameof(EnemyInjured));
-                Destroy(controller);
+                //Destroy(controller);
                 //
                 Game.instance.CheckIfPass();
                 collider.enabled = false;
@@ -520,22 +521,11 @@ public class MoveObject : MonoBehaviour
     /// <param name="dir"></param>
     /// <param name="speed"></param>
     /// <returns></returns>
-    public Bullet CreateBullet(Vector2 position,Vector2 dir)
+    public Bullet CreateBullet(Vector2 position, Quaternion rotation)
     {
         GameObject go = bulletPool.GetGameObject();
-        go.transform.position = position;
-        go.transform.rotation = Quaternion.identity;
         Bullet bullet = go.GetComponent<Bullet>();
-        bullet.Init(dir, speed, isPlayer, bulletPool);
-        return bullet;
-    }
-    public Bullet CreateBullet(Vector2 position, Quaternion dir)
-    {
-        GameObject go = bulletPool.GetGameObject();
-        go.transform.position = position;
-        go.transform.rotation = dir;
-        Bullet bullet = go.GetComponent<Bullet>();
-        bullet.Init(Vector2.zero, speed, isPlayer, bulletPool);
+        bullet.Init(position, rotation, speed, isPlayer, bulletPool);
         return bullet;
     }
     private void OnDestroy()

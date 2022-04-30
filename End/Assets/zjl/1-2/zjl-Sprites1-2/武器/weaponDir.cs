@@ -28,7 +28,7 @@ public class weaponDir : MonoBehaviour
         weapon.position = dir * len + (Vector2)center.position;
         weapon1.position = weapon.position;
         Vector2 oriDir = new Vector2(-1 * (controller.GetMoveObject().transform.GetChild(0).localScale.x > 0 ? 1 : -1), 1);
-        print(oriDir);
+
         weapon.rotation = Quaternion.FromToRotation(oriDir, dir);
         weapon1.rotation = Quaternion.FromToRotation(oriDir, dir);
     }

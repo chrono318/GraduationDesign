@@ -8,7 +8,7 @@ public class Pool : MonoBehaviour
     public GameObject prefab;
 
     public int numPerInstantiate = 3;
-    
+    public List<GameObject> registor = new List<GameObject>();
     Queue<GameObject> availableGOs; //目前可用的子弹
 
     public int Reference
@@ -28,6 +28,7 @@ public class Pool : MonoBehaviour
     void Start()
     {
         availableGOs = new Queue<GameObject>();
+        //registor = new List<GameObject>();
         FillBulletPool();
     }
     /// <summary>
