@@ -171,6 +171,12 @@ public class MoveObject : MonoBehaviour
                     _State = State.Injure;
                     lineRenderer.gameObject.SetActive(false);
                     PossessTex.SetActive(false);
+
+                    //canying
+                    if (type == MoveObjectType.Living)
+                    {
+                        RegisterCanying();
+                    }
                 }
             }
         }
@@ -221,8 +227,11 @@ public class MoveObject : MonoBehaviour
     /// </summary>
     protected void Canying()
     {
-        SpriteRenderer[] spriteRenderers = GFX.GetChild(1).GetComponentsInChildren<SpriteRenderer>();
-        ShadowPool.instance.GetFormPool(spriteRenderers);
+        ShadowPool.instance.SetCanying(GFX.GetChild(1).GetChild(0));
+    }
+    protected void RegisterCanying()
+    {
+        ShadowPool.instance.RegisterCanying(GFX.GetChild(1).GetChild(0).gameObject, 10);
     }
     public void MoveUpdate(Vector2 dir , float speedScale)
     {

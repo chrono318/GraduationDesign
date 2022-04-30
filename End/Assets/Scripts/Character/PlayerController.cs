@@ -166,8 +166,11 @@ public class PlayerController : Controller
         if(moveObject.type == MoveObjectType.Living)
         {
             weaponDir = moveObject.controller.weaponDir ?? null;
-            weaponDir.enabled = true;
-            weaponDir.controller = this;
+            if (weaponDir)
+            {
+                weaponDir.enabled = true;
+                weaponDir.controller = this;
+            }
         }
         yield return new WaitForSeconds(1f);
         isPossess = true;

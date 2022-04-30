@@ -19,34 +19,27 @@ public class ShadowSprite : MonoBehaviour
 
     [Header("不透明度控制")]
     private float alpha;
-    public float alphaSet = 0.9f;//初始Alpha值
-    public float alphaMul = 0.8f;
+    public float alphaSet = 1f;//初始Alpha值
+    public float alphaMul = 0.9f;
 
+    public bool update = true;
     private void Awake()
     {
         color = new Color(0.5f, 0.5f, 1, 0.8f);
+        renderers = transform.GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].color = color;
+        }
     }
     private void OnEnable()
     {
         alpha = alphaSet;
         startTime = Time.time;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).GetComponent<SpriteRenderer>().color = color;
-        }
-    }
 
-    public void UpdateRendererSprites(SpriteRenderer[] spriteRenderers) 
-    {
-        for(int i = 0; i < spriteRenderers.Length; i++)
+        for (int i = 0; i < renderers.Length; i++)
         {
-            Transform trans = transform.GetChild(i);
-            SpriteRenderer render = trans.GetComponent<SpriteRenderer>();
-            trans.position = spriteRenderers[i].transform.position;
-            trans.localScale = spriteRenderers[i].transform.localScale;
-            trans.rotation = spriteRenderers[i].transform.rotation;
-            render.sprite = spriteRenderers[i].sprite;
-            SpriteSkin skin = trans.GetComponent<SpriteSkin>();
+            renderers[i].color = color;
         }
     }
     void Update()
@@ -54,14 +47,15 @@ public class ShadowSprite : MonoBehaviour
         alpha *= alphaMul;
         color = new Color(0.5f, 0.5f, 1, alpha);
         //thisSprite.color = color;
-        for(int i = 0; i < transform.childCount; i++)
+        for(int i = 0; i < renderers.Length; i++)
         {
-            transform.GetChild(i).GetComponent<SpriteRenderer>().color = color;
+            renderers[i].color = color;
         }
         if (Time.time >= activeTime + startTime)
         {
             //返回对象池
-            ShadowPool.instance.ReturnPool(this.gameObject);
+            //ShadowPool.instance.ReturnPool(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
