@@ -104,6 +104,11 @@ public class Blade : MonoBehaviour
         }
     }
 
-    //#对接#任何活体碰到旋转刀片均受到伤害#对接#
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.parent.TryGetComponent<MoveObject>(out MoveObject mo))
+        {
+            mo.GetHurt(20f, new Vector2(0, 0));
+        }
+    }
 }
