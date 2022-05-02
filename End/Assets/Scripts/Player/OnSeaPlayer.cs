@@ -10,7 +10,9 @@ public class OnSeaPlayer : MonoBehaviour
     public Text aimText;
     public Text tipsText;
     bool isSelect;
-    
+    string scenceName;
+
+
     void Update()
     {
         //float h = Input.GetAxisRaw("Horizontal");
@@ -21,7 +23,7 @@ public class OnSeaPlayer : MonoBehaviour
         transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         if(isSelect && Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("OriRoom");
+            SceneManager.LoadScene(scenceName);
         }
     }
 
@@ -33,6 +35,7 @@ public class OnSeaPlayer : MonoBehaviour
             aimText.gameObject.transform.parent.gameObject.SetActive(true);
             this.aimText.text = collision.gameObject.GetComponent<ChangeText>().aimText;
             this.tipsText.text = collision.gameObject.GetComponent<ChangeText>().tipsText;
+            this.scenceName = collision.gameObject.GetComponent<ChangeText>().scenceName;
             isSelect = true;
         }
     }
