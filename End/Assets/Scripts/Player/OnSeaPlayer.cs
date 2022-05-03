@@ -49,6 +49,7 @@ public class OnSeaPlayer : MonoBehaviour
             collision.gameObject.transform.Find("Frame").gameObject.SetActive(false);
             //aimText.gameObject.transform.parent.gameObject.SetActive(false);
             isSelect = false;
+            anim.Play("not");
         }
     }
 
