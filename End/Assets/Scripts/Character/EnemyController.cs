@@ -84,7 +84,6 @@ public class EnemyController : Controller
             moveObject.fearTex.SetActive(false);
         }
     }
-    float _t1 = 0f;
     private void FixedUpdate()
     {
 

@@ -32,36 +32,6 @@ public class DefaultBullet : Bullet
         transform.Translate(Vector3.right * speed * Time.deltaTime, Space.Self);
         //transform.position += (Vector3)dir * speed * Time.deltaTime;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Wall")
-        {
-            if (!isPlayer)
-            {
-                DestroyBulletSelf();
-            }
-        }
-        Vector3 dir = (collision.transform.position - transform.position).normalized;
-        dir.z = 0;
-        if (collision.gameObject.tag == "Player" && !isPlayer)
-        {
-            col = true;
-            GetComponent<Animator>().SetTrigger("destroy");
-            
-            collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics,dir);
-        }
-        if (collision.gameObject.tag == "Enemy" && isPlayer)
-        {
-            col = true;
-            GetComponent<Animator>().SetTrigger("destroy");
-            collision.gameObject.GetComponent<Role>().GetHurt(10, RoleType.Physics,dir);
-        }
-    }
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawLine(transform.position, transform.position+transform.TransformPoint(Vector3.right) * speed * Time.deltaTime);
-    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Wall")

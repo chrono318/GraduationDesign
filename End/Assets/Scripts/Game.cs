@@ -8,13 +8,8 @@ public class Game : MonoBehaviour
     public PlayerController playerController;
     public Slider slider;
     public static Game instance;
-    public GameObject defaltBullet;
-    public GameObject playerBullet;
     public Shader RoleShader;
-    public PhysicsMaterial2D PhysicsMaterial;
-    public GameObject circle;
-    [HideInInspector]
-    public Player player;
+
     [HideInInspector]
     public CursorUI cursorSetting;
     //
@@ -179,7 +174,7 @@ public class Game : MonoBehaviour
         XinWuTips.level = xinwunum / 3;
         if (xinwunum == 12)
         {
-            player.SetXinwu(true);
+            //player.SetXinwu(true);
         }
         XinWuTips.UpdateText();
     }
