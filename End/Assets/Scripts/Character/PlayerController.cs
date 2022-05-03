@@ -145,6 +145,7 @@ public class PlayerController : Controller
         moveObject = null;
         GetComponent<Collider2D>().enabled = true;
         Game.instance.InformEnemie(null);
+        InformOutPossessEvent();
     }
     /// <summary>
     /// 附身协程
@@ -163,7 +164,10 @@ public class PlayerController : Controller
                 this.moveObject.PlayerLeaveThisBody();
             }
         }
-        if(moveObject.type == MoveObjectType.Living)
+        
+        yield return new WaitForSeconds(1f);
+
+        if (moveObject.type == MoveObjectType.Living)
         {
             weaponDir = moveObject.controller.weaponDir ?? null;
             if (weaponDir)
@@ -171,8 +175,9 @@ public class PlayerController : Controller
                 weaponDir.enabled = true;
                 weaponDir.controller = this;
             }
+            InformPossessEvent(moveObject);
         }
-        yield return new WaitForSeconds(1f);
+
         isPossess = true;
         GFX.SetActive(false);
         SetMoveObject(moveObject,true);
@@ -193,4 +198,8 @@ public class PlayerController : Controller
         isPossessing = true;
         StartCoroutine(IEPossess(moveObject));
     }
+    public delegate void InformPossess(MoveObject moveObject);
+    public event InformPossess InformPossessEvent;
+    public delegate void InformOutMO();
+    public event InformOutMO InformOutPossessEvent;
 }

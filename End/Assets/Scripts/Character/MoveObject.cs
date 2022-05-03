@@ -11,7 +11,7 @@ public class MoveObject : MonoBehaviour
 
     [Header("攻击")]
     public float attackRadius = 5f;
-    private AttackTiming attackTiming;
+    private AttackTimer attackTimer;
     [Tooltip("弹匣容量，默认为0（近战）")]
     public int bulletNum = 0;
     [Tooltip("换弹时间,默认为0（近战）")]
@@ -80,7 +80,7 @@ public class MoveObject : MonoBehaviour
         collider = GetComponent<Collider2D>();
         OriScale = transform.localScale.x;
 
-        attackTiming = new AttackTiming(bulletNum, shotReload, attackSpace);
+        attackTimer = new AttackTimer(bulletNum, shotReload, attackSpace);
         _State = State.Normal;
         Hp = MaxHp;
         isPlayer = false;
@@ -116,7 +116,7 @@ public class MoveObject : MonoBehaviour
     }
     protected void DefaultUpdate()
     {
-        attackTiming.Update();
+        attackTimer.Update();
         if (_State == State.Roll && DefaultSkill)
         {
             Canying();
@@ -455,7 +455,7 @@ public class MoveObject : MonoBehaviour
                 PossessCircle.SetActive(true);
             }
             collider.enabled = true;
-            attackTiming.SetAttackSpace(playerAttackSpace);
+            attackTimer.SetAttackSpace(playerAttackSpace);
         }
         _State = State.Normal;
 
@@ -494,7 +494,7 @@ public class MoveObject : MonoBehaviour
     }
     public bool CallAttack(Vector2 target)
     {
-        int check = attackTiming.AttackCheck();
+        int check = attackTimer.AttackCheck();
 
         switch (check)
         {

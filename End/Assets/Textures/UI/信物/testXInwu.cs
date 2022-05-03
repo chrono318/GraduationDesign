@@ -21,13 +21,13 @@ public class testXInwu : MonoBehaviour
         {
             open = false;
             image.color = oriColor;
-            Game.instance.player.SetXinwu(false);
+            //Game.instance.player.SetXinwu(false);
         }
         else
         {
             open = true;
             image.color = Color.clear;
-            Game.instance.player.SetXinwu(true);
+            //Game.instance.player.SetXinwu(true);
         }
     }
 }
