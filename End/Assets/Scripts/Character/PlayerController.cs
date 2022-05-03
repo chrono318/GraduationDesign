@@ -175,7 +175,10 @@ public class PlayerController : Controller
                 weaponDir.enabled = true;
                 weaponDir.controller = this;
             }
-            InformPossessEvent(moveObject);
+            if (InformPossessEvent != null)
+            {
+                InformPossessEvent(moveObject);
+            }
         }
 
         isPossess = true;
