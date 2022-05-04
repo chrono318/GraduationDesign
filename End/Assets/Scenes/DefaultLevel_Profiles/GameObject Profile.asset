@@ -70,7 +70,7 @@ MonoBehaviour:
   opacity:
     overrideState: 0
     value: 1
---- !u!114 &-226506930391208736
+--- !u!114 &-892137714437289468
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,18 +82,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 11.44
+    value: 5
   threshold:
     overrideState: 0
     value: 1
   softKnee:
-    overrideState: 1
+    overrideState: 0
     value: 0.5
   clamp:
     overrideState: 0
@@ -132,4 +132,4 @@ MonoBehaviour:
   settings:
   - {fileID: -8684484751966998828}
   - {fileID: -3310229853814677775}
-  - {fileID: -226506930391208736}
+  - {fileID: -892137714437289468}

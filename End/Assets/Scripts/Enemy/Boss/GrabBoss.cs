@@ -35,6 +35,9 @@ public class GrabBoss : Boss
     public float step1Duration = 5f;
     public float gapDuration = 1f;
     public float step2Duration = 5f;
+    public LineRenderer line0;
+    public LineRenderer line1;
+    public LineRenderer line2;
     [Header("技能-弹幕")]
     public float beginTime2 = 1f;
     public float endTime2 = 1f;
@@ -149,7 +152,7 @@ public class GrabBoss : Boss
     void StartSkillTiming()
     {
         int index = Random.Range(0, 4);
-        StartSkill(index);
+        StartSkill(1);
     }
     void ContinueSkillTiming()
     {
@@ -226,8 +229,9 @@ public class GrabBoss : Boss
             yield return 0;
         }
         //第一阶段
+        CameraControl.instance.OpenBloomVolume();
         Vector2 dir = GetAttackDir();
-        LineRenderer line0 = gameObject.AddComponent<LineRenderer>();
+        line0.enabled = true;
         t = 0;
         bool bo = false;
         while (t < step1Duration)
@@ -253,6 +257,8 @@ public class GrabBoss : Boss
             yield return 0;
         }
         line0.enabled = false;
+        CameraControl.instance.CloseBloomVolume();
+
 
         //间隔时间
         t = 0;
@@ -264,10 +270,10 @@ public class GrabBoss : Boss
         //第二阶段
         t = 0;
         line0.enabled = true;
-        GameObject go1 = new GameObject();
-        GameObject go2 = new GameObject();
-        LineRenderer line1 = go1.AddComponent<LineRenderer>();
-        LineRenderer line2 = go2.AddComponent<LineRenderer>();
+        line1.enabled = true;
+        line2.enabled = true;
+        CameraControl.instance.OpenBloomVolume();
+        
         dir = GetAttackDir();
         Vector2 dir1 = Quaternion.Euler(0, 0, 45f) * dir;
         Vector2 dir2 = Quaternion.Euler(0, 0, -45f) * dir;
@@ -300,9 +306,10 @@ public class GrabBoss : Boss
             t += Time.deltaTime;
             yield return 0;
         }
-        Destroy(line0);
-        Destroy(go1);
-        Destroy(go2);
+        CameraControl.instance.CloseBloomVolume();
+        line0.enabled = false;
+        line1.enabled = false;
+        line2.enabled = false;
         //结束动作
         t = 0;
         while (t < endTime0)

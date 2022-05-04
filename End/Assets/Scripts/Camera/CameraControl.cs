@@ -8,6 +8,7 @@ public class CameraControl : MonoBehaviour
     public float shakeDuration = 0.25f;
     public float ShotShakeIntensity = 1f;
     public float InjureShakeIntensity = 1f;
+    public static CameraControl instance;
     private float shakeTime = 0.25f;
     //private bool shaking = false;
     public GameObject player;
@@ -23,7 +24,16 @@ public class CameraControl : MonoBehaviour
     public Animator DeliveryFade;
 
     private Vector2 PosOffset = Vector2.zero;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(this);
+    }
     void Start()
     {
         playerTrans = player.transform;
@@ -33,7 +43,7 @@ public class CameraControl : MonoBehaviour
         volume.profile.TryGetSettings(out chromaticAberration);
         volume.profile.TryGetSettings(out vignette);
         CloseInjureVolume();
-        CloseProcessVolume();
+        CloseChromaticEffect();
     }
 
     // Update is called once per frame
@@ -105,14 +115,14 @@ public class CameraControl : MonoBehaviour
         //transform.position = oriPos;
     }
 
-    public void OpenProcessVolume()
+    public void OpenChromaticEffect()
     {
         if (chromaticAberration)
         {
             chromaticAberration.active = true;
         }
     }
-    public void CloseProcessVolume()
+    public void CloseChromaticEffect()
     {
         if (chromaticAberration)
         {
@@ -132,6 +142,21 @@ public class CameraControl : MonoBehaviour
         if (vignette)
         {
             vignette.active = false;
+        }
+    }
+
+    public void OpenBloomVolume()
+    {
+        if (bloom)
+        {
+            bloom.active = true;
+        }
+    }
+    public void CloseBloomVolume()
+    {
+        if (bloom)
+        {
+            bloom.active = false;
         }
     }
 
