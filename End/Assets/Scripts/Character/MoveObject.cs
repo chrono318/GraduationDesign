@@ -90,7 +90,7 @@ public class MoveObject : MonoBehaviour
         material_Body = new Material(Game.instance.RoleShader);
         material_Edge = new Material(Game.instance.RoleShader);
         SpriteRenderer[] sprites = GFX.GetChild(0).GetComponentsInChildren<SpriteRenderer>();
-        foreach(SpriteRenderer renderer in sprites)
+        foreach (SpriteRenderer renderer in sprites)
         {
             renderer.material = material_Body;
         }
@@ -127,7 +127,7 @@ public class MoveObject : MonoBehaviour
         Transform player = Game.instance.playerController.transform;
         if (type == MoveObjectType.Dead)
         {
-            if(Vector2 .Distance(transform.position, player.position) < 5)
+            if (Vector2.Distance(transform.position, player.position) < 5)
             {
                 if (!isPlayer)
                 {
@@ -136,7 +136,7 @@ public class MoveObject : MonoBehaviour
                     lineRenderer.gameObject.SetActive(true);
                     PossessTex.SetActive(true);
                 }
-                
+
                 if (Input.GetKeyDown(KeyCode.E) && !isPlayer)
                 {
                     if (Vector2.Distance(transform.position, mousePos) < 1f)
@@ -154,7 +154,7 @@ public class MoveObject : MonoBehaviour
                 PossessTex.SetActive(false);
             }
         }
-        else if(_State == State.Dead)
+        else if (_State == State.Dead)
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, player.position);
@@ -193,7 +193,7 @@ public class MoveObject : MonoBehaviour
     }
     public virtual void MouseBtnLeftUp(Vector2 targetPos)
     {
-        
+
     }
     public virtual void Attack(Vector2 target)
     {
@@ -217,7 +217,7 @@ public class MoveObject : MonoBehaviour
         _State = State.Roll;
         DefaultSkill = true;
         collider.enabled = false;
-        rigidbody.DOMove((target-rigidbody.position).normalized*5f+rigidbody.position, 1f);
+        rigidbody.DOMove((target - rigidbody.position).normalized * 5f + rigidbody.position, 1f);
         PlayAnim("roll");
         SetAnimLayerWeight(0f);
         Invoke(nameof(AnimaInjureFinish), 1f);
@@ -233,7 +233,7 @@ public class MoveObject : MonoBehaviour
     {
         ShadowPool.instance.RegisterCanying(GFX.GetChild(1).GetChild(0).gameObject, 10);
     }
-    public void MoveUpdate(Vector2 dir , float speedScale)
+    public void MoveUpdate(Vector2 dir, float speedScale)
     {
         if (_State == State.Normal)
         {
@@ -246,23 +246,23 @@ public class MoveObject : MonoBehaviour
     /// </summary>
     /// <param name="dirXscale"></param>
     /// <param name="animSpeed"></param>
-    public void MoveVelocity(Vector2 dirXscale , float animSpeed)
-    {
-        if(_State == State.Normal)
-        {
-            rigidbody.velocity = speed * dirXscale;
-            SetAnimSpeed(animSpeed);
-            SetAnimLayerWeight(Mathf.Floor(animSpeed));
-        }
-    }
-    public void MoveVelocity(Vector2 dirXscale, float animSpeed,bool isLeft)
+    public void MoveVelocity(Vector2 dirXscale, float animSpeed)
     {
         if (_State == State.Normal)
         {
             rigidbody.velocity = speed * dirXscale;
             SetAnimSpeed(animSpeed);
             SetAnimLayerWeight(Mathf.Floor(animSpeed));
-            if (isPlayer && animSpeed > 0 && type == MoveObjectType.Living && (dirXscale.x < 0)==isLeft)
+        }
+    }
+    public void MoveVelocity(Vector2 dirXscale, float animSpeed, bool isLeft)
+    {
+        if (_State == State.Normal)
+        {
+            rigidbody.velocity = speed * dirXscale;
+            SetAnimSpeed(animSpeed);
+            SetAnimLayerWeight(Mathf.Floor(animSpeed));
+            if (isPlayer && animSpeed > 0 && type == MoveObjectType.Living && (dirXscale.x < 0) == isLeft)
             {
                 Game.instance.weiqi.SetWeiqiPosition(foot.position, dirXscale.x < 0);
             }
@@ -270,7 +270,7 @@ public class MoveObject : MonoBehaviour
     }
     public virtual void TurnTowards(bool isleft)
     {
-        if(_State == State.Normal)
+        if (_State == State.Normal)
         {
             GFX.localScale = new Vector3(isleft ? 1 : -1, 1, 1);
         }
@@ -280,11 +280,11 @@ public class MoveObject : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <param name="force"></param>
-    public void GetHurt(float value,Vector2 force,bool forceAutoNormalize = true)
+    public void GetHurt(float value, Vector2 force, bool forceAutoNormalize = true)
     {
         if (forceAutoNormalize)
             force = force.normalized;
-        if (_State == State.Dead || _State==State.DeadDead) return;
+        if (_State == State.Dead || _State == State.DeadDead || _State == State.Roll) return;
         Hp -= value;
         if (Hp > 0)
         {

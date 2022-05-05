@@ -7,6 +7,7 @@ public class GrabBoss : Boss
     public float attackCD = 10f;
     public float attackDamage = 10f;
     private float _t = 0f;
+    private bool canTurn = true; //能不能改变左右方向
     enum BossState
     {
         idle,
@@ -122,11 +123,11 @@ public class GrabBoss : Boss
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
-            if (path.vectorPath.Count > currentWaypoint)
-            {
-                float dirForAnim = path.vectorPath[currentWaypoint].x - path.vectorPath[currentWaypoint - 1].x;
-                GFX.localScale = new Vector3(dirForAnim > 0 ? -1 : 1, 1, 1);
-            }
+            //if (path.vectorPath.Count > currentWaypoint)
+            //{
+            //    float dirForAnim = path.vectorPath[currentWaypoint].x - path.vectorPath[currentWaypoint - 1].x;
+            //    GFX.localScale = new Vector3(dirForAnim > 0 ? -1 : 1, 1, 1);
+            //}
         }
     }
 
@@ -232,12 +233,15 @@ public class GrabBoss : Boss
         CameraControl.instance.OpenBloomVolume();
         Vector2 dir = GetAttackDir();
         line0.enabled = true;
+        line0.transform.GetChild(0).gameObject.SetActive(true);
+        line0.transform.GetChild(1).gameObject.SetActive(true);
         t = 0;
         bool bo = false;
         while (t < step1Duration)
         {
             line0.SetPosition(0, (Vector2)firePoint.position);
             line0.SetPosition(1, (Vector2)firePoint.position + dir.normalized * lengthSkill1);
+            line0.transform.GetChild(1).position = (Vector2)firePoint.position + dir.normalized * lengthSkill1;
             if ((GetAttackDir()-Vector2.Dot(GetAttackDir(),dir.normalized)* dir.normalized).magnitude <= widthSkill1 / 2)
             {
                 if (bo)   //上一帧就在范围内，结算伤害
@@ -257,6 +261,8 @@ public class GrabBoss : Boss
             yield return 0;
         }
         line0.enabled = false;
+        line0.transform.GetChild(0).gameObject.SetActive(false);
+        line0.transform.GetChild(1).gameObject.SetActive(false);
         CameraControl.instance.CloseBloomVolume();
 
 
@@ -272,6 +278,12 @@ public class GrabBoss : Boss
         line0.enabled = true;
         line1.enabled = true;
         line2.enabled = true;
+        line0.transform.GetChild(0).gameObject.SetActive(true);
+        line0.transform.GetChild(1).gameObject.SetActive(true);
+        line1.transform.GetChild(0).gameObject.SetActive(true);
+        line1.transform.GetChild(1).gameObject.SetActive(true);
+        line2.transform.GetChild(0).gameObject.SetActive(true);
+        line2.transform.GetChild(1).gameObject.SetActive(true);
         CameraControl.instance.OpenBloomVolume();
         
         dir = GetAttackDir();
@@ -282,10 +294,16 @@ public class GrabBoss : Boss
         {
             line0.SetPosition(0, (Vector2)firePoint.position);
             line0.SetPosition(1, (Vector2)firePoint.position + dir.normalized * lengthSkill1);
+            line0.transform.GetChild(1).position = (Vector2)firePoint.position + dir.normalized * lengthSkill1;
+
             line1.SetPosition(0, (Vector2)firePoint.position);
             line1.SetPosition(1, (Vector2)firePoint.position + dir1.normalized * lengthSkill1);
+            line1.transform.GetChild(1).position = (Vector2)firePoint.position + dir1.normalized * lengthSkill1;
+
             line2.SetPosition(0, (Vector2)firePoint.position);
             line2.SetPosition(1, (Vector2)firePoint.position + dir2.normalized * lengthSkill1);
+            line2.transform.GetChild(1).position = (Vector2)firePoint.position + dir2.normalized * lengthSkill1;
+
             if ((GetAttackDir() - Vector2.Dot(GetAttackDir(), dir.normalized) * dir.normalized).magnitude <= widthSkill1 / 2
                 || (GetAttackDir() - Vector2.Dot(GetAttackDir(), dir1.normalized) * dir1.normalized).magnitude <= widthSkill1 / 2
                 || (GetAttackDir() - Vector2.Dot(GetAttackDir(), dir2.normalized) * dir2.normalized).magnitude <= widthSkill1 / 2)
@@ -310,6 +328,12 @@ public class GrabBoss : Boss
         line0.enabled = false;
         line1.enabled = false;
         line2.enabled = false;
+        line0.transform.GetChild(0).gameObject.SetActive(false);
+        line0.transform.GetChild(1).gameObject.SetActive(false);
+        line1.transform.GetChild(0).gameObject.SetActive(false);
+        line1.transform.GetChild(1).gameObject.SetActive(false);
+        line2.transform.GetChild(0).gameObject.SetActive(false);
+        line2.transform.GetChild(1).gameObject.SetActive(false);
         //结束动作
         t = 0;
         while (t < endTime0)
