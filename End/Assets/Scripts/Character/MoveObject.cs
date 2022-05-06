@@ -237,7 +237,7 @@ public class MoveObject : MonoBehaviour
     {
         if (_State == State.Normal)
         {
-            Vector3 detal = (Vector3)dir * speed * speedScale * Time.deltaTime;
+            Vector3 detal = (Vector3)dir.normalized * speed * speedScale * Time.deltaTime;
             transform.position += detal;
         }
     }
@@ -275,6 +275,7 @@ public class MoveObject : MonoBehaviour
             GFX.localScale = new Vector3(isleft ? 1 : -1, 1, 1);
         }
     }
+    bool playerInjureCDing = false;
     /// <summary>
     /// 受伤
     /// </summary>
@@ -284,7 +285,7 @@ public class MoveObject : MonoBehaviour
     {
         if (forceAutoNormalize)
             force = force.normalized;
-        if (_State == State.Dead || _State == State.DeadDead || _State == State.Roll) return;
+        if (_State == State.Dead || _State == State.DeadDead || _State == State.Roll || playerInjureCDing) return;
         Hp -= value;
         if (Hp > 0)
         {
@@ -292,6 +293,7 @@ public class MoveObject : MonoBehaviour
             if (isPlayer)
             {
                 collider.enabled = false;
+                playerInjureCDing = true;
                 StartCoroutine(nameof(PlayerInjured));
                 Invoke(nameof(AnimaInjureFinish), injureAnimDur);
                 ((PlayerController)controller).GetHurtEffect(force);
@@ -356,6 +358,7 @@ public class MoveObject : MonoBehaviour
     public void AnimaInjureFinish()
     {
         collider.enabled = true;
+        playerInjureCDing = false;
         _State = State.Normal;
     }
     public void AnimaDeadFinish()

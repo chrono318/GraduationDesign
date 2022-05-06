@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Level
   - Boom
+  - Boss
   layers:
   - Default
   - TransparentFX

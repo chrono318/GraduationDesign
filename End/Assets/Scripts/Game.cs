@@ -97,11 +97,8 @@ public class Game : MonoBehaviour
             //通关
             print("通关");
             MinMap.SetActive(true);
-            //deliveryDoors[RoomId - 1].gameObject.SetActive(true);
             deliveryDoors[RoomId - 1].Pass();
             return;
-            //if (RoomId >= 4) return;
-            //deliveryDoors[RoomId-1].gameObject.SetActive(true);
         }
     }
     public void DeleteEnemyMO(MoveObject moveObject)

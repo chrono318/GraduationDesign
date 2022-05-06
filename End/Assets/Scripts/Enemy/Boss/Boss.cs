@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Pathfinding;
 
 public class Boss : MonoBehaviour
 {
+    public float HP = 1000f;
+    protected float curHP = 1000f;
+    public Slider HpSlider;
     public float speed = 2f;
     protected float speedScale = 1f;
     public float attackDis = 3f;
-    
+    protected Collider2D collider2D;
     [Header("图片")]
     public Transform GFX;
     public Animator[] animators;
@@ -26,6 +30,8 @@ public class Boss : MonoBehaviour
     private void Awake()
     {
         seeker = GetComponent<Seeker>();
+        collider2D = GetComponent<Collider2D>();
+        curHP = HP;
     }
 
     public Vector2 GetDirToPlayer()
@@ -53,5 +59,23 @@ public class Boss : MonoBehaviour
         }
     }
 
-    
+    public void GetHurt(float value)
+    {
+        curHP -= value;
+        if (curHP <= 0)
+        {
+            Dead();
+        }
+        else
+        {
+            HpSlider.value = curHP / HP;
+        }
+    }
+    protected virtual void Dead()
+    {
+        animators[0].SetTrigger("dead");
+        HpSlider.gameObject.SetActive(false);
+        collider2D.enabled = false;
+        this.enabled = false;
+    }
 }

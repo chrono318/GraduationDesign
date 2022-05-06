@@ -19,12 +19,18 @@ public class DefaultBullet : Bullet
     private IEnumerator Bullet()
     {
         yield return new WaitForSeconds(LifeTime);
-        GetComponent<Animator>().SetTrigger("destroy");
+        animator.SetTrigger("destroy");
     }
     public void AnimEnd()
     {
         //gameObject.SetActive(false);
-        DestroyBulletSelf();
+        pool.ReturnGoToPool(this.gameObject);
+    }
+
+    void StartDestoryAnim()
+    {
+        col = true;
+        animator.SetTrigger("destroy");
     }
     private void FixedUpdate()
     {
@@ -43,26 +49,30 @@ public class DefaultBullet : Bullet
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Table"))
         {
-            GetComponent<Animator>().SetTrigger("destroy");
+            animator.SetTrigger("destroy");
         }
         Vector3 dir = transform.TransformVector(Vector3.right);
         dir.z = 0;
         if (collision.gameObject.tag == "Player" && !isPlayer)
         {
-            col = true;
-            GetComponent<Animator>().SetTrigger("destroy");
+            StartDestoryAnim();
 
-            collision.gameObject.GetComponent<MoveObject>().GetHurt(10, dir);
+            collision.gameObject.GetComponent<MoveObject>().GetHurt(damage, dir);
         }
         if (collision.gameObject.tag == "Enemy" && isPlayer)
         {
-            col = true;
-            GetComponent<Animator>().SetTrigger("destroy");
-            collision.gameObject.GetComponent<MoveObject>().GetHurt(10, dir);
+            StartDestoryAnim();
+            collision.gameObject.GetComponent<MoveObject>().GetHurt(damage, dir);
         }
         if (collision.gameObject.tag == "Boom")
         {
+            AnimEnd();
             collision.gameObject.GetComponent<ExplosiveBarrels>().CallBoomAnim();
+        }
+        if (collision.gameObject.tag == "Boss" && isPlayer)
+        {
+            StartDestoryAnim();
+            collision.gameObject.GetComponent<Boss>().GetHurt(damage);
         }
     }
 }
