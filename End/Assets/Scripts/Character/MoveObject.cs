@@ -208,10 +208,10 @@ public class MoveObject : MonoBehaviour
             PossessTex.SetActive(false);
         }
     }
-    public virtual void MouseBtnLeftDown(Vector2 targetPos)
+    public virtual bool MouseBtnLeftDown(Vector2 targetPos)
     {
         TurnTowards(targetPos.x < foot.position.x);
-        CallAttack(targetPos);
+        return CallAttack(targetPos);
     }
     public virtual void MouseBtnLeftUp(Vector2 targetPos)
     {

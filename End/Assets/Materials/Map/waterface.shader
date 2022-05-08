@@ -44,6 +44,7 @@ Shader "MyShader/waterFace"
             }
 
             sampler2D _MainTex;
+            float4 _MainTex_ST;
             sampler2D _NoiseTex;
             float _Intensity;
             float _Speed;
@@ -55,7 +56,7 @@ Shader "MyShader/waterFace"
                 float noise = tex2D(_NoiseTex , screenPos).x;
                 screenPos = screenPos  + float2(_Time.x,0) * _Speed;
                 screenPos += float2(noise  , noise *1.5f) * _Intensity; 
-                fixed4 col = tex2D(_MainTex, screenPos);
+                fixed4 col = tex2D(_MainTex, screenPos * _MainTex_ST.xy + _MainTex_ST.zw);
                 return col * _Color;
             }
             ENDCG
