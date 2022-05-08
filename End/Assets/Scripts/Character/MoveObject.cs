@@ -114,6 +114,9 @@ public class MoveObject : MonoBehaviour
     {
         DefaultUpdate();
     }
+    /// <summary>
+    /// 攻击计时、附身检测
+    /// </summary>
     protected void DefaultUpdate()
     {
         attackTimer.Update();
