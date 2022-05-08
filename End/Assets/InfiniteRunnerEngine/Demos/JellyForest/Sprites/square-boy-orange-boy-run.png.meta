@@ -1,0 +1,816 @@
+fileFormatVersion: 2
+guid: b1c1be092b754dd42916fcdb6da4bbd8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: square-boy-orange-boy-run_0
+  - first:
+      213: 21300002
+    second: square-boy-orange-boy-run_1
+  - first:
+      213: 21300004
+    second: square-boy-orange-boy-run_2
+  - first:
+      213: 21300006
+    second: square-boy-orange-boy-run_3
+  - first:
+      213: 21300008
+    second: square-boy-orange-boy-run_4
+  - first:
+      213: 21300010
+    second: square-boy-orange-boy-run_5
+  - first:
+      213: 21300012
+    second: square-boy-orange-boy-run_6
+  - first:
+      213: 21300014
+    second: square-boy-orange-boy-run_7
+  - first:
+      213: 21300016
+    second: square-boy-orange-boy-run_8
+  - first:
+      213: 21300018
+    second: square-boy-orange-boy-run_9
+  - first:
+      213: 21300020
+    second: square-boy-orange-boy-run_10
+  - first:
+      213: 21300022
+    second: square-boy-orange-boy-run_11
+  - first:
+      213: 21300024
+    second: square-boy-orange-boy-run_12
+  - first:
+      213: 21300026
+    second: square-boy-orange-boy-run_13
+  - first:
+      213: 21300028
+    second: square-boy-orange-boy-run_14
+  - first:
+      213: 21300030
+    second: square-boy-orange-boy-run_15
+  - first:
+      213: 21300032
+    second: square-boy-orange-boy-run_16
+  - first:
+      213: 21300034
+    second: square-boy-orange-boy-run_17
+  - first:
+      213: 21300036
+    second: square-boy-orange-boy-run_18
+  - first:
+      213: 21300038
+    second: square-boy-orange-boy-run_19
+  - first:
+      213: 21300040
+    second: square-boy-orange-boy-run_20
+  - first:
+      213: 21300042
+    second: square-boy-orange-boy-run_21
+  - first:
+      213: 21300044
+    second: square-boy-orange-boy-run_22
+  - first:
+      213: 21300046
+    second: square-boy-orange-boy-run_23
+  - first:
+      213: 21300048
+    second: square-boy-orange-boy-run_24
+  - first:
+      213: 21300050
+    second: square-boy-orange-boy-run_25
+  - first:
+      213: 21300052
+    second: square-boy-orange-boy-run_26
+  - first:
+      213: 21300054
+    second: square-boy-orange-boy-run_27
+  - first:
+      213: 21300056
+    second: square-boy-orange-boy-run_28
+  - first:
+      213: 21300058
+    second: square-boy-orange-boy-run_29
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 16
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bcfd9329da3d764885e85a56b05c360
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_1
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de920670062072b4188d68c92b15f888
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_2
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb7155aa68e7b0c499ec21683dc2447e
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_3
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e882e75ede681034b8a9ba66a3d0184b
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_4
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f3d3957a50a1b441b363d3d33a896fa
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_5
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42653b56ae7127549b5f8cfa76006792
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_6
+      rect:
+        serializedVersion: 2
+        x: 1922
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 162f940da1fb0bb4292e7c38e721e5cc
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_7
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1352179fddaf31c4d9bc18596c2331b9
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_8
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46166d1f5e3f89949a8024d06346d282
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_9
+      rect:
+        serializedVersion: 2
+        x: 2882
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09ccc32f11ba0394e89e90b95e6e71e3
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_10
+      rect:
+        serializedVersion: 2
+        x: 3202
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4426fdce24e330541933e378dfc6ff76
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_11
+      rect:
+        serializedVersion: 2
+        x: 3522
+        y: 727
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c276d9d835ecd540b59edcd49d492e9
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8a87b90fdfa24a49bd0a96c69831872
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_13
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdb7dd81e9e1805469c52b9e549189ec
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_14
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffbdd8fa25d3193419910394b10036ce
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_15
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a66200c8e9bbfdc46b42e0b384219ed9
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_16
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39532ed056ec0a146b42cc137e047de4
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_17
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcca10214ecb4aa478bc304ff0af5b6f
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_18
+      rect:
+        serializedVersion: 2
+        x: 1922
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aacaae82a6131ce4a93bca3e2c59bf50
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_19
+      rect:
+        serializedVersion: 2
+        x: 2242
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aa6baef62fd04e4eb0060fea76d3024
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_20
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b0afdc8e4a43e847bc0b5005a461755
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_21
+      rect:
+        serializedVersion: 2
+        x: 2882
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87930ad7259dec84a8fc7379dce29cf3
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_22
+      rect:
+        serializedVersion: 2
+        x: 3202
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28b3b8bdd9a211d42a1514db42720b5c
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_23
+      rect:
+        serializedVersion: 2
+        x: 3522
+        y: 432
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b8f37e279f9ea46835fa9d79dea293
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 137
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65eb6375bd538984dbb3c9ae111c709b
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_25
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 137
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b44d1d7b8e690cd4a9eeb113e4353162
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_26
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 137
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba92482ef4d89ff48931da80c9e8b41d
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_27
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 137
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bf0573f7005b744abebbe1d1b4cb609
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_28
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 137
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef40ae41a8f10942b5943cc6c5a6d54
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square-boy-orange-boy-run_29
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 137
+        width: 318
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3a7e50a24ae87d48a84216a80d787c2
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
