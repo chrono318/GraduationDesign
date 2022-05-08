@@ -10,15 +10,20 @@ public class MoveObject : MonoBehaviour
     public MoveObjectType type;
 
     [Header("攻击")]
+    public GameObject bulletPrefab;
     public float attackRadius = 5f;
     private AttackTimer attackTimer;
     [Tooltip("弹匣容量，默认为0（近战）")]
     public int bulletNum = 0;
     [Tooltip("换弹时间,默认为0（近战）")]
     public float shotReload = 0f;
-    public float playerAttackSpace = 1f;
     [Tooltip("单次攻击间隔")]
     public float attackSpace = 2f;
+    [Tooltip("子弹速度")]
+    public float bulletSpeed = 5f;
+    [Tooltip("子弹伤害")]
+    public float bulletDamage = 20f;
+
     public float shakeTime = 0f;
     public float cameraShakeIntensity = 1f;
 
@@ -42,7 +47,20 @@ public class MoveObject : MonoBehaviour
     public float MaxHp = 100f;
     public float speed = 10f;
     public float ReloadTime = 2f;
-    public GameObject bulletPrefab;
+
+    [Header("玩家")]
+    public GameObject bulletPrefab_player;
+    public float speed_player = 5f;
+    [Tooltip("弹匣容量，默认为0（近战）")]
+    public int bulletNum_player = 0;
+    [Tooltip("换弹时间,默认为0（近战）")]
+    public float shotReload_player = 0f;
+    [Tooltip("单次攻击间隔")]
+    public float attackSpace_player = 2f;
+    [Tooltip("子弹速度")]
+    public float bulletSpeed_player = 5f;
+    [Tooltip("子弹伤害")]
+    public float bulletDamage_player = 20f;
 
     protected float Hp;
 
@@ -67,6 +85,7 @@ public class MoveObject : MonoBehaviour
         Roll,
         DeadDead
     }
+    [Space(20)]
     public State _State;
     private void Reset()
     {
@@ -461,7 +480,17 @@ public class MoveObject : MonoBehaviour
                 PossessCircle.SetActive(true);
             }
             collider.enabled = true;
-            attackTimer.SetAttackSpace(playerAttackSpace);
+            attackTimer.SetAttackTimer(bulletNum_player, shotReload_player, attackSpace_player);
+            speed = speed_player;
+            bulletSpeed = bulletSpeed_player;
+            bulletDamage = bulletDamage_player;
+
+            if (bulletPrefab_player)
+            {
+                PoolManager.instance.LogOutPool(bulletPool);
+                bulletPool = PoolManager.instance.RegisterPool(bulletPrefab_player);
+                bulletPool.registor.Add(gameObject);
+            }
         }
         _State = State.Normal;
 
@@ -540,7 +569,7 @@ public class MoveObject : MonoBehaviour
     {
         GameObject go = bulletPool.GetGameObject();
         Bullet bullet = go.GetComponent<Bullet>();
-        bullet.Init(position, rotation, speed, isPlayer, bulletPool);
+        bullet.Init(position, rotation, bulletSpeed, isPlayer, bulletDamage, bulletPool);
         return bullet;
     }
     private void OnDestroy()

@@ -47,6 +47,7 @@ public class GrabBoss : Boss
     public float beginTime2 = 1f;
     public float endTime2 = 1f;
     public GameObject bullet;
+    public float bulletDamage = 10f;
     //×Óµ¯³Ø
     private Pool bulletPool;
     public float bulletSpeed = 5f;
@@ -469,7 +470,7 @@ public class GrabBoss : Boss
     {
         GameObject go = bulletPool.GetGameObject();
         Bullet bullet = go.GetComponent<Bullet>();
-        bullet.Init(position, rotation, bulletSpeed, false, bulletPool);
+        bullet.Init(position, rotation, bulletSpeed, false, bulletDamage, bulletPool);
         return bullet;
     }
     /// <summary>

@@ -77,16 +77,15 @@ public class AttackTimer
     }
 
     /// <summary>
-    /// 针对那个连续发射的枪
+    /// 附身后重新设置数据
     /// </summary>
     /// <param name="time"></param>
-    public void SetAttackSpace(float time)
+    public void SetAttackTimer(int bulletNum, float shotReload, float attackSpace)
     {
-        this.attackSpace = time;
-    }
-    public void SetReloadTime(float t)
-    {
-        this.shotReload = t;
+        this.bulletNum = bulletNum;
+        this.shotReload = shotReload;
+        this.attackSpace = attackSpace;
+        this.t = attackSpace;
     }
 }
 

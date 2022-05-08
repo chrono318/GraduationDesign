@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class DefaultBullet : Bullet
 {
-    public float LifeTime = 10f;
-    [Header("子弹属性")]
-    public float damage;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
     private void OnEnable()
     {
         StartCoroutine(nameof(Bullet));
