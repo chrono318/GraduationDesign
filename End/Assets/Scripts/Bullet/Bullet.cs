@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float LifeTime = 20f;
+    public float damage = 10f;
     public float speed = 5f;
     public bool isPlayer = false;
     public Pool pool;
@@ -14,13 +16,14 @@ public class Bullet : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    public void Init(Vector3 position,Quaternion rotation,float speed,bool isplayer,Pool pool)
+    public void Init(Vector3 position,Quaternion rotation,float speed,bool isplayer,float damage,Pool pool)
     {
         transform.position = position;
         transform.rotation = rotation;
         this.speed = speed;
         this.isPlayer = isplayer;
         this.pool = pool;
+        this.damage = damage;
         col = false;
         animator.SetTrigger("reset");
         gameObject.SetActive(true);
