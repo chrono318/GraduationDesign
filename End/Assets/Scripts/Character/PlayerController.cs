@@ -110,10 +110,12 @@ public class PlayerController : Controller
         //攻击（左键）/技能（右键）
         if (Input.GetMouseButton(0))
         {
-            moveObject.MouseBtnLeftDown(mousePos);
-            if (weaponDir)
+            if (moveObject.MouseBtnLeftDown(mousePos))
             {
-                weaponDir.AttackShake(0.2f, 0.05f, mousePos);
+                if (weaponDir)
+                {
+                    weaponDir.AttackShake(0.2f, 0.05f, mousePos);
+                }
             }
         }
         else if (Input.GetMouseButton(1))
@@ -157,7 +159,8 @@ public class PlayerController : Controller
         moveObject = null;
         GetComponent<Collider2D>().enabled = true;
         Game.instance.InformEnemie(null);
-        InformOutPossessEvent();
+        if(InformOutPossessEvent!=null)
+            InformOutPossessEvent();
     }
     /// <summary>
     /// 附身协程
@@ -184,8 +187,8 @@ public class PlayerController : Controller
             weaponDir = moveObject.controller.weaponDir ?? null;
             if (weaponDir)
             {
-                weaponDir.enabled = true;
-                weaponDir.controller = this;
+                //weaponDir.enabled = true;
+                //weaponDir.controller = this;
             }
             if (InformPossessEvent != null)
             {

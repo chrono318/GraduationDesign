@@ -128,11 +128,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  bulletPrefab: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
+    type: 3}
   attackRadius: 5
   bulletNum: 1
   shotReload: 2
-  playerAttackSpace: 0
   attackSpace: 0
+  bulletSpeed: 5
+  bulletDamage: 20
   shakeTime: 0
   cameraShakeIntensity: 1
   FearRadius: 3
@@ -153,8 +156,13 @@ MonoBehaviour:
   MaxHp: 100
   speed: 3
   ReloadTime: 2
-  bulletPrefab: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
-    type: 3}
+  bulletPrefab_player: {fileID: 0}
+  speed_player: 5
+  bulletNum_player: 0
+  shotReload_player: 0
+  attackSpace_player: 2
+  bulletSpeed_player: 5
+  bulletDamage_player: 20
   isPlayer: 0
   controller: {fileID: 0}
   _State: 0
@@ -397,6 +405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 497622039133903619, guid: f5d6011bed14f8c4690b9985b3e65dea,
+        type: 3}
+      propertyPath: oriAngle
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 497622039133903619, guid: f5d6011bed14f8c4690b9985b3e65dea,
         type: 3}
