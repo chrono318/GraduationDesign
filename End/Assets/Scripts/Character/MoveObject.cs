@@ -25,7 +25,8 @@ public class MoveObject : MonoBehaviour
     public float bulletDamage = 20f;
 
     public float shakeTime = 0f;
-    public float cameraShakeIntensity = 1f;
+    public float cameraShakeIntensity = 1f; 
+    public float cameraShakeTime = 0.05f; 
 
     public float FearRadius = 5f;
     //控制图片整体，控制朝向
@@ -93,7 +94,7 @@ public class MoveObject : MonoBehaviour
         //collider = gameObject.AddComponent<Collider2D>();
     }
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
@@ -221,7 +222,7 @@ public class MoveObject : MonoBehaviour
     {
         if (isPlayer)
         {
-            ((PlayerController)controller).CameraShakeShot(((Vector2)transform.position - target).normalized * cameraShakeIntensity);
+            ((PlayerController)controller).CameraShakeShot(((Vector2)transform.position - target).normalized * cameraShakeIntensity, cameraShakeTime);
         }
     }
     public virtual void MouseBtnRightDown(Vector2 targetPos)
@@ -491,8 +492,13 @@ public class MoveObject : MonoBehaviour
                 bulletPool = PoolManager.instance.RegisterPool(bulletPrefab_player);
                 bulletPool.registor.Add(gameObject);
             }
+            SetPlayer();
         }
         _State = State.Normal;
+
+    }
+    public virtual void SetPlayer()
+    {
 
     }
     public Rigidbody2D GetRigidBody()
@@ -574,6 +580,8 @@ public class MoveObject : MonoBehaviour
     }
     private void OnDestroy()
     {
+        StopAllCoroutines();
+        CancelInvoke();
         if (bulletPool)
         {
             PoolManager.instance.LogOutPool(bulletPool);

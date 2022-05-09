@@ -54,12 +54,12 @@ public class weaponDir : MonoBehaviour
         update = true;
     }
 
-    private void OnEnable()
-    {
-        print("on enable");
-    }
-    private void OnDisable()
-    {
-        print("on disable");
-    }
+    //private void OnEnable()
+    //{
+    //    print("on enable");
+    //}
+    //private void OnDisable()
+    //{
+    //    print("on disable");
+    //}
 }

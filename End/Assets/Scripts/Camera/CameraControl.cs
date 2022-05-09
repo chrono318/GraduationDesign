@@ -5,6 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class CameraControl : MonoBehaviour
 {
+    [Header("爆炸震动")]
     public float shakeDuration = 0.25f;
     public float ShotShakeIntensity = 1f;
     public float InjureShakeIntensity = 1f;
@@ -72,13 +73,13 @@ public class CameraControl : MonoBehaviour
         float force = 1 * detalX;
         return dep;
     }
-    public void CameraShakeShot(Vector2 dir)
+    public void CameraShakeShot(Vector2 dir,float shakeTime)
     {
-        StartCoroutine(ShotShake(dir*ShotShakeIntensity,0.05f));
+        StartCoroutine(ShotShake(dir*ShotShakeIntensity, shakeTime));
     }
     public void CameraInjure(Vector2 dir)
     {
-        StartCoroutine(Shake(dir*InjureShakeIntensity));
+        StartCoroutine(Shake(dir.normalized*InjureShakeIntensity));
         OpenInjureVolume();
         Invoke(nameof(CloseInjureVolume), shakeDuration);
     }

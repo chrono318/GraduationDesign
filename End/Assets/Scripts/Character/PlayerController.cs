@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.U2D.IK;
 
 public class PlayerController : Controller
 {
@@ -128,19 +129,22 @@ public class PlayerController : Controller
             weaponDir.target = mousePos;
         }
     }
-    private IEnumerator CamereaShake(Vector2 dirXForce,float time)
+    private IEnumerator CamereaShake(Vector2 dirXForce, float shakeTime,float waitTime)
     {
-        yield return new WaitForSeconds(time);
-        cameraControl.CameraShakeShot(dirXForce.normalized);//射击震动
+        if (waitTime > 0)
+        {
+            yield return new WaitForSeconds(waitTime);
+        }
+        cameraControl.CameraShakeShot(dirXForce, shakeTime);//射击震动
     }
     /// <summary>
     /// 几秒后开始震动屏幕(单次震动)
     /// </summary>
     /// <param name="dirXForce">震动方向*强度,默认强度用normalized</param>
     /// <param name="waitTime">几秒后开始震动</param>
-    public void CameraShakeShot(Vector2 dirXForce ,float waitTime=0f)
+    public void CameraShakeShot(Vector2 dirXForce ,float shakeTime,float waitTime=0f)
     {
-        StartCoroutine(CamereaShake(dirXForce,waitTime));
+        StartCoroutine(CamereaShake(dirXForce, shakeTime, waitTime));
     }
     public void GetHurtEffect(Vector2 force)
     {
@@ -189,6 +193,7 @@ public class PlayerController : Controller
             {
                 //weaponDir.enabled = true;
                 //weaponDir.controller = this;
+                weaponDir.GetComponent<IKManager2D>().enabled = true;
             }
             if (InformPossessEvent != null)
             {
