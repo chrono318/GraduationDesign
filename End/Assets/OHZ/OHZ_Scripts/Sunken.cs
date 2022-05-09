@@ -18,6 +18,7 @@ public class Sunken : MonoBehaviour
     /// </summary>
     public float keepDownTime = 2f;
     float currkeepDownTime;
+    public float damage = 15f;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -87,7 +88,7 @@ public class Sunken : MonoBehaviour
     {
         if (collision.transform.parent.TryGetComponent<MoveObject>(out MoveObject mo))
         {
-            mo.GetHurt(20f, new Vector2(0,0));
+            mo.GetHurt(damage, new Vector2(0,0));
         }
     }
 }

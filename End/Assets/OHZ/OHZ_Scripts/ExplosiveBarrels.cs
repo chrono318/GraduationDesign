@@ -9,6 +9,7 @@ public class ExplosiveBarrels : MonoBehaviour
     public float boomForce = 10f;
 
     public ParticleSystem particleSystem;
+    public float damage = 50f;
     public void CloseShadow()
     {
         transform.GetChild(0).gameObject.SetActive(false);
@@ -31,7 +32,7 @@ public class ExplosiveBarrels : MonoBehaviour
             if (hit.gameObject.TryGetComponent<MoveObject>(out MoveObject moveObject))
             {
                 if (moveObject.type == MoveObjectType.Dead) continue;
-                moveObject.GetHurt(70f, -pos.normalized * boomForce,false);
+                moveObject.GetHurt(damage, -pos.normalized * boomForce,false);
             }
         }
 
