@@ -20,7 +20,7 @@ public class EnemyController : Controller
     private Vector2 Target;
     private MoveObject Player;
 
-    private bool Reach = false;
+    private bool reach = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,11 +71,11 @@ public class EnemyController : Controller
             if (Vector2.Distance(Player.foot.position, transform.position) < moveObject.attackRadius)
             {
                 moveObject.MouseBtnLeftDown(Player.transform.position);
-                Reach = true;
+                reach = true;
             }
             else
             {
-                Reach = false;
+                reach = false;
                 Target = Player.foot.position;
             }
         }
@@ -87,7 +87,7 @@ public class EnemyController : Controller
     private void FixedUpdate()
     {
 
-        if (path == null || Reach)
+        if (path == null || reach)
         {
             //MoveVelocity(Vector2.zero, 0f);
             return;

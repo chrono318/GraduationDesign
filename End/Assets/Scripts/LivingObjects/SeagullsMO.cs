@@ -6,48 +6,111 @@ using DG.Tweening;
 
 public class SeagullsMO : MoveObject
 {
+    [Header("海鸥")]
     public GameObject clock;
     public GameObject dizzy;
     public float hurtRadius = 5f;
-    public float hurtValue = 100f;
+    public float damage = 100f;
+    [Tooltip("冲刺时离多近会爆炸")]
     public float preBoomRadius = 3f;
     private bool preBoom = false;
-    public float rushRadius = 20f;
+    public float rushTime = 3f;
     public float rushSpeed = 20f;
+    [Tooltip("技能加速，加速到Speed（不是rushSpeed）的几倍")]
+    public float skillSpeedScale = 1.5f;
+    [Tooltip("冲击时方向改变的幅度")]
+    public float rushDirChangeScale = 0.1f;
     bool isWaitForBtn = false;
     bool isRush = false;
+    bool hasCollide = false;
+
+    private delegate void BtnDownDelegate(Vector2 targetPos);
+    private BtnDownDelegate BtnDownF;
+    protected override void Start()
+    {
+        base.Start();
+        BtnDownF = new BtnDownDelegate(EnemyAttack);
+    }
+
     public override bool MouseBtnLeftDown(Vector2 targetPos)
     {
-        if (!CallAttack(targetPos)) return false;
-        if (isPlayer)
-        {
-            if (isWaitForBtn)//第二次
-            {
-                CancelInvoke(nameof(Boom));
-                Boom();
-                return true;
-            }
-            else                       //第一次
-            {
-                isWaitForBtn = true;
-                clock.SetActive(true);
-                Invoke(nameof(Boom), 5f);
-            }
-        }
-        else
-        {
-            if (isRush) return true;
-            isRush = true;
-            PlayAnim("animState", 1);
-            StartCoroutine(Rush((targetPos - rigidbody.position).normalized));
-        }
+        if (isRush) return false;
+        BtnDownF(targetPos);
         return false;
     }
-    public override void Attack(Vector2 target)
+    
+    void EnemyAttack(Vector2 targetPos)
     {
-        
+        isRush = true;
+        StartCoroutine(EnemyRush(targetPos - (Vector2)foot.position));
     }
-    private void Update()
+    IEnumerator EnemyRush(Vector2 dir)
+    {
+        float t = 0f;
+        while (t < rushTime)
+        {
+            Vector2 toplayer = PlayerController.instance.GetMoveObject().foot.position - foot.position;
+            if(toplayer.magnitude <= preBoomRadius)
+            {
+                Boom();
+                yield break;
+            }
+            if (hasCollide)
+            {
+                yield break;
+            }
+            dir += toplayer.normalized * rushDirChangeScale;
+            MoveUpdate(dir, rushSpeed / speed);
+            TurnTowards(dir.x < 0);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        isRush = false;
+        //休息
+        PlayAnim("animState", 0);
+    }
+    /// <summary>
+    /// 撞到墙体会眩晕
+    /// </summary>
+    public void CollideWhenRush()
+    {
+        if (isRush)
+        {
+            hasCollide = true;
+            PlayAnim("animState", 3);
+        }
+    }
+
+    //附身后
+    void PlayerAttack(Vector2 targetPos)
+    {
+        StartCoroutine(nameof(PlayerRush));
+    }
+    IEnumerator PlayerRush()
+    {
+        float t = 0f;
+        while (t < 5f)
+        {
+            t += Time.deltaTime;
+            yield return null;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Boom();
+                yield break;
+            }
+        }
+        Boom();
+    }
+    public override void SetPlayer()
+    {
+        BtnDownF = new BtnDownDelegate(PlayerAttack);
+    }
+    public override void MouseBtnRightDown(Vector2 targetPos)
+    {
+        //开始加速
+        speed *= skillSpeedScale;
+    }
+    private void OriUpdate()
     {
         DefaultUpdate();
 
@@ -84,7 +147,7 @@ public class SeagullsMO : MoveObject
                     if (mo.type == MoveObjectType.Dead) continue;
                     if (Vector2.Distance(mo.transform.position, rigidbody.position)<hurtRadius)
                     {
-                        mo.GetHurt(hurtValue, ((Vector2)mo.transform.position - rigidbody.position).normalized*100);
+                        mo.GetHurt(damage, ((Vector2)mo.transform.position - rigidbody.position).normalized*100);
                     }
                 }
             }
@@ -95,7 +158,7 @@ public class SeagullsMO : MoveObject
             MoveObject player = Game.instance.playerController.GetMoveObject();
             if (Vector2.Distance(player.transform.position, rigidbody.position) < hurtRadius && player._State != State.Roll && player.type==MoveObjectType.Living)
             {
-                player.GetHurt(hurtValue, ((Vector2)player.transform.position - rigidbody.position).normalized*100);
+                player.GetHurt(damage, ((Vector2)player.transform.position - rigidbody.position).normalized*100);
             }
             Game.instance.CheckIfPass();
             Game.instance.DeleteEnemyMO(this);
@@ -117,7 +180,7 @@ public class SeagullsMO : MoveObject
         Vector2 oriPos = rigidbody.position;
         float dis = 0;
         MoveVelocity(dir * rushSpeed,1);
-        while (dis < rushRadius)
+        while (dis < rushTime)
         {
             dis = (rigidbody.position - oriPos).magnitude;
             yield return 0;
