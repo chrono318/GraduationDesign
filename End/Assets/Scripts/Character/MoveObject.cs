@@ -578,6 +578,10 @@ public class MoveObject : MonoBehaviour
         bullet.Init(position, rotation, bulletSpeed, isPlayer, bulletDamage, bulletPool);
         return bullet;
     }
+    public float GetHP()
+    {
+        return Hp;
+    }
     private void OnDestroy()
     {
         StopAllCoroutines();

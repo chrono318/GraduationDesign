@@ -16,7 +16,7 @@ public class Pool : MonoBehaviour
         get => reference; set
         {
             reference = value;
-            if (reference <= 0)
+            if (reference == 0)
             {
                 Destroy(gameObject);
             }
