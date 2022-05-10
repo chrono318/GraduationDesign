@@ -28,6 +28,7 @@ public class GrabBoss : Boss
     public Transform firePoint;
 
     [Header("技能-冲击")]
+    public float damageSkill0 = 30f;
     public float beginTime0 = 1f;
     public float endTime0 = 1f;
     public float rushDistance = 10f;
@@ -84,7 +85,8 @@ public class GrabBoss : Boss
     public List<GameObject> enemyPrafabs;
     public List<Transform> bornPoint;
 
-    public ParticleSystem callEnemyVFX;
+    public ParticleSystem[] callEnemyVFXs;
+    private int curEnemyCout;
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +98,7 @@ public class GrabBoss : Boss
 
         bulletPool = PoolManager.instance.RegisterPool(bullet);
         bulletPool.registor.Add(gameObject);
+        curEnemyCout = Game.instance.CurEnemyCount;
     }
     private void Player_InformPossessEvent(MoveObject target)
     {
@@ -157,6 +160,23 @@ public class GrabBoss : Boss
             if (dir.magnitude <= attackDis)
             {
                 StartCoroutine(nameof(Attack));
+            }
+        }
+        curEnemyCout = Game.instance.CurEnemyCount;
+        //召唤小怪的逻辑
+        if (curEnemyCout <= 0)
+        {
+            if (player.GetMoveObject())
+            {
+                if (player.GetMoveObject().GetHP() > 50f)
+                {
+                    return;
+                }
+            }
+            if (!isSkill)
+            {
+                StartSkill(4);
+                //print("血少"+curEnemyCout);
             }
         }
     }
@@ -231,22 +251,26 @@ public class GrabBoss : Boss
 
     void StartSkillTiming()
     {
-        int index = Random.Range(0, 4);
+        int index = Random.Range(0, 5);
         StartSkill(index);
     }
     void ContinueSkillTiming()
     {
-        int index = Random.Range(1, 4);
+        if (isSkill) return;
+        int index = Random.Range(1, 5);
         index += lastSkillIndex;
-        index %= 4;
+        index %= 5;
         StartSkill(index);
     }
     void StartSkill(int index)
     {
         isSkill = true;
         lastSkillIndex = index;
+        //停止普通攻击
         StopCoroutine(nameof(Attack));
         isAttacking = false;
+        preAttackVFX.SetActive(false);
+
         switch (index)
         {
             case 0:
@@ -260,6 +284,16 @@ public class GrabBoss : Boss
                 break;
             case 3:
                 StartCoroutine(nameof(Skill3));
+                break;
+            case 4:
+                if (curEnemyCout < maxEnemyCount)
+                {
+                    StartCoroutine(nameof(Skill4));
+                }
+                else
+                {
+                    ContinueSkillTiming();
+                }
                 break;
         }
     }
@@ -291,7 +325,7 @@ public class GrabBoss : Boss
 
             if (GetDirToPlayer().magnitude <= rushAttackWidth)
             {
-                targetMO.GetHurt(attackDamage, GetDirToPlayer() * 3 ,false);
+                targetMO.GetHurt(damageSkill0, GetDirToPlayer() * 3 ,false);
             }
             yield return 0;
         }
@@ -334,15 +368,19 @@ public class GrabBoss : Boss
         {
             line0.SetPosition(0, (Vector2)firePoint.position);
             line0.SetPosition(1, (Vector2)firePoint.position + dir.normalized * lengthSkill1);
-            if ((GetAttackDir()-Vector2.Dot(GetAttackDir(),dir.normalized)* dir.normalized).magnitude <= widthSkill1 / 2)
+            if(Vector2.Dot(GetAttackDir(), dir.normalized) > 0)
             {
-                if (bo)   //上一帧就在范围内，结算伤害
+                if ((GetAttackDir() - Vector2.Dot(GetAttackDir(), dir.normalized) * dir.normalized).magnitude <= widthSkill1 / 2)
                 {
-                    targetMO.GetHurt(damagePerSecond * Time.deltaTime, dir);
-                }
-                else  //不在的话
-                {
+                    if (bo)   //上一帧就在范围内，结算伤害
+                    {
+                        targetMO.GetHurt(damagePerSecond * Time.deltaTime, dir);
+                    }
                     bo = true;
+                }
+                else
+                {
+                    bo = false;
                 }
             }
             else
@@ -579,6 +617,38 @@ public class GrabBoss : Boss
 
         reached = false;
         isSkill = false;
+        Invoke(nameof(ContinueSkillTiming), skillCD);
+    }
+    /// <summary>
+    /// 召唤小怪
+    /// </summary>
+    IEnumerator Skill4()
+    {
+        reached = true;
+        //动画
+        animator.SetTrigger("summon");
+        yield return new WaitForSeconds(1.1f);
+        for (int i = 0; i < 4; i++)
+        {
+            Vector2 pos = bornPoint[i].position;
+            //处理坐标
+
+            //开特效
+            callEnemyVFXs[i].transform.position = pos;
+            callEnemyVFXs[i].Play(true);
+            //实例化敌人
+            GameObject enemyGo = Instantiate(enemyPrafabs[i], pos, Quaternion.identity,transform.parent);
+            enemyGo.transform.position += enemyGo.transform.position - enemyGo.GetComponent<MoveObject>().foot.transform.position;
+            Game.instance.curEnemies.Add(enemyGo.GetComponent<MoveObject>());
+            Game.instance.CurEnemyCount++;
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        //结束
+        reached = false;
+        isSkill = false;
+        Game.instance.InformEnemie(player.GetMoveObject());
         Invoke(nameof(ContinueSkillTiming), skillCD);
     }
     private void OnDestroy()
