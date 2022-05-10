@@ -7,12 +7,11 @@ using DG.Tweening;
 public class SeagullsMO : MoveObject
 {
     [Header("海鸥")]
-    public GameObject clock;
-    public GameObject dizzy;
-    public float hurtRadius = 5f;
-    public float damage = 100f;
     [Tooltip("冲刺时离多近会爆炸")]
     public float preBoomRadius = 3f;
+    public float boomRadius = 1f;
+    public float hurtRadius = 5f;
+    public float damage = 100f;
     private bool preBoom = false;
     public float rushTime = 3f;
     public float rushSpeed = 20f;
@@ -20,6 +19,10 @@ public class SeagullsMO : MoveObject
     public float skillSpeedScale = 1.5f;
     [Tooltip("冲击时方向改变的幅度")]
     public float rushDirChangeScale = 0.1f;
+
+    public GameObject clock;
+    public GameObject dizzy;
+
     bool isWaitForBtn = false;
     bool isRush = false;
     bool hasCollide = false;
@@ -74,7 +77,6 @@ public class SeagullsMO : MoveObject
     /// </summary>
     public void CollideWhenRush(string collisionTag)
     {
-        print(collisionTag + " isRush:"+isRush);
         if (isRush)
         {
             hasCollide = true;
@@ -164,6 +166,14 @@ public class SeagullsMO : MoveObject
     void DestroySelf()
     {
         Destroy(gameObject);
+    }
+    protected override void RegisterCanying()
+    {
+        ShadowPool.instance.RegisterCanying(GFX.gameObject, 10);
+    }
+    protected override void Canying()
+    {
+        ShadowPool.instance.SetCanying(GFX);
     }
     public void Clock()
     {

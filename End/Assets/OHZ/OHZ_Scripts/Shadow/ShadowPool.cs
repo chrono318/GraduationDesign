@@ -129,9 +129,5 @@ public class ShadowPool : MonoBehaviour
                 t = 0f;
             }
         }
-        for(int i = 0; i < managedShadows.Count; i++)
-        {
-
-        }
     }
 }

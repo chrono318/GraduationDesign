@@ -248,11 +248,11 @@ public class MoveObject : MonoBehaviour
     /// <summary>
     /// 残影
     /// </summary>
-    protected void Canying()
+    protected virtual void Canying()
     {
         ShadowPool.instance.SetCanying(GFX.GetChild(1).GetChild(0));
     }
-    protected void RegisterCanying()
+    protected virtual void RegisterCanying()
     {
         ShadowPool.instance.RegisterCanying(GFX.GetChild(1).GetChild(0).gameObject, 10);
     }
@@ -497,6 +497,9 @@ public class MoveObject : MonoBehaviour
         _State = State.Normal;
 
     }
+    /// <summary>
+    /// 附身时要额外干啥写到这里面来
+    /// </summary>
     public virtual void SetPlayer()
     {
 

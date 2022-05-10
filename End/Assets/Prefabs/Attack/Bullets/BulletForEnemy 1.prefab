@@ -117,11 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fc7b9738170a8488930c5dee5a10b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LifeTime: 6
+  damage: 20
   speed: 5
   isPlayer: 0
   pool: {fileID: 0}
-  LifeTime: 3
-  damage: 20
 --- !u!50 &2500667606671503337
 Rigidbody2D:
   serializedVersion: 4
