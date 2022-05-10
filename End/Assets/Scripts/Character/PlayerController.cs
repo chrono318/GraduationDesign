@@ -158,7 +158,7 @@ public class PlayerController : Controller
         isPossess = false;
         GFX.SetActive(true);
 
-        transform.SetParent(moveObject.transform.parent, true);
+        transform.SetParent(null, true);
 
         moveObject = null;
         GetComponent<Collider2D>().enabled = true;

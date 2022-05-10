@@ -88,9 +88,9 @@ public class Game : MonoBehaviour
     /// <summary>
     /// 敌人数量减一顺便检查是否通关
     /// </summary>
-    public void CheckIfPass()
+    void CheckIfPass()
     {
-        CurEnemyCount--;
+        CurEnemyCount = curEnemies.Count;
         KillEnemy();
         if (CurEnemyCount <= 0)
         {
@@ -115,6 +115,7 @@ public class Game : MonoBehaviour
             }
         }
         curEnemies.Remove(_mo);
+        CheckIfPass();
     }
     /// <summary>
     /// 通知当前房间所有敌人进入攻击状态，目标为player
