@@ -8,8 +8,9 @@ public class EnemyController : Controller
     enum EnemyState
     {
         Ori,
-        Attack,
-        Run
+        toPlayer,
+        Run,
+        Attack
     }
     private EnemyState state;
 
@@ -64,13 +65,14 @@ public class EnemyController : Controller
                 MoveVelocity(Vector2.zero, 0f);
             }
         }
-        else if (state == EnemyState.Attack)
+        else if (state == EnemyState.toPlayer)
         {
             moveObject.fearTex.SetActive(false);
 
             if (Vector2.Distance(Player.foot.position, transform.position) < moveObject.attackRadius)
             {
                 moveObject.MouseBtnLeftDown(Player.transform.position);
+                //state = EnemyState.Attack;
                 reach = true;
             }
             else
@@ -125,7 +127,7 @@ public class EnemyController : Controller
         }
         else
         {
-            state = EnemyState.Attack;
+            state = EnemyState.toPlayer;
             Target = Player.transform.position;
             InvokeRepeating(nameof(UpdatePath), 0, 0.5f);
         }

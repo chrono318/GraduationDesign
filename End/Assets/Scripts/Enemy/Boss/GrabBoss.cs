@@ -17,6 +17,9 @@ public class GrabBoss : Boss
     private bool isAttacking = false;
     public float attackCD = 10f;
     public float attackDamage = 10f;
+    public ParticleSystem attackVFX;
+    public ParticleSystem attackVFX1;
+    public GameObject preAttackVFX;
     [Header("技能")]
     public float firstTime = 5f;
     public float skillCD = 10f;
@@ -30,6 +33,8 @@ public class GrabBoss : Boss
     public float rushDistance = 10f;
     public float rushDuration = 1f;
     public float rushAttackWidth = 3f;
+    public ParticleSystem prerushVFX;
+    public ParticleSystem rushVFX;
     [Header("技能-激光")]
     public float beginTime1 = 1f;
     public float endTime1 = 1f;
@@ -43,6 +48,7 @@ public class GrabBoss : Boss
     public LineRenderer line0;
     public LineRenderer line1;
     public LineRenderer line2;
+    public ParticleSystem prelaserVFX;
     [Header("技能-弹幕")]
     public float beginTime2 = 1f;
     public float endTime2 = 1f;
@@ -71,11 +77,14 @@ public class GrabBoss : Boss
     public float areaSkill3 = 3f;
     public float damageSkill3 = 30f;
     public SpriteRenderer shadow;
+    public ParticleSystem upVFX;
+    public ParticleSystem downVFX;
     [Header("召唤小怪")]
     public float interval = 10f;//间隔
     public List<GameObject> enemyPrafabs;
     public List<Transform> bornPoint;
 
+    public ParticleSystem callEnemyVFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -199,8 +208,13 @@ public class GrabBoss : Boss
     IEnumerator Attack()
     {
         animator.SetTrigger("attack");
+        preAttackVFX.SetActive(true);
         isAttacking = true;
         yield return new WaitForSeconds(1f); //动画里就是1s后挥击
+
+        attackVFX.Play(true);
+        attackVFX1.Play(true);
+        preAttackVFX.SetActive(false);
         Vector2 dir = GetDirToPlayer();
         if (dir.magnitude <= attackDis)
         {
@@ -232,6 +246,7 @@ public class GrabBoss : Boss
         isSkill = true;
         lastSkillIndex = index;
         StopCoroutine(nameof(Attack));
+        isAttacking = false;
         switch (index)
         {
             case 0:
@@ -256,13 +271,18 @@ public class GrabBoss : Boss
         //准备
         reached = true;
         animator.SetTrigger("rushPre");
+        rushVFX.gameObject.SetActive(true);
+        rushVFX.Play();
+        prerushVFX.Play(true);
         yield return new WaitForSeconds(beginTime0);
+        prerushVFX.Stop(true);
 
         //开撞
         float t = 0;
         Vector2 dir = GetDirToPlayer();
         float _speed = rushDistance / rushDuration;
         animator.SetTrigger("rush");
+        
         
         while (t < rushDuration)
         {
@@ -277,11 +297,13 @@ public class GrabBoss : Boss
         }
 
         //结束动作
-        animator.SetTrigger("rushEnd");
+        
         yield return new WaitForSeconds(endTime0);
 
         reached = false;
         isSkill = false;
+        rushVFX.gameObject.SetActive(false);
+        animator.SetTrigger("rushEnd");
         Invoke(nameof(ContinueSkillTiming), skillCD);
     }
     /// <summary>
@@ -291,7 +313,9 @@ public class GrabBoss : Boss
     {
         speedScale = speedScaleSkill1;
         animator.SetTrigger("laserPre");
+        prelaserVFX.Play(true);
         yield return new WaitForSeconds(beginTime1);
+        prelaserVFX.Stop(true);
         //第一阶段
         Vector2 dir = GetAttackDir();
         line0.enabled = true;
@@ -331,13 +355,19 @@ public class GrabBoss : Boss
         line0.enabled = false;
         line0.transform.GetChild(0).gameObject.SetActive(false);
         line0.transform.GetChild(1).gameObject.SetActive(false);
+        animator.SetTrigger("laserEnd");
+        reached = false;
 
 
         //间隔时间
-        animator.SetTrigger("laserPre");
         yield return new WaitForSeconds(gapDuration);
+        animator.SetTrigger("laserPre");
+        prelaserVFX.Play(true);
+        yield return new WaitForSeconds(beginTime1);
+        prelaserVFX.Stop(true);
         //第二阶段
         t = 0;
+        reached = true;
         animator.SetTrigger("laser");
         line0.enabled = true;
         line1.enabled = true;
@@ -486,7 +516,8 @@ public class GrabBoss : Boss
             //up动画
             animator.SetTrigger("jump out");
             yield return new WaitForSeconds(timeUp);
-            foreach(SpriteRenderer r in renderers)
+            upVFX.Play(true);
+            foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = false;
             }
@@ -503,6 +534,7 @@ public class GrabBoss : Boss
             shadow.enabled = true;
             yield return new WaitForSeconds(timeDown);
             collider2D.enabled = true;
+            downVFX.Play(true);
             if (Vector2.Distance(targetMO.transform.position, foot.transform.position) < areaSkill3)
             {
                 targetMO.GetHurt(damageSkill3, Vector2.up);
@@ -518,6 +550,7 @@ public class GrabBoss : Boss
             //up动画
             animator.SetTrigger("jump out");
             yield return new WaitForSeconds(timeUp);
+            upVFX.Play(true);
             foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = false;
@@ -535,6 +568,7 @@ public class GrabBoss : Boss
             animator.SetTrigger("jump in");
             yield return new WaitForSeconds(timeDown);
             collider2D.enabled = true;
+            downVFX.Play(true);
             if (Vector2.Distance(targetMO.transform.position, foot.transform.position) < areaSkill3)
             {
                 targetMO.GetHurt(damageSkill3, Vector2.up);

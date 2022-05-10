@@ -182,6 +182,10 @@ public class PlayerController : Controller
                 this.moveObject.gameObject.tag = "Enemy";
                 this.moveObject.PlayerLeaveThisBody();
             }
+            else
+            {
+                this.moveObject.gameObject.tag = "Untagged";
+            }
         }
         
         yield return new WaitForSeconds(1f);

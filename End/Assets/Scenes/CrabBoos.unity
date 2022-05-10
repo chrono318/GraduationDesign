@@ -1158,7 +1158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1166895863
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4765,7 +4765,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4539309723438929035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1673c1b1569ce2240b8c83979144d886, type: 3}
   m_Name: 
@@ -6333,10 +6333,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5225136301520560325, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6149211554510934025, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 69.4516
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325683966657004345, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.65882355
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325683966657004345, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325683966657004345, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1950194971
       objectReference: {fileID: 0}
     - target: {fileID: 8860261475692178881, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
@@ -6366,12 +6386,12 @@ PrefabInstance:
     - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
       propertyPath: skillCD
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
       propertyPath: firstTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9135008300275998444, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}

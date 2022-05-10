@@ -399,11 +399,14 @@ public class Seagulls : MonoBehaviour
     /// </summary>
     public void Restore()
     {
+        if (anim == null)
+            print("no anim");
         anim.SetInteger("animState", 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        return;
         //#对接#
         //将条件从Wall改为如果碰到高大的障碍物或墙体//
         //#对接#

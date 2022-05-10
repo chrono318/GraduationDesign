@@ -8,6 +8,6 @@ public class SeagullsCollision : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        seagullsMO.CollideWhenRush();
+        seagullsMO.CollideWhenRush(collision.gameObject.tag);
     }
 }
