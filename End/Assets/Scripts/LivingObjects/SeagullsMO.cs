@@ -72,8 +72,9 @@ public class SeagullsMO : MoveObject
     /// <summary>
     /// 撞到墙体会眩晕
     /// </summary>
-    public void CollideWhenRush()
+    public void CollideWhenRush(string collisionTag)
     {
+        print(collisionTag + " isRush:"+isRush);
         if (isRush)
         {
             hasCollide = true;
@@ -104,11 +105,6 @@ public class SeagullsMO : MoveObject
     public override void SetPlayer()
     {
         BtnDownF = new BtnDownDelegate(PlayerAttack);
-    }
-    public override void MouseBtnRightDown(Vector2 targetPos)
-    {
-        //开始加速
-        speed *= skillSpeedScale;
     }
     private void OriUpdate()
     {
@@ -163,7 +159,7 @@ public class SeagullsMO : MoveObject
             Game.instance.CheckIfPass();
             Game.instance.DeleteEnemyMO(this);
         }
-        Invoke(nameof(DestroySelf), 1f);
+        Invoke(nameof(DestroySelf), 2f);
     }
     void DestroySelf()
     {
