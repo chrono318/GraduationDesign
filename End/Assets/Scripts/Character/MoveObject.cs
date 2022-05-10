@@ -559,8 +559,8 @@ public class MoveObject : MonoBehaviour
     protected IEnumerator Reload()
     {
         Slider_Reload.gameObject.SetActive(true);
-        Slider_Reload.DOValue(1, ReloadTime);
-        yield return new WaitForSeconds(ReloadTime);
+        Slider_Reload.DOValue(1, shotReload);
+        yield return new WaitForSeconds(shotReload);
         Slider_Reload.value = 0;
         Slider_Reload.gameObject.SetActive(false);
     }

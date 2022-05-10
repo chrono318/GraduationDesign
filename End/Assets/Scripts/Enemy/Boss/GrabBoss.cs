@@ -80,7 +80,7 @@ public class GrabBoss : Boss
     public ParticleSystem upVFX;
     public ParticleSystem downVFX;
     [Header("’ŸªΩ–°π÷")]
-    public float interval = 10f;//º‰∏Ù
+    public int maxEnemyCount = 6;//º‰∏Ù
     public List<GameObject> enemyPrafabs;
     public List<Transform> bornPoint;
 
