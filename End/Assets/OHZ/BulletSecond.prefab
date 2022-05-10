@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3761919073419642382}
   - component: {fileID: 2643086730345632034}
   - component: {fileID: 5962968655170036700}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BulletSecond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9375, y: 0.8125}
+    oldSize: {x: 0.15, y: 0.13}
     newSize: {x: 0.9375, y: 0.8125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,3 +146,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   destoryTime: 5
+  damage: 0
