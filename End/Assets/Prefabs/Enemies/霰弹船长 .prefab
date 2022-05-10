@@ -130,16 +130,16 @@ MonoBehaviour:
   type: 0
   bulletPrefab: {fileID: 5570354312193352119, guid: 31594034e975ce14683fe02289b672a5,
     type: 3}
-  attackRadius: 5
+  attackRadius: 4
   bulletNum: 1
   shotReload: 2
   attackSpace: 0
-  bulletSpeed: 5
-  bulletDamage: 20
+  bulletSpeed: 6
+  bulletDamage: 12
   shakeTime: 0
-  cameraShakeIntensity: 1
+  cameraShakeIntensity: 0.8
   cameraShakeTime: 0.05
-  FearRadius: 3
+  FearRadius: 8
   GFX: {fileID: 5792425793308337804}
   animators:
   - {fileID: 5792425793308337805}
@@ -158,12 +158,12 @@ MonoBehaviour:
   speed: 3
   ReloadTime: 2
   bulletPrefab_player: {fileID: 0}
-  speed_player: 5
-  bulletNum_player: 0
-  shotReload_player: 0
-  attackSpace_player: 2
-  bulletSpeed_player: 5
-  bulletDamage_player: 20
+  speed_player: 3
+  bulletNum_player: 5
+  shotReload_player: 1.5
+  attackSpace_player: 0.8
+  bulletSpeed_player: 15
+  bulletDamage_player: 15
   isPlayer: 0
   controller: {fileID: 0}
   _State: 0
@@ -1727,6 +1727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: 1998153769
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077034766889245387, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8077034767132776542, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
         type: 3}
