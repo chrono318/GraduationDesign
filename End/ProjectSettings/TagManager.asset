@@ -10,6 +10,8 @@ TagManager:
   - Level
   - Boom
   - Boss
+  - Missile
+  - shenxiang
   layers:
   - Default
   - TransparentFX
