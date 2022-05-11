@@ -75,9 +75,11 @@ Shader "Hidden/jiguang"
 			}
 			float noise =  minDist * minDist;
 			noise = noise * _Intensity + 1 - _Intensity;
-			half4 c = tex2D (_MainTex, uv1) * noise ;
-			o.Alpha = c.a * IN.vertColor.a * _Color;
-			o.Albedo = IN.vertColor.rgb;
+			half4 c = tex2D (_MainTex, uv1);
+			//c = pow(c,0.2);
+			c *= noise;
+			o.Alpha = c.a * IN.vertColor.a * _Color.a;
+			o.Albedo = c.xyz * IN.vertColor.rgb * _Color;
 		}
 
 		

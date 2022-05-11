@@ -6383,16 +6383,6 @@ PrefabInstance:
       propertyPath: HpSlider
       value: 
       objectReference: {fileID: 969960798}
-    - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: skillLock
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: maxLengthSkill1
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 9135008300275998444, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
       propertyPath: m_Name

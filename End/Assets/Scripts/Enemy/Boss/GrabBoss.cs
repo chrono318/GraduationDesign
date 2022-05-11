@@ -162,14 +162,22 @@ public class GrabBoss : Boss
     // Update is called once per frame
     void Update()
     {
-        if (!isSkill && !isAttacking && targetMO)
+        //Åö×ÅµôÑª
+        if (targetMO)
         {
             Vector2 dir = GetDirToPlayer();
-            if (dir.magnitude <= attackDis)
+            if (dir.magnitude < 2)
             {
-                StartCoroutine(nameof(Attack));
+                targetMO.GetHurt(attackDamage, dir);
             }
-        }
+            if (!isSkill && !isAttacking && targetMO)
+            {
+                if (dir.magnitude <= attackDis)
+                {
+                    StartCoroutine(nameof(Attack));
+                }
+            }
+        } 
         curEnemyCout = Game.instance.CurEnemyCount;
         //ÕÙ»½Ð¡¹ÖµÄÂß¼­
         if (curEnemyCout <= 0)
@@ -187,6 +195,7 @@ public class GrabBoss : Boss
                 //print("ÑªÉÙ"+curEnemyCout);
             }
         }
+
     }
 
     private void FixedUpdate()
