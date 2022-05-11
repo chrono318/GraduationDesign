@@ -26,6 +26,8 @@ public class GrabBoss : Boss
     private int lastSkillIndex = 0;
     private bool isSkill = false;
     public Transform firePoint;
+    [Tooltip("只播一个技能，-1代表随机，方便测试")]
+    public int skillLock = -1;
 
     [Header("技能-冲击")]
     public float damageSkill0 = 30f;
@@ -37,11 +39,13 @@ public class GrabBoss : Boss
     public ParticleSystem prerushVFX;
     public ParticleSystem rushVFX;
     [Header("技能-激光")]
+    [Tooltip("扫描时间")]
+    public float preTime1 = 3f;
     public float beginTime1 = 1f;
     public float endTime1 = 1f;
     public float damagePerSecond = 30f;
     public float widthSkill1 = 1f;
-    public float lengthSkill1 = 10f;
+    public float maxLengthSkill1 = 10f;
     public float speedScaleSkill1 = 0.2f;
     public float step1Duration = 5f;
     public float gapDuration = 1f;
@@ -50,6 +54,8 @@ public class GrabBoss : Boss
     public LineRenderer line1;
     public LineRenderer line2;
     public ParticleSystem prelaserVFX;
+    public Material jiguangMat;
+    public Material jiguangPreMat;
     [Header("技能-弹幕")]
     public float beginTime2 = 1f;
     public float endTime2 = 1f;
@@ -80,6 +86,7 @@ public class GrabBoss : Boss
     public SpriteRenderer shadow;
     public ParticleSystem upVFX;
     public ParticleSystem downVFX;
+    public float minShadowSize = 0.5f;
     [Header("召唤小怪")]
     public int maxEnemyCount = 6;//间隔
     public List<GameObject> enemyPrafabs;
@@ -99,6 +106,7 @@ public class GrabBoss : Boss
         bulletPool = PoolManager.instance.RegisterPool(bullet);
         bulletPool.registor.Add(gameObject);
         curEnemyCout = Game.instance.CurEnemyCount;
+  
     }
     private void Player_InformPossessEvent(MoveObject target)
     {
@@ -119,7 +127,7 @@ public class GrabBoss : Boss
         reached = true;
         isAttacking = false;
         isSkill = false;
-        animator.Play("idle");
+        animator.Play("laser(2)");
 
         line0.enabled = false;
         line1.enabled = false;
@@ -246,7 +254,9 @@ public class GrabBoss : Boss
 
     Vector2 GetAttackDir()
     {
-        return targetMO.transform.position - firePoint.position;
+        if(targetMO)
+            return targetMO.transform.position - firePoint.position;
+        return Vector2.zero;
     }
 
     void StartSkillTiming()
@@ -271,6 +281,10 @@ public class GrabBoss : Boss
         isAttacking = false;
         preAttackVFX.SetActive(false);
 
+        if (skillLock >= 0)
+        {
+            index = skillLock;
+        }
         switch (index)
         {
             case 0:
@@ -346,35 +360,68 @@ public class GrabBoss : Boss
     IEnumerator Skill1()
     {
         speedScale = speedScaleSkill1;
+        Vector2 dir;
+        Vector2 dir1;
+        Vector2 dir2;
+        float t = 0;
+        //扫描
+        reached = true;
+        line0.enabled = true;
+        line0.material = jiguangPreMat;
+
+        while (t < preTime1)
+        {
+            KeepStartPosJiguang();
+            dir = GetAttackDir();
+            Vector2 endPos = GetJiguangEndPos(dir);
+            line0.SetPosition(1, endPos);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        dir = GetAttackDir();
+        for (int i = 0; i < 2; i++)
+        {
+            line0.enabled = false;
+            yield return new WaitForSeconds(0.2f);
+            line0.enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            line0.enabled = false;
+        }
+        
+
         animator.SetTrigger("laserPre");
         prelaserVFX.Play(true);
         yield return new WaitForSeconds(beginTime1);
         prelaserVFX.Stop(true);
         //第一阶段
-        Vector2 dir = GetAttackDir();
+        reached = false;
         line0.enabled = true;
+        line0.material = jiguangMat;
+
         line0.transform.GetChild(0).gameObject.SetActive(true);
         line0.transform.GetChild(1).gameObject.SetActive(true);
         line0.transform.GetChild(0).position = (Vector2)firePoint.position;
-        line0.transform.GetChild(1).position = (Vector2)firePoint.position + dir.normalized * lengthSkill1;
+        line0.transform.GetChild(1).position = GetJiguangEndPos(dir);
 
         line0.transform.GetChild(0).rotation = Quaternion.FromToRotation(Vector3.right, dir);
         line0.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.right, dir);
 
-        float t = 0;
+        t = 0;
         bool bo = false;
         animator.SetTrigger("laser");
         while (t < step1Duration)
         {
-            line0.SetPosition(0, (Vector2)firePoint.position);
-            line0.SetPosition(1, (Vector2)firePoint.position + dir.normalized * lengthSkill1);
-            if(Vector2.Dot(GetAttackDir(), dir.normalized) > 0)
+            Vector2 endPos = GetJiguangEndPos(dir);
+            KeepStartPosJiguang();
+            line0.SetPosition(1, endPos);
+            line0.transform.GetChild(1).position = endPos;
+            if (Vector2.Dot(GetAttackDir(), dir.normalized) > 0 && GetAttackDir().magnitude < (endPos-(Vector2)firePoint.position).magnitude)
             {
                 if ((GetAttackDir() - Vector2.Dot(GetAttackDir(), dir.normalized) * dir.normalized).magnitude <= widthSkill1 / 2)
                 {
                     if (bo)   //上一帧就在范围内，结算伤害
                     {
-                        targetMO.GetHurt(damagePerSecond * Time.deltaTime, dir);
+                        targetMO.GetHurt(damagePerSecond, dir);
                     }
                     bo = true;
                 }
@@ -394,39 +441,73 @@ public class GrabBoss : Boss
         line0.transform.GetChild(0).gameObject.SetActive(false);
         line0.transform.GetChild(1).gameObject.SetActive(false);
         animator.SetTrigger("laserEnd");
-        reached = false;
+        reached = true;
 
 
         //间隔时间
         yield return new WaitForSeconds(gapDuration);
+        //第二阶段扫描
+        reached = true;
+        line0.enabled = true;
+        line0.material = jiguangPreMat;
+        line1.enabled = true;
+        line1.material = jiguangPreMat;
+        line2.enabled = true;
+        line2.material = jiguangPreMat;
+
+        t = 0;
+        while (t < preTime1)
+        {
+            KeepStartPosJiguang();
+            dir = GetAttackDir();
+            dir1 = Quaternion.Euler(0, 0, 45f) * dir;
+            dir2 = Quaternion.Euler(0, 0, -45f) * dir;
+            Vector2 endPos = GetJiguangEndPos(dir);
+            line0.SetPosition(1, endPos);
+            Vector2 endPos1 = GetJiguangEndPos(dir1);
+            line1.SetPosition(1, endPos1);
+            Vector2 endPos2 = GetJiguangEndPos(dir2);
+            line2.SetPosition(1, endPos2);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        dir = GetAttackDir();
+        dir1 = Quaternion.Euler(0, 0, 45f) * dir;
+        dir2 = Quaternion.Euler(0, 0, -45f) * dir;
+        for (int i = 0; i < 2; i++)
+        {
+            line0.enabled = false;
+            line1.enabled = false;
+            line2.enabled = false;
+            yield return new WaitForSeconds(0.2f);
+            line0.enabled = true;
+            line1.enabled = true;
+            line2.enabled = true;
+            yield return new WaitForSeconds(0.2f);
+            line0.enabled = false;
+            line1.enabled = false;
+            line2.enabled = false;
+        }
+            
         animator.SetTrigger("laserPre");
         prelaserVFX.Play(true);
         yield return new WaitForSeconds(beginTime1);
         prelaserVFX.Stop(true);
-        //第二阶段
-        t = 0;
-        reached = true;
+        //第二阶段射
+        reached = false;
         animator.SetTrigger("laser");
         line0.enabled = true;
+        line0.material = jiguangMat;
         line1.enabled = true;
+        line1.material = jiguangMat;
         line2.enabled = true;
+        line2.material = jiguangMat;
         line0.transform.GetChild(0).gameObject.SetActive(true);
         line0.transform.GetChild(1).gameObject.SetActive(true);
         line1.transform.GetChild(0).gameObject.SetActive(true);
         line1.transform.GetChild(1).gameObject.SetActive(true);
         line2.transform.GetChild(0).gameObject.SetActive(true);
-        line2.transform.GetChild(1).gameObject.SetActive(true);
-        line0.transform.GetChild(0).position = (Vector2)firePoint.position;
-        line1.transform.GetChild(0).position = (Vector2)firePoint.position;
-        line2.transform.GetChild(0).position = (Vector2)firePoint.position;
-
-
-        dir = GetAttackDir();
-        Vector2 dir1 = Quaternion.Euler(0, 0, 45f) * dir;
-        Vector2 dir2 = Quaternion.Euler(0, 0, -45f) * dir;
-        line0.transform.GetChild(1).position = (Vector2)firePoint.position + dir.normalized * lengthSkill1;
-        line1.transform.GetChild(1).position = (Vector2)firePoint.position + dir1.normalized * lengthSkill1;
-        line2.transform.GetChild(1).position = (Vector2)firePoint.position + dir2.normalized * lengthSkill1;
+        line2.transform.GetChild(1).gameObject.SetActive(true);   
 
         line0.transform.GetChild(0).rotation = Quaternion.FromToRotation(Vector3.right, dir);
         line0.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.right, dir);
@@ -436,34 +517,46 @@ public class GrabBoss : Boss
         line2.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.right, dir2);
 
         bo = false;
+        t = 0;
         while (t < step2Duration)
         {
-            line0.SetPosition(0, (Vector2)firePoint.position);
-            line0.SetPosition(1, (Vector2)firePoint.position + dir.normalized * lengthSkill1);
+            Vector2 endPos = GetJiguangEndPos(dir);
+            Vector2 endPos1 = GetJiguangEndPos(dir1);
+            Vector2 endPos2 = GetJiguangEndPos(dir2);
 
-            line1.SetPosition(0, (Vector2)firePoint.position);
-            line1.SetPosition(1, (Vector2)firePoint.position + dir1.normalized * lengthSkill1);
+            KeepStartPosJiguang();
+            line0.SetPosition(1, endPos);
+            line1.SetPosition(1, endPos1);
+            line2.SetPosition(1, endPos2);
+            line0.transform.GetChild(1).position = endPos;
+            line1.transform.GetChild(1).position = endPos1;
+            line2.transform.GetChild(1).position = endPos2;
 
-            line2.SetPosition(0, (Vector2)firePoint.position);
-            line2.SetPosition(1, (Vector2)firePoint.position + dir2.normalized * lengthSkill1);
-
-            if ((GetAttackDir() - Vector2.Dot(GetAttackDir(), dir.normalized) * dir.normalized).magnitude <= widthSkill1 / 2
+            if (Vector2.Dot(GetAttackDir(), dir.normalized) > 0 && GetAttackDir().magnitude < (endPos - (Vector2)firePoint.position).magnitude)
+            {
+                if ((GetAttackDir() - Vector2.Dot(GetAttackDir(), dir.normalized) * dir.normalized).magnitude <= widthSkill1 / 2
                 || (GetAttackDir() - Vector2.Dot(GetAttackDir(), dir1.normalized) * dir1.normalized).magnitude <= widthSkill1 / 2
                 || (GetAttackDir() - Vector2.Dot(GetAttackDir(), dir2.normalized) * dir2.normalized).magnitude <= widthSkill1 / 2)
-            {
-                if (bo)   //上一帧就在范围内，结算伤害
                 {
-                    targetMO.GetHurt(damagePerSecond * Time.deltaTime, dir);
+                    if (bo)   //上一帧就在范围内，结算伤害
+                    {
+                        targetMO.GetHurt(damagePerSecond, dir);
+                    }
+                    else  //不在的话
+                    {
+                        bo = true;
+                    }
                 }
-                else  //不在的话
+                else
                 {
-                    bo = true;
+                    bo = false;
                 }
             }
             else
             {
                 bo = false;
             }
+
             t += Time.deltaTime;
             yield return 0;
         }
@@ -485,6 +578,27 @@ public class GrabBoss : Boss
         speedScale = 1f;
         isSkill = false;
         Invoke(nameof(ContinueSkillTiming), skillCD);
+    }
+    Vector2 GetJiguangEndPos(Vector2 curDir)
+    {
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)firePoint.position, curDir, maxLengthSkill1, LayerMask.GetMask("Obstacles"));
+        if (hit)
+        {
+            return hit.point;
+        }
+        else
+        {
+            return (Vector2)firePoint.position + curDir.normalized * maxLengthSkill1;
+        }
+    }
+    void KeepStartPosJiguang()
+    {
+        line0.SetPosition(0, (Vector2)firePoint.position);
+        line1.SetPosition(0, (Vector2)firePoint.position);
+        line2.SetPosition(0, (Vector2)firePoint.position);
+        line0.transform.GetChild(0).position = (Vector2)firePoint.position;
+        line1.transform.GetChild(0).position = (Vector2)firePoint.position;
+        line2.transform.GetChild(0).position = (Vector2)firePoint.position;
     }
     /// <summary>
     /// 弹幕
@@ -548,31 +662,56 @@ public class GrabBoss : Boss
     {
         reached = true;
         SpriteRenderer[] renderers = GFX.GetComponentsInChildren<SpriteRenderer>(true);
+        float t = 0;
         //第一波飞天
         for(int i = 0; i < jumpNumStep1; i++)
         {
             //up动画
             animator.SetTrigger("jump out");
-            yield return new WaitForSeconds(timeUp);
+            yield return new WaitForSeconds(beginTime3);
             upVFX.Play(true);
             foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = false;
             }
-            shadow.enabled = false;
+
             collider2D.enabled = false;
+
+            t = 0;
+            while (t < timeUp)
+            {
+                yield return null;
+                t += Time.deltaTime;
+                shadow.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * minShadowSize, t / timeUp);
+            }
+
+            //在空中
+            reached = false;
+            speed *= 2;
             yield return new WaitForSeconds(timeOn);
+            reached = true;
+            speed /= 2;
             //down动画
-            transform.position += (Vector3)GetDirToPlayer();
+            //transform.position += (Vector3)GetDirToPlayer();
+
+            t = 0;
+            while (t < timeDown)
+            {
+                yield return null;
+                t += Time.deltaTime;
+                shadow.transform.localScale = Vector3.Lerp(Vector3.one * minShadowSize, Vector3.one, t / timeDown);
+            }
+
             animator.SetTrigger("jump in");
             foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = true;
             }
-            shadow.enabled = true;
-            yield return new WaitForSeconds(timeDown);
-            collider2D.enabled = true;
+            yield return new WaitForSeconds(endTime3);
             downVFX.Play(true);
+
+            collider2D.enabled = true;
+
             if (Vector2.Distance(targetMO.transform.position, foot.transform.position) < areaSkill3)
             {
                 targetMO.GetHurt(damageSkill3, Vector2.up);
@@ -587,26 +726,50 @@ public class GrabBoss : Boss
         {
             //up动画
             animator.SetTrigger("jump out");
-            yield return new WaitForSeconds(timeUp);
+            yield return new WaitForSeconds(beginTime3);
             upVFX.Play(true);
             foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = false;
             }
-            shadow.enabled = false;
+
             collider2D.enabled = false;
+
+            t = 0;
+            while (t < timeUp)
+            {
+                yield return null;
+                t += Time.deltaTime;
+                shadow.transform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * minShadowSize, t / timeUp);
+            }
+
+            //在空中
+            reached = false;
+            speed *= 2;
             yield return new WaitForSeconds(timeOn);
+            reached = true;
+            speed /= 2;
             //down动画
-            transform.position += (Vector3)GetDirToPlayer();
+            //transform.position += (Vector3)GetDirToPlayer();
+
+            t = 0;
+            while (t < timeDown)
+            {
+                yield return null;
+                t += Time.deltaTime;
+                shadow.transform.localScale = Vector3.Lerp(Vector3.one * minShadowSize, Vector3.one, t / timeDown);
+            }
+
+            animator.SetTrigger("jump in");
             foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = true;
             }
-            shadow.enabled = true;
-            animator.SetTrigger("jump in");
-            yield return new WaitForSeconds(timeDown);
-            collider2D.enabled = true;
+            yield return new WaitForSeconds(endTime3);
             downVFX.Play(true);
+
+            collider2D.enabled = true;
+
             if (Vector2.Distance(targetMO.transform.position, foot.transform.position) < areaSkill3)
             {
                 targetMO.GetHurt(damageSkill3, Vector2.up);

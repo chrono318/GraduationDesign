@@ -3,7 +3,6 @@ Shader "Hidden/jiguang"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _NoiseTex ("NoiseTex", 2D) = "white" {}
         _Intensity("Intensity",Float) = 1
         _Speed("Speed",Float) = 1
         [HDR]_Color("Color",Color) = (1,1,1,1)
@@ -29,7 +28,6 @@ Shader "Hidden/jiguang"
 
 		sampler2D _MainTex;
 		fixed4 _SelfCol;
-		sampler2D _NoiseTex;
         float _Intensity;
         float _Speed;
         fixed4 _Color;
