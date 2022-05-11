@@ -92,7 +92,6 @@ public class Game : MonoBehaviour
     void CheckIfPass()
     {
         CurEnemyCount = curEnemies.Count;
-        KillEnemy();
         if (CurEnemyCount <= 0)
         {
             //通关
@@ -161,34 +160,4 @@ public class Game : MonoBehaviour
 
 
     private int killNum = 0;
-    public GameObject UITips;
-    public void KillEnemy()
-    {
-        return;
-        killNum++;
-        float s = killNum / 3f;
-        slider.value = s;
-        if (killNum == 3)
-        {
-            XinwuPlu();
-        }
-    }
-    private int xinwunum = 10;
-    public Text text;
-    public XinWuTips XinWuTips;
-    public void XinwuPlu()
-    {
-        GameObject tips = GameObject.Instantiate(UITips);
-        tips.GetComponent<UITips>().ShowTips("信物 + 1");
-        print(tips.name);
-        //to do
-        xinwunum++;
-        text.text = xinwunum.ToString();
-        XinWuTips.level = xinwunum / 3;
-        if (xinwunum == 12)
-        {
-            //player.SetXinwu(true);
-        }
-        XinWuTips.UpdateText();
-    }
 }

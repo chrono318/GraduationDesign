@@ -338,7 +338,7 @@ public class Award : MonoBehaviour
         if(isPressInterationButton && canSetActiveUI)
         {
             print("已拾取");
-            Game.instance.XinwuPlu();
+            //Game.instance.XinwuPlu();
             Destroy(this.gameObject);
         }
     }

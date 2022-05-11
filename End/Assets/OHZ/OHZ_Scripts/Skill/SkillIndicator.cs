@@ -252,6 +252,7 @@ public class SkillIndicator : MoveObject
         if (!isRush) return;
         Vector3 dir = transform.TransformVector(Vector3.right);
         dir.z = 0;
+        CameraControl.instance.CameraInjure(transform.position - collision.transform.position);
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<MoveObject>().GetHurt(damage, dir);

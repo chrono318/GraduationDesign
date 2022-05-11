@@ -13,6 +13,7 @@ public class SwordMO : MoveObject
     }
     void checkAttack()
     {
+        CameraControl.instance.CameraShakeShot(new Vector2(isLeft ? -1 : 1, -1), 0.1f);
         if (isPlayer)
         {
             List<MoveObject> enemies = Game.instance.curEnemies;
