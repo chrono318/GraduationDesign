@@ -130,8 +130,7 @@ public class EnemyController : Controller
             return;
         }
         Player = moveObject;
-        if (weaponDir)
-            weaponDir.BackToUpdate();
+        
         if (Player.type == MoveObjectType.Dead)
         {
             state = EnemyState.Run;
@@ -141,6 +140,8 @@ public class EnemyController : Controller
             state = EnemyState.toPlayer;
             Target = Player.transform.position;
             InvokeRepeating(nameof(UpdatePath), 0, 0.5f);
+            if (weaponDir)
+                weaponDir.BackToUpdate();
         }
     }
     public void NoFindPlayer()

@@ -6378,95 +6378,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5225136301520560325, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
+    - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149211554510934025, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
+      propertyPath: HpSlider
+      value: 
+      objectReference: {fileID: 969960798}
+    - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 69.4516
-      objectReference: {fileID: 0}
-    - target: {fileID: 8325683966657004345, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.65882355
-      objectReference: {fileID: 0}
-    - target: {fileID: 8325683966657004345, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8325683966657004345, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1950194971
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860261475692178881, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860261475692178881, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8860261475692178881, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9095050343991686436, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9095050343991686436, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+      propertyPath: skillLock
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
-      propertyPath: skillCD
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135008300275998441, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: firstTime
-      value: 2
+      propertyPath: maxLengthSkill1
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 9135008300275998444, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
       propertyPath: m_Name
       value: CrabBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 9135008300275998444, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9135008300275998447, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135008300275998447, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135008300275998447, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9135008300275998447, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 9135008300275998447, guid: 1abad0a1f4b6f194ab8b6bd4f529e418,
         type: 3}
