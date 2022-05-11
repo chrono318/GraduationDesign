@@ -195,9 +195,7 @@ public class PlayerController : Controller
             weaponDir = moveObject.controller.weaponDir ?? null;
             if (weaponDir)
             {
-                //weaponDir.enabled = true;
-                //weaponDir.controller = this;
-                weaponDir.GetComponent<IKManager2D>().enabled = true;
+                weaponDir.BackToUpdate();
             }
             if (InformPossessEvent != null)
             {
@@ -218,6 +216,7 @@ public class PlayerController : Controller
         Game.instance.FuShenVXF.GetChild(1).GetComponent<ParticleSystem>().Play();
 
         isPossessing = false;
+        
     }
     bool isPossessing = false;
     public void Possess(MoveObject moveObject)

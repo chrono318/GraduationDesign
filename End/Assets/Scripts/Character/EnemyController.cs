@@ -85,6 +85,13 @@ public class EnemyController : Controller
         {
             moveObject.fearTex.SetActive(false);
         }
+        if (weaponDir)
+        {
+            if(weaponDir._update && Player != null)
+            {
+                weaponDir.target = Player.transform.position;
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -118,9 +125,13 @@ public class EnemyController : Controller
             CancelInvoke(nameof(UpdatePath));
             MoveVelocity(Vector2.zero, 0f);
             path = null;
+            if(weaponDir)
+                weaponDir.DisableUpdate();
             return;
         }
         Player = moveObject;
+        if (weaponDir)
+            weaponDir.BackToUpdate();
         if (Player.type == MoveObjectType.Dead)
         {
             state = EnemyState.Run;
