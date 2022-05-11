@@ -296,7 +296,7 @@ Transform:
   m_GameObject: {fileID: 8430642822449847957}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -20.523384, y: -41.608135, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 8645366766527813192}
   - {fileID: 1937671348486265086}
@@ -364,13 +364,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  bulletPrefab: {fileID: 0}
   attackRadius: 2
   bulletNum: 0
   shotReload: 0
-  playerAttackSpace: 1
   attackSpace: 1
+  bulletSpeed: 5
+  bulletDamage: 20
   shakeTime: 0
   cameraShakeIntensity: 1
+  cameraShakeTime: 0.05
   FearRadius: 5
   GFX: {fileID: 8645366766527813192}
   animators:
@@ -388,7 +391,13 @@ MonoBehaviour:
   MaxHp: 100
   speed: 2
   ReloadTime: 2
-  bulletPrefab: {fileID: 0}
+  bulletPrefab_player: {fileID: 0}
+  speed_player: 5
+  bulletNum_player: 0
+  shotReload_player: 0
+  attackSpace_player: 2
+  bulletSpeed_player: 5
+  bulletDamage_player: 20
   isPlayer: 0
   controller: {fileID: 0}
   _State: 0
