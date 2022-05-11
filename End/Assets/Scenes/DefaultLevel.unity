@@ -18827,6 +18827,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tentacle
       objectReference: {fileID: 0}
+    - target: {fileID: 8667505225979362344, guid: 63ab0e50818dfc642a606dcb6da5f4e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8667505225979362349, guid: 63ab0e50818dfc642a606dcb6da5f4e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -23429,7 +23434,7 @@ PrefabInstance:
     - target: {fileID: 6380064612828899190, guid: a675e2109a119974cbff6cace15c8c07,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6380064612828899191, guid: a675e2109a119974cbff6cace15c8c07,
         type: 3}
