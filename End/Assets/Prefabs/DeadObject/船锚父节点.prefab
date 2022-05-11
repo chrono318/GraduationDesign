@@ -488,11 +488,11 @@ MonoBehaviour:
   speed_ohz: 100
   longSpeed: 0.5
   beilv: 0.8
-  maxLongX: 50
+  maxLongX: 60
   Keeptime: 2
   attackCD: 1
   lastPoint: {fileID: 0}
-  rushSpeed: 10
+  rushSpeed: 15
   currSkillState: 0
 --- !u!50 &257565147661604464
 Rigidbody2D:
