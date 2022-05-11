@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource audioSource_Effect,audioSource_Environment;
+    public AudioSource audioSource_Effect,bossSource;
     public static SoundManager instance;
-    public AudioClip[] CombatSound;
+    public AudioClip[] combatSound;
     public AudioClip[] UISound;
+    public AudioClip[] effectSound;
+    public AudioClip[] BossSound;
+    public AudioClip[] loopSound;
 
     private void Awake()
     {
@@ -23,10 +26,18 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 播放音频
+    /// 播放音频,一次
     /// </summary>
     public void PlaySoundClip(AudioClip clips)
     {
         audioSource_Effect.PlayOneShot(clips);
+    }
+
+    /// <summary>
+    /// 播放Boss音频,一次
+    /// </summary>
+    public void PlayBossSource(AudioClip clips)
+    {
+        bossSource.PlayOneShot(clips);
     }
 }
