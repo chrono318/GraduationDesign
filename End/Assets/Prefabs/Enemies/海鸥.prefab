@@ -700,6 +700,8 @@ GameObject:
   - component: {fileID: 913342548111465803}
   - component: {fileID: 7927890844507098276}
   - component: {fileID: 3524423830108122781}
+  - component: {fileID: 1473679938}
+  - component: {fileID: 1473679939}
   m_Layer: 10
   m_Name: "\u6D77\u9E25"
   m_TagString: Enemy
@@ -716,7 +718,7 @@ Transform:
   m_GameObject: {fileID: 7783430855241499932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children:
   - {fileID: 7783430853829223138}
   - {fileID: 913342546645917736}
@@ -820,13 +822,55 @@ MonoBehaviour:
   hurtRadius: 1.5
   damage: 90
   rushTime: 3
-  rushSpeed: 3
+  rushSpeed: 15
   skillSpeedScale: 1.5
   rushDirChangeScale: 0.1
   clock: {fileID: 1001959769705741556}
   clockImage: {fileID: 315952751751816310}
   clockPointer: {fileID: 5589794882057777478}
   dizzy: {fileID: 913342546645917739}
+--- !u!114 &1473679938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783430855241499932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c759a8072d5c24d99ea132920e0dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDir: {fileID: 0}
+  nextWaypointDistance: 0.5
+--- !u!114 &1473679939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783430855241499932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &8314694327102488967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1161,7 @@ PrefabInstance:
     - target: {fileID: 948689179348151071, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1414021823655573401, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
         type: 3}
@@ -1127,7 +1171,7 @@ PrefabInstance:
     - target: {fileID: 1644516130886182166, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8077034766635988210, guid: 6d1a7ff6a4b77f94ba3356a9c4a344ef,
         type: 3}

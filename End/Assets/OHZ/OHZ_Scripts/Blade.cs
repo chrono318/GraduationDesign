@@ -106,9 +106,9 @@ public class Blade : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.parent.TryGetComponent<MoveObject>(out MoveObject mo))
+        if (collision.TryGetComponent<MoveObject>(out MoveObject mo))
         {
-            mo.GetHurt(20f, new Vector2(0, 0));
+            collision.gameObject.GetComponent<MoveObject>().GetHurt(20f, new Vector2(0, 0));
         }
     }
 }
