@@ -35,15 +35,17 @@ public class DefaultBullet : Bullet
         if (col) return;
         if (collision.gameObject.tag == "Wall")
         {
-            if (gameObject.tag == "Enemy")
+            if (!isPlayer)
             {
                 DestroyBulletSelf();
+                if(collision.GetComponent<tableWall>())
+                    collision.GetComponent<tableWall>().BulletAttack();
             }
         }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Table"))
-        {
-            animator.SetTrigger("destroy");
-        }
+        //if (collision.gameObject.layer == LayerMask.NameToLayer("Table"))
+        //{
+        //    animator.SetTrigger("destroy");
+        //}
         Vector3 dir = transform.TransformVector(Vector3.right);
         dir.z = 0;
         if (collision.gameObject.tag == "Player" && !isPlayer)

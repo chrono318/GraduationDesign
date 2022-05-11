@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class m_table : MonoBehaviour
 {
-    public Sprite sprite;
+    public Animator anim;
     public GameObject wall;
 
     private bool canPush = false;
@@ -16,13 +16,7 @@ public class m_table : MonoBehaviour
             canPush = true;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            canPush = true;
-        }
-    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -30,13 +24,7 @@ public class m_table : MonoBehaviour
             canPush = false;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            canPush = false;
-        }
-    }
+
     private void Update()
     {
         if (canPush)
@@ -44,10 +32,11 @@ public class m_table : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //
-                GetComponent<SpriteRenderer>().sprite = sprite;
-
+                anim.SetTrigger("fan");
+                anim.gameObject.tag = "Wall";
+                anim.gameObject.layer = LayerMask.NameToLayer("Table");
                 //wall.SetActive(true);
-                gameObject.layer = LayerMask.NameToLayer("Table");
+                //gameObject.layer = LayerMask.NameToLayer("Table");
             }
         }
     }
