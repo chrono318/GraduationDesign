@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillIndicator : MonoBehaviour
+public class SkillIndicator : MoveObject
 {
+    [Header("船锚")]
     //#对接#
     //移动播放移动动画
     //#对接#
@@ -12,7 +13,7 @@ public class SkillIndicator : MonoBehaviour
     //技能指示器
     #region
     GameObject indicator;
-    public float speed = 100f;//转向速度
+    public float speed_ohz = 100f;//转向速度
     public float longSpeed = 1f;//伸长速度
     private Vector2 direction;
     public float beilv = 2f;
@@ -83,8 +84,9 @@ public class SkillIndicator : MonoBehaviour
         }
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         ship = transform.Find("1").gameObject;
         animator = ship.GetComponent<Animator>();
         InitIndicator();
@@ -92,6 +94,8 @@ public class SkillIndicator : MonoBehaviour
 
     void Update()
     {
+        DefaultUpdate();
+        if (!isPlayer) return;
         if (!isRush)
         {
             FollowMouse();
@@ -136,11 +140,11 @@ public class SkillIndicator : MonoBehaviour
 
         Quaternion rotation2 = Quaternion.AngleAxis(rotateAngle + 90, Vector3.forward);
 
-        indicator.transform.rotation = Quaternion.Slerp(indicator.transform.rotation, rotation, speed * Time.deltaTime);
+        indicator.transform.rotation = Quaternion.Slerp(indicator.transform.rotation, rotation, speed_ohz * Time.deltaTime);
         if (skillState == skillIndicator.伸长 || skillState == skillIndicator.维持)
         {
             //print(animator.transform.rotation);
-            ship.transform.parent.gameObject.transform.rotation = Quaternion.Slerp(ship.transform.parent.gameObject.transform.rotation, rotation2, speed * Time.deltaTime);
+            ship.transform.parent.gameObject.transform.rotation = Quaternion.Slerp(ship.transform.parent.gameObject.transform.rotation, rotation2, speed_ohz * Time.deltaTime);
         }
     }
 
@@ -245,13 +249,28 @@ public class SkillIndicator : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isRush) return;
         Vector3 dir = transform.TransformVector(Vector3.right);
         dir.z = 0;
-
         if (collision.gameObject.tag == "Enemy")
         {
-            print(1);
             collision.gameObject.GetComponent<MoveObject>().GetHurt(damage, dir);
+            isRush = false;
+            skillState = skillIndicator.复原;
         }
+    }
+    public override void CollideWhenRush(string collisionTag)
+    {
+        isRush = false;
+        skillState = skillIndicator.复原;
+    }
+
+    public override bool MouseBtnLeftDown(Vector2 targetPos)
+    {
+        return false;
+    }
+    public override void MouseBtnRightDown(Vector2 targetPos)
+    {
+        
     }
 }

@@ -185,7 +185,7 @@ MonoBehaviour:
   indication: {fileID: 241251958321431752, guid: 7b81c8f720283d64a89c39edfe132c00,
     type: 3}
   LifeFire: {fileID: 494635454}
-  Life: 3
+  Life: 80
   attackRadius: 6
   damage: 15
   attackCD: 3

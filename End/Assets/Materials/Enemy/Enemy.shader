@@ -56,6 +56,7 @@
 
         col.rgb = col.rgb + _Shine;
         col.rgb*=col.a;
+        col = clamp(col,float4(0,0,0,0),float4(1,1,1,1));
         return col;
     }
     ENDCG

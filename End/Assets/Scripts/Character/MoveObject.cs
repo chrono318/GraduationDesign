@@ -240,7 +240,7 @@ public class MoveObject : MonoBehaviour
         _State = State.Roll;
         DefaultSkill = true;
         collider.enabled = false;
-        rigidbody.DOMove((target - rigidbody.position).normalized * 5f + rigidbody.position, 1f);
+        transform.DOMove((target - rigidbody.position).normalized * 5f + rigidbody.position, 1f);
         PlayAnim("roll");
         SetAnimLayerWeight(0f);
         Invoke(nameof(AnimaInjureFinish), 1f);
@@ -299,6 +299,7 @@ public class MoveObject : MonoBehaviour
         }
     }
     bool playerInjureCDing = false;
+    bool injureCDing = false;
     /// <summary>
     /// 受伤
     /// </summary>
@@ -308,15 +309,17 @@ public class MoveObject : MonoBehaviour
     {
         if (forceAutoNormalize)
             force = force.normalized;
-        if (_State == State.Dead || _State == State.DeadDead || _State == State.Roll || playerInjureCDing) return;
+        if (_State == State.Dead || _State == State.DeadDead || _State == State.Roll || playerInjureCDing || injureCDing) return;
         Hp -= value;
+        injureCDing = true;
+        Invoke(nameof(InjureCDFinish), 0.1f);
         if (Hp > 0)
         {
             PlayAnim("injure");
             if (isPlayer)
             {
-                collider.enabled = false;
                 playerInjureCDing = true;
+                collider.enabled = false;
                 StartCoroutine(nameof(PlayerInjured));
                 Invoke(nameof(AnimaInjureFinish), injureAnimDur);
                 ((PlayerController)controller).GetHurtEffect(force);
@@ -366,7 +369,21 @@ public class MoveObject : MonoBehaviour
         Invoke(nameof(CloseHP), 2f);
         ShowHP();
         HP_Slider.value = Hp / MaxHp;
-        HP_Slider_Bg.DOValue(Hp / MaxHp, 0.7f);
+        StartCoroutine(SliderValue(0.7f, HP_Slider_Bg, Hp / MaxHp));
+    }
+    void InjureCDFinish()
+    {
+        injureCDing = false;
+    }
+    IEnumerator SliderValue(float time,Slider slider,float targetValue)
+    {
+        float t = 0;
+        while (t < time)
+        {
+            slider.value = Mathf.Lerp(slider.value, targetValue, t / time);
+            t += Time.deltaTime;
+            yield return null;
+        }
     }
     protected void ShowHP()
     {
@@ -562,7 +579,7 @@ public class MoveObject : MonoBehaviour
     protected IEnumerator Reload()
     {
         Slider_Reload.gameObject.SetActive(true);
-        Slider_Reload.DOValue(1, shotReload);
+        StartCoroutine(SliderValue(shotReload, Slider_Reload, 1));
         yield return new WaitForSeconds(shotReload);
         Slider_Reload.value = 0;
         Slider_Reload.gameObject.SetActive(false);
@@ -584,6 +601,11 @@ public class MoveObject : MonoBehaviour
     public float GetHP()
     {
         return Hp;
+    }
+
+    public virtual void CollideWhenRush(string collisionTag)
+    {
+        
     }
     private void OnDestroy()
     {

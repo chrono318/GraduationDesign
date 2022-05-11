@@ -32,6 +32,7 @@ public class DefaultBullet : Bullet
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (col) return;
         if (collision.gameObject.tag == "Wall")
         {
             if (gameObject.tag == "Enemy")
@@ -51,20 +52,25 @@ public class DefaultBullet : Bullet
 
             collision.gameObject.GetComponent<MoveObject>().GetHurt(damage, dir);
         }
-        if (collision.gameObject.tag == "Enemy" && isPlayer)
+        else if (collision.gameObject.tag == "Enemy" && isPlayer)
         {
             StartDestoryAnim();
             collision.gameObject.GetComponent<MoveObject>().GetHurt(damage, dir);
         }
-        if (collision.gameObject.tag == "Boom")
+        else if (collision.gameObject.tag == "Boom")
         {
             AnimEnd();
             collision.gameObject.GetComponent<ExplosiveBarrels>().CallBoomAnim();
         }
-        if (collision.gameObject.tag == "Boss" && isPlayer)
+        else if (collision.gameObject.tag == "Boss" && isPlayer)
         {
             StartDestoryAnim();
             collision.gameObject.GetComponent<Boss>().GetHurt(damage);
+        }
+        else if(collision.gameObject.tag == "shenxiang")
+        {
+            StartDestoryAnim();
+            collision.gameObject.GetComponent<Tentacle>().GetHurt(damage);
         }
     }
 }

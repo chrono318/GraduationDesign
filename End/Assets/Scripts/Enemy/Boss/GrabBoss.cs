@@ -123,11 +123,12 @@ public class GrabBoss : Boss
         CancelInvoke(nameof(StartSkillTiming));
         CancelInvoke(nameof(ContinueSkillTiming));
 
-        StopAllCoroutines();
+        //StopAllCoroutines();
         reached = true;
         isAttacking = false;
         isSkill = false;
         animator.Play("laser(2)");
+        targetMO = null;
 
         line0.enabled = false;
         line1.enabled = false;
@@ -166,11 +167,11 @@ public class GrabBoss : Boss
         if (targetMO)
         {
             Vector2 dir = GetDirToPlayer();
-            if (dir.magnitude < 2)
+            if (dir.magnitude < 2 && !inAir)
             {
                 targetMO.GetHurt(attackDamage, dir);
             }
-            if (!isSkill && !isAttacking && targetMO)
+            if (!isSkill && !isAttacking)
             {
                 if (dir.magnitude <= attackDis)
                 {
@@ -275,7 +276,7 @@ public class GrabBoss : Boss
     }
     void ContinueSkillTiming()
     {
-        if (isSkill) return;
+        if (isSkill || !targetMO) return;
         int index = Random.Range(1, 5);
         index += lastSkillIndex;
         index %= 5;
@@ -664,6 +665,8 @@ public class GrabBoss : Boss
         bullet.Init(position, rotation, bulletSpeed, false, bulletDamage, bulletPool);
         return bullet;
     }
+
+    bool inAir = false;
     /// <summary>
     /// 飞天
     /// </summary>
@@ -685,6 +688,7 @@ public class GrabBoss : Boss
             }
 
             collider2D.enabled = false;
+            inAir = true;
 
             t = 0;
             while (t < timeUp)
@@ -725,6 +729,7 @@ public class GrabBoss : Boss
             {
                 targetMO.GetHurt(damageSkill3, Vector2.up);
             }
+            inAir = false;
             yield return new WaitForSeconds(intervalPerJump);
         }
         //间隔
@@ -743,7 +748,7 @@ public class GrabBoss : Boss
             }
 
             collider2D.enabled = false;
-
+            inAir = true;
             t = 0;
             while (t < timeUp)
             {
@@ -783,6 +788,7 @@ public class GrabBoss : Boss
             {
                 targetMO.GetHurt(damageSkill3, Vector2.up);
             }
+            inAir = false;
             yield return new WaitForSeconds(intervalPerJump);
         }
         //结束动画

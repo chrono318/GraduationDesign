@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SeagullsCollision : MonoBehaviour
 {
-    public SeagullsMO seagullsMO;
+    public MoveObject MO;
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        seagullsMO.CollideWhenRush(collision.gameObject.tag);
+        MO.CollideWhenRush(collision.gameObject.tag);
     }
 }

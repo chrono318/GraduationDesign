@@ -42,6 +42,11 @@ public class PlayerController : Controller
         cameraControl = Camera.main.GetComponent<CameraControl>();
         OriScale = transform.localScale.x;
         //InvokeRepeating(nameof(SanUpdate), 0, SanTime);
+        GameObject hpslider = GameObject.Find("Slider_San");
+        if (hpslider)
+        {
+            HPSlider = hpslider.GetComponent<Slider>();
+        }
     }
     
     // Update is called once per frame
@@ -55,31 +60,34 @@ public class PlayerController : Controller
     /// </summary>
     void SanUpdate()
     {
+        if (HPSlider == null) return;
         if (isPossess)
         {
             if (curType == MoveObjectType.Living)
             {
-                San += SanPerTime.y;
+                San += SanPerTime.y * Time.deltaTime;
                 San = Mathf.Min(San, 100f);
             }
             else
             {
-                San -= SanPerTime.x;
+                San -= SanPerTime.x * Time.deltaTime;
                 if (San <= 0)
                 {
                     // lose
+                    Game.instance.LoseGame();
                 }
             }
         }
         else
         {
-            San -= SanPerTime.x;
+            San -= SanPerTime.x * Time.deltaTime;
             if (San <= 0)
             {
                 // lose
+                Game.instance.LoseGame();
             }
         }
-        HPSlider.DOValue(San / 100f, 0.5f);
+        HPSlider.value = San / 100f;
     }
     private void FixedUpdate()
     {

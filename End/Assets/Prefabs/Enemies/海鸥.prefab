@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2daa1f7dcd2a3543a504826ee911817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seagullsMO: {fileID: 3524423830108122781}
+  MO: {fileID: 3524423830108122781}
 --- !u!58 &1498910873419296725
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -106,7 +106,7 @@ public class SeagullsMO : MoveObject
     /// <summary>
     /// 撞到墙体会眩晕,给别的脚本调用的
     /// </summary>
-    public void CollideWhenRush(string collisionTag)
+    public override void CollideWhenRush(string collisionTag)
     {
         if (isRush)
         {

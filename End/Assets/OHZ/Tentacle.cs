@@ -10,7 +10,7 @@ public class Tentacle : MonoBehaviour
 
     public GameObject LifeFire;
     public int Life = 3;
-    int currLife;
+    float currLife;
 
     [Header("攻击参数")]
     public float attackRadius = 20f;
@@ -105,8 +105,9 @@ public class Tentacle : MonoBehaviour
     /// <summary>
     /// 受伤
     /// </summary>
-    public void GetHurt(int damage)
+    public void GetHurt(float damage)
     {
         currLife -= damage;
+        print(currLife);
     }
 }

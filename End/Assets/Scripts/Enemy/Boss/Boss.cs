@@ -77,5 +77,10 @@ public class Boss : MonoBehaviour
         HpSlider.gameObject.SetActive(false);
         collider2D.enabled = false;
         this.enabled = false;
+        Invoke(nameof(Win), 1f);
+    }
+    protected void Win()
+    {
+        Game.instance.WinGame();
     }
 }

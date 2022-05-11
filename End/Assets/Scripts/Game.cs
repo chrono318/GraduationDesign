@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour
@@ -50,6 +51,7 @@ public class Game : MonoBehaviour
         else
         {
             instance = this;
+            Application.targetFrameRate = 60;
         }
         UpdateRoomEnemyList();
     }
@@ -146,10 +148,24 @@ public class Game : MonoBehaviour
         Game.instance.MinMap.SetActive(false);
     }
 
+    public void LoseGame()
+    {
+        return;
+        Time.timeScale = 0f;
+        SceneManager.LoadScene("Lose");
+    }
+    public void WinGame()
+    {
+        Time.timeScale = 0f;
+        SceneManager.LoadScene("Win");
+    }
+
+
     private int killNum = 0;
     public GameObject UITips;
     public void KillEnemy()
     {
+        return;
         killNum++;
         float s = killNum / 3f;
         slider.value = s;
