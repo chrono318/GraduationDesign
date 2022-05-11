@@ -75,6 +75,7 @@ public class Sunken : MonoBehaviour
         {
             hole[i].GetComponent<Animator>().Play("turn-in");
         }
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[15]);
     }
 
     public void TurnOut()
@@ -83,6 +84,7 @@ public class Sunken : MonoBehaviour
         {
             hole[i].GetComponent<Animator>().Play("turn-out");
         }
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[14]);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

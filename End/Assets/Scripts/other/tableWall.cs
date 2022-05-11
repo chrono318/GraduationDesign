@@ -8,7 +8,9 @@ public class tableWall : MonoBehaviour
     int hp = 5;
     public void BulletAttack()
     {
+        print("wall");
         hp--;
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[9]);
         if (hp == 0)
         {
             Destroy(transform.parent.gameObject);

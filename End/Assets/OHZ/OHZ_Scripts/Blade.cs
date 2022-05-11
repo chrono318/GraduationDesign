@@ -100,6 +100,7 @@ public class Blade : MonoBehaviour
                 isReach = false;
                 isForward = !isForward;
                 currStopTime = stopTime;
+                SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[8]);
             }
         }
     }

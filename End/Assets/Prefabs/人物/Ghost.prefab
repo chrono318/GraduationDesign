@@ -175,7 +175,7 @@ MonoBehaviour:
   GFX: {fileID: 4287227515860332710}
   HPSlider: {fileID: 0}
   SanTime: 0
-  SanPerTime: {x: 0.5, y: 0.1}
+  SanPerTime: {x: 5, y: 10}
   San: 100
 --- !u!1001 &4822230119996910764
 PrefabInstance:

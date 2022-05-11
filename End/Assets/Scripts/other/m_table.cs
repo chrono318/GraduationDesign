@@ -5,7 +5,6 @@ using UnityEngine;
 public class m_table : MonoBehaviour
 {
     public Animator anim;
-    public GameObject wall;
 
     private bool canPush = false;
     // Start is called before the first frame update

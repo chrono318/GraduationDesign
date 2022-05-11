@@ -38,6 +38,7 @@ public class Flower : MonoBehaviour
     /// </summary>
     public void CreatBullet()
     {
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[11]);
         for (int i = 0; i < bulletCount; i++)
         {
             int angle = Random.Range(0, 360);

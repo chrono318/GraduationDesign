@@ -37,6 +37,7 @@ public class RestarRandom : MonoBehaviour
                 float rangeY = Random.Range(InitPos.y - randomY, InitPos.y + randomY);
                 transform.position = new Vector3(rangeX, rangeY, transform.position.z);
                 system.Play();
+                SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[5]);
             }
         }
     }

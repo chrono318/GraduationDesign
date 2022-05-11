@@ -9,6 +9,7 @@ public class KnifeMO : MoveObject
     public float value = 30f;
     public Vector2 Start_Duration;
     bool isLeft = true;
+    public bool isbig = true;
     public override void Attack(Vector2 target)
     {
         PlayAnim("attack");
@@ -27,6 +28,10 @@ public class KnifeMO : MoveObject
     }
     void checkAttack()
     {
+        if(isbig)
+            SoundManager.instance.PlaySoundClipRandom(0, 5, SoundManager.instance.combatSound);
+        else
+            SoundManager.instance.PlaySoundClipRandom(5, 10, SoundManager.instance.combatSound);
         if (isPlayer)
         {
             foreach (MoveObject mo in Game.instance.curEnemies)

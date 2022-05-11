@@ -202,6 +202,7 @@ MonoBehaviour:
   Right: {fileID: 5116321918243443461}
   value: 30
   Start_Duration: {x: 0.4, y: 0.5}
+  isbig: 0
 --- !u!114 &2191495982826673453
 MonoBehaviour:
   m_ObjectHideFlags: 0

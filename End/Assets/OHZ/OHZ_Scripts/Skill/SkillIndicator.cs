@@ -156,6 +156,7 @@ public class SkillIndicator : MoveObject
         if (Input.GetMouseButtonUp(0))
         {
             isRush = true;
+            SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[29]);
             //skillState = skillIndicator.复原;
             //sr.color = new Color(255, 255, 255, 0);
             canAttack = false;
@@ -202,6 +203,7 @@ public class SkillIndicator : MoveObject
             if (currkeeptime <= 0)
             {
                 isRush = true;
+                SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[29]);
                 currkeeptime = Keeptime;
                 reachMaxLong = false;
                 lastPoint.position = beilv * direction.normalized * currSize / 10 + (Vector2)indicator.transform.position;

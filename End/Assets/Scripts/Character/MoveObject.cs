@@ -243,6 +243,8 @@ public class MoveObject : MonoBehaviour
         transform.DOMove((target - rigidbody.position).normalized * 5f + rigidbody.position, 1f);
         PlayAnim("roll");
         SetAnimLayerWeight(0f);
+
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[22]);
         Invoke(nameof(AnimaInjureFinish), 1f);
     }
     /// <summary>
@@ -276,6 +278,10 @@ public class MoveObject : MonoBehaviour
             rigidbody.velocity = speed * dirXscale;
             SetAnimSpeed(animSpeed);
             SetAnimLayerWeight(Mathf.Floor(animSpeed));
+            if (animSpeed > 0)
+            {
+                SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
+            }
         }
     }
     public void MoveVelocity(Vector2 dirXscale, float animSpeed, bool isLeft)
@@ -288,6 +294,10 @@ public class MoveObject : MonoBehaviour
             if (isPlayer && animSpeed > 0 && type == MoveObjectType.Living && (dirXscale.x < 0) == isLeft)
             {
                 Game.instance.weiqi.SetWeiqiPosition(foot.position, dirXscale.x < 0);
+            }
+            if (animSpeed > 0)
+            {
+                SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
             }
         }
     }
@@ -339,6 +349,8 @@ public class MoveObject : MonoBehaviour
 
             _State = State.Dead;
             rigidbody.AddForce(force * 1000);
+
+            SoundManager.instance.PlaySoundClipRandom(25, 29, SoundManager.instance.combatSound);
             if (isPlayer)
             {
                 //Player dead;
@@ -571,7 +583,7 @@ public class MoveObject : MonoBehaviour
                 //开始换弹动画
                 if(isPlayer)
                     StartCoroutine(nameof(Reload));
-
+                ReloadSound();
                 break;
         }
         return false;
@@ -583,6 +595,10 @@ public class MoveObject : MonoBehaviour
         yield return new WaitForSeconds(shotReload);
         Slider_Reload.value = 0;
         Slider_Reload.gameObject.SetActive(false);
+    }
+    protected virtual void ReloadSound()
+    {
+
     }
     /// <summary>
     /// 发射一颗子弹

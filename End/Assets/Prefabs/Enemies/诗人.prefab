@@ -1081,6 +1081,7 @@ MonoBehaviour:
   isPlayer: 0
   controller: {fileID: 0}
   _State: 0
+  isShiRen: 1
 --- !u!1001 &1981884450924487757
 PrefabInstance:
   m_ObjectHideFlags: 0

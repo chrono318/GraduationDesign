@@ -26,6 +26,8 @@ public class ShotgunMO : MoveObject
             PlayAnim("attack");
         }
 
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[15]);
+
         Quaternion quaternion;
         quaternion = Quaternion.Euler(0, 0, 30 + gunAngle);
         CreateBullet(attackPoint.position, quaternion);
@@ -41,5 +43,10 @@ public class ShotgunMO : MoveObject
         //r = Random.Range(-offset, offset);
         quaternion = Quaternion.Euler(0, 0, -10 + gunAngle);
         CreateBullet(attackPoint.position, quaternion);
+    }
+
+    protected override void ReloadSound()
+    {
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[18]);
     }
 }

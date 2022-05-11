@@ -222,6 +222,8 @@ public class PlayerController : Controller
         Game.instance.FuShenVXF.GetChild(0).GetComponent<ParticleSystem>().Play();
         Game.instance.FuShenVXF.GetChild(1).GetComponent<ParticleSystem>().Play();
 
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[21]);
+
         isPossessing = false;
         
     }
