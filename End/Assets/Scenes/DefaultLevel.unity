@@ -6123,7 +6123,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 37d4f2afd88be0c4fafce02f00f02da6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8176,7 +8176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  wall: {fileID: 1827790196}
 --- !u!61 &961480381
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19372,6 +19371,7 @@ MonoBehaviour:
   Right: {fileID: 1488414700}
   value: 30
   Start_Duration: {x: 0.4, y: 0.5}
+  isbig: 1
 --- !u!114 &2609278251076968359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19427,6 +19427,7 @@ MonoBehaviour:
   Right: {fileID: 909821563}
   value: 30
   Start_Duration: {x: 0.4, y: 0.5}
+  isbig: 1
 --- !u!4 &2617357251679133439
 Transform:
   m_ObjectHideFlags: 0
