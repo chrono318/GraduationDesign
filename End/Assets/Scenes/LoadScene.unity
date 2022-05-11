@@ -769,6 +769,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0a911d986b3e5714d96d53793d84c68d, type: 3}
   - {fileID: 8300000, guid: 3acbe1333b404b141850d6429f9a6923, type: 3}
   - {fileID: 8300000, guid: efee3c4503b849f4aa77c8ccc6dc3f8f, type: 3}
+  - {fileID: 8300000, guid: c38a4481fa167884ebb712076cc9d3c2, type: 3}
   BossSound:
   - {fileID: 8300000, guid: 18ca70f38135e104e90583f3949f3399, type: 3}
   - {fileID: 8300000, guid: 8f12895f69812d941a3e95ecf4143047, type: 3}
