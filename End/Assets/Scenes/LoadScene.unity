@@ -731,7 +731,15 @@ MonoBehaviour:
   audioSource_Effect: {fileID: 944948711}
   audioSource_Environment: {fileID: 944948711}
   CombatSound:
-  - {fileID: 8300000, guid: d78fd3e92516b334895d70ba82564232, type: 3}
+  - {fileID: 8300000, guid: 986c58b23e00205498dd443ddcae9296, type: 3}
+  - {fileID: 8300000, guid: 05e1154f06fa96545b48a756c8464d17, type: 3}
+  - {fileID: 8300000, guid: 00a04383a624c834086bcafee8c8d804, type: 3}
+  - {fileID: 8300000, guid: 88172a655fa0adc4c9e3e7adc42b8235, type: 3}
+  - {fileID: 8300000, guid: f8bbe3ac83a0ef9489593a11bbb75c03, type: 3}
+  - {fileID: 8300000, guid: 553271415fbcb2b4a9986cbc79f48def, type: 3}
+  - {fileID: 8300000, guid: fa7cf0c0a8073ef4f905892ff538665d, type: 3}
+  - {fileID: 8300000, guid: 0b72857b6f611e74392c5df3e114d22e, type: 3}
+  - {fileID: 8300000, guid: 553271415fbcb2b4a9986cbc79f48def, type: 3}
   UISound: []
 --- !u!4 &944948713
 Transform:

@@ -4499,6 +4499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3e085a9791a5141a634a6c7082cef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextLevelName: OnSea
 --- !u!114 &1769494993
 MonoBehaviour:
   m_ObjectHideFlags: 0

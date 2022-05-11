@@ -5603,7 +5603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u4E2D\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
-  scenceName: OriRoom
+  scenceName: MiddleShip
 --- !u!1 &350296945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11493,7 +11493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5927\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
-  scenceName: OriRoom
+  scenceName: DefaultLevel
 --- !u!1 &846708450
 GameObject:
   m_ObjectHideFlags: 0
@@ -60288,9 +60288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7d916c61ab76d4fad525abef073683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5927\u578B\u6D77\u76D7\u8239</color>"
+  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u4E2D\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
-  scenceName: OriRoom
+  scenceName: MiddleShip
 --- !u!4 &1665845772
 Transform:
   m_ObjectHideFlags: 0
@@ -60481,7 +60481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5C0F\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
-  scenceName: OriRoom
+  scenceName: SmallShip
 --- !u!1 &1725106742
 GameObject:
   m_ObjectHideFlags: 0
@@ -60964,7 +60964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5C0F\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
-  scenceName: OriRoom
+  scenceName: SmallShip
 --- !u!1 &1903060798
 GameObject:
   m_ObjectHideFlags: 0
