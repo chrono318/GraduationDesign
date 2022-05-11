@@ -190,7 +190,7 @@ public class MoveObject : MonoBehaviour
                 {
                     StopCoroutine(nameof(DeadNoPossess));
                     StartCoroutine(nameof(Possess));
-                    Game.instance.playerController.Possess(this);
+                    PlayerController.instance.Possess(this);
                     _State = State.Injure;
                     lineRenderer.gameObject.SetActive(false);
                     PossessTex.SetActive(false);
@@ -304,7 +304,7 @@ public class MoveObject : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <param name="force"></param>
-    public void GetHurt(float value, Vector2 force, bool forceAutoNormalize = true)
+    public virtual void GetHurt(float value, Vector2 force, bool forceAutoNormalize = true)
     {
         if (forceAutoNormalize)
             force = force.normalized;
@@ -344,12 +344,13 @@ public class MoveObject : MonoBehaviour
             }
             else
             {
-                _State = State.Dead;
                 StartCoroutine(nameof(DeadNoPossess));
                 StopCoroutine(nameof(EnemyInjured));
-                //Destroy(controller);
-                //
-                Game.instance.CheckIfPass();
+
+                _State = State.Dead;
+                
+                Game.instance.DeleteEnemyMO(this);
+                Destroy(controller);
                 collider.enabled = false;
                 rigidbody.velocity = Vector2.zero;
                 fearTex.SetActive(false);
@@ -358,7 +359,6 @@ public class MoveObject : MonoBehaviour
                 material_Body.SetVector("_Color1", new Vector4(0.6792453f, 0.6792453f, 0.6792453f, 1));
                 material_Edge.SetVector("_Color1", new Vector4(0, 0.9441266f, 1,1));
                 material_Body.SetFloat("_Shine", 0f);
-                Game.instance.DeleteEnemyMO(this);
 
             }
         }
