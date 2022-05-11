@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.IK;
 
 public class weaponDir : MonoBehaviour
 {
@@ -12,22 +13,16 @@ public class weaponDir : MonoBehaviour
     public Transform center;
     public int oriAngle = 0;
     public float length = 5f;
-    public bool update = true;
+    public bool _update = true;
 
     private void Start()
     {
-        this.enabled = false;
         controller.weaponDir = this;
-        update = false;
+        DisableUpdate();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            print("press");
-            this.enabled = false;
-        }
-        if (!update) return;
+        if (!_update) return;
         Vector2 dir = (target - (Vector2)center.position);
         float len = Mathf.Min(length, dir.magnitude);
         dir = dir.normalized;
@@ -43,23 +38,23 @@ public class weaponDir : MonoBehaviour
 
     public void AttackShake(float time,float shakeDistance,Vector2 target)
     {
-        update = false;
+        //update = false;
         weapon.position -= (Vector3)(target - (Vector2)center.position).normalized * shakeDistance;
         weapon1.position = weapon.position;
-        Invoke(nameof(BackToUpdate), time);
+        //Invoke(nameof(BackToUpdate), time);
     }
     
-    void BackToUpdate()
+    public void BackToUpdate()
     {
-        update = true;
+        enabled = true;
+        _update = true;
+        GetComponent<IKManager2D>().enabled = true;
     }
 
-    //private void OnEnable()
-    //{
-    //    print("on enable");
-    //}
-    //private void OnDisable()
-    //{
-    //    print("on disable");
-    //}
+    public void DisableUpdate()
+    {
+        enabled = false;
+        _update = false;
+        GetComponent<IKManager2D>().enabled = false;
+    }
 }
