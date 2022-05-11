@@ -255,9 +255,9 @@ public class SkillIndicator : MoveObject
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<MoveObject>().GetHurt(damage, dir);
+        }
             isRush = false;
             skillState = skillIndicator.复原;
-        }
     }
     public override void CollideWhenRush(string collisionTag)
     {
