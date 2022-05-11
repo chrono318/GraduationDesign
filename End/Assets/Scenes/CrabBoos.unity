@@ -1292,9 +1292,6 @@ MonoBehaviour:
   curEnemies: []
   weiqi: {fileID: 1298779616}
   FuShenVXF: {fileID: 1653903689}
-  UITips: {fileID: 0}
-  text: {fileID: 0}
-  XinWuTips: {fileID: 0}
 --- !u!4 &1118392555
 Transform:
   m_ObjectHideFlags: 0
@@ -2560,9 +2557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Boss.<color="white">Carb</color>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
-  m_sharedMaterial: {fileID: 2517202264660172603, guid: 5c5ee151f9307453bad78be36b51a077,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -822,7 +822,7 @@ MonoBehaviour:
   hurtRadius: 1.5
   damage: 90
   rushTime: 3
-  rushSpeed: 15
+  rushSpeed: 10
   skillSpeedScale: 1.5
   rushDirChangeScale: 0.1
   clock: {fileID: 1001959769705741556}
