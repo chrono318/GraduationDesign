@@ -5,16 +5,16 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource audioSource_Effect,audioSource_Environment;
-    public static SoundManager soundManager;
+    public static SoundManager instance;
     public AudioClip[] CombatSound;
     public AudioClip[] UISound;
 
     private void Awake()
     {
-        if(soundManager == null)
+        if(instance == null)
         {
-            soundManager = this;
-            DontDestroyOnLoad(soundManager);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
