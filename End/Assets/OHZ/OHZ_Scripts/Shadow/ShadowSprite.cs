@@ -10,6 +10,7 @@ public class ShadowSprite : MonoBehaviour
     SpriteRenderer playerSprite;
 
     SpriteRenderer[] renderers;
+    public Color oriColor = new Color(0, 0.9803922f, 1, 1);
 
     Color color;
 
@@ -20,12 +21,12 @@ public class ShadowSprite : MonoBehaviour
     [Header("不透明度控制")]
     private float alpha;
     public float alphaSet = 1f;//初始Alpha值
-    public float alphaMul = 0.9f;
+    public float alphaMul = 0.95f;
 
     public bool update = true;
     private void Awake()
     {
-        color = new Color(0.5f, 0.5f, 1, 0.8f);
+        color = oriColor;
         renderers = transform.GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < renderers.Length; i++)
         {
@@ -45,7 +46,7 @@ public class ShadowSprite : MonoBehaviour
     void Update()
     {
         alpha *= alphaMul;
-        color = new Color(0.5f, 0.5f, 1, alpha);
+        color = oriColor * alpha;
         //thisSprite.color = color;
         for(int i = 0; i < renderers.Length; i++)
         {

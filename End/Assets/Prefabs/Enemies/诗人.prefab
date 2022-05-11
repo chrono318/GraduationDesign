@@ -1053,7 +1053,8 @@ MonoBehaviour:
   MaxHp: 100
   speed: 5
   ReloadTime: 2
-  bulletPrefab_player: {fileID: 0}
+  bulletPrefab_player: {fileID: 5570354312193352119, guid: 79f5da0329593f548bc40fe4a347840b,
+    type: 3}
   speed_player: 4
   bulletNum_player: 6
   shotReload_player: 1
