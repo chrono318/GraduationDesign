@@ -284,6 +284,7 @@ public class GrabBoss : Boss
     }
     void StartSkill(int index)
     {
+        if (isSkill || !targetMO) return;
         isSkill = true;
         lastSkillIndex = index;
         //Í£Ö¹ÆÕÍ¨¹¥»÷

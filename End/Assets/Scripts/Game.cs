@@ -73,7 +73,6 @@ public class Game : MonoBehaviour
                 curEnemies = enemies3;
                 break;
             case 4:
-                Camera.main.backgroundColor = Color.black;
                 curRoomCameraArea = roomCameraArea4;
                 curEnemies = enemies4;
                 break;

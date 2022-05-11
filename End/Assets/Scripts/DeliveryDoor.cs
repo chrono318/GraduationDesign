@@ -8,7 +8,8 @@ public class DeliveryDoor : MonoBehaviour
     public Transform targetPos;
     public Vector2 CameraPosition;
 
-    public bool teshu = false;
+    public bool winGame = false;
+    public bool beBlack = false;
     public bool CanThrough = false; 
     IEnumerator Delivery(MoveObject role)
     {
@@ -16,6 +17,10 @@ public class DeliveryDoor : MonoBehaviour
         Camera.main.GetComponent<CameraControl>().Fade();
 
         yield return new WaitForSeconds(0.9f);
+        if (beBlack)
+        {
+            ChangeBackGround();
+        }
 
         //Camera.main.transform.position = new Vector3(CameraPosition.x, CameraPosition.y, -20);
         role.transform.position = targetPos.position;
@@ -34,14 +39,15 @@ public class DeliveryDoor : MonoBehaviour
         if (collision.transform.TryGetComponent<MoveObject>(out MoveObject player))
         {
             if (!player.isPlayer) return;
-            if (!teshu)
+
+            if (!winGame)
             {
                 StartCoroutine(Delivery(player));
                 isFirst = false;
             }
             else
             {
-                SceneManager.LoadScene("OnSea");
+                SceneManager.LoadScene("OriRoom");
             }
         }
     }
@@ -53,5 +59,10 @@ public class DeliveryDoor : MonoBehaviour
     public void Pass()
     {
         CanThrough = true;
+    }
+
+    void ChangeBackGround()
+    {
+        Camera.main.backgroundColor = Color.black;
     }
 }
