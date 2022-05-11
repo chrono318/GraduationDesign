@@ -53,7 +53,6 @@ public class PlayerController : Controller
     void Update()
     {
         SanUpdate();
-
     }
     /// <summary>
     /// 扣血/加血
