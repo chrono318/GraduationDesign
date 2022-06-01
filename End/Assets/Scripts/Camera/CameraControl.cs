@@ -110,9 +110,13 @@ public class CameraControl : MonoBehaviour
     IEnumerator ShotShake(Vector2 dirMforce, float duration)
     {
         PosOffset = dirMforce;
-        yield return new WaitForSeconds(duration);
-        PosOffset = Vector2.zero;
-
+        float t = 0;
+        while (t < duration)
+        {
+            PosOffset = Vector2.Lerp(dirMforce, Vector2.zero, t / duration * t / duration);
+            t += Time.deltaTime;
+            yield return null;
+        }
         //transform.position = oriPos;
     }
 
