@@ -14,7 +14,8 @@ public class SwordMO : MoveObject
     void checkAttack()
     {
         CameraControl.instance.CameraShakeShot(new Vector2(isLeft ? -1 : 1, -1), 0.1f);
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[24]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[24]);
+        audioSource.PlayOneShot(SoundManager.instance.combatSound[24]);
         if (isPlayer)
         {
             List<MoveObject> enemies = Game.instance.curEnemies;

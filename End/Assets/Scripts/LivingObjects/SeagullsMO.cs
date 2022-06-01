@@ -169,7 +169,8 @@ public class SeagullsMO : MoveObject
         PlayAnim("animState", 2);
         clock.SetActive(false);
         yield return new WaitForSeconds(0.6f);
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[6]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[6]);
+        audioSource.PlayOneShot(SoundManager.instance.effectSound[6]);
 
         if (isPlayer)
         {

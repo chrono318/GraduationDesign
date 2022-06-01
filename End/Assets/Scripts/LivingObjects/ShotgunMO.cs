@@ -26,7 +26,8 @@ public class ShotgunMO : MoveObject
             PlayAnim("attack");
         }
 
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[15]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[15]);
+        audioSource.PlayOneShot(SoundManager.instance.combatSound[15]);
 
         Quaternion quaternion;
         quaternion = Quaternion.Euler(0, 0, 30 + gunAngle);
@@ -47,6 +48,7 @@ public class ShotgunMO : MoveObject
 
     protected override void ReloadSound()
     {
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[18]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[18]);
+        audioSource.PlayOneShot(SoundManager.instance.combatSound[18]);
     }
 }

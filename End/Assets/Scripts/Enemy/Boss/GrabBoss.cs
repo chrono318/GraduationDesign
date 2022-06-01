@@ -13,6 +13,7 @@ public class GrabBoss : Boss
         attack,
     }
     BossState _state = BossState.idle;
+    public AudioSource audioSource;
     [Header("普通攻击")]
     private bool isAttacking = false;
     public float attackCD = 10f;
@@ -143,7 +144,8 @@ public class GrabBoss : Boss
 
     protected override void Dead()
     {
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[7]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[7]);
+        audioSource.PlayOneShot(SoundManager.instance.BossSound[7]);
         line0.enabled = false;
         line1.enabled = false;
         line2.enabled = false;
@@ -251,7 +253,8 @@ public class GrabBoss : Boss
         isAttacking = true;
         yield return new WaitForSeconds(1f); //动画里就是1s后挥击
 
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[2]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[2]);
+        audioSource.PlayOneShot(SoundManager.instance.BossSound[2]);
         attackVFX.Play(true);
         attackVFX1.Play(true);
         preAttackVFX.SetActive(false);
@@ -343,7 +346,8 @@ public class GrabBoss : Boss
         Vector2 dir = GetDirToPlayer();
         float _speed = rushDistance / rushDuration;
         animator.SetTrigger("rush");
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[3]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[3]);
+        audioSource.PlayOneShot(SoundManager.instance.BossSound[3]);
 
         while (t < rushDuration)
         {
@@ -381,7 +385,8 @@ public class GrabBoss : Boss
         reached = true;
         line0.enabled = true;
         line0.material = jiguangPreMat;
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[1]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[1]);
+        audioSource.PlayOneShot(SoundManager.instance.BossSound[1]);
         while (t < preTime1)
         {
             KeepStartPosJiguang();
@@ -422,7 +427,9 @@ public class GrabBoss : Boss
         t = 0;
         bool bo = false;
         animator.SetTrigger("laser");
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[0]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[0]);      
+        audioSource.PlayOneShot(SoundManager.instance.BossSound[0]);
+
         while (t < step1Duration)
         {
             Vector2 endPos = GetJiguangEndPos(dir);
@@ -468,7 +475,8 @@ public class GrabBoss : Boss
         line1.material = jiguangPreMat;
         line2.enabled = true;
         line2.material = jiguangPreMat;
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[1]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[1]);
+        audioSource.PlayOneShot(SoundManager.instance.BossSound[1]);
         t = 0;
         while (t < preTime1)
         {
@@ -510,7 +518,8 @@ public class GrabBoss : Boss
         //第二阶段射
         reached = false;
         animator.SetTrigger("laser");
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[0]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[0]);
+        audioSource.PlayOneShot(SoundManager.instance.BossSound[0]);
         line0.enabled = true;
         line0.material = jiguangMat;
         line1.enabled = true;
@@ -685,7 +694,8 @@ public class GrabBoss : Boss
         {
             //up动画
             animator.SetTrigger("jump out");
-            SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[6]);
+            //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[6]);
+            audioSource.PlayOneShot(SoundManager.instance.BossSound[6]);
             yield return new WaitForSeconds(beginTime3);
             upVFX.Play(true);
             foreach (SpriteRenderer r in renderers)
@@ -746,7 +756,8 @@ public class GrabBoss : Boss
         {
             //up动画
             animator.SetTrigger("jump out");
-            SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[6]);
+            //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[6]);
+            audioSource.PlayOneShot(SoundManager.instance.BossSound[6]);
             yield return new WaitForSeconds(beginTime3);
             upVFX.Play(true);
             foreach (SpriteRenderer r in renderers)
@@ -827,7 +838,8 @@ public class GrabBoss : Boss
             Game.instance.curEnemies.Add(enemyGo.GetComponent<MoveObject>());
             Game.instance.CurEnemyCount++;
 
-            SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[5]);
+            //SoundManager.instance.PlaySoundClip(SoundManager.instance.BossSound[5]);
+            audioSource.PlayOneShot(SoundManager.instance.BossSound[5]);
             yield return new WaitForSeconds(0.5f);
         }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExplosiveBarrels : MonoBehaviour
 {
+    public AudioSource audioSource;
     public float radius = 5f;//爆炸范围
     public LayerMask targetLayer;
     public float boomForce = 10f;
@@ -21,7 +22,8 @@ public class ExplosiveBarrels : MonoBehaviour
     /// </summary>
     public void Boom()
     {
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[7]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[7]);
+        audioSource.PlayOneShot(SoundManager.instance.effectSound[7]);
         Collider2D[] arround = Physics2D.OverlapCircleAll(transform.position, radius, targetLayer);
         foreach (var hit in arround)
         {

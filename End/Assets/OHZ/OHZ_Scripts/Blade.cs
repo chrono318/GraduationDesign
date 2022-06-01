@@ -5,6 +5,7 @@ using UnityEngine;
 //[ExecuteInEditMode]
 public class Blade : MonoBehaviour
 {
+    public AudioSource audioSource;
     public Transform startPoint, endPoint;
     Vector2 moveDir, startPos, endPos;
     public float speed = 0.01f;
@@ -100,7 +101,8 @@ public class Blade : MonoBehaviour
                 isReach = false;
                 isForward = !isForward;
                 currStopTime = stopTime;
-                SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[8]);
+                //SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[8]);
+                audioSource.PlayOneShot(SoundManager.instance.effectSound[8]);
             }
         }
     }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Cat : MonoBehaviour
 {
+    public AudioSource audioSource;
     public void AAAPlaySound()
     {
-        SoundManager.instance.PlaySoundClipRandom(0,5,SoundManager.instance.effectSound);
+        AudioClip audioClip = SoundManager.instance.GetSoundClipRandom(0,5,SoundManager.instance.effectSound);
+        audioSource.PlayOneShot(audioClip);
     }
 }

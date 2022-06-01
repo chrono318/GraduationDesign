@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class tableWall : MonoBehaviour
 {
+    public AudioSource audioSource;
     public Animator animator;
     int hp = 5;
     public void BulletAttack()
     {
         print("wall");
         hp--;
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[9]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[9]);
+        audioSource.PlayOneShot(SoundManager.instance.effectSound[9]);
         if (hp == 0)
         {
             Destroy(transform.parent.gameObject);

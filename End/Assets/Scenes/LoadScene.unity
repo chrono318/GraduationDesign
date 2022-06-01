@@ -25662,6 +25662,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Image_Mask_Setting
       objectReference: {fileID: 0}
+    - target: {fileID: 1578657959807472047, guid: 43c6ecbffa9c4354088227e1c670a618,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4050684280629345563, guid: 43c6ecbffa9c4354088227e1c670a618,
         type: 3}
       propertyPath: m_AnchoredPosition.y

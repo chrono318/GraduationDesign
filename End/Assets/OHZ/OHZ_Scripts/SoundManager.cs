@@ -52,6 +52,12 @@ public class SoundManager : MonoBehaviour
         audioSource_Effect.PlayOneShot(audioClip[random]);
     }
 
+    public AudioClip GetSoundClipRandom(int randomMin, int randomMax, AudioClip[] audioClip)
+    {
+        int random = Random.Range(randomMin, randomMax);
+        return audioClip[random];
+    }
+
     /// <summary>
     /// 随机播放某几个音频,Boss音频管理器
     /// </summary>

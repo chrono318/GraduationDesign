@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
+    public AudioSource audioSource;
     public int bulletCount = 5;
     public GameObject bullet;
     public float attackCD = 8;
@@ -38,7 +39,8 @@ public class Flower : MonoBehaviour
     /// </summary>
     public void CreatBullet()
     {
-        SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[11]);
+        //SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[11]);
+        audioSource.PlayOneShot(SoundManager.instance.effectSound[11]);
         for (int i = 0; i < bulletCount; i++)
         {
             int angle = Random.Range(0, 360);

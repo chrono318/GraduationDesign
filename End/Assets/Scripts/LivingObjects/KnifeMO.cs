@@ -29,9 +29,11 @@ public class KnifeMO : MoveObject
     void checkAttack()
     {
         if(isbig)
-            SoundManager.instance.PlaySoundClipRandom(0, 5, SoundManager.instance.combatSound);
+            //SoundManager.instance.PlaySoundClipRandom(0, 5, SoundManager.instance.combatSound);
+            audioSource.PlayOneShot(SoundManager.instance.GetSoundClipRandom(0, 5, SoundManager.instance.combatSound));
         else
-            SoundManager.instance.PlaySoundClipRandom(5, 10, SoundManager.instance.combatSound);
+            //SoundManager.instance.PlaySoundClipRandom(5, 10, SoundManager.instance.combatSound);
+            audioSource.PlayOneShot(SoundManager.instance.GetSoundClipRandom(5, 10, SoundManager.instance.combatSound));
         if (isPlayer)
         {
             foreach (MoveObject mo in Game.instance.curEnemies)

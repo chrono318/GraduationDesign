@@ -29,6 +29,7 @@ public class MoveObject : MonoBehaviour
     public float cameraShakeTime = 0.05f; 
 
     public float FearRadius = 5f;
+    public AudioSource audioSource;
     //控制图片整体，控制朝向
     [Header("图片")]
     public Transform GFX;
@@ -278,8 +279,8 @@ public class MoveObject : MonoBehaviour
             rigidbody.velocity = speed * dirXscale;
             SetAnimSpeed(animSpeed);
             SetAnimLayerWeight(Mathf.Floor(animSpeed));
-            if (animSpeed > 0)
-            {
+            if (animSpeed > 0 && isPlayer)
+            {               
                 SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
             }
         }
@@ -295,7 +296,7 @@ public class MoveObject : MonoBehaviour
             {
                 Game.instance.weiqi.SetWeiqiPosition(foot.position, dirXscale.x < 0);
             }
-            if (animSpeed > 0)
+            if (animSpeed > 0 && isPlayer)
             {
                 SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
             }
@@ -350,7 +351,8 @@ public class MoveObject : MonoBehaviour
             _State = State.Dead;
             rigidbody.AddForce(force * 1000);
 
-            SoundManager.instance.PlaySoundClipRandom(25, 29, SoundManager.instance.combatSound);
+            //SoundManager.instance.PlaySoundClipRandom(25, 29, SoundManager.instance.combatSound);
+            audioSource.PlayOneShot(SoundManager.instance.GetSoundClipRandom(25, 29, SoundManager.instance.combatSound));
             if (isPlayer)
             {
                 //Player dead;
