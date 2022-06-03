@@ -27,6 +27,7 @@ public class ChangeTex : MonoBehaviour
 
     public void CloseUI()
     {
+        SoundManager.instance.PlaySoundClip(SoundManager.instance.UISound[0]);
         gongFengUI.SetActive(false);
     }
 }

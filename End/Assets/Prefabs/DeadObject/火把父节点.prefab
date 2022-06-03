@@ -295,7 +295,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8430642822449847957}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.523384, y: -41.608135, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
@@ -389,7 +389,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 2418178327413054506}
   PossessTex: {fileID: 6023625520808623809}
   PossessCircle: {fileID: 4976886403772060597}
-  injureAnimDur: 2
+  injureAnimDur: 0
   MaxHp: 100
   speed: 2
   ReloadTime: 2
@@ -415,7 +415,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -688,6 +688,14 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.minScalar
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 19914162, guid: 402cfc0892ef54047b74d53d5a560238, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19924116, guid: 402cfc0892ef54047b74d53d5a560238, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19976374, guid: 402cfc0892ef54047b74d53d5a560238, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -696,9 +704,18 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1998153769
       objectReference: {fileID: 0}
+    - target: {fileID: 19976374, guid: 402cfc0892ef54047b74d53d5a560238, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1490731566600976, guid: 402cfc0892ef54047b74d53d5a560238, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 199188137189203476, guid: 402cfc0892ef54047b74d53d5a560238,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 402cfc0892ef54047b74d53d5a560238, type: 3}

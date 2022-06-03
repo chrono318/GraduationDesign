@@ -163,7 +163,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22505568}
-  m_Text: "\u5C0F\u578B\u6D77\u76D7\u8239"
+  m_Text: "\u4E2D\u578B\u6D77\u76D7\u8239"
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
@@ -516,7 +516,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149292260}
-  m_Text: "\u4E2D\u578B\u6D77\u76D7\u8239"
+  m_Text: "\u5927\u578B\u6D77\u76D7\u8239"
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
@@ -11298,6 +11298,7 @@ GameObject:
   - component: {fileID: 841547561}
   - component: {fileID: 841547563}
   - component: {fileID: 841547564}
+  - component: {fileID: 841547565}
   m_Layer: 0
   m_Name: ship
   m_TagString: Level
@@ -11412,6 +11413,102 @@ MonoBehaviour:
   aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5927\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
   scenceName: DefaultLevel
+--- !u!82 &841547565
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841547560}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &846708450
 GameObject:
   m_ObjectHideFlags: 0
@@ -16617,7 +16714,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101032626}
-  m_Text: "\u5C0F\u578B\u6D77\u76D7\u8239"
+  m_Text: "\u4E2D\u578B\u6D77\u76D7\u8239"
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
@@ -60288,9 +60385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7d916c61ab76d4fad525abef073683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u4E2D\u578B\u6D77\u76D7\u8239</color>"
+  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5927\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
-  scenceName: MiddleShip
+  scenceName: DefaultLevel
 --- !u!4 &1665845772
 Transform:
   m_ObjectHideFlags: 0
@@ -60479,7 +60576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7d916c61ab76d4fad525abef073683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5C0F\u578B\u6D77\u76D7\u8239</color>"
+  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u4E2D\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
   scenceName: MiddleShip
 --- !u!1 &1725106742
@@ -61046,7 +61143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7d916c61ab76d4fad525abef073683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u5C0F\u578B\u6D77\u76D7\u8239</color>"
+  aimText: "\u76EE\u6807\uFF1A<color=#FF0000>\u4E2D\u578B\u6D77\u76D7\u8239</color>"
   tipsText: "\u70B9\u51FB\u9F20\u6807\u5DE6\u952E\u53D1\u8D77\u8FDB\u653B"
   scenceName: MiddleShip
 --- !u!1 &1903060798
@@ -61627,7 +61724,7 @@ PrefabInstance:
     - target: {fileID: 102596223127550315, guid: 26f43cec825a5c844801e59ec274aca1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 102596223127550319, guid: 26f43cec825a5c844801e59ec274aca1,
         type: 3}

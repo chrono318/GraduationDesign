@@ -48,6 +48,7 @@ public class DeliveryDoor : MonoBehaviour
             else
             {
                 SceneManager.LoadScene("OriRoom");
+                SoundManager.instance.PlaySoundClip(SoundManager.instance.UISound[2]);
             }
         }
     }

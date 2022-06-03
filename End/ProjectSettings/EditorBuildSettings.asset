@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/OnSea.unity
     guid: f76dc3934fe2eb34d9e0bcf68b387b73
   - enabled: 1
-    path: Assets/Scenes/SmallShip.unity
-    guid: 0cc72e59565842347a438766677831c7
-  - enabled: 1
     path: Assets/Scenes/MiddleShip.unity
     guid: a6f575f83cb19c144854578c25dd52dc
   - enabled: 1

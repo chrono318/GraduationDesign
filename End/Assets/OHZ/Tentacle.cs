@@ -56,7 +56,7 @@ public class Tentacle : MonoBehaviour
                 LifeFire.transform.GetChild(i).gameObject.GetComponent<ParticleSystem>().Stop();
             }
             //SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[13]);
-            audioSource.PlayOneShot(SoundManager.instance.effectSound[13]);
+            SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[13]);
             enabled = false;
         }
     }
@@ -74,7 +74,7 @@ public class Tentacle : MonoBehaviour
                 catchPlayer = true;
                 GameObject currIndication = Instantiate(indication, targetPos, Quaternion.identity, transform);
                 //SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[12]);
-                audioSource.PlayOneShot(SoundManager.instance.effectSound[12]);
+                SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[12]);
             }
         }
         

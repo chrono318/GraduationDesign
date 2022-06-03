@@ -25,6 +25,7 @@ public class OnSeaPlayer : MonoBehaviour
         if(isSelect && Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene(scenceName);
+            SoundManager.instance.PlaySoundClip(SoundManager.instance.UISound[0]);
         }
     }
 
