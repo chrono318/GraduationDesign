@@ -25,8 +25,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FoamTexture:
         m_Texture: {fileID: 2800000, guid: a24ddeee41b659a42b3e031e47a80ae2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 2.5, y: 2}
+        m_Offset: {x: 2, y: 2}
     - _ReflectionTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -45,41 +45,41 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.5
-    - _FresnelExp: 5
+    - _FresnelExp: 0
     - _GradientPosition1: 2.3328786
     - _GradientPosition2: 2.5
     - _LightColorIntensity: 1
-    - _MainFoamIntensity: 4
-    - _MainFoamOpacity: 0
-    - _MainFoamScale: 20
-    - _MainFoamSpeed: 0.2
-    - _Opacity: 1
-    - _OpacityDepth: 2.9
+    - _MainFoamIntensity: 1
+    - _MainFoamOpacity: 0.286
+    - _MainFoamScale: 10
+    - _MainFoamSpeed: 100
+    - _Opacity: 0.2
+    - _OpacityDepth: 100
     - _RealTimeReflection: 1
-    - _ReflectionsIntensity: 1.33
+    - _ReflectionsIntensity: 3
     - _RefractionIntensity: 1.71
-    - _Roughness: 0.699
+    - _Roughness: 0.659
     - _SecondaryFoamAlwaysVisible: 0
-    - _SecondaryFoamIntensity: 100
-    - _SecondaryFoamOpacity: 1
+    - _SecondaryFoamIntensity: 2
+    - _SecondaryFoamOpacity: 0.766
     - _SecondaryFoamScale: 8
     - _ShadowIntensity: 1
     - _Shadows: 1
     - _ShadowsIntensity: 1
-    - _SpecularIntensity: 0.561
-    - _TurbulenceDistortionIntesity: 0.73
-    - _TurbulenceScale: 15
+    - _SpecularIntensity: 0.46
+    - _TurbulenceDistortionIntesity: 5
+    - _TurbulenceScale: 5
     - _VertexOffset: 0
-    - _WaveDistortionIntensity: 1.7
-    - _WavesAmplitude: 2
-    - _WavesDirection: 77
-    - _WavesIntensity: 3
-    - _WavesSpeed: 4
+    - _WaveDistortionIntensity: 5
+    - _WavesAmplitude: 1
+    - _WavesDirection: 135
+    - _WavesIntensity: 5
+    - _WavesSpeed: 2.5
     m_Colors:
-    - _DepthGradient1: {r: 0.2923984, g: 0.5379121, b: 0.8301887, a: 1}
-    - _DepthGradient2: {r: 0, g: 0.20049426, b: 0.4811321, a: 1}
-    - _DepthGradient3: {r: 0.017409164, g: 0.04925496, b: 0.16833296, a: 1}
-    - _FoamColor: {r: 0.29631642, g: 0.4002205, b: 0.4811321, a: 1}
-    - _FresnelColor: {r: 0, g: 0.37958297, b: 1, a: 1}
+    - _DepthGradient1: {r: 0.6745098, g: 0.7882353, b: 0.972549, a: 1}
+    - _DepthGradient2: {r: 0, g: 0, b: 0, a: 1}
+    - _DepthGradient3: {r: 0.017409164, g: 0.049124822, b: 0.16816849, a: 1}
+    - _FoamColor: {r: 0.26659074, g: 0.4666664, b: 0.7529412, a: 1}
+    - _FresnelColor: {r: 0, g: 0.5058824, b: 1, a: 1}
     - _ShadowColor: {r: 0.009191178, g: 0.033871744, b: 0.125, a: 1}
   m_BuildTextureStacks: []

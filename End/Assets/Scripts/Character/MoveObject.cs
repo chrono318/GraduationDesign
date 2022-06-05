@@ -281,7 +281,7 @@ public class MoveObject : MonoBehaviour
             SetAnimLayerWeight(Mathf.Floor(animSpeed));
             if (animSpeed > 0 && isPlayer)
             {               
-                SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
+                //SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
             }
         }
     }
@@ -298,7 +298,7 @@ public class MoveObject : MonoBehaviour
             }
             if (animSpeed > 0 && isPlayer)
             {
-                SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
+                //SoundManager.instance.PlaySoundClip(SoundManager.instance.combatSound[23]);
             }
         }
     }
@@ -583,9 +583,11 @@ public class MoveObject : MonoBehaviour
             case 3:
                 PlayAnim("reload");
                 //开始换弹动画
-                if(isPlayer)
+                if (isPlayer)
+                {
                     StartCoroutine(nameof(Reload));
-                ReloadSound();
+                    ReloadSound();
+                }
                 break;
         }
         return false;
@@ -595,6 +597,7 @@ public class MoveObject : MonoBehaviour
         Slider_Reload.gameObject.SetActive(true);
         StartCoroutine(SliderValue(shotReload, Slider_Reload, 1));
         yield return new WaitForSeconds(shotReload);
+        audioSource.Stop();
         Slider_Reload.value = 0;
         Slider_Reload.gameObject.SetActive(false);
     }

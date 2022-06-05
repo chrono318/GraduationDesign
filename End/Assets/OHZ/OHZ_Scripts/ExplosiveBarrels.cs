@@ -23,7 +23,7 @@ public class ExplosiveBarrels : MonoBehaviour
     public void Boom()
     {
         SoundManager.instance.PlaySoundClip(SoundManager.instance.effectSound[7]);
-        audioSource.PlayOneShot(SoundManager.instance.effectSound[7]);
+        //audioSource.PlayOneShot(SoundManager.instance.effectSound[7]);
         Collider2D[] arround = Physics2D.OverlapCircleAll(transform.position, radius, targetLayer);
         foreach (var hit in arround)
         {

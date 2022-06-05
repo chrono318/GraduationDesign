@@ -18,14 +18,32 @@ public class OnSeaPlayer : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    bool isLoading = false;
+    int loading = 3;
+    float loadingTime = 0f;
+    public GameObject loadingUI;
+    public Text loadingTex;
     void Update()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         if(isSelect && Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(scenceName);
+            SceneManager.LoadSceneAsync(scenceName);
+            isLoading = true;
+            loadingUI.SetActive(true);
             SoundManager.instance.PlaySoundClip(SoundManager.instance.UISound[0]);
+        }
+        if (isLoading)
+        {
+            loadingTime += Time.deltaTime;
+            loading = (int)loadingTime % 4;
+            string tex = "Loading";
+            for(int i = 0; i < loading; i++)
+            {
+                tex += ".";
+            }
+            loadingTex.text = tex;
         }
     }
 

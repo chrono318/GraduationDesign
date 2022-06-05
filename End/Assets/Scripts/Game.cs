@@ -148,7 +148,6 @@ public class Game : MonoBehaviour
 
     public void LoseGame()
     {
-        return;
         Time.timeScale = 0f;
         SceneManager.LoadScene("Lose");
     }

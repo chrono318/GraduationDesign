@@ -104,5 +104,4 @@ public class SoundManager : MonoBehaviour
     {
         bossSource.Pause();
     }
-
 }

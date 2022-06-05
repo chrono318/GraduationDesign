@@ -114,6 +114,5 @@ public class Tentacle : MonoBehaviour
     public void GetHurt(float damage)
     {
         currLife -= damage;
-        print(currLife);
     }
 }

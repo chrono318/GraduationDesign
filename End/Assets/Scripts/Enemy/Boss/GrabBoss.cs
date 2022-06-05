@@ -88,6 +88,7 @@ public class GrabBoss : Boss
     public ParticleSystem upVFX;
     public ParticleSystem downVFX;
     public float minShadowSize = 0.5f;
+    public GameObject fogGO;
     [Header("’ŸªΩ–°π÷")]
     public int maxEnemyCount = 6;//º‰∏Ù
     public List<GameObject> enemyPrafabs;
@@ -396,6 +397,7 @@ public class GrabBoss : Boss
             t += Time.deltaTime;
             yield return null;
         }
+        audioSource.Stop();
         dir = GetAttackDir();
         for (int i = 0; i < 2; i++)
         {
@@ -458,6 +460,7 @@ public class GrabBoss : Boss
             t += Time.deltaTime;
             yield return 0;
         }
+        audioSource.Stop();
         line0.enabled = false;
         line0.transform.GetChild(0).gameObject.SetActive(false);
         line0.transform.GetChild(1).gameObject.SetActive(false);
@@ -493,6 +496,7 @@ public class GrabBoss : Boss
             t += Time.deltaTime;
             yield return null;
         }
+        audioSource.Stop();
         dir = GetAttackDir();
         dir1 = Quaternion.Euler(0, 0, 45f) * dir;
         dir2 = Quaternion.Euler(0, 0, -45f) * dir;
@@ -584,6 +588,7 @@ public class GrabBoss : Boss
             t += Time.deltaTime;
             yield return 0;
         }
+        audioSource.Stop();
         line0.enabled = false;
         line1.enabled = false;
         line2.enabled = false;
@@ -639,6 +644,7 @@ public class GrabBoss : Boss
         for (int i = 0; i < frequency; i++)
         {
             int offset = 0;
+            audioSource.PlayOneShot(SoundManager.instance.BossSound[8]);
             for(int j = 0; j < bulletNumPerFire; j++)
             {
                 offset += j * (j % 2 == 0 ? -1 : 1);
@@ -657,6 +663,7 @@ public class GrabBoss : Boss
         for (int i = 0; i < frequency1; i++)
         {
             int offset = 0;
+            audioSource.PlayOneShot(SoundManager.instance.BossSound[8]);
             for (int j = 0; j < bulletNumPerFire1; j++)
             {
                 offset += j * (j % 2 == 0 ? -1 : 1);
@@ -698,6 +705,7 @@ public class GrabBoss : Boss
             audioSource.PlayOneShot(SoundManager.instance.BossSound[6]);
             yield return new WaitForSeconds(beginTime3);
             upVFX.Play(true);
+            fogGO.SetActive(false);
             foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = false;
@@ -740,6 +748,7 @@ public class GrabBoss : Boss
             downVFX.Play(true);
 
             collider2D.enabled = true;
+            fogGO.SetActive(true);
 
             if (Vector2.Distance(targetMO.transform.position, foot.transform.position) < areaSkill3)
             {
@@ -760,6 +769,7 @@ public class GrabBoss : Boss
             audioSource.PlayOneShot(SoundManager.instance.BossSound[6]);
             yield return new WaitForSeconds(beginTime3);
             upVFX.Play(true);
+            fogGO.SetActive(false);
             foreach (SpriteRenderer r in renderers)
             {
                 r.enabled = false;
@@ -799,6 +809,7 @@ public class GrabBoss : Boss
             }
             yield return new WaitForSeconds(endTime3);
             downVFX.Play(true);
+            fogGO.SetActive(true);
 
             collider2D.enabled = true;
 
